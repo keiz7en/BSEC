@@ -4,23 +4,40 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="505.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.bsec.SignUp">
+<AnchorPane prefHeight="580.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.bsec.SignUpController">
    <children>
-      <Button layoutX="344.0" layoutY="431.0" mnemonicParsing="false" onAction="#SubmitButton" text="Submit" />
-      <PasswordField fx:id="Id_number" layoutX="259.0" layoutY="270.0" prefHeight="26.0" prefWidth="223.0" promptText=" ID number" />
-      <ChoiceBox fx:id="user_type" layoutX="259.0" layoutY="327.0" prefHeight="26.0" prefWidth="223.0" />
-      <Label layoutX="341.0" layoutY="252.0" text="ID number" />
-      <Label layoutX="341.0" layoutY="309.0" text="User Type" />
-      <PasswordField fx:id="PasswordField" layoutX="259.0" layoutY="392.0" prefHeight="26.0" prefWidth="223.0" promptText="Password" />
       <Label layoutX="322.0" layoutY="14.0" text="BSEC Sign Up">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
       <Button layoutX="40.0" layoutY="36.0" mnemonicParsing="false" onAction="#BackToLoginButton" prefHeight="34.0" prefWidth="90.0" text="Back to Login" />
+
+      <Label layoutX="341.0" layoutY="100.0" text="Full Name"/>
+      <TextField fx:id="fullName" layoutX="259.0" layoutY="118.0" prefHeight="26.0" prefWidth="223.0"
+                 promptText="Enter your full name"/>
+
+      <Label layoutX="341.0" layoutY="170.0" text="ID Number"/>
+      <PasswordField fx:id="Id_number" layoutX="259.0" layoutY="188.0" prefHeight="26.0" prefWidth="223.0"
+                     promptText="Enter 6-digit ID"/>
+
+      <Label layoutX="341.0" layoutY="240.0" text="User Type"/>
+      <ChoiceBox fx:id="user_type" layoutX="259.0" layoutY="258.0" prefHeight="26.0" prefWidth="223.0"/>
+
+      <Label layoutX="350.0" layoutY="310.0" text="Password"/>
+      <PasswordField fx:id="password" layoutX="259.0" layoutY="328.0" prefHeight="26.0" prefWidth="223.0"
+                     promptText="Enter 6-character password"/>
+
+      <Label layoutX="335.0" layoutY="380.0" text="Confirm Password"/>
+      <PasswordField fx:id="confirmPassword" layoutX="259.0" layoutY="398.0" prefHeight="26.0" prefWidth="223.0"
+                     promptText="Confirm your password"/>
+
+      <Button layoutX="344.0" layoutY="460.0" mnemonicParsing="false" onAction="#SignUpButton" text="Sign Up"/>
    </children>
 </AnchorPane>
