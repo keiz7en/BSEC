@@ -8,7 +8,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.bsec.bsec.User7.Main"
+            fx:controller="com.bsec.bsec.Regulator.Main"
             prefHeight="400.0" prefWidth="600.0">
 
 </AnchorPane>
