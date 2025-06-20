@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,7 +21,7 @@ public class LoginController implements Initializable {
     private Label welcomeText;
 
     @FXML
-    private PasswordField Id_number;
+    private TextField Id_number;
 
     @FXML
     private ChoiceBox<String> user_type;
@@ -72,8 +73,22 @@ public class LoginController implements Initializable {
             return;
         }
 
-        // If validation passes, proceed with login
-        showAlert("Login Successful", "Welcome " + selectedUserType + "!\nID: " + idText);
+        // Authenticate user with database
+        User authenticatedUser = DatabaseManager.authenticateUser(idText, passwordText, selectedUserType);
+
+        if (authenticatedUser != null) {
+            showAlert("Login Successful", "Welcome " + authenticatedUser.getFullName() + "!\n" +
+                    "User ID: " + authenticatedUser.getUserId() + "\n" +
+                    "User Type: " + authenticatedUser.getUserType());
+
+            // Clear form after successful login
+            Id_number.clear();
+            PasswordField.clear();
+            user_type.setValue(null);
+        } else {
+            showAlert("Login Failed", "Invalid credentials. Please check your ID, password, and user type.\n\n" +
+                    "If you don't have an account, please sign up first.");
+        }
     }
 
     @FXML
