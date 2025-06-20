@@ -4,15 +4,26 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="721.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.bsec.LoginController">
    <children>
-      <Label layoutX="286.0" layoutY="14.0" text="BSEC" />
-      <Button layoutX="492.0" layoutY="336.0" mnemonicParsing="false" text="Submit" />
-      <Label layoutX="270.0" layoutY="40.0" text="Login Page" />
-      <PasswordField layoutX="56.0" layoutY="79.0" prefHeight="26.0" prefWidth="223.0" promptText=" ID number" />
-      <ChoiceBox layoutX="56.0" layoutY="133.0" prefHeight="26.0" prefWidth="223.0" />
+      <Label layoutX="346.0" layoutY="14.0" text="BSEC" />
+      <Button layoutX="334.0" layoutY="421.0" mnemonicParsing="false" onAction="#SubmitButton" text="Submit" />
+      <Label layoutX="330.0" layoutY="60.0" text="Login Page" />
+      <PasswordField fx:id="Id_number" layoutX="249.0" layoutY="260.0" prefHeight="26.0" prefWidth="223.0" promptText=" ID number" />
+      <ChoiceBox fx:id="user_type" layoutX="249.0" layoutY="317.0" prefHeight="26.0" prefWidth="223.0" />
+      <Label layoutX="331.0" layoutY="242.0" text="ID number" />
+      <Label layoutX="331.0" layoutY="299.0" text="User Type" />
+      <Button layoutX="627.0" layoutY="434.0" mnemonicParsing="false" onAction="#SignUpButton" prefHeight="34.0" prefWidth="80.0" text="Sign Up" />
+      <Label layoutX="556.0" layoutY="409.0" text="You didn't have any account" />
+      <PasswordField fx:id="PasswordField" layoutX="249.0" layoutY="382.0" prefHeight="26.0" prefWidth="223.0" promptText="Password" />
+      <ImageView fitHeight="110.0" fitWidth="721.0" layoutY="88.0">
+         <image>
+            <Image url="@Capture.PNG"/>
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
