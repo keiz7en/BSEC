@@ -17,7 +17,7 @@ public class User {
         this.createdAt = createdAt;
     }
 
-    // Getters
+
     public int getId() {
         return id;
     }
