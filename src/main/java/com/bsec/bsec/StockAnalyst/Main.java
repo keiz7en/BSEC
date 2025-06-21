@@ -1,5 +1,7 @@
 package com.bsec.bsec.StockAnalyst;
 
+import javafx.event.ActionEvent;
+
 public class Main
 {
     @javafx.fxml.FXML
