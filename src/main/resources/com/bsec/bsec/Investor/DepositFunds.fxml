@@ -1,19 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.bsec.bsec.Investor.DepositFunds"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="500.0" prefWidth="700.0">
 
     <children>
-        <Label layoutX="250.0" layoutY="14.0" text="Deposit Funds"/>
-        <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#goBackToMenu" text="Back to Menu"/>
-        <Label layoutX="50.0" layoutY="60.0" text="Fund deposit functionality will be implemented here."/>
+        <!-- Header -->
+        <Label layoutX="280.0" layoutY="14.0" text="Deposit Funds (BDT)" styleClass="header-label">
+            <font>
+                <Font name="System Bold" size="18.0"/>
+            </font>
+        </Label>
+
+        <!-- Current Balance Section -->
+        <Label layoutX="50.0" layoutY="60.0" text="Current Balance:"/>
+        <Label fx:id="currentBalanceLabel" layoutX="150.0" layoutY="60.0" text="৳0.00" styleClass="balance-label"/>
+        <Button fx:id="refreshBtn" layoutX="250.0" layoutY="56.0" mnemonicParsing="false" onAction="#refreshBalance"
+                text="Refresh"/>
+
+        <!-- Deposit Amount Section -->
+        <Separator layoutX="50.0" layoutY="90.0" prefWidth="600.0"/>
+        <Label layoutX="50.0" layoutY="120.0" text="Deposit Amount:"/>
+        <TextField fx:id="depositAmountField" layoutX="150.0" layoutY="116.0" prefWidth="150.0"
+                   promptText="Enter amount in BDT"/>
+
+        <!-- Quick Amount Buttons -->
+        <Label layoutX="50.0" layoutY="160.0" text="Quick Select:"/>
+        <Button layoutX="150.0" layoutY="156.0" mnemonicParsing="false" onAction="#setAmount1000" text="৳1,000"/>
+        <Button layoutX="220.0" layoutY="156.0" mnemonicParsing="false" onAction="#setAmount5000" text="৳5,000"/>
+        <Button layoutX="290.0" layoutY="156.0" mnemonicParsing="false" onAction="#setAmount10000" text="৳10,000"/>
+        <Button layoutX="370.0" layoutY="156.0" mnemonicParsing="false" onAction="#setAmount50000" text="৳50,000"/>
+
+        <!-- Payment Method Section -->
+        <Separator layoutX="50.0" layoutY="190.0" prefWidth="600.0"/>
+        <Label layoutX="50.0" layoutY="220.0" text="Payment Method:"/>
+        <ComboBox fx:id="paymentMethodCombo" layoutX="150.0" layoutY="216.0" prefWidth="200.0"/>
+
+        <!-- Bank Details (for bank transfer) -->
+        <Label fx:id="bankDetailsLabel" layoutX="50.0" layoutY="260.0" text="Account Number:" visible="false"/>
+        <TextField fx:id="accountNumberField" layoutX="150.0" layoutY="256.0" prefWidth="200.0"
+                   promptText="Enter account number" visible="false"/>
+
+        <!-- Summary Section -->
+        <Separator layoutX="50.0" layoutY="290.0" prefWidth="600.0"/>
+        <Label layoutX="50.0" layoutY="320.0" text="Deposit Summary:" styleClass="section-header"/>
+
+        <Label layoutX="50.0" layoutY="350.0" text="Deposit Amount:"/>
+        <Label fx:id="depositSummaryLabel" layoutX="150.0" layoutY="350.0" text="৳0.00"/>
+
+        <Label layoutX="50.0" layoutY="380.0" text="New Balance:"/>
+        <Label fx:id="newBalanceLabel" layoutX="150.0" layoutY="380.0" text="৳0.00"/>
+
+        <!-- Action Buttons -->
+        <Button fx:id="depositBtn" layoutX="400.0" layoutY="350.0" mnemonicParsing="false" onAction="#processDeposit"
+                text="Deposit Funds" styleClass="primary-button" disable="true"/>
+        <Button fx:id="clearBtn" layoutX="520.0" layoutY="350.0" mnemonicParsing="false" onAction="#clearForm"
+                text="Clear"/>
+
+        <!-- Status Area -->
+        <TextArea fx:id="statusArea" layoutX="400.0" layoutY="220.0" prefHeight="100.0" prefWidth="250.0"
+                  editable="false" wrapText="true"/>
+
+        <!-- Back Navigation -->
+        <Button layoutX="50.0" layoutY="450.0" mnemonicParsing="false" onAction="#goBackToMenu" text="Back to Menu"/>
     </children>
 </AnchorPane>

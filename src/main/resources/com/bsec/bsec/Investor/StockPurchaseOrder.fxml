@@ -1,19 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.bsec.bsec.Investor.StockPurchaseOrder"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="600.0" prefWidth="800.0">
 
     <children>
-        <Label layoutX="215.0" layoutY="14.0" text="Stock Purchase Order"/>
-        <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#goBackToMenu" text="Back to Menu"/>
-        <Label layoutX="50.0" layoutY="60.0" text="Stock purchase order functionality will be implemented here."/>
+        <!-- Header -->
+        <Label layoutX="280.0" layoutY="14.0" text="Bangladesh Stock Purchase Order" styleClass="header-label">
+            <font>
+                <Font name="System Bold" size="18.0"/>
+            </font>
+        </Label>
+
+        <!-- Account Balance Section -->
+        <Label layoutX="50.0" layoutY="60.0" text="Account Balance (BDT):"/>
+        <Label fx:id="balanceLabel" layoutX="180.0" layoutY="60.0" text="0.00" styleClass="balance-label"/>
+        <Button fx:id="refreshBalanceBtn" layoutX="300.0" layoutY="56.0" mnemonicParsing="false"
+                onAction="#refreshBalance" text="Refresh"/>
+
+        <!-- Deposit Funds Message -->
+        <Label layoutX="450.0" layoutY="60.0" text="Need funds? Go to Deposit Funds section"
+               style="-fx-text-fill: blue; -fx-font-style: italic;"/>
+
+        <!-- Stock Selection Section -->
+        <Label layoutX="50.0" layoutY="100.0" text="Select Stock (DSE):"/>
+        <ComboBox fx:id="stockComboBox" layoutX="180.0" layoutY="96.0" prefWidth="250.0"
+                  promptText="Choose a Bangladesh stock..." onAction="#onStockSelected"/>
+
+        <!-- Stock Details Display -->
+        <Label layoutX="50.0" layoutY="140.0" text="Current Price (BDT):"/>
+        <Label fx:id="currentPriceLabel" layoutX="180.0" layoutY="140.0" text="0.00"/>
+
+        <!-- Order Details Section -->
+        <Separator layoutX="50.0" layoutY="170.0" prefWidth="700.0"/>
+        <Label layoutX="50.0" layoutY="190.0" text="Order Details:" styleClass="section-header"/>
+
+        <Label layoutX="50.0" layoutY="220.0" text="Quantity:"/>
+        <TextField fx:id="quantityField" layoutX="150.0" layoutY="216.0" prefWidth="100.0" promptText="0"/>
+
+        <Label layoutX="50.0" layoutY="250.0" text="Order Type:"/>
+        <ComboBox fx:id="orderTypeComboBox" layoutX="150.0" layoutY="246.0" prefWidth="150.0"/>
+
+        <Label layoutX="50.0" layoutY="280.0" text="Price Limit (BDT):"/>
+        <TextField fx:id="priceLimitField" layoutX="180.0" layoutY="276.0" prefWidth="100.0" promptText="Market Price"/>
+
+        <!-- Order Summary -->
+        <Separator layoutX="50.0" layoutY="310.0" prefWidth="700.0"/>
+        <Label layoutX="50.0" layoutY="330.0" text="Order Summary:" styleClass="section-header"/>
+
+        <Label layoutX="50.0" layoutY="360.0" text="Total Cost (BDT):"/>
+        <Label fx:id="totalCostLabel" layoutX="180.0" layoutY="360.0" text="0.00"/>
+
+        <Label layoutX="50.0" layoutY="390.0" text="Remaining Balance (BDT):"/>
+        <Label fx:id="remainingBalanceLabel" layoutX="220.0" layoutY="390.0" text="0.00"/>
+
+        <!-- Action Buttons -->
+        <Button fx:id="calculateBtn" layoutX="400.0" layoutY="246.0" mnemonicParsing="false" onAction="#calculateTotal"
+                text="Calculate Total"/>
+
+        <Button fx:id="placeOrderBtn" layoutX="400.0" layoutY="420.0" mnemonicParsing="false" onAction="#placeOrder"
+                text="Place Order" styleClass="primary-button" disable="true"/>
+
+        <Button fx:id="clearFormBtn" layoutX="520.0" layoutY="420.0" mnemonicParsing="false" onAction="#clearForm"
+                text="Clear Form"/>
+
+        <!-- Back Navigation -->
+        <Button layoutX="50.0" layoutY="550.0" mnemonicParsing="false" onAction="#goBackToMenu" text="Back to Menu"/>
+
+        <!-- Status Message Area -->
+        <TextArea fx:id="statusArea" layoutX="400.0" layoutY="310.0" prefHeight="80.0" prefWidth="350.0"
+                  editable="false" wrapText="true"/>
+
+        <!-- Market Info -->
+        <Label layoutX="500.0" layoutY="100.0" text="Dhaka Stock Exchange (DSE)" style="-fx-font-style: italic;"/>
     </children>
 </AnchorPane>
