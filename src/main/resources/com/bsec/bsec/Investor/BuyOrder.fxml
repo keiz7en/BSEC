@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.bsec.bsec.Investor.BuyOrder"
+            prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <Label layoutX="260.0" layoutY="14.0" text="Buy Order"/>
+        <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#goBackToMenu" text="Back to Menu"/>
+        <Label layoutX="50.0" layoutY="60.0" text="Buy order functionality will be implemented here."/>
+    </children>
+</AnchorPane>

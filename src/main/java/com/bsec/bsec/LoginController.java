@@ -13,8 +13,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ResourceBundle;
+import java.net.URL;
 
 public class LoginController implements Initializable {
     @FXML
@@ -48,56 +48,56 @@ public class LoginController implements Initializable {
     @FXML
     protected void loginAsInvestor() {
         if (authenticateUser("Investor")) {
-            navigateToUserTypePage("Investor", "Investor/Main.fxml", "BSEC - Investor Dashboard");
+            navigateToUserTypePage("Investor", "/com/bsec/bsec/Investor/Menu_Investor.fxml", "BSEC - Investor Dashboard");
         }
     }
 
     @FXML
     protected void loginAsStockExchange() {
         if (authenticateUser("Stock Exchange")) {
-            navigateToUserTypePage("Stock Exchange", "StockExchange/Main.fxml", "BSEC - Stock Exchange Dashboard");
+            navigateToUserTypePage("Stock Exchange", "/com/bsec/bsec/StockExchange/Main.fxml", "BSEC - Stock Exchange Dashboard");
         }
     }
 
     @FXML
     protected void loginAsBroker() {
         if (authenticateUser("Broker")) {
-            navigateToUserTypePage("Broker", "Broker/Main.fxml", "BSEC - Broker Dashboard");
+            navigateToUserTypePage("Broker", "/com/bsec/bsec/Broker/Main.fxml", "BSEC - Broker Dashboard");
         }
     }
 
     @FXML
     protected void loginAsStockAnalyst() {
         if (authenticateUser("Stock Analyst")) {
-            navigateToUserTypePage("Stock Analyst", "StockAnalyst/Main.fxml", "BSEC - Stock Analyst Dashboard");
+            navigateToUserTypePage("Stock Analyst", "/com/bsec/bsec/StockAnalyst/Main.fxml", "BSEC - Stock Analyst Dashboard");
         }
     }
 
     @FXML
     protected void loginAsCompany() {
         if (authenticateUser("Company")) {
-            navigateToUserTypePage("Company", "Company/Main.fxml", "BSEC - Company Dashboard");
+            navigateToUserTypePage("Company", "/com/bsec/bsec/Company/Main.fxml", "BSEC - Company Dashboard");
         }
     }
 
     @FXML
     protected void loginAsAuditor() {
         if (authenticateUser("Auditor")) {
-            navigateToUserTypePage("Auditor", "Auditor/Main.fxml", "BSEC - Auditor Dashboard");
+            navigateToUserTypePage("Auditor", "/com/bsec/bsec/Auditor/Main.fxml", "BSEC - Auditor Dashboard");
         }
     }
 
     @FXML
     protected void loginAsBSECOfficer() {
         if (authenticateUser("BSEC Officer")) {
-            navigateToUserTypePage("BSEC Officer", "BSEC_Officer/Main.fxml", "BSEC - Officer Dashboard");
+            navigateToUserTypePage("BSEC Officer", "/com/bsec/bsec/BSEC_Officer/Main.fxml", "BSEC - Officer Dashboard");
         }
     }
 
     @FXML
     protected void loginAsRegulator() {
         if (authenticateUser("Regulator")) {
-            navigateToUserTypePage("Regulator", "Regulator/Main.fxml", "BSEC - Regulator Dashboard");
+            navigateToUserTypePage("Regulator", "/com/bsec/bsec/Regulator/Main.fxml", "BSEC - Regulator Dashboard");
         }
     }
 
@@ -146,7 +146,7 @@ public class LoginController implements Initializable {
     protected void SignUpButton() {
         try {
             // Load the SignUp FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("SignUp.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/bsec/SignUp.fxml"));
             Parent signUpRoot = loader.load();
 
             // Get current stage
@@ -201,8 +201,13 @@ public class LoginController implements Initializable {
 
     private void navigateToUserTypePage(String userType, String fxmlPath, String windowTitle) {
         try {
+            // Debug logging
+            System.out.println("Attempting to load: " + fxmlPath);
+            URL resourceUrl = getClass().getResource(fxmlPath);
+            System.out.println("Resource URL: " + resourceUrl);
+
             // Load the user type FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            FXMLLoader loader = new FXMLLoader(resourceUrl);
             Parent userTypeRoot = loader.load();
 
             // Get current stage
@@ -214,6 +219,10 @@ public class LoginController implements Initializable {
             currentStage.setTitle(windowTitle);
 
         } catch (IOException e) {
+            System.err.println("Detailed error loading " + userType + " dashboard:");
+            System.err.println("FXML Path: " + fxmlPath);
+            System.err.println("Error: " + e.getMessage());
+            e.printStackTrace();
             showAlert("Error", "Could not load " + userType + " dashboard: " + e.getMessage());
         }
     }

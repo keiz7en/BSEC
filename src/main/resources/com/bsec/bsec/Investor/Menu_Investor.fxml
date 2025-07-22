@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.bsec.Investor.Menu_Investor">
+    <children>
+        <Label layoutX="241.0" layoutY="14.0" text="Investor Dashboard" />
+        <Button layoutX="498.0" layoutY="360.0" mnemonicParsing="false" onAction="#goToLogin" text="Back to Login" />
+      <GridPane layoutX="20.0" layoutY="59.0" prefHeight="220.0" prefWidth="542.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="270.5999755859375" minWidth="10.0" prefWidth="269.79998779296875" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="176.20001220703125" minWidth="10.0" prefWidth="42.19996337890626" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="228.60003662109375" minWidth="10.0" prefWidth="228.60003662109375" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button mnemonicParsing="false" onAction="#StocksPurchaseButton" prefHeight="35.0" prefWidth="239.0" text="Stock Purchase Order" />
+            <Button mnemonicParsing="false" onAction="#ViewPortfolioButton" prefHeight="34.0" prefWidth="204.0" text="View Portfolio and Performance" GridPane.columnIndex="2" />
+            <Button mnemonicParsing="false" onAction="#SearchAndViewStocksButton" prefHeight="36.0" prefWidth="238.0" text="Search and View Stocks" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" onAction="#BuyOrderButton" prefHeight="34.0" prefWidth="240.0" text="Buy Order" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" onAction="#SellOrderButton" prefHeight="32.0" prefWidth="239.0" text="Sell Order" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" onAction="#DepositFundsButton" prefHeight="33.0" prefWidth="202.0" text="Deposit Funds in Account" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" onAction="#AccountStatementButton" prefHeight="32.0" prefWidth="202.0" text="Request Account statement" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" onAction="#NotificationforStocksButton" prefHeight="31.0" prefWidth="201.0" text="Recieve notification for Stocks" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+    </children>
+</AnchorPane>
