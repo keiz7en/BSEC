@@ -194,15 +194,10 @@ public class LoginController implements Initializable {
             System.out.println("Resource URL: " + resourceUrl);
             FXMLLoader loader = new FXMLLoader(resourceUrl);
             Parent userTypeRoot = loader.load();
-
-            // Get current stage
             Stage currentStage = (Stage) Id_number.getScene().getWindow();
-
-            // Create new scene and set it
             Scene userTypeScene = new Scene(userTypeRoot);
             currentStage.setScene(userTypeScene);
             currentStage.setTitle(windowTitle);
-
         } catch (IOException e) {
             System.err.println("Detailed error loading " + userType + " dashboard:");
             System.err.println("FXML Path: " + fxmlPath);
