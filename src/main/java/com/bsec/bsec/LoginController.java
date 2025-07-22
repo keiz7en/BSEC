@@ -145,18 +145,12 @@ public class LoginController implements Initializable {
     @FXML
     protected void SignUpButton() {
         try {
-            // Load the SignUp FXML
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/bsec/SignUp.fxml"));
             Parent signUpRoot = loader.load();
-
-            // Get current stage
             Stage currentStage = (Stage) Id_number.getScene().getWindow();
-
-            // Create new scene and set it
             Scene signUpScene = new Scene(signUpRoot);
             currentStage.setScene(signUpScene);
             currentStage.setTitle("BSEC Sign Up");
-
         } catch (IOException e) {
             showAlert("Error", "Could not load Sign Up page: " + e.getMessage());
         }
@@ -165,28 +159,22 @@ public class LoginController implements Initializable {
     private boolean authenticateUser(String expectedUserType) {
         String idText = Id_number.getText();
         String passwordText = PasswordField.getText();
-
-        // Validate ID (must be 6 digits)
         if (idText == null || !idText.matches("\\d{6}")) {
             showAlert("Invalid ID", "ID must be exactly 6 digits.");
             return false;
         }
 
-        // Validate password (must be 6 characters)
         if (passwordText == null || passwordText.length() != 6) {
             showAlert("Invalid Password", "Password must be exactly 6 characters (letters, digits, or combined).");
             return false;
         }
 
-        // Authenticate user with database
         User authenticatedUser = DatabaseManager.authenticateUser(idText, passwordText, expectedUserType);
 
         if (authenticatedUser != null) {
             showAlert("Login Successful", "Welcome " + authenticatedUser.getFullName() + "!\n" +
                     "User ID: " + authenticatedUser.getUserId() + "\n" +
                     "User Type: " + authenticatedUser.getUserType());
-
-            // Clear form after successful login
             Id_number.clear();
             PasswordField.clear();
             user_type.setValue(null);
@@ -201,12 +189,9 @@ public class LoginController implements Initializable {
 
     private void navigateToUserTypePage(String userType, String fxmlPath, String windowTitle) {
         try {
-            // Debug logging
             System.out.println("Attempting to load: " + fxmlPath);
             URL resourceUrl = getClass().getResource(fxmlPath);
             System.out.println("Resource URL: " + resourceUrl);
-
-            // Load the user type FXML
             FXMLLoader loader = new FXMLLoader(resourceUrl);
             Parent userTypeRoot = loader.load();
 

@@ -6,8 +6,6 @@ import java.io.File;
 public class DatabaseManager {
     private static final String DB_NAME = "bsec_users.db";
     private static final String DB_URL = "jdbc:sqlite:" + DB_NAME;
-
-    // Create users table if it doesn't exist
     public static void initializeDatabase() {
         try (Connection conn = DriverManager.getConnection(DB_URL);
              Statement stmt = conn.createStatement()) {
@@ -28,8 +26,6 @@ public class DatabaseManager {
             System.err.println("Error initializing database: " + e.getMessage());
         }
     }
-
-    // Register a new user
     public static boolean registerUser(String userId, String fullName, String password, String userType) {
         String insertSQL = "INSERT INTO users (user_id, full_name, password, user_type) VALUES (?, ?, ?, ?)";
 
