@@ -1,4 +1,4 @@
-package com.bsec.bsec.Company;
+package com.bsec.oop.StockExchange;
 
 import javafx.event.ActionEvent;
 

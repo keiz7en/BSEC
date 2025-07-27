@@ -1,7 +1,6 @@
-package com.bsec.bsec;
+package com.bsec.oop;
 
 import java.sql.*;
-import java.io.File;
 
 public class DatabaseManager {
     private static final String DB_NAME = "bsec_users.db";

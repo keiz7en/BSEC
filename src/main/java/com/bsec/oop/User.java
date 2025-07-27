@@ -1,4 +1,4 @@
-package com.bsec.bsec;
+package com.bsec.oop;
 
 public class User {
     private int id;

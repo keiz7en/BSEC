@@ -8,7 +8,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.bsec.bsec.Investor.BuyOrder"
+            fx:controller="com.bsec.oop.Investor.BuyOrder"
             prefHeight="400.0" prefWidth="600.0">
     <children>
         <Label layoutX="260.0" layoutY="14.0" text="Buy Order"/>

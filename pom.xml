@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.bsec</groupId>
-    <artifactId>BSEC</artifactId>
+    <artifactId>summer25section2</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>BSEC</name>
 
@@ -68,7 +68,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.bsec.bsec/com.bsec.bsec.HelloApplication</mainClass>
+                            <mainClass>com.bsec.bsec/com.bsec.oop.HelloApplication</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

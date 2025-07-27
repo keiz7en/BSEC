@@ -1,4 +1,4 @@
-package com.bsec.bsec.Investor;
+package com.bsec.oop.Investor;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;

@@ -1,4 +1,4 @@
-package com.bsec.bsec.BSEC_Officer;
+package com.bsec.oop.Company;
 
 import javafx.event.ActionEvent;
 

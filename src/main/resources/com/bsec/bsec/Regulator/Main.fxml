@@ -8,7 +8,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.bsec.bsec.Regulator.Main"
+            fx:controller="com.bsec.oop.Regulator.Main"
             prefHeight="400.0" prefWidth="600.0">
     <children>
         <Label layoutX="240.0" layoutY="50.0" text="Regulator Dashboard"/>

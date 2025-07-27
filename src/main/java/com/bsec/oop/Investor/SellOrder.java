@@ -1,4 +1,4 @@
-package com.bsec.bsec.Investor;
+package com.bsec.oop.Investor;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class NotificationStocks
+public class SellOrder
 {
     @javafx.fxml.FXML
     public void initialize() {

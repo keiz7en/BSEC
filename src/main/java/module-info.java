@@ -3,8 +3,8 @@ module com.bsec.bsec {
     requires javafx.fxml;
     requires java.sql;
 
-    opens com.bsec.bsec to javafx.fxml;
-    opens com.bsec.bsec.Investor to javafx.fxml;
-    exports com.bsec.bsec;
-    exports com.bsec.bsec.Investor;
+    opens com.bsec.oop to javafx.fxml;
+    opens com.bsec.oop.Investor to javafx.fxml;
+    exports com.bsec.oop;
+    exports com.bsec.oop.Investor;
 }

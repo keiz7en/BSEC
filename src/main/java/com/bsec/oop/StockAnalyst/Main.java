@@ -1,4 +1,4 @@
-package com.bsec.bsec.StockAnalyst;
+package com.bsec.oop.StockAnalyst;
 
 import javafx.event.ActionEvent;
 

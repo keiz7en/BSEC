@@ -1,4 +1,4 @@
-package com.bsec.bsec;
+package com.bsec.oop;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

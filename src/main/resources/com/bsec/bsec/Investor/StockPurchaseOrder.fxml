@@ -6,7 +6,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.bsec.bsec.Investor.StockPurchaseOrder"
+            fx:controller="com.bsec.oop.Investor.StockPurchaseOrder"
             prefHeight="600.0" prefWidth="800.0">
 
     <children>
