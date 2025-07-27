@@ -35,7 +35,7 @@ public class DepositFunds
     @FXML
     private TextArea statusArea;
 
-    private BalanceManager balanceManager = BalanceManager.getInstance();
+    private final BalanceManager balanceManager = BalanceManager.getInstance();
 
     @FXML
     public void initialize() {
