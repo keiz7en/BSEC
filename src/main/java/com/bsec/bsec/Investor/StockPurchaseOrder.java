@@ -45,8 +45,6 @@ public class StockPurchaseOrder
         setupStockComboBox();
         setupOrderTypeComboBox();
         setupEventHandlers();
-
-        // Initialize display values
         balanceLabel.setText(balanceManager.getFormattedBalance());
         currentPriceLabel.setText("৳0.00");
         totalCostLabel.setText("৳0.00");
