@@ -1,4 +1,4 @@
-package com.bsec.oop.Company;
+package com.bsec.oop.sadman.Company;
 
 import javafx.event.ActionEvent;
 
