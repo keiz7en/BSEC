@@ -48,56 +48,56 @@ public class LoginController implements Initializable {
     @FXML
     protected void loginAsInvestor() {
         if (authenticateUser("Investor")) {
-            navigateToUserTypePage("Investor", "/com/bsec/bsec/Investor/Menu_Investor.fxml", "BSEC - Investor Dashboard");
+            navigateToUserTypePage("Investor", "/com/bsec/oop/Investor/Menu_Investor.fxml", "BSEC - Investor Dashboard");
         }
     }
 
     @FXML
     protected void loginAsStockExchange() {
         if (authenticateUser("Stock Exchange")) {
-            navigateToUserTypePage("Stock Exchange", "/com/bsec/bsec/StockExchange/Main.fxml", "BSEC - Stock Exchange Dashboard");
+            navigateToUserTypePage("Stock Exchange", "/com/bsec/oop/StockExchange/Main.fxml", "BSEC - Stock Exchange Dashboard");
         }
     }
 
     @FXML
     protected void loginAsBroker() {
         if (authenticateUser("Broker")) {
-            navigateToUserTypePage("Broker", "/com/bsec/bsec/Broker/Main.fxml", "BSEC - Broker Dashboard");
+            navigateToUserTypePage("Broker", "/com/bsec/oop/Broker/Main.fxml", "BSEC - Broker Dashboard");
         }
     }
 
     @FXML
     protected void loginAsStockAnalyst() {
         if (authenticateUser("Stock Analyst")) {
-            navigateToUserTypePage("Stock Analyst", "/com/bsec/bsec/StockAnalyst/Main.fxml", "BSEC - Stock Analyst Dashboard");
+            navigateToUserTypePage("Stock Analyst", "/com/bsec/oop/StockAnalyst/Main.fxml", "BSEC - Stock Analyst Dashboard");
         }
     }
 
     @FXML
     protected void loginAsCompany() {
         if (authenticateUser("Company")) {
-            navigateToUserTypePage("Company", "/com/bsec/bsec/Company/Main.fxml", "BSEC - Company Dashboard");
+            navigateToUserTypePage("Company", "/com/bsec/oop/Company/Main.fxml", "BSEC - Company Dashboard");
         }
     }
 
     @FXML
     protected void loginAsAuditor() {
         if (authenticateUser("Auditor")) {
-            navigateToUserTypePage("Auditor", "/com/bsec/bsec/Auditor/Main.fxml", "BSEC - Auditor Dashboard");
+            navigateToUserTypePage("Auditor", "/com/bsec/oop/Auditor/Main.fxml", "BSEC - Auditor Dashboard");
         }
     }
 
     @FXML
     protected void loginAsBSECOfficer() {
         if (authenticateUser("BSEC Officer")) {
-            navigateToUserTypePage("BSEC Officer", "/com/bsec/bsec/BSEC_Officer/Main.fxml", "BSEC - Officer Dashboard");
+            navigateToUserTypePage("BSEC Officer", "/com/bsec/oop/BSEC_Officer/Main.fxml", "BSEC - Officer Dashboard");
         }
     }
 
     @FXML
     protected void loginAsRegulator() {
         if (authenticateUser("Regulator")) {
-            navigateToUserTypePage("Regulator", "/com/bsec/bsec/Regulator/Main.fxml", "BSEC - Regulator Dashboard");
+            navigateToUserTypePage("Regulator", "/com/bsec/oop/Regulator/Main.fxml", "BSEC - Regulator Dashboard");
         }
     }
 
@@ -145,7 +145,7 @@ public class LoginController implements Initializable {
     @FXML
     protected void SignUpButton() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/bsec/SignUp.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/SignUp.fxml"));
             Parent signUpRoot = loader.load();
             Stage currentStage = (Stage) Id_number.getScene().getWindow();
             Scene signUpScene = new Scene(signUpRoot);
