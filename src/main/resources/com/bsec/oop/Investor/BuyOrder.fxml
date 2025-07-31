@@ -5,14 +5,235 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.bsec.oop.Investor.BuyOrder"
-            prefHeight="400.0" prefWidth="600.0">
-    <children>
-        <Label layoutX="260.0" layoutY="14.0" text="Buy Order"/>
-        <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#goBackToMenu" text="Back to Menu"/>
-        <Label layoutX="50.0" layoutY="60.0" text="Buy order functionality will be implemented here."/>
+            prefHeight="700.0" prefWidth="900.0">
+
+<children>
+        <!-- Header -->
+        <HBox layoutX="0.0" layoutY="0.0" prefHeight="60.0" prefWidth="900.0" alignment="CENTER_LEFT" spacing="20.0">
+            <children>
+                <Label text="Place Buy Order">
+                    <font>
+                        <Font name="System Bold" size="24.0"/>
+                    </font>
+                </Label>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button mnemonicParsing="false" onAction="#goBackToMenu" text="Back to Menu"/>
+            </children>
+        </HBox>
+
+        <!-- Main Content -->
+        <ScrollPane layoutX="0.0" layoutY="60.0" prefHeight="640.0" prefWidth="900.0" fitToWidth="true">
+            <content>
+                <VBox spacing="20.0" style="-fx-padding: 20;">
+                    <children>
+                        <!-- Stock Selection Section -->
+                        <VBox spacing="15.0">
+                            <children>
+                                <Label text="1. Select Stock">
+                                    <font>
+                                        <Font name="System Bold" size="16.0"/>
+                                    </font>
+                                </Label>
+
+                                <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                    <children>
+                                        <Label text="Stock Symbol:"/>
+                                        <ComboBox fx:id="stockSymbolComboBox" prefWidth="200.0"/>
+                                        <Label text="Current Price:"/>
+                                        <Label fx:id="currentPriceLabel" text="৳0.00"/>
+                                        <Button fx:id="refreshPriceButton" text="Refresh Price"/>
+                                    </children>
+                                </HBox>
+
+                                <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                    <children>
+                                        <Label text="Company Name:"/>
+                                        <Label fx:id="companyNameLabel" text="Select a stock"/>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                        <!-- Order Details Section -->
+                        <VBox spacing="15.0">
+                            <children>
+                                <Label text="2. Order Details">
+                                    <font>
+                                        <Font name="System Bold" size="16.0"/>
+                                    </font>
+                                </Label>
+
+                                <GridPane hgap="15.0" vgap="10.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0"/>
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                                    </rowConstraints>
+                                    <children>
+                                        <Label text="Quantity:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                        <TextField fx:id="quantityField" promptText="Enter number of shares"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                                        <Label text="Order Type:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                        <ComboBox fx:id="orderTypeComboBox" prefWidth="200.0" GridPane.columnIndex="3"
+                                                  GridPane.rowIndex="0"/>
+
+                                        <Label text="Price Limit:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                        <TextField fx:id="priceLimitField"
+                                                   promptText="Price per share (for limit orders)"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                                        <Label text="Valid Until:" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                        <ComboBox fx:id="validityComboBox" prefWidth="200.0" GridPane.columnIndex="3"
+                                                  GridPane.rowIndex="1"/>
+
+                                        <Label text="Stop Loss:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                        <TextField fx:id="stopLossField" promptText="Optional stop loss price"
+                                                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                                        <Label text="Take Profit:" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                        <TextField fx:id="takeProfitField" promptText="Optional take profit price"
+                                                   GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+                                    </children>
+                                </GridPane>
+                            </children>
+                        </VBox>
+
+                        <!-- Balance Verification Section -->
+                        <VBox spacing="15.0">
+                            <children>
+                                <Label text="3. Balance Verification">
+                                    <font>
+                                        <Font name="System Bold" size="16.0"/>
+                                    </font>
+                                </Label>
+
+                                <GridPane hgap="15.0" vgap="10.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0"/>
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                                    </rowConstraints>
+                                    <children>
+                                        <Label text="Available Balance:" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="0"/>
+                                        <Label fx:id="availableBalanceLabel" text="৳0.00" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="0"/>
+
+                                        <Label text="Order Value:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                        <Label fx:id="orderValueLabel" text="৳0.00" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="0"/>
+
+                                        <Label text="Commission:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                        <Label fx:id="commissionLabel" text="৳0.00" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="1"/>
+
+                                        <Label text="Remaining Balance:" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="1"/>
+                                        <Label fx:id="remainingBalanceLabel" text="৳0.00" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="1"/>
+                                    </children>
+                                </GridPane>
+
+                                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                    <children>
+                                        <Button fx:id="calculateButton" text="Calculate Order Value"/>
+                                        <Label fx:id="validationMessageLabel" text=""/>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                        <!-- Order Summary Section -->
+                        <VBox spacing="15.0">
+                            <children>
+                                <Label text="4. Order Summary">
+                                    <font>
+                                        <Font name="System Bold" size="16.0"/>
+                                    </font>
+                                </Label>
+
+                                <TextArea fx:id="orderSummaryTextArea" prefHeight="120.0" editable="false"
+                                          promptText="Order summary will appear here after calculation..."/>
+                            </children>
+                        </VBox>
+
+                        <!-- Confirmation Section -->
+                        <VBox spacing="15.0">
+                            <children>
+                                <Label text="5. Confirmation">
+                                    <font>
+                                        <Font name="System Bold" size="16.0"/>
+                                    </font>
+                                </Label>
+
+                                <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                    <children>
+                                        <CheckBox fx:id="confirmationCheckBox"
+                                                  text="I confirm that I have reviewed all order details and want to proceed"/>
+                                    </children>
+                                </HBox>
+
+                                <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                    <children>
+                                        <Button fx:id="confirmBuyOrderButton" text="Confirm Buy Order" disable="true"/>
+                                        <Button fx:id="cancelOrderButton" text="Cancel Order"/>
+                                        <Button fx:id="saveAsDraftButton" text="Save as Draft"/>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                        <!-- Order Status Section -->
+                        <VBox spacing="15.0">
+                            <children>
+                                <Label text="6. Order Status">
+                                    <font>
+                                        <Font name="System Bold" size="16.0"/>
+                                    </font>
+                                </Label>
+
+                                <TextArea fx:id="statusTextArea" prefHeight="80.0" editable="false"
+                                          promptText="Order status updates will appear here..."/>
+
+                                <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                    <children>
+                                        <Label text="Order ID:"/>
+                                        <Label fx:id="orderIdLabel" text=""/>
+                                        <Label text="Status:"/>
+                                        <Label fx:id="orderStatusLabel" text="Not Submitted"/>
+                                        <Button fx:id="refreshStatusButton" text="Refresh Status"/>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                        <!-- Quick Action Buttons -->
+                        <HBox spacing="15.0" alignment="CENTER">
+                            <children>
+                                <Button fx:id="viewPortfolioButton" text="View Portfolio"/>
+                                <Button fx:id="placeAnotherOrderButton" text="Place Another Order"/>
+                                <Button fx:id="viewOrderHistoryButton" text="View Order History"/>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
     </children>
 </AnchorPane>
