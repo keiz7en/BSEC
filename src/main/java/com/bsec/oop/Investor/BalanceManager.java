@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 public class BalanceManager {
     private static BalanceManager instance;
     private BigDecimal currentBalance = new BigDecimal("0.00");
+    //Lol
 
     private BalanceManager() {
     }
