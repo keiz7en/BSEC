@@ -18,7 +18,7 @@ public class Menu_Investor
     @javafx.fxml.FXML
     public void goToLogin(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/bsec/Login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/Login.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -31,7 +31,7 @@ public class Menu_Investor
     @javafx.fxml.FXML
     public void ViewPortfolioButton(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/bsec/Investor/ViewPortfolioAndPerformance.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/Investor/ViewPortfolioAndPerformance.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -44,7 +44,7 @@ public class Menu_Investor
     @javafx.fxml.FXML
     public void AccountStatementButton(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/bsec/Investor/AccountStatement.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/Investor/AccountStatement.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -57,7 +57,7 @@ public class Menu_Investor
     @javafx.fxml.FXML
     public void SearchAndViewStocksButton(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/bsec/Investor/SearchAndViewStocks.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/Investor/SearchAndViewStocks.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -70,7 +70,7 @@ public class Menu_Investor
     @javafx.fxml.FXML
     public void DepositFundsButton(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/bsec/Investor/DepositFunds.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/Investor/DepositFunds.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -83,7 +83,7 @@ public class Menu_Investor
     @javafx.fxml.FXML
     public void BuyOrderButton(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/bsec/Investor/BuyOrder.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/Investor/BuyOrder.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -96,7 +96,7 @@ public class Menu_Investor
     @javafx.fxml.FXML
     public void StocksPurchaseButton(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/bsec/Investor/StockPurchaseOrder.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/Investor/StockPurchaseOrder.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -109,7 +109,7 @@ public class Menu_Investor
     @javafx.fxml.FXML
     public void SellOrderButton(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/bsec/Investor/SellOrder.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/Investor/SellOrder.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -122,7 +122,7 @@ public class Menu_Investor
     @javafx.fxml.FXML
     public void NotificationforStocksButton(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/bsec/Investor/NotificationStocks.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/Investor/NotificationStocks.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
