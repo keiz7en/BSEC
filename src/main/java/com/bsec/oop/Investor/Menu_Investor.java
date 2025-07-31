@@ -51,6 +51,7 @@ public class Menu_Investor
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
+            //lol
         }
     }
 
