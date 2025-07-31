@@ -1,19 +1,334 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.bsec.oop.Investor.AccountStatement"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="800.0" prefWidth="1000.0">
 
     <children>
-        <Label layoutX="241.0" layoutY="14.0" text="Account Statement"/>
-        <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#goBackToMenu" text="Back to Menu"/>
-        <Label layoutX="50.0" layoutY="60.0" text="Your account statement will be displayed here."/>
+        <!-- Header -->
+        <HBox layoutX="0.0" layoutY="0.0" prefHeight="60.0" prefWidth="1000.0" alignment="CENTER_LEFT" spacing="20.0">
+            <children>
+                <Label text="Account Statement">
+                    <font>
+                        <Font name="System Bold" size="24.0"/>
+                    </font>
+                </Label>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button mnemonicParsing="false" onAction="#goBackToMenu" text="Back to Dashboard"/>
+            </children>
+        </HBox>
+
+        <!-- Main Content -->
+        <ScrollPane layoutX="0.0" layoutY="60.0" prefHeight="740.0" prefWidth="1000.0" fitToWidth="true">
+            <content>
+                <VBox spacing="25.0" style="-fx-padding: 20;">
+                    <children>
+                        <!-- Statement Request Section -->
+                        <VBox spacing="15.0">
+                            <children>
+                                <Label text="Request Account Statement">
+                                    <font>
+                                        <Font name="System Bold" size="18.0"/>
+                                    </font>
+                                </Label>
+
+                                <GridPane hgap="20.0" vgap="15.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0"/>
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                                    </rowConstraints>
+                                    <children>
+                                        <Label text="Start Date:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                        <DatePicker fx:id="startDatePicker" prefWidth="200.0" GridPane.columnIndex="1"
+                                                    GridPane.rowIndex="0"/>
+
+                                        <Label text="End Date:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                        <DatePicker fx:id="endDatePicker" prefWidth="200.0" GridPane.columnIndex="3"
+                                                    GridPane.rowIndex="0"/>
+
+                                        <Label text="Statement Type:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                        <ComboBox fx:id="statementTypeComboBox" prefWidth="200.0"
+                                                  GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                                        <Label text="Format:" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                        <ComboBox fx:id="formatComboBox" prefWidth="200.0" GridPane.columnIndex="3"
+                                                  GridPane.rowIndex="1"/>
+
+                                        <Label text="Include:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                        <VBox spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                            <children>
+                                                <CheckBox fx:id="includeTransactionsCheckBox" text="All Transactions"
+                                                          selected="true"/>
+                                                <CheckBox fx:id="includeBalancesCheckBox" text="Daily Balances"
+                                                          selected="true"/>
+                                            </children>
+                                        </VBox>
+
+                                        <Label text="Email Copy:" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                        <CheckBox fx:id="emailCopyCheckBox" text="Send email copy"
+                                                  GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+                                    </children>
+                                </GridPane>
+
+                                <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                    <children>
+                                        <Button fx:id="generateStatementButton" text="Generate Statement"/>
+                                        <Button fx:id="resetFiltersButton" text="Reset Filters"/>
+                                        <Button fx:id="loadPresetRangeButton" text="Load Preset Range"/>
+                                        <ComboBox fx:id="presetRangeComboBox" prefWidth="150.0"/>
+                                    </children>
+                                </HBox>
+
+                                <Label fx:id="validationMessageLabel" text=""/>
+                            </children>
+                        </VBox>
+
+                        <!-- Account Summary Section -->
+                        <VBox spacing="15.0">
+                            <children>
+                                <Label text="Account Summary">
+                                    <font>
+                                        <Font name="System Bold" size="18.0"/>
+                                    </font>
+                                </Label>
+
+                                <GridPane hgap="20.0" vgap="10.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0"/>
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                                    </rowConstraints>
+                                    <children>
+                                        <Label text="Account Number:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                        <Label fx:id="accountNumberLabel" text="XXXX-XXXX-XXXX-1234"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                                        <Label text="Account Holder:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                        <Label fx:id="accountHolderLabel" text="User Name" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="0"/>
+
+                                        <Label text="Statement Period:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                        <Label fx:id="statementPeriodLabel" text="Select dates above"
+                                               GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                                        <Label text="Current Balance:" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                        <Label fx:id="currentBalanceLabel" text="৳0.00" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="1"/>
+
+                                        <Label text="Opening Balance:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                        <Label fx:id="openingBalanceLabel" text="৳0.00" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="2"/>
+
+                                        <Label text="Closing Balance:" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                        <Label fx:id="closingBalanceLabel" text="৳0.00" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="2"/>
+                                    </children>
+                                </GridPane>
+                            </children>
+                        </VBox>
+
+                        <!-- Transaction Summary Section -->
+                        <VBox spacing="15.0">
+                            <children>
+                                <Label text="Transaction Summary">
+                                    <font>
+                                        <Font name="System Bold" size="18.0"/>
+                                    </font>
+                                </Label>
+
+                                <GridPane hgap="20.0" vgap="10.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0"/>
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                                    </rowConstraints>
+                                    <children>
+                                        <Label text="Total Deposits:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                        <Label fx:id="totalDepositsLabel" text="৳0.00" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="0"/>
+
+                                        <Label text="Total Withdrawals:" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="0"/>
+                                        <Label fx:id="totalWithdrawalsLabel" text="৳0.00" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="0"/>
+
+                                        <Label text="Stock Purchases:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                        <Label fx:id="stockPurchasesLabel" text="৳0.00" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="1"/>
+
+                                        <Label text="Stock Sales:" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                        <Label fx:id="stockSalesLabel" text="৳0.00" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="1"/>
+
+                                        <Label text="Dividends Received:" GridPane.columnIndex="0"
+                                               GridPane.rowIndex="2"/>
+                                        <Label fx:id="dividendsReceivedLabel" text="৳0.00" GridPane.columnIndex="1"
+                                               GridPane.rowIndex="2"/>
+
+                                        <Label text="Fees &amp; Charges:" GridPane.columnIndex="2"
+                                               GridPane.rowIndex="2"/>
+                                        <Label fx:id="feesChargesLabel" text="৳0.00" GridPane.columnIndex="3"
+                                               GridPane.rowIndex="2"/>
+                                    </children>
+                                </GridPane>
+                            </children>
+                        </VBox>
+
+                        <!-- Transaction Details Section -->
+                        <VBox spacing="15.0">
+                            <children>
+                                <HBox alignment="CENTER_LEFT" spacing="15.0">
+                                    <children>
+                                        <Label text="Transaction Details">
+                                            <font>
+                                                <Font name="System Bold" size="18.0"/>
+                                            </font>
+                                        </Label>
+                                        <Region HBox.hgrow="ALWAYS"/>
+                                        <Button fx:id="exportTransactionsButton" text="Export Transactions"/>
+                                        <Button fx:id="printStatementButton" text="Print Statement"/>
+                                        <Button fx:id="downloadPDFButton" text="Download PDF"/>
+                                    </children>
+                                </HBox>
+
+                                <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                    <children>
+                                        <Label text="Filter by Type:"/>
+                                        <ComboBox fx:id="transactionTypeFilterComboBox" prefWidth="150.0"/>
+                                        <Label text="Search:"/>
+                                        <TextField fx:id="searchTransactionField" promptText="Search transactions..."
+                                                   prefWidth="200.0"/>
+                                        <Button fx:id="applyFiltersButton" text="Apply Filters"/>
+                                        <Button fx:id="clearFiltersButton" text="Clear Filters"/>
+                                    </children>
+                                </HBox>
+
+                                <TableView fx:id="transactionDetailsTable" prefHeight="300.0">
+                                    <columns>
+                                        <TableColumn fx:id="dateColumn" prefWidth="100.0" text="Date"/>
+                                        <TableColumn fx:id="timeColumn" prefWidth="80.0" text="Time"/>
+                                        <TableColumn fx:id="transactionIdColumn" prefWidth="120.0"
+                                                     text="Transaction ID"/>
+                                        <TableColumn fx:id="descriptionColumn" prefWidth="250.0" text="Description"/>
+                                        <TableColumn fx:id="typeColumn" prefWidth="100.0" text="Type"/>
+                                        <TableColumn fx:id="debitColumn" prefWidth="100.0" text="Debit (৳)"/>
+                                        <TableColumn fx:id="creditColumn" prefWidth="100.0" text="Credit (৳)"/>
+                                        <TableColumn fx:id="balanceColumn" prefWidth="120.0" text="Balance (৳)"/>
+                                        <TableColumn fx:id="statusColumn" prefWidth="80.0" text="Status"/>
+                                    </columns>
+                                </TableView>
+
+                                <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                    <children>
+                                        <Label text="Total Transactions:"/>
+                                        <Label fx:id="totalTransactionsLabel" text="0"/>
+                                        <Label text="Page:"/>
+                                        <ComboBox fx:id="pageComboBox" prefWidth="80.0"/>
+                                        <Button fx:id="previousPageButton" text="Previous"/>
+                                        <Button fx:id="nextPageButton" text="Next"/>
+                                        <Region HBox.hgrow="ALWAYS"/>
+                                        <Label text="Show:"/>
+                                        <ComboBox fx:id="rowsPerPageComboBox" prefWidth="80.0"/>
+                                        <Label text="per page"/>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                        <!-- Balance History Section -->
+                        <VBox spacing="15.0">
+                            <children>
+                                <Label text="Daily Balance History">
+                                    <font>
+                                        <Font name="System Bold" size="18.0"/>
+                                    </font>
+                                </Label>
+
+                                <TableView fx:id="balanceHistoryTable" prefHeight="200.0">
+                                    <columns>
+                                        <TableColumn fx:id="balanceDateColumn" prefWidth="150.0" text="Date"/>
+                                        <TableColumn fx:id="openingBalanceColumn" prefWidth="150.0"
+                                                     text="Opening Balance (৳)"/>
+                                        <TableColumn fx:id="totalCreditsColumn" prefWidth="150.0"
+                                                     text="Total Credits (৳)"/>
+                                        <TableColumn fx:id="totalDebitsColumn" prefWidth="150.0"
+                                                     text="Total Debits (৳)"/>
+                                        <TableColumn fx:id="closingBalanceColumn" prefWidth="150.0"
+                                                     text="Closing Balance (৳)"/>
+                                        <TableColumn fx:id="netChangeColumn" prefWidth="120.0" text="Net Change (৳)"/>
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </VBox>
+
+                        <!-- Statement Actions Section -->
+                        <VBox spacing="15.0">
+                            <children>
+                                <Label text="Statement Actions">
+                                    <font>
+                                        <Font name="System Bold" size="18.0"/>
+                                    </font>
+                                </Label>
+
+                                <HBox spacing="15.0" alignment="CENTER">
+                                    <children>
+                                        <Button fx:id="scheduleStatementButton" text="Schedule Regular Statements"/>
+                                        <Button fx:id="emailStatementButton" text="Email This Statement"/>
+                                        <Button fx:id="saveTemplateButton" text="Save as Template"/>
+                                        <Button fx:id="requestHardCopyButton" text="Request Hard Copy"/>
+                                    </children>
+                                </HBox>
+
+                                <TextArea fx:id="notesTextArea" prefHeight="80.0"
+                                          promptText="Add notes or comments about this statement..."/>
+                            </children>
+                        </VBox>
+
+                        <!-- Status and Information -->
+                        <VBox spacing="10.0">
+                            <children>
+                                <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                    <children>
+                                        <Label text="Statement Status:"/>
+                                        <Label fx:id="statementStatusLabel" text="Ready to Generate"/>
+                                        <Label text="Last Updated:"/>
+                                        <Label fx:id="lastUpdatedLabel" text="N/A"/>
+                                        <Label text="Generation Time:"/>
+                                        <Label fx:id="generationTimeLabel" text="N/A"/>
+                                    </children>
+                                </HBox>
+
+                                <Label fx:id="disclaimerLabel"
+                                       text="Note: All amounts are in Bangladesh Taka (৳). This statement is computer generated and does not require signature. For any discrepancies, please contact customer support."
+                                       wrapText="true"/>
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
     </children>
 </AnchorPane>
