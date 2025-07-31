@@ -1,19 +1,202 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.bsec.oop.Investor.SearchAndViewStocks"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #f5f5f5;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.Investor.SearchAndViewStocks">
 
     <children>
-        <Label layoutX="215.0" layoutY="14.0" text="Search and View Stocks"/>
-        <Button layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#goBackToMenu" text="Back to Menu"/>
-        <Label layoutX="50.0" layoutY="60.0" text="Stock search and viewing functionality will be implemented here."/>
+        <!-- Header Section -->
+        <HBox layoutX="0.0" layoutY="0.0" prefHeight="60.0" prefWidth="1000.0" style="-fx-background-color: #2c3e50; -fx-padding: 10;">
+            <children>
+                <Label text="Search and View Stocks" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                </Label>
+                <Region HBox.hgrow="ALWAYS" />
+                <Button mnemonicParsing="false" onAction="#goBackToMenu" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;" text="Back to Menu" />
+            </children>
+        </HBox>
+
+        <!-- Search and Filter Section -->
+        <VBox layoutX="20.0" layoutY="80.0" prefHeight="140.0" prefWidth="960.0" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 20;">
+            <children>
+                <!-- Search Bar -->
+                <HBox alignment="CENTER_LEFT" spacing="15.0">
+                    <children>
+                        <Label style="-fx-font-weight: bold; -fx-font-size: 14px;" text="Search Stock:" />
+                        <TextField fx:id="searchField" prefWidth="300.0" promptText="Enter stock symbol or company name..." style="-fx-background-radius: 5;" />
+                        <Button fx:id="searchButton" mnemonicParsing="false"
+                                style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;"
+                                text="Search"/>
+                        <Button mnemonicParsing="false"
+                                style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-background-radius: 5;"
+                                text="Clear"/>
+                    </children>
+                </HBox>
+
+                <!-- Filters -->
+                <HBox alignment="CENTER_LEFT" spacing="20.0">
+                    <children>
+                        <Label style="-fx-font-weight: bold; -fx-font-size: 14px;" text="Filters:" />
+
+                        <VBox spacing="5.0">
+                            <children>
+                                <Label style="-fx-font-size: 12px;" text="Sector:" />
+                                <ComboBox fx:id="sectorFilter" prefWidth="150.0" />
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="5.0">
+                            <children>
+                                <Label style="-fx-font-size: 12px;" text="Price Range:" />
+                                <ComboBox fx:id="priceRangeFilter" prefWidth="150.0" />
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="5.0">
+                            <children>
+                                <Label style="-fx-font-size: 12px;" text="Performance:" />
+                                <ComboBox fx:id="performanceFilter" prefWidth="150.0" />
+                            </children>
+                        </VBox>
+
+                        <Button mnemonicParsing="false"
+                                style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;"
+                                text="Apply Filters"/>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+
+        <!-- Results Section -->
+        <HBox layoutX="20.0" layoutY="240.0" prefHeight="440.0" prefWidth="960.0" spacing="15.0">
+            <children>
+                <!-- Stock List Table -->
+                <VBox prefHeight="440.0" prefWidth="580.0" spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 15;">
+                    <children>
+                        <Label style="-fx-font-weight: bold; -fx-font-size: 16px;" text="Stock Results" />
+
+                        <TableView fx:id="stocksTable" prefHeight="380.0" prefWidth="550.0">
+                            <columns>
+                                <TableColumn fx:id="symbolColumn" prefWidth="80.0" text="Symbol" />
+                                <TableColumn fx:id="nameColumn" prefWidth="180.0" text="Company Name" />
+                                <TableColumn fx:id="priceColumn" prefWidth="80.0" text="Price (৳)" />
+                                <TableColumn fx:id="changeColumn" prefWidth="70.0" text="Change" />
+                                <TableColumn fx:id="changePercentColumn" prefWidth="80.0" text="Change %" />
+                                <TableColumn fx:id="volumeColumn" prefWidth="57.599987792968705" text="Volume" />
+                            </columns>
+                        </TableView>
+                    </children>
+                </VBox>
+
+                <!-- Stock Details Panel -->
+                <VBox prefHeight="440.0" prefWidth="365.0" spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 15;">
+                    <children>
+                        <Label style="-fx-font-weight: bold; -fx-font-size: 16px;" text="Stock Details" />
+
+                        <!-- Stock Info -->
+                        <VBox spacing="10.0" style="-fx-padding: 10; -fx-background-color: #ecf0f1; -fx-background-radius: 5;">
+                            <children>
+                                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                                    <children>
+                                        <Label fx:id="selectedStockSymbol" style="-fx-font-weight: bold; -fx-font-size: 18px; -fx-text-fill: #2c3e50;" text="Select a stock" />
+                                        <Region HBox.hgrow="ALWAYS" />
+                                        <Label fx:id="selectedStockPrice" style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #27ae60;" text="৳0.00" />
+                                    </children>
+                                </HBox>
+                                <Label fx:id="selectedStockName" style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;" text="Company name will appear here" />
+                            </children>
+                        </VBox>
+
+                        <!-- Key Statistics -->
+                        <VBox spacing="8.0">
+                            <children>
+                                <Label style="-fx-font-weight: bold; -fx-font-size: 14px;" text="Key Statistics" />
+
+                                <GridPane hgap="10.0" vgap="8.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <Label style="-fx-font-size: 12px;" text="Open:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                        <Label fx:id="openPriceLabel" style="-fx-font-size: 12px;" text="৳0.00" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                                        <Label style="-fx-font-size: 12px;" text="High:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                        <Label fx:id="highPriceLabel" style="-fx-font-size: 12px;" text="৳0.00" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                                        <Label style="-fx-font-size: 12px;" text="Low:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                                        <Label fx:id="lowPriceLabel" style="-fx-font-size: 12px;" text="৳0.00" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                                        <Label style="-fx-font-size: 12px;" text="Volume:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                                        <Label fx:id="volumeLabel" style="-fx-font-size: 12px;" text="0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                                        <Label style="-fx-font-size: 12px;" text="Market Cap:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                                        <Label fx:id="marketCapLabel" style="-fx-font-size: 12px;" text="৳0.00 Cr" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                                        <Label style="-fx-font-size: 12px;" text="P/E Ratio:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                                        <Label fx:id="peRatioLabel" style="-fx-font-size: 12px;" text="0.00" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                    </children>
+                                </GridPane>
+                            </children>
+                        </VBox>
+
+                        <!-- Action Buttons -->
+                        <VBox spacing="10.0">
+                            <children>
+                                <Button fx:id="viewChartButton"
+                                        mnemonicParsing="false"
+                                        prefWidth="320.0"
+                                        style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;"
+                                        text="View Price Chart &amp; History"/>
+
+                                <Button fx:id="buyStockButton"
+                                        mnemonicParsing="false"
+                                        prefWidth="320.0"
+                                        style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;"
+                                        text="Buy This Stock"/>
+
+                                <Button fx:id="addToWatchlistButton"
+                                        mnemonicParsing="false"
+                                        prefWidth="320.0"
+                                        style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;"
+                                        text="Add to Watchlist"/>
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+
+        <!-- Status Bar -->
+        <HBox layoutX="0.0" layoutY="680.0" prefHeight="20.0" prefWidth="1000.0" style="-fx-background-color: #34495e; -fx-padding: 2;">
+            <children>
+                <Label fx:id="statusLabel" style="-fx-text-fill: white; -fx-font-size: 11px;" text="Ready - Use search bar or filters to find stocks" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="resultsCountLabel" style="-fx-text-fill: white; -fx-font-size: 11px;" text="0 stocks found" />
+            </children>
+        </HBox>
     </children>
 </AnchorPane>
