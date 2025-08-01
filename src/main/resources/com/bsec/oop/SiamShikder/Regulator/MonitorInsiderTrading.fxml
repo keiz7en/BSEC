@@ -3,96 +3,323 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.bsec.oop.SiamShikder.Regulator.MonitorInsiderTrading"
-            prefHeight="900.0" prefWidth="1200.0">
+            prefHeight="800.0" prefWidth="1200.0">
 
-    <Label layoutX="20.0" layoutY="20.0" style="-fx-font-size: 24px; -fx-font-weight: bold;"
-           text="Monitor Insider Trading"/>
-    <Button layoutX="1100.0" layoutY="20.0" text="Back" onAction="#goBack"/>
+    <!-- Header -->
+    <HBox layoutX="0.0" layoutY="0.0" prefHeight="60.0" prefWidth="1200.0" alignment="CENTER_LEFT" spacing="20.0"
+          style="-fx-padding: 10;">
+        <children>
+            <Label text="Monitor Insider Trading" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Back" onAction="#goBack" style="-fx-font-size: 14px;"/>
+        </children>
+    </HBox>
 
-    <!-- Track Suspicious Trading Pattern Section -->
-    <Label layoutX="20.0" layoutY="70.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
-           text="1. Track Suspicious Trading Pattern"/>
-    <TableView layoutX="20.0" layoutY="100.0" prefHeight="120.0" prefWidth="700.0">
-        <columns>
-            <TableColumn prefWidth="100.0" text="Trade ID"/>
-            <TableColumn prefWidth="150.0" text="Stock Symbol"/>
-            <TableColumn prefWidth="100.0" text="Volume"/>
-            <TableColumn prefWidth="100.0" text="Price"/>
-            <TableColumn prefWidth="100.0" text="Date/Time"/>
-            <TableColumn prefWidth="100.0" text="Trader ID"/>
-            <TableColumn prefWidth="50.0" text="Risk Score"/>
-        </columns>
-    </TableView>
-    <Button layoutX="730.0" layoutY="120.0" text="Run Analysis"/>
-    <Button layoutX="730.0" layoutY="160.0" text="Set Filters"/>
-    <Button layoutX="730.0" layoutY="200.0" text="Export Data"/>
+    <!-- Main Content with ScrollPane -->
+    <ScrollPane layoutX="0.0" layoutY="60.0" prefHeight="740.0" prefWidth="1200.0" fitToWidth="true" fitToHeight="true">
+        <content>
+            <VBox spacing="30.0" style="-fx-padding: 20;">
+                <children>
+                    <!-- Track Suspicious Trading Pattern Section -->
+                    <VBox spacing="15.0">
+                        <children>
+                            <Label text="1. Track Suspicious Trading Pattern"
+                                   style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
 
-    <!-- Match with Insider Profiles Section -->
-    <Label layoutX="20.0" layoutY="240.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
-           text="2. Match with Insider Profiles"/>
-    <Label layoutX="30.0" layoutY="270.0" text="Trader ID:"/>
-    <TextField layoutX="100.0" layoutY="265.0" prefWidth="150.0"/>
-    <Button layoutX="260.0" layoutY="265.0" text="Search"/>
-    <Label layoutX="30.0" layoutY="300.0" text="Insider Status:"/>
-    <ChoiceBox layoutX="130.0" layoutY="295.0" prefWidth="120.0"/>
-    <Label layoutX="270.0" layoutY="300.0" text="Company:"/>
-    <TextField layoutX="330.0" layoutY="295.0" prefWidth="150.0"/>
-    <Label layoutX="30.0" layoutY="330.0" text="Position:"/>
-    <TextField layoutX="90.0" layoutY="325.0" prefWidth="200.0"/>
-    <Label layoutX="300.0" layoutY="330.0" text="Access Level:"/>
-    <ChoiceBox layoutX="380.0" layoutY="325.0" prefWidth="100.0"/>
-    <TableView layoutX="500.0" layoutY="270.0" prefHeight="80.0" prefWidth="300.0">
-        <columns>
-            <TableColumn prefWidth="100.0" text="Match ID"/>
-            <TableColumn prefWidth="100.0" text="Confidence"/>
-            <TableColumn prefWidth="100.0" text="Risk Level"/>
-        </columns>
-    </TableView>
-    <Button layoutX="810.0" layoutY="305.0" text="Verify Match"/>
+                            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <Button text="Run Analysis" prefWidth="120.0"
+                                            style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                                    <Button text="Set Filters" prefWidth="120.0"/>
+                                    <Button text="Export Data" prefWidth="120.0"/>
+                                    <Region HBox.hgrow="ALWAYS"/>
+                                    <Label text="Risk Level:" style="-fx-font-weight: bold;"/>
+                                    <ComboBox prefWidth="120.0"/>
+                                </children>
+                            </HBox>
 
-    <!-- Flag Potential Violations Section -->
-    <Label layoutX="20.0" layoutY="370.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
-           text="3. Flag Potential Violations"/>
-    <CheckBox layoutX="30.0" layoutY="400.0" text="Unusual Volume"/>
-    <CheckBox layoutX="150.0" layoutY="400.0" text="Timing Anomaly"/>
-    <CheckBox layoutX="270.0" layoutY="400.0" text="Price Movement"/>
-    <CheckBox layoutX="30.0" layoutY="425.0" text="Information Access"/>
-    <CheckBox layoutX="150.0" layoutY="425.0" text="Pattern Match"/>
-    <CheckBox layoutX="270.0" layoutY="425.0" text="Historical Pattern"/>
-    <Label layoutX="400.0" layoutY="400.0" text="Violation Severity:"/>
-    <Slider layoutX="500.0" layoutY="400.0" prefWidth="150.0"/>
-    <Label layoutX="400.0" layoutY="425.0" text="Alert Priority:"/>
-    <ChoiceBox layoutX="490.0" layoutY="420.0" prefWidth="100.0"/>
-    <Button layoutX="600.0" layoutY="410.0" text="Flag Violation"/>
-    <Button layoutX="700.0" layoutY="410.0" text="Create Alert"/>
+                            <TableView prefHeight="200.0">
+                                <columns>
+                                    <TableColumn prefWidth="100.0" text="Trade ID"/>
+                                    <TableColumn prefWidth="120.0" text="Stock Symbol"/>
+                                    <TableColumn prefWidth="100.0" text="Volume"/>
+                                    <TableColumn prefWidth="100.0" text="Price"/>
+                                    <TableColumn prefWidth="140.0" text="Date Time"/>
+                                    <TableColumn prefWidth="120.0" text="Trader ID"/>
+                                    <TableColumn prefWidth="120.0" text="Risk Score"/>
+                                    <TableColumn prefWidth="100.0" text="Alert Level"/>
+                                </columns>
+                            </TableView>
+                        </children>
+                    </VBox>
 
-    <!-- Generate Investigation Report Section -->
-    <Label layoutX="20.0" layoutY="470.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
-           text="4. Generate Investigation Report"/>
-    <Label layoutX="30.0" layoutY="500.0" text="Case ID:"/>
-    <TextField layoutX="90.0" layoutY="495.0" prefWidth="150.0"/>
-    <Label layoutX="250.0" layoutY="500.0" text="Report Type:"/>
-    <ChoiceBox layoutX="330.0" layoutY="495.0" prefWidth="120.0"/>
-    <Label layoutX="30.0" layoutY="530.0" text="Findings:"/>
-    <TextArea layoutX="30.0" layoutY="550.0" prefHeight="80.0" prefWidth="500.0"
-              promptText="Investigation findings and analysis..."/>
-    <Button layoutX="540.0" layoutY="570.0" text="Generate Report"/>
-    <Button layoutX="650.0" layoutY="570.0" text="Save Draft"/>
+                    <!-- Match with Insider Profiles Section -->
+                    <VBox spacing="15.0">
+                        <children>
+                            <Label text="2. Match with Insider Profiles"
+                                   style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
 
-    <!-- Submit to Enforcement Unit Section -->
-    <Label layoutX="550.0" layoutY="470.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
-           text="5. Submit to Enforcement Unit"/>
-    <Label layoutX="560.0" layoutY="500.0" text="Enforcement Team:"/>
-    <ChoiceBox layoutX="670.0" layoutY="495.0" prefWidth="120.0"/>
-    <Label layoutX="560.0" layoutY="530.0" text="Priority Level:"/>
-    <ChoiceBox layoutX="650.0" layoutY="525.0" prefWidth="100.0"/>
-    <Label layoutX="560.0" layoutY="560.0" text="Due Date:"/>
-    <DatePicker layoutX="620.0" layoutY="555.0" prefWidth="130.0"/>
-    <CheckBox layoutX="560.0" layoutY="585.0" text="Urgent Review Required"/>
-    <Button layoutX="560.0" layoutY="610.0" text="Submit Case"/>
-    <Button layoutX="650.0" layoutY="610.0" text="Schedule Meeting"/>
+                            <HBox spacing="30.0" alignment="TOP_LEFT">
+                                <children>
+                                    <!-- Left side form -->
+                                    <VBox spacing="15.0" prefWidth="400.0">
+                                        <children>
+                                            <Label text="Trader Information"
+                                                   style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
 
+                                            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                                <children>
+                                                    <Label text="Trader ID:" style="-fx-font-weight: bold;"/>
+                                                    <TextField prefWidth="180.0" promptText="Enter trader ID"/>
+                                                    <Button text="Search" prefWidth="80.0"/>
+                                                </children>
+                                            </HBox>
+
+                                            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                                <children>
+                                                    <Label text="Insider Status:" style="-fx-font-weight: bold;"/>
+                                                    <ChoiceBox prefWidth="180.0"/>
+                                                </children>
+                                            </HBox>
+
+                                            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                                <children>
+                                                    <Label text="Company:" style="-fx-font-weight: bold;"/>
+                                                    <TextField prefWidth="200.0" promptText="Company name"/>
+                                                </children>
+                                            </HBox>
+
+                                            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                                <children>
+                                                    <Label text="Position:" style="-fx-font-weight: bold;"/>
+                                                    <TextField prefWidth="200.0" promptText="Job position"/>
+                                                </children>
+                                            </HBox>
+
+                                            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                                <children>
+                                                    <Label text="Access Level:" style="-fx-font-weight: bold;"/>
+                                                    <ChoiceBox prefWidth="150.0"/>
+                                                </children>
+                                            </HBox>
+                                        </children>
+                                    </VBox>
+
+                                    <!-- Right side table -->
+                                    <VBox spacing="15.0" prefWidth="500.0">
+                                        <children>
+                                            <Label text="Match Results"
+                                                   style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+                                            <TableView prefHeight="180.0">
+                                                <columns>
+                                                    <TableColumn prefWidth="120.0" text="Match ID"/>
+                                                    <TableColumn prefWidth="140.0" text="Confidence"/>
+                                                    <TableColumn prefWidth="140.0" text="Risk Level"/>
+                                                    <TableColumn prefWidth="100.0" text="Actions"/>
+                                                </columns>
+                                            </TableView>
+
+                                            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                                <children>
+                                                    <Button text="Verify Match" prefWidth="120.0"/>
+                                                    <Button text="Add Profile" prefWidth="120.0"/>
+                                                    <Button text="Update Info" prefWidth="120.0"/>
+                                                </children>
+                                            </HBox>
+                                        </children>
+                                    </VBox>
+                                </children>
+                            </HBox>
+                        </children>
+                    </VBox>
+
+                    <!-- Flag Potential Violations Section -->
+                    <VBox spacing="15.0">
+                        <children>
+                            <Label text="3. Flag Potential Violations"
+                                   style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                            <HBox spacing="30.0" alignment="TOP_LEFT">
+                                <children>
+                                    <!-- Violation types -->
+                                    <VBox spacing="15.0" prefWidth="300.0">
+                                        <children>
+                                            <Label text="Violation Types:" style="-fx-font-weight: bold;"/>
+                                            <VBox spacing="5.0">
+                                                <children>
+                                                    <CheckBox text="Unusual Volume"/>
+                                                    <CheckBox text="Timing Anomaly"/>
+                                                    <CheckBox text="Price Movement"/>
+                                                    <CheckBox text="Information Access"/>
+                                                    <CheckBox text="Pattern Match"/>
+                                                    <CheckBox text="Historical Pattern"/>
+                                                </children>
+                                            </VBox>
+                                        </children>
+                                    </VBox>
+
+                                    <!-- Severity and controls -->
+                                    <VBox spacing="15.0" prefWidth="400.0">
+                                        <children>
+                                            <Label text="Violation Assessment:" style="-fx-font-weight: bold;"/>
+
+                                            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                                <children>
+                                                    <Label text="Severity:" style="-fx-font-weight: bold;"/>
+                                                    <Slider prefWidth="200.0"/>
+                                                    <Label text="High"/>
+                                                </children>
+                                            </HBox>
+
+                                            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                                <children>
+                                                    <Label text="Alert Priority:" style="-fx-font-weight: bold;"/>
+                                                    <ChoiceBox prefWidth="150.0"/>
+                                                </children>
+                                            </HBox>
+
+                                            <VBox spacing="10.0">
+                                                <children>
+                                                    <Label text="Violation Notes:" style="-fx-font-weight: bold;"/>
+                                                    <TextArea prefHeight="80.0" promptText="Enter violation details..."
+                                                              wrapText="true"/>
+                                                </children>
+                                            </VBox>
+
+                                            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                                <children>
+                                                    <Button text="Flag Violation" prefWidth="120.0"
+                                                            style="-fx-background-color: #FF5722; -fx-text-fill: white;"/>
+                                                    <Button text="Create Alert" prefWidth="120.0"
+                                                            style="-fx-background-color: #FF9800; -fx-text-fill: white;"/>
+                                                </children>
+                                            </HBox>
+                                        </children>
+                                    </VBox>
+                                </children>
+                            </HBox>
+                        </children>
+                    </VBox>
+
+                    <!-- Generate Investigation Report Section -->
+                    <VBox spacing="15.0">
+                        <children>
+                            <Label text="4. Generate Investigation Report"
+                                   style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                            <HBox spacing="20.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Case ID:" style="-fx-font-weight: bold;"/>
+                                            <TextField prefWidth="150.0" promptText="Case identifier"/>
+                                        </children>
+                                    </VBox>
+
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Report Type:" style="-fx-font-weight: bold;"/>
+                                            <ChoiceBox prefWidth="150.0"/>
+                                        </children>
+                                    </VBox>
+
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Priority:" style="-fx-font-weight: bold;"/>
+                                            <ChoiceBox prefWidth="120.0"/>
+                                        </children>
+                                    </VBox>
+                                </children>
+                            </HBox>
+
+                            <VBox spacing="10.0">
+                                <children>
+                                    <Label text="Investigation Findings:" style="-fx-font-weight: bold;"/>
+                                    <TextArea prefHeight="120.0"
+                                              promptText="Enter detailed investigation findings and analysis..."
+                                              wrapText="true"/>
+                                </children>
+                            </VBox>
+
+                            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <Button text="Generate Report" prefWidth="140.0"
+                                            style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+                                    <Button text="Save Draft" prefWidth="120.0"/>
+                                    <Button text="Export PDF" prefWidth="120.0"/>
+                                    <Button text="Print Report" prefWidth="120.0"/>
+                                </children>
+                            </HBox>
+                        </children>
+                    </VBox>
+
+                    <!-- Submit to Enforcement Unit Section -->
+                    <VBox spacing="15.0">
+                        <children>
+                            <Label text="5. Submit to Enforcement Unit"
+                                   style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                            <HBox spacing="20.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Enforcement Team:" style="-fx-font-weight: bold;"/>
+                                            <ChoiceBox prefWidth="180.0"/>
+                                        </children>
+                                    </VBox>
+
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Priority Level:" style="-fx-font-weight: bold;"/>
+                                            <ChoiceBox prefWidth="150.0"/>
+                                        </children>
+                                    </VBox>
+
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Due Date:" style="-fx-font-weight: bold;"/>
+                                            <DatePicker prefWidth="150.0"/>
+                                        </children>
+                                    </VBox>
+                                </children>
+                            </HBox>
+
+                            <HBox spacing="30.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <VBox spacing="5.0">
+                                        <children>
+                                            <CheckBox text="Urgent Review Required"/>
+                                            <CheckBox text="Legal Action Recommended"/>
+                                            <CheckBox text="Financial Penalty Suggested"/>
+                                        </children>
+                                    </VBox>
+
+                                    <VBox spacing="5.0">
+                                        <children>
+                                            <CheckBox text="Suspend Trading Rights"/>
+                                            <CheckBox text="Notify Other Exchanges"/>
+                                            <CheckBox text="Media Alert Required"/>
+                                        </children>
+                                    </VBox>
+                                </children>
+                            </HBox>
+
+                            <HBox spacing="15.0" alignment="CENTER">
+                                <children>
+                                    <Button text="Submit Case" prefWidth="130.0"
+                                            style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                                    <Button text="Schedule Meeting" prefWidth="150.0"/>
+                                    <Button text="Send Alert" prefWidth="120.0"/>
+                                    <Button text="Generate Summary" prefWidth="150.0"/>
+                                </children>
+                            </HBox>
+                        </children>
+                    </VBox>
+                </children>
+            </VBox>
+        </content>
+    </ScrollPane>
 </AnchorPane>

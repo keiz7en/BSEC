@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.bsec.oop.SiamShikder.BSEC_Officer.OverseeWhistleblowerProgram"
+            prefHeight="900.0" prefWidth="1200.0">
+
+    <Label layoutX="20.0" layoutY="20.0" style="-fx-font-size: 24px; -fx-font-weight: bold;"
+           text="Oversee Whistleblower Program"/>
+    <Button layoutX="1100.0" layoutY="20.0" text="Back" onAction="#goBack"/>
+
+    <!-- Receive Whistleblower Reports -->
+    <Label layoutX="20.0" layoutY="80.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
+           text="1. Receive Whistleblower Reports"/>
+    <TableView layoutX="20.0" layoutY="110.0" prefHeight="140.0" prefWidth="700.0">
+        <columns>
+            <TableColumn prefWidth="100.0" text="Report ID"/>
+            <TableColumn prefWidth="200.0" text="Subject"/>
+            <TableColumn prefWidth="150.0" text="Source"/>
+            <TableColumn prefWidth="120.0" text="Date"/>
+            <TableColumn prefWidth="130.0" text="Priority"/>
+        </columns>
+    </TableView>
+    <Button layoutX="750.0" layoutY="130.0" text="New Report"/>
+    <Button layoutX="750.0" layoutY="170.0" text="View Details"/>
+    <Button layoutX="750.0" layoutY="210.0" text="Mark Urgent"/>
+
+    <!-- Verify Report Validity -->
+    <Label layoutX="20.0" layoutY="290.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
+           text="2. Verify Report Validity"/>
+    <Label layoutX="30.0" layoutY="330.0" text="Selected Report:"/>
+    <TextField layoutX="150.0" layoutY="325.0" prefWidth="200.0"/>
+    <Button layoutX="370.0" layoutY="325.0" text="Load Report"/>
+
+    <Label layoutX="30.0" layoutY="370.0" text="Validity Check:"/>
+    <CheckBox layoutX="130.0" layoutY="370.0" text="Source Verified"/>
+    <CheckBox layoutX="250.0" layoutY="370.0" text="Facts Checked"/>
+    <CheckBox layoutX="360.0" layoutY="370.0" text="Evidence Reviewed"/>
+    <CheckBox layoutX="130.0" layoutY="400.0" text="Legal Review"/>
+    <CheckBox layoutX="250.0" layoutY="400.0" text="Background Check"/>
+
+    <Label layoutX="30.0" layoutY="440.0" text="Validity Status:"/>
+    <ChoiceBox layoutX="140.0" layoutY="435.0" prefWidth="120.0"/>
+    <Button layoutX="280.0" layoutY="435.0" text="Update Status"/>
+
+    <Label layoutX="30.0" layoutY="480.0" text="Verification Notes:"/>
+    <TextArea layoutX="30.0" layoutY="510.0" prefHeight="60.0" prefWidth="500.0"
+              promptText="Verification findings..."/>
+    <Button layoutX="550.0" layoutY="530.0" text="Save Notes"/>
+
+    <!-- Assign Investigation Team -->
+    <Label layoutX="600.0" layoutY="290.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
+           text="3. Assign Investigation Team"/>
+    <Label layoutX="610.0" layoutY="330.0" text="Case ID:"/>
+    <TextField layoutX="670.0" layoutY="325.0" prefWidth="150.0"/>
+
+    <Label layoutX="610.0" layoutY="370.0" text="Lead Investigator:"/>
+    <ChoiceBox layoutX="720.0" layoutY="365.0" prefWidth="150.0"/>
+
+    <Label layoutX="610.0" layoutY="410.0" text="Team Members:"/>
+    <ListView layoutX="610.0" layoutY="435.0" prefHeight="80.0" prefWidth="250.0"/>
+    <Button layoutX="870.0" layoutY="455.0" text="Add Member"/>
+    <Button layoutX="870.0" layoutY="485.0" text="Remove"/>
+
+    <Button layoutX="610.0" layoutY="530.0" text="Assign Team"/>
+    <Button layoutX="710.0" layoutY="530.0" text="Notify Team"/>
+
+    <!-- Track Case Progress -->
+    <Label layoutX="20.0" layoutY="610.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
+           text="4. Track Case Progress"/>
+    <TableView layoutX="20.0" layoutY="640.0" prefHeight="100.0" prefWidth="600.0">
+        <columns>
+            <TableColumn prefWidth="80.0" text="Case ID"/>
+            <TableColumn prefWidth="150.0" text="Investigator"/>
+            <TableColumn prefWidth="120.0" text="Progress"/>
+            <TableColumn prefWidth="120.0" text="Status"/>
+            <TableColumn prefWidth="130.0" text="Due Date"/>
+        </columns>
+    </TableView>
+    <Button layoutX="640.0" layoutY="660.0" text="Update Progress"/>
+    <Button layoutX="640.0" layoutY="700.0" text="View Timeline"/>
+
+    <!-- Close Cases and Report Outcomes -->
+    <Label layoutX="700.0" layoutY="610.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
+           text="5. Close Cases and Report Outcomes"/>
+    <Label layoutX="710.0" layoutY="650.0" text="Case to Close:"/>
+    <TextField layoutX="800.0" layoutY="645.0" prefWidth="150.0"/>
+
+    <Label layoutX="710.0" layoutY="690.0" text="Outcome:"/>
+    <ChoiceBox layoutX="770.0" layoutY="685.0" prefWidth="120.0"/>
+
+    <CheckBox layoutX="710.0" layoutY="720.0" text="Action Taken"/>
+    <CheckBox layoutX="810.0" layoutY="720.0" text="Public Report"/>
+
+    <Button layoutX="710.0" layoutY="760.0" text="Close Case"/>
+    <Button layoutX="800.0" layoutY="760.0" text="Generate Report"/>
+    <Button layoutX="710.0" layoutY="800.0" text="Archive Case"/>
+
+</AnchorPane>
