@@ -1,4 +1,4 @@
-package com.bsec.oop.Investor;
+package com.bsec.oop.Fayshal.Investor;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class ViewPortfolioAndPerformance
+public class SearchAndViewStocks
 {
     @javafx.fxml.FXML
     public void initialize() {
@@ -18,7 +18,7 @@ public class ViewPortfolioAndPerformance
     @javafx.fxml.FXML
     public void goBackToMenu(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/Investor/Menu_Investor.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/Fayshal/Investor/Menu_Investor.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));

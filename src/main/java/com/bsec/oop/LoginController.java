@@ -48,7 +48,7 @@ public class LoginController implements Initializable {
     @FXML
     protected void loginAsInvestor() {
         if (authenticateUser("Investor")) {
-            navigateToUserTypePage("Investor", "/com/bsec/oop/Investor/Menu_Investor.fxml", "BSEC - Investor Dashboard");
+            navigateToUserTypePage("Investor", "/com/bsec/oop/Fayshal/Investor/Menu_Investor.fxml", "BSEC - Investor Dashboard");
         }
     }
 

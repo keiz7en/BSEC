@@ -1,4 +1,4 @@
-package com.bsec.oop.Investor;
+package com.bsec.oop.Fayshal.Investor;
 
 import java.math.BigDecimal;
 

@@ -5,7 +5,7 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.bsec.oop.Investor.ViewPortfolioAndPerformance"
+            fx:controller="com.bsec.oop.Fayshal.Investor.ViewPortfolioAndPerformance"
             prefHeight="800.0" prefWidth="1200.0">
 
     <children>

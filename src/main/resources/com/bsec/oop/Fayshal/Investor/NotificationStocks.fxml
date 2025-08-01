@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.bsec.oop.Fayshal.Investor.NotificationStocks">
+    <content>
+        <VBox prefHeight="800.0" prefWidth="900.0" spacing="20.0">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+            </padding>
+
+            <!-- Header Section -->
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+                <Button fx:id="backButton" mnemonicParsing="false" onAction="#goBackToMenu"
+                        style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;"
+                        text="← Back to Menu"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"
+                       text="Stock Alerts &amp; Notifications"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button fx:id="refreshButton" mnemonicParsing="false"
+                        style="-fx-background-color: #3498db; -fx-text-fill: white;" text="Refresh"/>
+            </HBox>
+
+            <Separator/>
+
+            <!-- Current Notifications Section -->
+            <VBox spacing="10.0">
+                <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"
+                       text="Current Notifications"/>
+                <ScrollPane fx:id="notificationScrollPane" fitToWidth="true" prefHeight="150.0"
+                            style="-fx-background-color: #f8f9fa; -fx-border-color: #dee2e6; -fx-border-radius: 5;">
+                    <content>
+                        <VBox fx:id="notificationContainer" spacing="5.0">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                            </padding>
+                            <Label text="• GP stock price increased by 5% - Alert triggered at 10:30 AM"
+                                   style="-fx-text-fill: #27ae60;"/>
+                            <Label text="• SQURPHARMA volume exceeded threshold - Alert triggered at 11:15 AM"
+                                   style="-fx-text-fill: #f39c12;"/>
+                            <Label text="• Market news alert: New pharmaceutical regulations announced"
+                                   style="-fx-text-fill: #3498db;"/>
+                        </VBox>
+                    </content>
+                </ScrollPane>
+            </VBox>
+
+            <Separator/>
+
+            <!-- Alert Configuration Section -->
+            <VBox spacing="15.0">
+                <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"
+                       text="Configure Stock Alerts"/>
+
+                <!-- Stock Selection -->
+                <HBox alignment="CENTER_LEFT" spacing="15.0">
+                    <Label minWidth="120.0" style="-fx-font-weight: bold;" text="Select Stock:"/>
+                    <ComboBox fx:id="stockComboBox" prefWidth="250.0" promptText="Choose a stock..."/>
+                    <Label fx:id="currentPriceLabel" style="-fx-font-weight: bold; -fx-text-fill: #27ae60;"
+                           text="Current Price: ৳0.00"/>
+                </HBox>
+
+                <!-- Alert Types -->
+                <VBox spacing="10.0">
+                    <Label style="-fx-font-weight: bold;" text="Alert Types:"/>
+                    <HBox spacing="20.0">
+                        <VBox spacing="8.0">
+                            <CheckBox fx:id="priceAlertCheckBox" style="-fx-font-weight: bold;"
+                                      text="Price Change Alert"/>
+                            <CheckBox fx:id="volumeAlertCheckBox" style="-fx-font-weight: bold;" text="Volume Alert"/>
+                            <CheckBox fx:id="newsAlertCheckBox" style="-fx-font-weight: bold;" text="News Alert"/>
+                        </VBox>
+                        <VBox spacing="8.0">
+                            <CheckBox fx:id="earningsAlertCheckBox" style="-fx-font-weight: bold;"
+                                      text="Earnings Alert"/>
+                            <CheckBox fx:id="dividendAlertCheckBox" style="-fx-font-weight: bold;"
+                                      text="Dividend Alert"/>
+                            <CheckBox fx:id="marketAlertCheckBox" style="-fx-font-weight: bold;"
+                                      text="Market Movement Alert"/>
+                        </VBox>
+                    </HBox>
+                </VBox>
+
+                <!-- Price Alert Configuration -->
+                <VBox fx:id="priceAlertConfig" spacing="10.0">
+                    <Label style="-fx-font-weight: bold; -fx-text-fill: #e74c3c;" text="Price Alert Configuration:"/>
+                    <HBox spacing="15.0">
+                        <VBox spacing="5.0">
+                            <Label text="Alert when price goes:"/>
+                            <ComboBox fx:id="priceDirectionComboBox" prefWidth="150.0" promptText="Select condition"/>
+                        </VBox>
+                        <VBox spacing="5.0">
+                            <Label text="Target Price/Percentage:"/>
+                            <TextField fx:id="targetPriceField" prefWidth="120.0" promptText="Enter value"/>
+                        </VBox>
+                    </HBox>
+                </VBox>
+
+                <!-- Volume Alert Configuration -->
+                <VBox fx:id="volumeAlertConfig" spacing="10.0">
+                    <Label style="-fx-font-weight: bold; -fx-text-fill: #f39c12;" text="Volume Alert Configuration:"/>
+                    <HBox spacing="15.0">
+                        <VBox spacing="5.0">
+                            <Label text="Alert when volume:"/>
+                            <ComboBox fx:id="volumeConditionComboBox" prefWidth="180.0"
+                                      promptText="Select volume condition"/>
+                        </VBox>
+                        <VBox spacing="5.0">
+                            <Label text="Threshold/Percentage:"/>
+                            <TextField fx:id="volumeThresholdField" prefWidth="120.0" promptText="Enter value"/>
+                        </VBox>
+                    </HBox>
+                </VBox>
+
+                <!-- Notification Preferences -->
+                <VBox spacing="10.0">
+                    <Label style="-fx-font-weight: bold;" text="Notification Preferences:"/>
+                    <HBox spacing="20.0">
+                        <VBox spacing="8.0">
+                            <CheckBox fx:id="emailNotificationCheckBox" style="-fx-font-weight: bold;"
+                                      text="Email Notification"/>
+                            <CheckBox fx:id="smsNotificationCheckBox" style="-fx-font-weight: bold;"
+                                      text="SMS Notification"/>
+                        </VBox>
+                        <VBox spacing="8.0">
+                            <CheckBox fx:id="pushNotificationCheckBox" selected="true" style="-fx-font-weight: bold;"
+                                      text="Push Notification"/>
+                            <CheckBox fx:id="soundNotificationCheckBox" style="-fx-font-weight: bold;"
+                                      text="Sound Alert"/>
+                        </VBox>
+                    </HBox>
+                </VBox>
+
+                <!-- Action Buttons -->
+                <HBox alignment="CENTER" spacing="20.0">
+                    <Button fx:id="savePreferencesButton" mnemonicParsing="false" prefWidth="150.0"
+                            style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold;"
+                            text="Save Preferences"/>
+                    <Button fx:id="clearFormButton" mnemonicParsing="false" prefWidth="120.0"
+                            style="-fx-background-color: #95a5a6; -fx-text-fill: white;" text="Clear Form"/>
+                    <Button fx:id="testAlertButton" mnemonicParsing="false" prefWidth="120.0"
+                            style="-fx-background-color: #f39c12; -fx-text-fill: white;" text="Test Alert"/>
+                </HBox>
+            </VBox>
+
+            <Separator/>
+
+            <!-- Active Alerts Section -->
+            <VBox spacing="10.0">
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"
+                           text="Active Alerts"/>
+                    <Label fx:id="activeAlertsCountLabel" style="-fx-font-weight: bold; -fx-text-fill: #e74c3c;"
+                           text="(3 alerts)"/>
+                </HBox>
+
+                <TableView fx:id="activeAlertsTable" prefHeight="200.0">
+                    <columns>
+                        <TableColumn fx:id="stockSymbolColumn" prefWidth="120.0" text="Stock"/>
+                        <TableColumn fx:id="alertTypeColumn" prefWidth="150.0" text="Alert Type"/>
+                        <TableColumn fx:id="conditionColumn" prefWidth="200.0" text="Condition"/>
+                        <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status"/>
+                        <TableColumn fx:id="createdDateColumn" prefWidth="120.0" text="Created"/>
+                        <TableColumn fx:id="actionsColumn" prefWidth="100.0" text="Actions"/>
+                    </columns>
+                    <placeholder>
+                        <Label text="No active alerts configured" style="-fx-text-fill: #7f8c8d;"/>
+                    </placeholder>
+                </TableView>
+            </VBox>
+
+            <!-- Status Area -->
+            <VBox spacing="5.0">
+                <Label style="-fx-font-weight: bold;" text="Status:"/>
+                <TextArea fx:id="statusArea" editable="false" prefHeight="80.0"
+                          style="-fx-background-color: #f8f9fa; -fx-border-color: #dee2e6; -fx-border-radius: 5;"
+                          text="Welcome to Stock Alerts! Select a stock and configure your notification preferences to get started. You can set price alerts, volume alerts, and news notifications for your favorite stocks."
+                          wrapText="true"/>
+            </VBox>
+        </VBox>
+    </content>
+</ScrollPane>
