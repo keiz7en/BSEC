@@ -90,14 +90,14 @@ public class LoginController implements Initializable {
     @FXML
     protected void loginAsBSECOfficer() {
         if (authenticateUser("BSEC Officer")) {
-            navigateToUserTypePage("BSEC Officer", "/com/bsec/oop/BSEC_Officer/Main.fxml", "BSEC - Officer Dashboard");
+            navigateToUserTypePage("BSEC Officer", "/com/bsec/oop/SiamShikder/BSEC_Officer/Main.fxml", "BSEC - Officer Dashboard");
         }
     }
 
     @FXML
     protected void loginAsRegulator() {
         if (authenticateUser("Regulator")) {
-            navigateToUserTypePage("Regulator", "/com/bsec/oop/Regulator/Main.fxml", "BSEC - Regulator Dashboard");
+            navigateToUserTypePage("Regulator", "/com/bsec/oop/SiamShikder/Regulator/Main.fxml", "BSEC - Regulator Dashboard");
         }
     }
 
