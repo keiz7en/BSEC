@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.bsec.oop.SiamShikder.Regulator.OverseeWhistleblower"
+            prefHeight="700.0" prefWidth="1000.0">
+
+    <Label layoutX="20.0" layoutY="20.0" style="-fx-font-size: 24px; -fx-font-weight: bold;"
+           text="Oversee Whistleblower Program"/>
+    <Button layoutX="900.0" layoutY="20.0" text="Back" onAction="#goBack"/>
+
+    <!-- Receive Whistleblower Reports Section -->
+    <Label layoutX="20.0" layoutY="70.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
+           text="1. Receive Whistleblower Reports"/>
+    <TableView layoutX="20.0" layoutY="100.0" prefHeight="150.0" prefWidth="450.0">
+        <columns>
+            <TableColumn prefWidth="100.0" text="Report ID"/>
+            <TableColumn prefWidth="200.0" text="Subject"/>
+            <TableColumn prefWidth="100.0" text="Date"/>
+            <TableColumn prefWidth="50.0" text="Status"/>
+        </columns>
+    </TableView>
+    <Button layoutX="480.0" layoutY="120.0" text="New Report"/>
+    <Button layoutX="480.0" layoutY="160.0" text="View Details"/>
+
+    <!-- Verify Report Validity Section -->
+    <Label layoutX="20.0" layoutY="270.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
+           text="2. Verify Report Validity"/>
+    <Label layoutX="30.0" layoutY="300.0" text="Selected Report:"/>
+    <TextField layoutX="140.0" layoutY="295.0" prefWidth="200.0"/>
+    <Label layoutX="30.0" layoutY="330.0" text="Validity Status:"/>
+    <ChoiceBox layoutX="140.0" layoutY="325.0" prefWidth="120.0"/>
+    <TextArea layoutX="30.0" layoutY="360.0" prefHeight="60.0" prefWidth="440.0" promptText="Verification notes..."/>
+    <Button layoutX="480.0" layoutY="360.0" text="Mark Valid"/>
+    <Button layoutX="480.0" layoutY="390.0" text="Mark Invalid"/>
+
+    <!-- Assign Investigation Team Section -->
+    <Label layoutX="520.0" layoutY="70.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
+           text="3. Assign Investigation Team"/>
+    <Label layoutX="530.0" layoutY="100.0" text="Case ID:"/>
+    <TextField layoutX="600.0" layoutY="95.0" prefWidth="150.0"/>
+    <Label layoutX="530.0" layoutY="130.0" text="Lead Investigator:"/>
+    <ChoiceBox layoutX="650.0" layoutY="125.0" prefWidth="120.0"/>
+    <Label layoutX="530.0" layoutY="160.0" text="Team Members:"/>
+    <ListView layoutX="530.0" layoutY="180.0" prefHeight="80.0" prefWidth="240.0"/>
+    <Button layoutX="780.0" layoutY="180.0" text="Assign Team"/>
+
+    <!-- Track Case Progress Section -->
+    <Label layoutX="520.0" layoutY="280.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
+           text="4. Track Case Progress"/>
+    <TableView layoutX="520.0" layoutY="310.0" prefHeight="100.0" prefWidth="450.0">
+        <columns>
+            <TableColumn prefWidth="80.0" text="Case ID"/>
+            <TableColumn prefWidth="120.0" text="Investigator"/>
+            <TableColumn prefWidth="100.0" text="Progress %"/>
+            <TableColumn prefWidth="100.0" text="Status"/>
+            <TableColumn prefWidth="50.0" text="Actions"/>
+        </columns>
+    </TableView>
+
+    <!-- Close Cases Section -->
+    <Label layoutX="20.0" layoutY="450.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
+           text="5. Close Cases and Report Outcomes"/>
+    <Label layoutX="30.0" layoutY="480.0" text="Case to Close:"/>
+    <TextField layoutX="130.0" layoutY="475.0" prefWidth="200.0"/>
+    <Label layoutX="30.0" layoutY="510.0" text="Outcome:"/>
+    <ChoiceBox layoutX="100.0" layoutY="505.0" prefWidth="150.0"/>
+    <Label layoutX="30.0" layoutY="540.0" text="Final Report:"/>
+    <TextArea layoutX="30.0" layoutY="560.0" prefHeight="100.0" prefWidth="500.0"
+              promptText="Enter case closure summary and outcomes..."/>
+    <Button layoutX="550.0" layoutY="580.0" text="Close Case"/>
+    <Button layoutX="630.0" layoutY="580.0" text="Generate Report"/>
+    <Button layoutX="740.0" layoutY="580.0" text="Archive Case"/>
+
+</AnchorPane>
