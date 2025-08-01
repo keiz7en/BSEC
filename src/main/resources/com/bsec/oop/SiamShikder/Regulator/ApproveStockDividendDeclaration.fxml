@@ -3,16 +3,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.bsec.oop.SiamShikder.Regulator.ApproveStockDividendDeclaration"
-            prefHeight="900.0" prefWidth="1200.0">
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.bsec.oop.SiamShikder.Regulator.ApproveStockDividendDeclaration" prefHeight="900.0"
+            prefWidth="1200.0">
 
     <Label layoutX="20.0" layoutY="20.0" style="-fx-font-size: 24px; -fx-font-weight: bold;"
            text="Approve Stock Dividend Declaration"/>
     <Button layoutX="1100.0" layoutY="20.0" text="Back" onAction="#goBack"/>
 
-    <!-- Receive Dividend Declaration Section -->
     <Label layoutX="20.0" layoutY="80.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
            text="1. Receive Dividend Declaration"/>
     <TableView layoutX="20.0" layoutY="110.0" prefHeight="150.0" prefWidth="800.0">
@@ -20,7 +18,7 @@
             <TableColumn prefWidth="120.0" text="Declaration ID"/>
             <TableColumn prefWidth="200.0" text="Company Name"/>
             <TableColumn prefWidth="120.0" text="Dividend Type"/>
-            <TableColumn prefWidth="120.0" text="Amount/Rate"/>
+            <TableColumn prefWidth="120.0" text="Amount Rate"/>
             <TableColumn prefWidth="120.0" text="Submit Date"/>
             <TableColumn prefWidth="120.0" text="Status"/>
         </columns>
@@ -30,7 +28,6 @@
     <Button layoutX="850.0" layoutY="210.0" text="Check History"/>
     <Button layoutX="850.0" layoutY="250.0" text="Refresh List"/>
 
-    <!-- Validate Declaration Details Section -->
     <Label layoutX="20.0" layoutY="300.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
            text="2. Validate Declaration Details"/>
     <Label layoutX="30.0" layoutY="340.0" text="Company:"/>
@@ -40,7 +37,7 @@
 
     <Label layoutX="30.0" layoutY="380.0" text="Dividend Rate:"/>
     <TextField layoutX="140.0" layoutY="375.0" prefWidth="80.0"/>
-    <Label layoutX="230.0" layoutY="380.0" text="%"/>
+    <Label layoutX="230.0" layoutY="380.0" text="Percent"/>
     <Label layoutX="270.0" layoutY="380.0" text="Ex-Dividend Date:"/>
     <DatePicker layoutX="400.0" layoutY="375.0" prefWidth="150.0"/>
 
@@ -63,7 +60,6 @@
     <Button layoutX="800.0" layoutY="380.0" text="Validate All"/>
     <Button layoutX="800.0" layoutY="420.0" text="Request Documents"/>
 
-    <!-- Approve or Request Change Section -->
     <Label layoutX="20.0" layoutY="520.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
            text="3. Approve or Request Change"/>
     <Label layoutX="30.0" layoutY="560.0" text="Declaration ID:"/>
@@ -73,13 +69,12 @@
     <RadioButton layoutX="470.0" layoutY="560.0" text="Request Changes"/>
     <RadioButton layoutX="600.0" layoutY="560.0" text="Reject"/>
 
-    <Label layoutX="30.0" layoutY="600.0" text="Comments/Conditions:"/>
+    <Label layoutX="30.0" layoutY="600.0" text="Comments Conditions:"/>
     <TextArea layoutX="30.0" layoutY="630.0" prefHeight="80.0" prefWidth="600.0"
-              promptText="Enter approval conditions or change requests..."/>
+              promptText="Enter approval conditions or change requests"/>
     <Button layoutX="650.0" layoutY="650.0" text="Submit Decision"/>
     <Button layoutX="780.0" layoutY="650.0" text="Schedule Review"/>
 
-    <!-- Notify Company and Broker Section -->
     <Label layoutX="20.0" layoutY="750.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
            text="4. Notify Company and Broker"/>
     <Label layoutX="30.0" layoutY="790.0" text="Notification Recipients:"/>

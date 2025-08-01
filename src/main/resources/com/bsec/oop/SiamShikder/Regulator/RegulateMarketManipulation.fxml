@@ -3,22 +3,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.bsec.oop.SiamShikder.Regulator.RegulateMarketManipulation"
-            prefHeight="900.0" prefWidth="1200.0">
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.bsec.oop.SiamShikder.Regulator.RegulateMarketManipulation" prefHeight="900.0"
+            prefWidth="1200.0">
 
     <Label layoutX="20.0" layoutY="20.0" style="-fx-font-size: 24px; -fx-font-weight: bold;"
            text="Regulate Market Manipulation"/>
     <Button layoutX="1100.0" layoutY="20.0" text="Back" onAction="#goBack"/>
 
-    <!-- Run Manipulation Detection Script Section -->
     <Label layoutX="20.0" layoutY="70.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
            text="1. Run Manipulation Detection Script"/>
     <Label layoutX="30.0" layoutY="100.0" text="Detection Parameters:"/>
     <Label layoutX="40.0" layoutY="125.0" text="Price Volatility Threshold:"/>
     <TextField layoutX="200.0" layoutY="120.0" prefWidth="80.0"/>
-    <Label layoutX="290.0" layoutY="125.0" text="%"/>
+    <Label layoutX="290.0" layoutY="125.0" text="Percent"/>
     <Label layoutX="40.0" layoutY="150.0" text="Volume Spike Factor:"/>
     <TextField layoutX="180.0" layoutY="145.0" prefWidth="80.0"/>
     <Label layoutX="270.0" layoutY="150.0" text="x normal"/>
@@ -41,14 +39,13 @@
         </columns>
     </TableView>
 
-    <!-- Flag Unusual Price Movements Section -->
     <Label layoutX="20.0" layoutY="240.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
            text="2. Flag Unusual Price Movements"/>
     <TableView layoutX="30.0" layoutY="270.0" prefHeight="100.0" prefWidth="650.0">
         <columns>
             <TableColumn prefWidth="100.0" text="Stock Symbol"/>
             <TableColumn prefWidth="80.0" text="Current Price"/>
-            <TableColumn prefWidth="80.0" text="Change %"/>
+            <TableColumn prefWidth="80.0" text="Change Percent"/>
             <TableColumn prefWidth="100.0" text="Volume"/>
             <TableColumn prefWidth="120.0" text="Unusual Activity"/>
             <TableColumn prefWidth="100.0" text="Flag Status"/>
@@ -59,7 +56,6 @@
     <Button layoutX="690.0" layoutY="320.0" text="Add to Watch"/>
     <Button layoutX="690.0" layoutY="350.0" text="Generate Alert"/>
 
-    <!-- Initiate Formal Review Section -->
     <Label layoutX="20.0" layoutY="390.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
            text="3. Initiate Formal Review"/>
     <Label layoutX="30.0" layoutY="420.0" text="Case ID:"/>
@@ -79,11 +75,10 @@
 
     <Label layoutX="30.0" layoutY="505.0" text="Review Notes:"/>
     <TextArea layoutX="30.0" layoutY="525.0" prefHeight="60.0" prefWidth="500.0"
-              promptText="Enter review instructions and specific areas of concern..."/>
+              promptText="Enter review instructions and specific areas of concern"/>
     <Button layoutX="540.0" layoutY="540.0" text="Start Review"/>
     <Button layoutX="630.0" layoutY="540.0" text="Assign Team"/>
 
-    <!-- Send Findings to Legal Unit Section -->
     <Label layoutX="20.0" layoutY="600.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
            text="4. Send Findings to Legal Unit"/>
     <Label layoutX="30.0" layoutY="630.0" text="Review Outcome:"/>
@@ -95,7 +90,7 @@
 
     <Label layoutX="30.0" layoutY="660.0" text="Summary for Legal:"/>
     <TextArea layoutX="150.0" layoutY="655.0" prefHeight="40.0" prefWidth="400.0"
-              promptText="Executive summary for legal review..."/>
+              promptText="Executive summary for legal review"/>
     <Button layoutX="560.0" layoutY="665.0" text="Submit to Legal"/>
     <Button layoutX="670.0" layoutY="665.0" text="Request Meeting"/>
     <Button layoutX="790.0" layoutY="665.0" text="Archive Case"/>
