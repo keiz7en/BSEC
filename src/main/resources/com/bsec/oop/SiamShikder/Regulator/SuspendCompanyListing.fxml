@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.bsec.oop.SiamShikder.Regulator.SuspendCompanyListing"
+            prefHeight="900.0" prefWidth="1200.0">
+
+    <Label layoutX="20.0" layoutY="20.0" style="-fx-font-size: 24px; -fx-font-weight: bold;"
+           text="Suspend Company Listing"/>
+    <Button layoutX="1100.0" layoutY="20.0" text="Back" onAction="#goBack"/>
+
+    <!-- Identify Violating Company Section -->
+    <Label layoutX="20.0" layoutY="80.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
+           text="1. Identify Violating Company"/>
+    <TableView layoutX="20.0" layoutY="110.0" prefHeight="120.0" prefWidth="700.0">
+        <columns>
+            <TableColumn prefWidth="120.0" text="Company ID"/>
+            <TableColumn prefWidth="200.0" text="Company Name"/>
+            <TableColumn prefWidth="150.0" text="Violation Type"/>
+            <TableColumn prefWidth="120.0" text="Severity"/>
+            <TableColumn prefWidth="110.0" text="Actions"/>
+        </columns>
+    </TableView>
+    <Button layoutX="750.0" layoutY="130.0" text="Search Company"/>
+    <Button layoutX="750.0" layoutY="170.0" text="Flag Violation"/>
+    <Button layoutX="750.0" layoutY="210.0" text="View History"/>
+
+    <!-- Review Violation Evidence Section -->
+    <Label layoutX="20.0" layoutY="270.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
+           text="2. Review Violation Evidence"/>
+    <Label layoutX="30.0" layoutY="310.0" text="Selected Company:"/>
+    <TextField layoutX="170.0" layoutY="305.0" prefWidth="200.0"/>
+    <Label layoutX="30.0" layoutY="350.0" text="Violation Details:"/>
+    <TextArea layoutX="30.0" layoutY="380.0" prefHeight="80.0" prefWidth="500.0"
+              promptText="Document violation evidence..."/>
+    <Label layoutX="560.0" layoutY="310.0" text="Evidence Files:"/>
+    <ListView layoutX="560.0" layoutY="340.0" prefHeight="80.0" prefWidth="250.0"/>
+    <Button layoutX="830.0" layoutY="360.0" text="Upload File"/>
+    <Button layoutX="30.0" layoutY="480.0" text="Approve Evidence"/>
+    <Button layoutX="170.0" layoutY="480.0" text="Request More"/>
+
+    <!-- Trigger Suspension Order Section -->
+    <Label layoutX="20.0" layoutY="540.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
+           text="3. Trigger Suspension Order"/>
+    <Label layoutX="30.0" layoutY="580.0" text="Suspension Type:"/>
+    <ChoiceBox layoutX="150.0" layoutY="575.0" prefWidth="150.0"/>
+    <Label layoutX="320.0" layoutY="580.0" text="Duration:"/>
+    <TextField layoutX="380.0" layoutY="575.0" prefWidth="100.0"/>
+    <Label layoutX="500.0" layoutY="580.0" text="days"/>
+
+    <Label layoutX="30.0" layoutY="620.0" text="Effective Date:"/>
+    <DatePicker layoutX="130.0" layoutY="615.0" prefWidth="150.0"/>
+    <Label layoutX="300.0" layoutY="620.0" text="Review Date:"/>
+    <DatePicker layoutX="380.0" layoutY="615.0" prefWidth="150.0"/>
+
+    <Button layoutX="30.0" layoutY="660.0" text="Issue Suspension"/>
+    <Button layoutX="170.0" layoutY="660.0" text="Generate Order"/>
+
+    <!-- Notify Broker and Investors Section -->
+    <Label layoutX="600.0" layoutY="540.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
+           text="4. Notify Broker and Investors"/>
+    <CheckBox layoutX="610.0" layoutY="580.0" text="Notify Stock Exchange"/>
+    <CheckBox layoutX="610.0" layoutY="610.0" text="Notify Brokers"/>
+    <CheckBox layoutX="610.0" layoutY="640.0" text="Public Announcement"/>
+    <CheckBox layoutX="780.0" layoutY="580.0" text="Media Release"/>
+    <CheckBox layoutX="780.0" layoutY="610.0" text="Investor Alert"/>
+    <Button layoutX="610.0" layoutY="680.0" text="Send Notifications"/>
+
+    <!-- Follow up on Corrections Section -->
+    <Label layoutX="20.0" layoutY="720.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
+           text="5. Follow up on Corrections"/>
+    <Label layoutX="30.0" layoutY="760.0" text="Required Actions:"/>
+    <TextArea layoutX="160.0" layoutY="750.0" prefHeight="60.0" prefWidth="400.0"
+              promptText="List required corrections..."/>
+    <Label layoutX="580.0" layoutY="760.0" text="Follow-up Date:"/>
+    <DatePicker layoutX="680.0" layoutY="755.0" prefWidth="150.0"/>
+    <Button layoutX="30.0" layoutY="830.0" text="Schedule Review"/>
+    <Button layoutX="150.0" layoutY="830.0" text="Close Case"/>
+
+</AnchorPane>

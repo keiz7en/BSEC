@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.bsec.oop.SiamShikder.BSEC_Officer.ManageRegulatoryTrainingPrograms"
+            prefHeight="900.0" prefWidth="1200.0">
+
+    <Label layoutX="20.0" layoutY="20.0" style="-fx-font-size: 24px; -fx-font-weight: bold;"
+           text="Manage Regulatory Training Programs"/>
+    <Button layoutX="1100.0" layoutY="20.0" text="Back" onAction="#goBack"/>
+
+    <!-- Develop Training Curriculum -->
+    <Label layoutX="20.0" layoutY="80.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
+           text="1. Develop Training Curriculum"/>
+    <Label layoutX="30.0" layoutY="120.0" text="Program Name:"/>
+    <TextField layoutX="140.0" layoutY="115.0" prefWidth="200.0"/>
+    <Label layoutX="360.0" layoutY="120.0" text="Duration:"/>
+    <TextField layoutX="420.0" layoutY="115.0" prefWidth="80.0"/>
+    <Label layoutX="510.0" layoutY="120.0" text="hours"/>
+
+    <Label layoutX="30.0" layoutY="160.0" text="Target Audience:"/>
+    <ChoiceBox layoutX="140.0" layoutY="155.0" prefWidth="150.0"/>
+    <Label layoutX="310.0" layoutY="160.0" text="Level:"/>
+    <ChoiceBox layoutX="350.0" layoutY="155.0" prefWidth="120.0"/>
+
+    <Label layoutX="30.0" layoutY="200.0" text="Modules:"/>
+    <ListView layoutX="30.0" layoutY="225.0" prefHeight="80.0" prefWidth="400.0"/>
+    <Button layoutX="450.0" layoutY="235.0" text="Add Module"/>
+    <Button layoutX="450.0" layoutY="265.0" text="Edit Module"/>
+    <Button layoutX="450.0" layoutY="295.0" text="Remove Module"/>
+
+    <Label layoutX="550.0" layoutY="120.0" text="Objectives:"/>
+    <TextArea layoutX="550.0" layoutY="145.0" prefHeight="120.0" prefWidth="300.0"
+              promptText="Learning objectives..."/>
+    <Button layoutX="550.0" layoutY="275.0" text="Save Curriculum"/>
+    <Button layoutX="670.0" layoutY="275.0" text="Approve"/>
+
+    <!-- Schedule Sessions -->
+    <Label layoutX="20.0" layoutY="340.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
+           text="2. Schedule Sessions"/>
+    <Label layoutX="30.0" layoutY="380.0" text="Session Type:"/>
+    <ChoiceBox layoutX="120.0" layoutY="375.0" prefWidth="120.0"/>
+    <Label layoutX="260.0" layoutY="380.0" text="Date:"/>
+    <DatePicker layoutX="300.0" layoutY="375.0" prefWidth="120.0"/>
+    <Label layoutX="440.0" layoutY="380.0" text="Time:"/>
+    <TextField layoutX="480.0" layoutY="375.0" prefWidth="80.0"/>
+
+    <Label layoutX="30.0" layoutY="420.0" text="Instructor:"/>
+    <ChoiceBox layoutX="100.0" layoutY="415.0" prefWidth="150.0"/>
+    <Label layoutX="270.0" layoutY="420.0" text="Venue:"/>
+    <TextField layoutX="310.0" layoutY="415.0" prefWidth="180.0"/>
+    <Label layoutX="510.0" layoutY="420.0" text="Capacity:"/>
+    <TextField layoutX="570.0" layoutY="415.0" prefWidth="60.0"/>
+
+    <Button layoutX="650.0" layoutY="395.0" text="Schedule Session"/>
+    <Button layoutX="650.0" layoutY="425.0" text="Send Invitations"/>
+
+    <!-- Conduct Training -->
+    <Label layoutX="20.0" layoutY="480.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
+           text="3. Conduct Training"/>
+    <Label layoutX="30.0" layoutY="520.0" text="Active Session:"/>
+    <TextField layoutX="130.0" layoutY="515.0" prefWidth="150.0"/>
+    <Button layoutX="290.0" layoutY="515.0" text="Start Session"/>
+
+    <Label layoutX="30.0" layoutY="560.0" text="Attendance:"/>
+    <TextField layoutX="110.0" layoutY="555.0" prefWidth="60.0"/>
+    <Label layoutX="180.0" layoutY="560.0" text="/ 50"/>
+    <Button layoutX="220.0" layoutY="555.0" text="Take Attendance"/>
+
+    <Label layoutX="30.0" layoutY="600.0" text="Materials:"/>
+    <ListView layoutX="100.0" layoutY="590.0" prefHeight="60.0" prefWidth="200.0"/>
+    <Button layoutX="310.0" layoutY="600.0" text="Upload"/>
+    <Button layoutX="370.0" layoutY="600.0" text="Share"/>
+
+    <Label layoutX="450.0" layoutY="520.0" text="Session Notes:"/>
+    <TextArea layoutX="450.0" layoutY="545.0" prefHeight="80.0" prefWidth="300.0"
+              promptText="Training session notes..."/>
+    <Button layoutX="760.0" layoutY="575.0" text="Save Notes"/>
+
+    <!-- Assess Participants -->
+    <Label layoutX="20.0" layoutY="680.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
+           text="4. Assess Participants"/>
+    <Label layoutX="30.0" layoutY="720.0" text="Assessment Type:"/>
+    <ChoiceBox layoutX="140.0" layoutY="715.0" prefWidth="120.0"/>
+    <Label layoutX="280.0" layoutY="720.0" text="Passing Score:"/>
+    <TextField layoutX="370.0" layoutY="715.0" prefWidth="60.0"/>
+    <Label layoutX="440.0" layoutY="720.0" text="Percent"/>
+
+    <Button layoutX="30.0" layoutY="760.0" text="Create Assessment"/>
+    <Button layoutX="160.0" layoutY="760.0" text="Grade Results"/>
+    <Button layoutX="270.0" layoutY="760.0" text="View Scores"/>
+
+    <!-- Issue Certifications -->
+    <Label layoutX="500.0" layoutY="680.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
+           text="5. Issue Certifications"/>
+    <Label layoutX="510.0" layoutY="720.0" text="Certificate Type:"/>
+    <ChoiceBox layoutX="610.0" layoutY="715.0" prefWidth="150.0"/>
+
+    <Label layoutX="510.0" layoutY="760.0" text="Valid Until:"/>
+    <DatePicker layoutX="590.0" layoutY="755.0" prefWidth="120.0"/>
+
+    <CheckBox layoutX="730.0" layoutY="720.0" text="Digital Certificate"/>
+    <CheckBox layoutX="730.0" layoutY="750.0" text="Email Certificate"/>
+
+    <Button layoutX="510.0" layoutY="800.0" text="Generate Certificates"/>
+    <Button layoutX="650.0" layoutY="800.0" text="Send Certificates"/>
+
+</AnchorPane>

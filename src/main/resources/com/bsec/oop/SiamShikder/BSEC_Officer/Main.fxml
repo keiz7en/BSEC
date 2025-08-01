@@ -1,17 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.bsec.oop.SiamShikder.BSEC_Officer.Main"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.SiamShikder.BSEC_Officer.Main">
     <children>
-        <Label layoutX="230.0" layoutY="50.0" text="BSEC Officer Dashboard"/>
-        <Button layoutX="250.0" layoutY="350.0" mnemonicParsing="false" onAction="#goToLogin" text="Back to Login"/>
+        <Label layoutX="300.0" layoutY="30.0" style="-fx-font-size: 20px; -fx-font-weight: bold;"
+               text="BSEC Officer Dashboard"/>
+        <Button layoutX="350.0" layoutY="450.0" mnemonicParsing="false" onAction="#goToLogin" text="Back to Login"/>
+
+        <GridPane layoutX="50.0" layoutY="80.0" prefHeight="320.0" prefWidth="700.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="340.0" minWidth="10.0" prefWidth="340.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="20.0" minWidth="10.0" prefWidth="20.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="340.0" minWidth="10.0" prefWidth="340.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <!-- Row 1 -->
+                <Button mnemonicParsing="false" onAction="#approveRegulatoryPoliciesButton"
+                        text="Approve Regulatory Policies" prefWidth="320.0" GridPane.columnIndex="0"
+                        GridPane.rowIndex="0"/>
+                <Button mnemonicParsing="false" onAction="#monitorMarketComplianceButton"
+                        text="Monitor Market Compliance" prefWidth="320.0" GridPane.columnIndex="2"
+                        GridPane.rowIndex="0"/>
+
+                <!-- Row 2 -->
+                <Button mnemonicParsing="false" onAction="#conductRegulatoryInvestigationsButton"
+                        text="Conduct Regulatory Investigations" prefWidth="320.0" GridPane.columnIndex="0"
+                        GridPane.rowIndex="1"/>
+                <Button mnemonicParsing="false" onAction="#enforcePenaltiesAndSanctionsButton"
+                        text="Enforce Penalties and Sanctions" prefWidth="320.0" GridPane.columnIndex="2"
+                        GridPane.rowIndex="1"/>
+
+                <!-- Row 3 -->
+                <Button mnemonicParsing="false" onAction="#reviewAndApproveMarketFeesButton"
+                        text="Review and Approve Market Fees" prefWidth="320.0" GridPane.columnIndex="0"
+                        GridPane.rowIndex="2"/>
+                <Button mnemonicParsing="false" onAction="#coordinateWithInternationalRegulatorsButton"
+                        text="Coordinate with International Regulators" prefWidth="320.0" GridPane.columnIndex="2"
+                        GridPane.rowIndex="2"/>
+
+                <!-- Row 4 -->
+                <Button mnemonicParsing="false" onAction="#manageRegulatoryTrainingProgramsButton"
+                        text="Manage Regulatory Training Programs" prefWidth="320.0" GridPane.columnIndex="0"
+                        GridPane.rowIndex="3"/>
+                <Button mnemonicParsing="false" onAction="#overseeWhistleblowerProgramButton"
+                        text="Oversee Whistleblower Program" prefWidth="320.0" GridPane.columnIndex="2"
+                        GridPane.rowIndex="3"/>
+            </children>
+        </GridPane>
     </children>
 </AnchorPane>

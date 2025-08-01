@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.bsec.oop.SiamShikder.BSEC_Officer.ApproveRegulatoryPolicies"
+            prefHeight="900.0" prefWidth="1200.0">
+
+    <!-- Header -->
+    <HBox layoutX="0.0" layoutY="0.0" prefHeight="60.0" prefWidth="1200.0" alignment="CENTER_LEFT" spacing="20.0"
+          style="-fx-padding: 10;">
+        <children>
+            <Label text="Approve Regulatory Policies" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Back" onAction="#goBack" style="-fx-font-size: 14px;"/>
+        </children>
+    </HBox>
+
+    <!-- Main Content with ScrollPane -->
+    <ScrollPane layoutX="0.0" layoutY="60.0" prefHeight="840.0" prefWidth="1200.0" fitToWidth="true" fitToHeight="true">
+        <content>
+            <VBox spacing="30.0" style="-fx-padding: 20;">
+                <children>
+                    <!-- Receive Policy Drafts Section -->
+                    <VBox spacing="15.0">
+                        <children>
+                            <Label text="1. Receive Policy Drafts" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <Button text="Open Draft" prefWidth="120.0"/>
+                                    <Button text="Download" prefWidth="120.0"/>
+                                    <Button text="Set Priority" prefWidth="120.0"/>
+                                    <Region HBox.hgrow="ALWAYS"/>
+                                    <Label text="Filter:" style="-fx-font-weight: bold;"/>
+                                    <ComboBox prefWidth="150.0"/>
+                                </children>
+                            </HBox>
+
+                            <TableView prefHeight="200.0">
+                                <columns>
+                                    <TableColumn prefWidth="120.0" text="Policy ID"/>
+                                    <TableColumn prefWidth="250.0" text="Policy Name"/>
+                                    <TableColumn prefWidth="150.0" text="Category"/>
+                                    <TableColumn prefWidth="120.0" text="Submit Date"/>
+                                    <TableColumn prefWidth="130.0" text="Status"/>
+                                    <TableColumn prefWidth="100.0" text="Priority"/>
+                                </columns>
+                            </TableView>
+                        </children>
+                    </VBox>
+
+                    <!-- Review Policies Section -->
+                    <VBox spacing="15.0">
+                        <children>
+                            <Label text="2. Review Policies" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <Label text="Selected Policy:" style="-fx-font-weight: bold;"/>
+                                    <TextField prefWidth="250.0" promptText="Enter policy ID or select from table"/>
+                                    <Button text="Load Policy" prefWidth="120.0"/>
+                                    <Region HBox.hgrow="ALWAYS"/>
+                                    <Button text="Save Review" prefWidth="120.0"/>
+                                </children>
+                            </HBox>
+
+                            <VBox spacing="10.0">
+                                <children>
+                                    <Label text="Review Notes:" style="-fx-font-weight: bold;"/>
+                                    <TextArea prefHeight="120.0"
+                                              promptText="Enter your detailed review notes and observations..."
+                                              wrapText="true"/>
+                                </children>
+                            </VBox>
+
+                            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <Label text="Review Status:" style="-fx-font-weight: bold;"/>
+                                    <ChoiceBox prefWidth="150.0"/>
+                                    <Label text="Reviewer:" style="-fx-font-weight: bold;"/>
+                                    <TextField prefWidth="200.0"/>
+                                </children>
+                            </HBox>
+                        </children>
+                    </VBox>
+
+                    <!-- Suggest Amendments Section -->
+                    <VBox spacing="15.0">
+                        <children>
+                            <Label text="3. Suggest Amendments" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <Label text="Amendment Type:" style="-fx-font-weight: bold;"/>
+                                    <ChoiceBox prefWidth="180.0"/>
+                                    <Label text="Priority Level:" style="-fx-font-weight: bold;"/>
+                                    <ChoiceBox prefWidth="120.0"/>
+                                    <Region HBox.hgrow="ALWAYS"/>
+                                    <Button text="Add Amendment" prefWidth="140.0"/>
+                                </children>
+                            </HBox>
+
+                            <VBox spacing="10.0">
+                                <children>
+                                    <Label text="Amendment Suggestions:" style="-fx-font-weight: bold;"/>
+                                    <TextArea prefHeight="100.0" promptText="Enter detailed amendment suggestions..."
+                                              wrapText="true"/>
+                                </children>
+                            </VBox>
+
+                            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <Button text="Save Draft" prefWidth="120.0"/>
+                                    <Button text="Send for Review" prefWidth="140.0"/>
+                                    <Button text="Request Legal Opinion" prefWidth="160.0"/>
+                                </children>
+                            </HBox>
+                        </children>
+                    </VBox>
+
+                    <!-- Approve Final Policies Section -->
+                    <VBox spacing="15.0">
+                        <children>
+                            <Label text="4. Approve Final Policies"
+                                   style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                            <HBox spacing="20.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Final Decision:" style="-fx-font-weight: bold;"/>
+                                            <VBox spacing="5.0">
+                                                <children>
+                                                    <RadioButton text="Approve"/>
+                                                    <RadioButton text="Reject"/>
+                                                    <RadioButton text="Request Changes"/>
+                                                </children>
+                                            </VBox>
+                                        </children>
+                                    </VBox>
+
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Approval Date:" style="-fx-font-weight: bold;"/>
+                                            <DatePicker prefWidth="150.0"/>
+                                        </children>
+                                    </VBox>
+
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Effective Date:" style="-fx-font-weight: bold;"/>
+                                            <DatePicker prefWidth="150.0"/>
+                                        </children>
+                                    </VBox>
+                                </children>
+                            </HBox>
+
+                            <VBox spacing="10.0">
+                                <children>
+                                    <Label text="Decision Comments:" style="-fx-font-weight: bold;"/>
+                                    <TextArea prefHeight="80.0" promptText="Enter decision rationale and comments..."
+                                              wrapText="true"/>
+                                </children>
+                            </VBox>
+
+                            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <Button text="Submit Decision" prefWidth="140.0"
+                                            style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                                    <Button text="Generate Document" prefWidth="160.0"/>
+                                    <Button text="Schedule Review" prefWidth="140.0"/>
+                                </children>
+                            </HBox>
+                        </children>
+                    </VBox>
+
+                    <!-- Publish Policies Section -->
+                    <VBox spacing="15.0">
+                        <children>
+                            <Label text="5. Publish Policies" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                            <HBox spacing="30.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Publication Channels:" style="-fx-font-weight: bold;"/>
+                                            <VBox spacing="5.0">
+                                                <children>
+                                                    <CheckBox text="Website Publication"/>
+                                                    <CheckBox text="Official Gazette"/>
+                                                    <CheckBox text="Email Notification"/>
+                                                </children>
+                                            </VBox>
+                                        </children>
+                                    </VBox>
+
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Additional Channels:" style="-fx-font-weight: bold;"/>
+                                            <VBox spacing="5.0">
+                                                <children>
+                                                    <CheckBox text="Media Release"/>
+                                                    <CheckBox text="Industry Notice"/>
+                                                    <CheckBox text="International Notice"/>
+                                                </children>
+                                            </VBox>
+                                        </children>
+                                    </VBox>
+
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Publication Date:" style="-fx-font-weight: bold;"/>
+                                            <DatePicker prefWidth="150.0"/>
+                                            <Label text="Review Date:" style="-fx-font-weight: bold;"/>
+                                            <DatePicker prefWidth="150.0"/>
+                                        </children>
+                                    </VBox>
+                                </children>
+                            </HBox>
+
+                            <HBox spacing="15.0" alignment="CENTER">
+                                <children>
+                                    <Button text="Publish Now" prefWidth="130.0"
+                                            style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+                                    <Button text="Schedule Publish" prefWidth="150.0"/>
+                                    <Button text="Preview Publication" prefWidth="160.0"/>
+                                    <Button text="Generate Report" prefWidth="140.0"/>
+                                </children>
+                            </HBox>
+                        </children>
+                    </VBox>
+                </children>
+            </VBox>
+        </content>
+    </ScrollPane>
+</AnchorPane>

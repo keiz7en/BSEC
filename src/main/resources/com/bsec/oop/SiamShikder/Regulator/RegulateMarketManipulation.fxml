@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.bsec.oop.SiamShikder.Regulator.RegulateMarketManipulation" prefHeight="900.0"
+            prefWidth="1200.0">
+
+    <Label layoutX="20.0" layoutY="20.0" style="-fx-font-size: 24px; -fx-font-weight: bold;"
+           text="Regulate Market Manipulation"/>
+    <Button layoutX="1100.0" layoutY="20.0" text="Back" onAction="#goBack"/>
+
+    <Label layoutX="20.0" layoutY="70.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
+           text="1. Run Manipulation Detection Script"/>
+    <Label layoutX="30.0" layoutY="100.0" text="Detection Parameters:"/>
+    <Label layoutX="40.0" layoutY="125.0" text="Price Volatility Threshold:"/>
+    <TextField layoutX="200.0" layoutY="120.0" prefWidth="80.0"/>
+    <Label layoutX="290.0" layoutY="125.0" text="Percent"/>
+    <Label layoutX="40.0" layoutY="150.0" text="Volume Spike Factor:"/>
+    <TextField layoutX="180.0" layoutY="145.0" prefWidth="80.0"/>
+    <Label layoutX="270.0" layoutY="150.0" text="x normal"/>
+    <Label layoutX="40.0" layoutY="175.0" text="Time Window:"/>
+    <ChoiceBox layoutX="130.0" layoutY="170.0" prefWidth="100.0"/>
+    <Label layoutX="40.0" layoutY="200.0" text="Market Segment:"/>
+    <ChoiceBox layoutX="140.0" layoutY="195.0" prefWidth="120.0"/>
+
+    <Button layoutX="300.0" layoutY="140.0" text="Run Detection"/>
+    <Button layoutX="300.0" layoutY="180.0" text="Schedule Scan"/>
+    <Button layoutX="420.0" layoutY="140.0" text="Load Presets"/>
+
+    <TableView layoutX="450.0" layoutY="100.0" prefHeight="120.0" prefWidth="500.0">
+        <columns>
+            <TableColumn prefWidth="100.0" text="Alert ID"/>
+            <TableColumn prefWidth="120.0" text="Stock Symbol"/>
+            <TableColumn prefWidth="80.0" text="Risk Score"/>
+            <TableColumn prefWidth="100.0" text="Detection Time"/>
+            <TableColumn prefWidth="100.0" text="Pattern Type"/>
+        </columns>
+    </TableView>
+
+    <Label layoutX="20.0" layoutY="240.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
+           text="2. Flag Unusual Price Movements"/>
+    <TableView layoutX="30.0" layoutY="270.0" prefHeight="100.0" prefWidth="650.0">
+        <columns>
+            <TableColumn prefWidth="100.0" text="Stock Symbol"/>
+            <TableColumn prefWidth="80.0" text="Current Price"/>
+            <TableColumn prefWidth="80.0" text="Change Percent"/>
+            <TableColumn prefWidth="100.0" text="Volume"/>
+            <TableColumn prefWidth="120.0" text="Unusual Activity"/>
+            <TableColumn prefWidth="100.0" text="Flag Status"/>
+            <TableColumn prefWidth="70.0" text="Actions"/>
+        </columns>
+    </TableView>
+    <Button layoutX="690.0" layoutY="290.0" text="Flag Selected"/>
+    <Button layoutX="690.0" layoutY="320.0" text="Add to Watch"/>
+    <Button layoutX="690.0" layoutY="350.0" text="Generate Alert"/>
+
+    <Label layoutX="20.0" layoutY="390.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
+           text="3. Initiate Formal Review"/>
+    <Label layoutX="30.0" layoutY="420.0" text="Case ID:"/>
+    <TextField layoutX="90.0" layoutY="415.0" prefWidth="150.0"/>
+    <Label layoutX="250.0" layoutY="420.0" text="Priority:"/>
+    <ChoiceBox layoutX="300.0" layoutY="415.0" prefWidth="100.0"/>
+    <Label layoutX="410.0" layoutY="420.0" text="Assigned Reviewer:"/>
+    <ChoiceBox layoutX="520.0" layoutY="415.0" prefWidth="150.0"/>
+
+    <Label layoutX="30.0" layoutY="450.0" text="Review Scope:"/>
+    <CheckBox layoutX="120.0" layoutY="450.0" text="Trading Pattern Analysis"/>
+    <CheckBox layoutX="280.0" layoutY="450.0" text="Participant Investigation"/>
+    <CheckBox layoutX="450.0" layoutY="450.0" text="Market Impact Assessment"/>
+    <CheckBox layoutX="120.0" layoutY="475.0" text="Historical Comparison"/>
+    <CheckBox layoutX="280.0" layoutY="475.0" text="Cross-Market Analysis"/>
+    <CheckBox layoutX="450.0" layoutY="475.0" text="Regulatory Compliance"/>
+
+    <Label layoutX="30.0" layoutY="505.0" text="Review Notes:"/>
+    <TextArea layoutX="30.0" layoutY="525.0" prefHeight="60.0" prefWidth="500.0"
+              promptText="Enter review instructions and specific areas of concern"/>
+    <Button layoutX="540.0" layoutY="540.0" text="Start Review"/>
+    <Button layoutX="630.0" layoutY="540.0" text="Assign Team"/>
+
+    <Label layoutX="20.0" layoutY="600.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
+           text="4. Send Findings to Legal Unit"/>
+    <Label layoutX="30.0" layoutY="630.0" text="Review Outcome:"/>
+    <ChoiceBox layoutX="140.0" layoutY="625.0" prefWidth="150.0"/>
+    <Label layoutX="300.0" layoutY="630.0" text="Evidence Strength:"/>
+    <ChoiceBox layoutX="410.0" layoutY="625.0" prefWidth="120.0"/>
+    <Label layoutX="540.0" layoutY="630.0" text="Recommended Action:"/>
+    <ChoiceBox layoutX="660.0" layoutY="625.0" prefWidth="150.0"/>
+
+    <Label layoutX="30.0" layoutY="660.0" text="Summary for Legal:"/>
+    <TextArea layoutX="150.0" layoutY="655.0" prefHeight="40.0" prefWidth="400.0"
+              promptText="Executive summary for legal review"/>
+    <Button layoutX="560.0" layoutY="665.0" text="Submit to Legal"/>
+    <Button layoutX="670.0" layoutY="665.0" text="Request Meeting"/>
+    <Button layoutX="790.0" layoutY="665.0" text="Archive Case"/>
+
+</AnchorPane>

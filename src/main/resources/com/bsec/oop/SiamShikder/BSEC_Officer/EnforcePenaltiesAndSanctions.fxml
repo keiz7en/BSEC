@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.bsec.oop.SiamShikder.BSEC_Officer.EnforcePenaltiesAndSanctions"
+            prefHeight="900.0" prefWidth="1200.0">
+
+    <HBox layoutX="0.0" layoutY="0.0" prefHeight="60.0" prefWidth="1200.0" alignment="CENTER_LEFT" spacing="20.0"
+          style="-fx-padding: 10;">
+        <children>
+            <Label text="Enforce Penalties and Sanctions" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Back" onAction="#goBack" style="-fx-font-size: 14px;"/>
+        </children>
+    </HBox>
+
+    <ScrollPane layoutX="0.0" layoutY="60.0" prefHeight="840.0" prefWidth="1200.0" fitToWidth="true" fitToHeight="true">
+        <content>
+            <VBox spacing="30.0" style="-fx-padding: 20;">
+                <children>
+                    <!-- Review Investigation Findings Section -->
+                    <VBox spacing="15.0">
+                        <children>
+                            <Label text="1. Review Investigation Findings"
+                                   style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <Button text="Open Case" prefWidth="120.0"/>
+                                    <Button text="Review Report" prefWidth="130.0"/>
+                                    <Button text="Legal Opinion" prefWidth="130.0"/>
+                                    <Region HBox.hgrow="ALWAYS"/>
+                                    <Label text="Severity Filter:" style="-fx-font-weight: bold;"/>
+                                    <ComboBox prefWidth="150.0"/>
+                                </children>
+                            </HBox>
+
+                            <TableView prefHeight="200.0">
+                                <columns>
+                                    <TableColumn prefWidth="120.0" text="Case ID"/>
+                                    <TableColumn prefWidth="200.0" text="Subject"/>
+                                    <TableColumn prefWidth="150.0" text="Violation Type"/>
+                                    <TableColumn prefWidth="120.0" text="Severity"/>
+                                    <TableColumn prefWidth="140.0" text="Recommendation"/>
+                                    <TableColumn prefWidth="110.0" text="Status"/>
+                                    <TableColumn prefWidth="100.0" text="Actions"/>
+                                </columns>
+                            </TableView>
+                        </children>
+                    </VBox>
+
+                    <!-- Determine Penalty Section -->
+                    <VBox spacing="15.0">
+                        <children>
+                            <Label text="2. Determine Penalty" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <Label text="Selected Case:" style="-fx-font-weight: bold;"/>
+                                    <TextField prefWidth="200.0" promptText="Case ID"/>
+                                    <Button text="Load Case" prefWidth="120.0"/>
+                                    <Region HBox.hgrow="ALWAYS"/>
+                                    <Button text="Calculate Fine" prefWidth="130.0"
+                                            style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+                                </children>
+                            </HBox>
+
+                            <HBox spacing="20.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Penalty Type:" style="-fx-font-weight: bold;"/>
+                                            <ChoiceBox prefWidth="150.0"/>
+                                        </children>
+                                    </VBox>
+
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Amount:" style="-fx-font-weight: bold;"/>
+                                            <TextField prefWidth="120.0" promptText="0.00"/>
+                                        </children>
+                                    </VBox>
+
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Duration (days):" style="-fx-font-weight: bold;"/>
+                                            <TextField prefWidth="100.0" promptText="30"/>
+                                        </children>
+                                    </VBox>
+
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Effective Date:" style="-fx-font-weight: bold;"/>
+                                            <DatePicker prefWidth="150.0"/>
+                                        </children>
+                                    </VBox>
+                                </children>
+                            </HBox>
+
+                            <VBox spacing="10.0">
+                                <children>
+                                    <Label text="Penalty Justification:" style="-fx-font-weight: bold;"/>
+                                    <TextArea prefHeight="100.0"
+                                              promptText="Enter detailed justification for the penalty decision..."
+                                              wrapText="true"/>
+                                </children>
+                            </VBox>
+                        </children>
+                    </VBox>
+
+                    <!-- Notify Offending Parties Section -->
+                    <VBox spacing="15.0">
+                        <children>
+                            <Label text="3. Notify Offending Parties"
+                                   style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                            <HBox spacing="20.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Notification Type:" style="-fx-font-weight: bold;"/>
+                                            <ChoiceBox prefWidth="150.0"/>
+                                        </children>
+                                    </VBox>
+
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Delivery Method:" style="-fx-font-weight: bold;"/>
+                                            <VBox spacing="5.0">
+                                                <children>
+                                                    <CheckBox text="Email Notification"/>
+                                                    <CheckBox text="Registered Mail"/>
+                                                    <CheckBox text="Legal Notice"/>
+                                                </children>
+                                            </VBox>
+                                        </children>
+                                    </VBox>
+
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Public Notice:" style="-fx-font-weight: bold;"/>
+                                            <VBox spacing="5.0">
+                                                <children>
+                                                    <CheckBox text="Public Notice"/>
+                                                    <CheckBox text="Media Alert"/>
+                                                    <CheckBox text="Website Publication"/>
+                                                </children>
+                                            </VBox>
+                                        </children>
+                                    </VBox>
+                                </children>
+                            </HBox>
+
+                            <VBox spacing="10.0">
+                                <children>
+                                    <Label text="Notification Message:" style="-fx-font-weight: bold;"/>
+                                    <TextArea prefHeight="80.0" promptText="Enter notification message content..."
+                                              wrapText="true"/>
+                                </children>
+                            </VBox>
+
+                            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <Button text="Send Notification" prefWidth="150.0"
+                                            style="-fx-background-color: #FF9800; -fx-text-fill: white;"/>
+                                    <Button text="Generate Letter" prefWidth="140.0"/>
+                                    <Button text="Schedule Delivery" prefWidth="150.0"/>
+                                </children>
+                            </HBox>
+                        </children>
+                    </VBox>
+
+                    <!-- Record Penalties Section -->
+                    <VBox spacing="15.0">
+                        <children>
+                            <Label text="4. Record Penalties" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                            <HBox spacing="20.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Penalty ID:" style="-fx-font-weight: bold;"/>
+                                            <TextField prefWidth="150.0" promptText="Auto-generated"/>
+                                        </children>
+                                    </VBox>
+
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Entity:" style="-fx-font-weight: bold;"/>
+                                            <TextField prefWidth="200.0" promptText="Entity name"/>
+                                        </children>
+                                    </VBox>
+
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Payment Status:" style="-fx-font-weight: bold;"/>
+                                            <ChoiceBox prefWidth="150.0"/>
+                                        </children>
+                                    </VBox>
+
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Due Date:" style="-fx-font-weight: bold;"/>
+                                            <DatePicker prefWidth="150.0"/>
+                                        </children>
+                                    </VBox>
+                                </children>
+                            </HBox>
+
+                            <VBox spacing="10.0">
+                                <children>
+                                    <Label text="Payment Tracking:" style="-fx-font-weight: bold;"/>
+                                    <TableView prefHeight="120.0">
+                                        <columns>
+                                            <TableColumn prefWidth="120.0" text="Penalty ID"/>
+                                            <TableColumn prefWidth="180.0" text="Entity"/>
+                                            <TableColumn prefWidth="120.0" text="Amount"/>
+                                            <TableColumn prefWidth="120.0" text="Due Date"/>
+                                            <TableColumn prefWidth="120.0" text="Status"/>
+                                            <TableColumn prefWidth="150.0" text="Actions"/>
+                                        </columns>
+                                    </TableView>
+                                </children>
+                            </VBox>
+
+                            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <Button text="Record Payment" prefWidth="140.0"/>
+                                    <Button text="Update Status" prefWidth="130.0"/>
+                                    <Button text="Generate Receipt" prefWidth="150.0"/>
+                                    <Button text="Send Reminder" prefWidth="140.0"/>
+                                </children>
+                            </HBox>
+                        </children>
+                    </VBox>
+
+                    <!-- Public Announcement Section -->
+                    <VBox spacing="15.0">
+                        <children>
+                            <Label text="5. Public Announcement of Sanctions"
+                                   style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                            <HBox spacing="20.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Announcement Type:" style="-fx-font-weight: bold;"/>
+                                            <ChoiceBox prefWidth="180.0"/>
+                                        </children>
+                                    </VBox>
+
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Publication Date:" style="-fx-font-weight: bold;"/>
+                                            <DatePicker prefWidth="150.0"/>
+                                        </children>
+                                    </VBox>
+
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Classification:" style="-fx-font-weight: bold;"/>
+                                            <ChoiceBox prefWidth="150.0"/>
+                                        </children>
+                                    </VBox>
+                                </children>
+                            </HBox>
+
+                            <HBox spacing="30.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Publication Channels:" style="-fx-font-weight: bold;"/>
+                                            <VBox spacing="5.0">
+                                                <children>
+                                                    <CheckBox text="Website Publication"/>
+                                                    <CheckBox text="Press Release"/>
+                                                    <CheckBox text="Official Bulletin"/>
+                                                </children>
+                                            </VBox>
+                                        </children>
+                                    </VBox>
+
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Additional Channels:" style="-fx-font-weight: bold;"/>
+                                            <VBox spacing="5.0">
+                                                <children>
+                                                    <CheckBox text="Industry Notice"/>
+                                                    <CheckBox text="Media Alert"/>
+                                                    <CheckBox text="International Notice"/>
+                                                </children>
+                                            </VBox>
+                                        </children>
+                                    </VBox>
+                                </children>
+                            </HBox>
+
+                            <VBox spacing="10.0">
+                                <children>
+                                    <Label text="Announcement Content:" style="-fx-font-weight: bold;"/>
+                                    <TextArea prefHeight="100.0" promptText="Enter public announcement content..."
+                                              wrapText="true"/>
+                                </children>
+                            </VBox>
+
+                            <HBox spacing="15.0" alignment="CENTER">
+                                <children>
+                                    <Button text="Publish Announcement" prefWidth="170.0"
+                                            style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                                    <Button text="Schedule Publish" prefWidth="150.0"/>
+                                    <Button text="Preview Content" prefWidth="140.0"/>
+                                    <Button text="Generate Report" prefWidth="140.0"/>
+                                </children>
+                            </HBox>
+                        </children>
+                    </VBox>
+                </children>
+            </VBox>
+        </content>
+    </ScrollPane>
+</AnchorPane>

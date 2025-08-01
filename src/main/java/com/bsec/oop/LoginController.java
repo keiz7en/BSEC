@@ -55,14 +55,14 @@ public class LoginController implements Initializable {
     @FXML
     protected void loginAsStockExchange() {
         if (authenticateUser("Stock Exchange")) {
-            navigateToUserTypePage("Stock Exchange", "/com/bsec/oop/StockExchange/Main.fxml", "BSEC - Stock Exchange Dashboard");
+            navigateToUserTypePage("Stock Exchange", "/com/bsec/oop/StockExchange/Menu_Regulator.fxml", "BSEC - Stock Exchange Dashboard");
         }
     }
 
     @FXML
     protected void loginAsBroker() {
         if (authenticateUser("Broker")) {
-            navigateToUserTypePage("Broker", "/com/bsec/oop/Broker/Main.fxml", "BSEC - Broker Dashboard");
+            navigateToUserTypePage("Broker", "/com/bsec/oop/Broker/Menu_Regulator.fxml", "BSEC - Broker Dashboard");
         }
     }
 
@@ -76,14 +76,14 @@ public class LoginController implements Initializable {
     @FXML
     protected void loginAsCompany() {
         if (authenticateUser("Company")) {
-            navigateToUserTypePage("Company", "/com/bsec/oop/Company/Main.fxml", "BSEC - Company Dashboard");
+            navigateToUserTypePage("Company", "/com/bsec/oop/Company/Menu_Regulator.fxml", "BSEC - Company Dashboard");
         }
     }
 
     @FXML
     protected void loginAsAuditor() {
         if (authenticateUser("Auditor")) {
-            navigateToUserTypePage("Auditor", "/com/bsec/oop/Auditor/Main.fxml", "BSEC - Auditor Dashboard");
+            navigateToUserTypePage("Auditor", "/com/bsec/oop/Auditor/Menu_Regulator.fxml", "BSEC - Auditor Dashboard");
         }
     }
 
@@ -97,7 +97,7 @@ public class LoginController implements Initializable {
     @FXML
     protected void loginAsRegulator() {
         if (authenticateUser("Regulator")) {
-            navigateToUserTypePage("Regulator", "/com/bsec/oop/SiamShikder/Regulator/Main.fxml", "BSEC - Regulator Dashboard");
+            navigateToUserTypePage("Regulator", "/com/bsec/oop/SiamShikder/Regulator/Menu_Regulator.fxml", "BSEC - Regulator Dashboard");
         }
     }
 

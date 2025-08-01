@@ -28,4 +28,116 @@ public class Main
             e.printStackTrace();
         }
     }
+
+    @javafx.fxml.FXML
+    public void MonitorTradeButton(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/SiamShikder/Regulator/MonitorInsiderTrading.fxml"));
+            Parent root = loader.load();
+            Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            currentStage.setScene(scene);
+            currentStage.setTitle("Monitor Insider Trading");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @javafx.fxml.FXML
+    public void suspendListButton(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/SiamShikder/Regulator/SuspendCompanyListing.fxml"));
+            Parent root = loader.load();
+            Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            currentStage.setScene(scene);
+            currentStage.setTitle("Suspend Company Listing");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @javafx.fxml.FXML
+    public void RegManipulateButton(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/SiamShikder/Regulator/RegulateMarketManipulation.fxml"));
+            Parent root = loader.load();
+            Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            currentStage.setScene(scene);
+            currentStage.setTitle("Regulate Market Manipulation");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @javafx.fxml.FXML
+    public void OverseeWhistleButton(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/SiamShikder/Regulator/OverseeWhistleblower.fxml"));
+            Parent root = loader.load();
+            Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            currentStage.setScene(scene);
+            currentStage.setTitle("Oversee Whistleblower Program");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @javafx.fxml.FXML
+    public void IPOapplicationButton(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/SiamShikder/Regulator/ReviewIPOApplication.fxml"));
+            Parent root = loader.load();
+            Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            currentStage.setScene(scene);
+            currentStage.setTitle("Review IPO Application");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @javafx.fxml.FXML
+    public void AuditReportsButton(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/SiamShikder/Regulator/ReviewFinancialAuditReports.fxml"));
+            Parent root = loader.load();
+            Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            currentStage.setScene(scene);
+            currentStage.setTitle("Review Financial Audit Reports");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @javafx.fxml.FXML
+    public void ConductAuditButton(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/SiamShikder/Regulator/ConductComplianceAudit.fxml"));
+            Parent root = loader.load();
+            Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            currentStage.setScene(scene);
+            currentStage.setTitle("Conduct Compliance Audit");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @javafx.fxml.FXML
+    public void approvestockdecButton(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/SiamShikder/Regulator/ApproveStockDividendDeclaration.fxml"));
+            Parent root = loader.load();
+            Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            currentStage.setScene(scene);
+            currentStage.setTitle("Approve Stock Dividend Declaration");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

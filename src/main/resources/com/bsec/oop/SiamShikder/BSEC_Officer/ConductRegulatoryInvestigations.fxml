@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.bsec.oop.SiamShikder.BSEC_Officer.ConductRegulatoryInvestigations"
+            prefHeight="800.0" prefWidth="1200.0">
+
+    <!-- Header -->
+    <HBox layoutX="0.0" layoutY="0.0" prefHeight="60.0" prefWidth="1200.0" alignment="CENTER_LEFT" spacing="20.0"
+          style="-fx-padding: 10;">
+        <children>
+            <Label text="Conduct Regulatory Investigations" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Back" onAction="#goBack" style="-fx-font-size: 14px;"/>
+        </children>
+    </HBox>
+
+    <!-- Main Content with ScrollPane -->
+    <ScrollPane layoutX="0.0" layoutY="60.0" prefHeight="740.0" prefWidth="1200.0" fitToWidth="true" fitToHeight="true">
+        <content>
+            <VBox spacing="30.0" style="-fx-padding: 20;">
+                <children>
+                    <!-- Receive Complaint or Tip-off Section -->
+                    <VBox spacing="15.0">
+                        <children>
+                            <Label text="1. Receive Complaint or Tip-off"
+                                   style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <Button text="New Case" prefWidth="120.0"
+                                            style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                                    <Button text="Assign Investigator" prefWidth="150.0"/>
+                                    <Button text="View Details" prefWidth="120.0"/>
+                                    <Region HBox.hgrow="ALWAYS"/>
+                                    <Label text="Priority Filter:" style="-fx-font-weight: bold;"/>
+                                    <ComboBox prefWidth="150.0"/>
+                                </children>
+                            </HBox>
+
+                            <TableView prefHeight="180.0">
+                                <columns>
+                                    <TableColumn prefWidth="120.0" text="Case ID"/>
+                                    <TableColumn prefWidth="200.0" text="Subject"/>
+                                    <TableColumn prefWidth="150.0" text="Source"/>
+                                    <TableColumn prefWidth="120.0" text="Date"/>
+                                    <TableColumn prefWidth="130.0" text="Priority"/>
+                                    <TableColumn prefWidth="120.0" text="Status"/>
+                                    <TableColumn prefWidth="100.0" text="Actions"/>
+                                </columns>
+                            </TableView>
+                        </children>
+                    </VBox>
+
+                    <!-- Gather Evidence Section -->
+                    <VBox spacing="15.0">
+                        <children>
+                            <Label text="2. Gather Evidence" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <Label text="Case ID:" style="-fx-font-weight: bold;"/>
+                                    <TextField prefWidth="150.0" promptText="Enter case ID"/>
+                                    <Button text="Load Case" prefWidth="120.0"/>
+                                    <Region HBox.hgrow="ALWAYS"/>
+                                    <Label text="Evidence Type:" style="-fx-font-weight: bold;"/>
+                                    <ChoiceBox prefWidth="150.0"/>
+                                    <Button text="Add Evidence" prefWidth="130.0"/>
+                                </children>
+                            </HBox>
+
+                            <VBox spacing="10.0">
+                                <children>
+                                    <Label text="Evidence Collection:" style="-fx-font-weight: bold;"/>
+                                    <TableView prefHeight="150.0">
+                                        <columns>
+                                            <TableColumn prefWidth="100.0" text="Evidence ID"/>
+                                            <TableColumn prefWidth="150.0" text="Evidence Type"/>
+                                            <TableColumn prefWidth="250.0" text="Description"/>
+                                            <TableColumn prefWidth="120.0" text="Date Collected"/>
+                                            <TableColumn prefWidth="100.0" text="Status"/>
+                                            <TableColumn prefWidth="120.0" text="Actions"/>
+                                        </columns>
+                                    </TableView>
+                                </children>
+                            </VBox>
+
+                            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <Button text="Upload File" prefWidth="120.0"/>
+                                    <Button text="Record Statement" prefWidth="150.0"/>
+                                    <Button text="Digital Evidence" prefWidth="140.0"/>
+                                    <Button text="Physical Evidence" prefWidth="140.0"/>
+                                </children>
+                            </HBox>
+                        </children>
+                    </VBox>
+
+                    <!-- Interview Involved Parties Section -->
+                    <VBox spacing="15.0">
+                        <children>
+                            <Label text="3. Interview Involved Parties"
+                                   style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                            <HBox spacing="20.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <VBox spacing="10.0" prefWidth="300.0">
+                                        <children>
+                                            <Label text="Interviewee Information:" style="-fx-font-weight: bold;"/>
+                                            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                                <children>
+                                                    <Label text="Name:"/>
+                                                    <TextField prefWidth="200.0" promptText="Full name"/>
+                                                </children>
+                                            </HBox>
+                                            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                                <children>
+                                                    <Label text="Role:"/>
+                                                    <TextField prefWidth="200.0" promptText="Position/Role"/>
+                                                </children>
+                                            </HBox>
+                                            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                                <children>
+                                                    <Label text="Contact:"/>
+                                                    <TextField prefWidth="200.0" promptText="Phone/Email"/>
+                                                </children>
+                                            </HBox>
+                                        </children>
+                                    </VBox>
+
+                                    <VBox spacing="10.0" prefWidth="300.0">
+                                        <children>
+                                            <Label text="Interview Schedule:" style="-fx-font-weight: bold;"/>
+                                            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                                <children>
+                                                    <Label text="Date:"/>
+                                                    <DatePicker prefWidth="150.0"/>
+                                                </children>
+                                            </HBox>
+                                            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                                <children>
+                                                    <Label text="Time:"/>
+                                                    <TextField prefWidth="100.0" promptText="HH:MM"/>
+                                                </children>
+                                            </HBox>
+                                            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                                <children>
+                                                    <Label text="Location:"/>
+                                                    <TextField prefWidth="180.0" promptText="Meeting location"/>
+                                                </children>
+                                            </HBox>
+                                        </children>
+                                    </VBox>
+                                </children>
+                            </HBox>
+
+                            <VBox spacing="10.0">
+                                <children>
+                                    <Label text="Interview Notes:" style="-fx-font-weight: bold;"/>
+                                    <TextArea prefHeight="100.0"
+                                              promptText="Record interview notes, key statements, and observations..."
+                                              wrapText="true"/>
+                                </children>
+                            </VBox>
+
+                            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <Button text="Schedule Interview" prefWidth="150.0"/>
+                                    <Button text="Record Audio" prefWidth="120.0"/>
+                                    <Button text="Save Notes" prefWidth="120.0"/>
+                                    <Button text="Generate Summary" prefWidth="150.0"/>
+                                </children>
+                            </HBox>
+                        </children>
+                    </VBox>
+
+                    <!-- Draft Investigation Report Section -->
+                    <VBox spacing="15.0">
+                        <children>
+                            <Label text="4. Draft Investigation Report"
+                                   style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                            <HBox spacing="20.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Report Title:" style="-fx-font-weight: bold;"/>
+                                            <TextField prefWidth="300.0" promptText="Enter report title"/>
+                                        </children>
+                                    </VBox>
+
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Report Type:" style="-fx-font-weight: bold;"/>
+                                            <ChoiceBox prefWidth="150.0"/>
+                                        </children>
+                                    </VBox>
+
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Classification:" style="-fx-font-weight: bold;"/>
+                                            <ChoiceBox prefWidth="150.0"/>
+                                        </children>
+                                    </VBox>
+                                </children>
+                            </HBox>
+
+                            <VBox spacing="10.0">
+                                <children>
+                                    <Label text="Investigation Findings:" style="-fx-font-weight: bold;"/>
+                                    <TextArea prefHeight="120.0"
+                                              promptText="Enter detailed investigation findings, analysis, and conclusions..."
+                                              wrapText="true"/>
+                                </children>
+                            </VBox>
+
+                            <VBox spacing="10.0">
+                                <children>
+                                    <Label text="Recommendations:" style="-fx-font-weight: bold;"/>
+                                    <TextArea prefHeight="80.0"
+                                              promptText="Enter recommendations and suggested actions..."
+                                              wrapText="true"/>
+                                </children>
+                            </VBox>
+
+                            <HBox spacing="15.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <Button text="Save Draft" prefWidth="120.0"/>
+                                    <Button text="Generate Report" prefWidth="140.0"
+                                            style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+                                    <Button text="Review Report" prefWidth="130.0"/>
+                                    <Button text="Export PDF" prefWidth="120.0"/>
+                                </children>
+                            </HBox>
+                        </children>
+                    </VBox>
+
+                    <!-- Submit to Enforcement Unit Section -->
+                    <VBox spacing="15.0">
+                        <children>
+                            <Label text="5. Submit to Enforcement Unit"
+                                   style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                            <HBox spacing="20.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Recommendation:" style="-fx-font-weight: bold;"/>
+                                            <ChoiceBox prefWidth="180.0"/>
+                                        </children>
+                                    </VBox>
+
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Priority:" style="-fx-font-weight: bold;"/>
+                                            <ChoiceBox prefWidth="120.0"/>
+                                        </children>
+                                    </VBox>
+
+                                    <VBox spacing="10.0">
+                                        <children>
+                                            <Label text="Due Date:" style="-fx-font-weight: bold;"/>
+                                            <DatePicker prefWidth="150.0"/>
+                                        </children>
+                                    </VBox>
+                                </children>
+                            </HBox>
+
+                            <HBox spacing="30.0" alignment="CENTER_LEFT">
+                                <children>
+                                    <VBox spacing="5.0">
+                                        <children>
+                                            <CheckBox text="Urgent Action Required"/>
+                                            <CheckBox text="Legal Review Needed"/>
+                                            <CheckBox text="Financial Investigation"/>
+                                        </children>
+                                    </VBox>
+
+                                    <VBox spacing="5.0">
+                                        <children>
+                                            <CheckBox text="Criminal Referral"/>
+                                            <CheckBox text="Civil Enforcement"/>
+                                            <CheckBox text="Administrative Action"/>
+                                        </children>
+                                    </VBox>
+                                </children>
+                            </HBox>
+
+                            <VBox spacing="10.0">
+                                <children>
+                                    <Label text="Submission Notes:" style="-fx-font-weight: bold;"/>
+                                    <TextArea prefHeight="80.0"
+                                              promptText="Enter additional notes for enforcement unit..."
+                                              wrapText="true"/>
+                                </children>
+                            </VBox>
+
+                            <HBox spacing="15.0" alignment="CENTER">
+                                <children>
+                                    <Button text="Submit Report" prefWidth="130.0"
+                                            style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                                    <Button text="Request Meeting" prefWidth="140.0"/>
+                                    <Button text="Send Alert" prefWidth="120.0"/>
+                                    <Button text="Track Progress" prefWidth="130.0"/>
+                                </children>
+                            </HBox>
+                        </children>
+                    </VBox>
+                </children>
+            </VBox>
+        </content>
+    </ScrollPane>
+</AnchorPane>
