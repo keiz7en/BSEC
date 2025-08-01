@@ -8,10 +8,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.bsec.oop.SiamShikder.Regulator.Main"
+            fx:controller="com.bsec.oop.SiamShikder.Regulator.ReviewIPOApplication"
             prefHeight="400.0" prefWidth="600.0">
-    <children>
-        <Label layoutX="240.0" layoutY="50.0" text="Regulator Dashboard"/>
-        <Button layoutX="250.0" layoutY="350.0" mnemonicParsing="false" onAction="#goToLogin" text="Back to Login"/>
-    </children>
+
 </AnchorPane>

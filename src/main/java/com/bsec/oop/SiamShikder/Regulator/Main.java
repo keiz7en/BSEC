@@ -28,4 +28,36 @@ public class Main
             e.printStackTrace();
         }
     }
+
+    @javafx.fxml.FXML
+    public void MonitorTradeButton(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void suspendListButton(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void RegManipulateButton(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void OverseeWhistleButton(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void IPOapplicationButton(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void AuditReportsButton(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void ConductAuditButton(ActionEvent actionEvent) {
+    }
+
+    @javafx.fxml.FXML
+    public void approvestockdecButton(ActionEvent actionEvent) {
+    }
 }
