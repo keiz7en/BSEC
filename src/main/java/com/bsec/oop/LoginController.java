@@ -6,10 +6,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,189 +20,125 @@ public class LoginController implements Initializable {
     private Label welcomeText;
 
     @FXML
-    private TextField Id_number;
+    private ComboBox<String> userComboBox;
 
     @FXML
-    private ChoiceBox<String> user_type;
+    private ComboBox<String> roleComboBox;
 
     @FXML
-    private PasswordField PasswordField;
+    private Button confirmButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Populate user types
-        user_type.getItems().addAll(
-                "Investor",
-                "Stock Exchange",
-                "Broker",
-                "Stock Analyst",
-                "Company",
-                "Auditor",
-                "BSEC Officer",
-                "Regulator"
+        // Populate user names
+        userComboBox.getItems().addAll(
+                "Fayshal",
+                "Abid",
+                "Sadman",
+                "SiamShikder"
         );
+
+        // Add listener to populate roles based on selected user
+        userComboBox.setOnAction(event -> updateRoleComboBox());
     }
 
+    private void updateRoleComboBox() {
+        roleComboBox.getItems().clear();
+        String selectedUser = userComboBox.getValue();
 
-    @FXML
-    protected void loginAsInvestor() {
-        if (authenticateUser("Investor")) {
-            navigateToUserTypePage("Investor", "/com/bsec/oop/Fayshal/Investor/Menu_Investor.fxml", "BSEC - Investor Dashboard");
+        if (selectedUser != null) {
+            switch (selectedUser) {
+                case "Fayshal":
+                    roleComboBox.getItems().addAll("Investor", "StockExchange");
+                    break;
+                case "Abid":
+                    roleComboBox.getItems().addAll("Analyst", "Broker");
+                    break;
+                case "Sadman":
+                    roleComboBox.getItems().addAll("Auditor", "Company");
+                    break;
+                case "SiamShikder":
+                    roleComboBox.getItems().addAll("BSEC_Officer", "Regulator");
+                    break;
+            }
         }
     }
 
     @FXML
-    protected void loginAsStockExchange() {
-        if (authenticateUser("Stock Exchange")) {
-            navigateToUserTypePage("Stock Exchange", "/com/bsec/oop/StockExchange/Menu_Regulator.fxml", "BSEC - Stock Exchange Dashboard");
-        }
-    }
+    protected void confirmLogin() {
+        String selectedUser = userComboBox.getValue();
+        String selectedRole = roleComboBox.getValue();
 
-    @FXML
-    protected void loginAsBroker() {
-        if (authenticateUser("Broker")) {
-            navigateToUserTypePage("Broker", "/com/bsec/oop/Broker/Menu_Regulator.fxml", "BSEC - Broker Dashboard");
-        }
-    }
-
-    @FXML
-    protected void loginAsStockAnalyst() {
-        if (authenticateUser("Stock Analyst")) {
-            navigateToUserTypePage("Stock Analyst", "/com/bsec/oop/StockAnalyst/Main.fxml", "BSEC - Stock Analyst Dashboard");
-        }
-    }
-
-    @FXML
-    protected void loginAsCompany() {
-        if (authenticateUser("Company")) {
-            navigateToUserTypePage("Company", "/com/bsec/oop/Company/Menu_Regulator.fxml", "BSEC - Company Dashboard");
-        }
-    }
-
-    @FXML
-    protected void loginAsAuditor() {
-        if (authenticateUser("Auditor")) {
-            navigateToUserTypePage("Auditor", "/com/bsec/oop/Auditor/Menu_Regulator.fxml", "BSEC - Auditor Dashboard");
-        }
-    }
-
-    @FXML
-    protected void loginAsBSECOfficer() {
-        if (authenticateUser("BSEC Officer")) {
-            navigateToUserTypePage("BSEC Officer", "/com/bsec/oop/SiamShikder/BSEC_Officer/Main.fxml", "BSEC - Officer Dashboard");
-        }
-    }
-
-    @FXML
-    protected void loginAsRegulator() {
-        if (authenticateUser("Regulator")) {
-            navigateToUserTypePage("Regulator", "/com/bsec/oop/SiamShikder/Regulator/Menu_Regulator.fxml", "BSEC - Regulator Dashboard");
-        }
-    }
-
-    @FXML
-    protected void SubmitButton() {
-        String selectedUserType = user_type.getValue();
-
-        // Validate user type selection first
-        if (selectedUserType == null) {
-            showAlert("User Type Required", "Please select a user type.");
+        if (selectedUser == null) {
+            showAlert("User Required", "Please select a user.");
             return;
         }
 
-        // Call the appropriate login method based on user type
-        switch (selectedUserType) {
-            case "Investor":
-                loginAsInvestor();
-                break;
-            case "Stock Exchange":
-                loginAsStockExchange();
-                break;
-            case "Broker":
-                loginAsBroker();
-                break;
-            case "Stock Analyst":
-                loginAsStockAnalyst();
-                break;
-            case "Company":
-                loginAsCompany();
-                break;
-            case "Auditor":
-                loginAsAuditor();
-                break;
-            case "BSEC Officer":
-                loginAsBSECOfficer();
-                break;
-            case "Regulator":
-                loginAsRegulator();
-                break;
+        if (selectedRole == null) {
+            showAlert("Role Required", "Please select a role.");
+            return;
+        }
+
+        // Navigate based on selected user and role
+        String fxmlPath = getFXMLPath(selectedUser, selectedRole);
+        String windowTitle = "BSEC - " + selectedUser + " (" + selectedRole + ")";
+
+        navigateToUserPage(selectedUser, selectedRole, fxmlPath, windowTitle);
+    }
+
+    private String getFXMLPath(String user, String role) {
+        switch (user) {
+            case "Fayshal":
+                if (role.equals("Investor")) {
+                    return "/com/bsec/oop/Fayshal/Investor/Menu_Investor.fxml";
+                } else { // StockExchange
+                    return "/com/bsec/oop/Fayshal/StockExchange/Main.fxml";
+                }
+            case "Abid":
+                if (role.equals("Analyst")) {
+                    return "/com/bsec/oop/Abid/Analyst/Main.fxml";
+                } else { // Broker
+                    return "/com/bsec/oop/Abid/Broker/Main.fxml";
+                }
+            case "Sadman":
+                if (role.equals("Auditor")) {
+                    return "/com/bsec/oop/sadman/Auditor/Main.fxml";
+                } else { // Company
+                    return "/com/bsec/oop/sadman/Company/Main.fxml";
+                }
+            case "SiamShikder":
+                if (role.equals("BSEC_Officer")) {
+                    return "/com/bsec/oop/SiamShikder/BSEC_Officer/Main.fxml";
+                } else { // Regulator
+                    return "/com/bsec/oop/SiamShikder/Regulator/Main.fxml";
+                }
             default:
-                showAlert("Error", "Unknown user type: " + selectedUserType);
+                return "";
         }
     }
 
-    @FXML
-    protected void SignUpButton() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/SignUp.fxml"));
-            Parent signUpRoot = loader.load();
-            Stage currentStage = (Stage) Id_number.getScene().getWindow();
-            Scene signUpScene = new Scene(signUpRoot);
-            currentStage.setScene(signUpScene);
-            currentStage.setTitle("BSEC Sign Up");
-        } catch (IOException e) {
-            showAlert("Error", "Could not load Sign Up page: " + e.getMessage());
-        }
-    }
-
-    private boolean authenticateUser(String expectedUserType) {
-        String idText = Id_number.getText();
-        String passwordText = PasswordField.getText();
-        if (idText == null || !idText.matches("\\d{6}")) {
-            showAlert("Invalid ID", "ID must be exactly 6 digits.");
-            return false;
-        }
-
-        if (passwordText == null || passwordText.length() != 6) {
-            showAlert("Invalid Password", "Password must be exactly 6 characters (letters, digits, or combined).");
-            return false;
-        }
-
-        User authenticatedUser = DatabaseManager.authenticateUser(idText, passwordText, expectedUserType);
-
-        if (authenticatedUser != null) {
-            showAlert("Login Successful", "Welcome " + authenticatedUser.getFullName() + "!\n" +
-                    "User ID: " + authenticatedUser.getUserId() + "\n" +
-                    "User Type: " + authenticatedUser.getUserType());
-            Id_number.clear();
-            PasswordField.clear();
-            user_type.setValue(null);
-
-            return true;
-        } else {
-            showAlert("Login Failed", "Invalid credentials for " + expectedUserType + ". Please check your ID and password.\n\n" +
-                    "If you don't have an account, please sign up first.");
-            return false;
-        }
-    }
-
-    private void navigateToUserTypePage(String userType, String fxmlPath, String windowTitle) {
+    private void navigateToUserPage(String userName, String role, String fxmlPath, String windowTitle) {
         try {
             System.out.println("Attempting to load: " + fxmlPath);
             URL resourceUrl = getClass().getResource(fxmlPath);
             System.out.println("Resource URL: " + resourceUrl);
             FXMLLoader loader = new FXMLLoader(resourceUrl);
-            Parent userTypeRoot = loader.load();
-            Stage currentStage = (Stage) Id_number.getScene().getWindow();
-            Scene userTypeScene = new Scene(userTypeRoot);
-            currentStage.setScene(userTypeScene);
+            Parent userRoot = loader.load();
+            Stage currentStage = (Stage) userComboBox.getScene().getWindow();
+            Scene userScene = new Scene(userRoot);
+            currentStage.setScene(userScene);
             currentStage.setTitle(windowTitle);
+
+            showAlert("Login Successful", "Welcome " + userName + " as " + role + "!");
+            userComboBox.setValue(null);
+            roleComboBox.setValue(null);
+
         } catch (IOException e) {
-            System.err.println("Detailed error loading " + userType + " dashboard:");
+            System.err.println("Detailed error loading " + userName + " " + role + " dashboard:");
             System.err.println("FXML Path: " + fxmlPath);
             System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
-            showAlert("Error", "Could not load " + userType + " dashboard: " + e.getMessage());
+            showAlert("Error", "Could not load " + userName + " " + role + " dashboard: " + e.getMessage());
         }
     }
 
