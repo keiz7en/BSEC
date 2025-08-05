@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="600.0" prefWidth="800.0" spacing="15.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.Fayshal.StockExchange.CoordinateIPOScheduling">
+    <children>
+        <!-- Header -->
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Co-ordinate IPO Scheduling"/>
+
+        <!-- IPO Applications -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="IPO Applications:"/>
+
+        <TableView fx:id="ipoApplicationsTable" prefHeight="180.0">
+            <columns>
+                <TableColumn fx:id="companyColumn" prefWidth="150.0" text="Company Name"/>
+                <TableColumn fx:id="sectorColumn" prefWidth="100.0" text="Sector"/>
+                <TableColumn fx:id="sizeColumn" prefWidth="120.0" text="Issue Size"/>
+                <TableColumn fx:id="priceRangeColumn" prefWidth="120.0" text="Price Range"/>
+                <TableColumn fx:id="submissionDateColumn" prefWidth="120.0" text="Submission Date"/>
+                <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status"/>
+            </columns>
+        </TableView>
+
+        <!-- Document Validation -->
+        <Separator/>
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Document Validation:"/>
+
+        <HBox spacing="10.0">
+            <children>
+                <Label style="-fx-font-size: 14px;" text="Selected Company:"/>
+                <Label fx:id="selectedCompanyLabel" style="-fx-font-size: 14px; -fx-text-fill: blue;"
+                       text="Select from table above"/>
+            </children>
+        </HBox>
+
+        <VBox spacing="8.0">
+            <children>
+                <CheckBox fx:id="prospectusCheck" text="Company Prospectus"/>
+                <CheckBox fx:id="financialStatementsCheck" text="Audited Financial Statements (3 years)"/>
+                <CheckBox fx:id="valuationReportCheck" text="Independent Valuation Report"/>
+                <CheckBox fx:id="legalOpinionCheck" text="Legal Opinion"/>
+                <CheckBox fx:id="underwriterAgreementCheck" text="Underwriter Agreement"/>
+                <CheckBox fx:id="regulatoryApprovalsCheck" text="Regulatory Approvals (SEC, etc.)"/>
+            </children>
+        </VBox>
+
+        <!-- IPO Scheduling -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="IPO Scheduling:"/>
+
+        <HBox spacing="20.0">
+            <children>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Proposed IPO Date:"/>
+                        <DatePicker fx:id="ipoDatePicker" prefWidth="150.0"/>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Subscription Period:"/>
+                        <TextField fx:id="subscriptionPeriodField" prefWidth="100.0" promptText="Days"/>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Trading Start Date:"/>
+                        <DatePicker fx:id="tradingStartDatePicker" prefWidth="150.0"/>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+
+        <!-- Market Calendar Check -->
+        <HBox spacing="10.0">
+            <children>
+                <Label style="-fx-font-size: 14px;" text="Market Calendar Status:"/>
+                <Label fx:id="calendarStatusLabel" style="-fx-font-size: 14px; -fx-text-fill: green;"
+                       text="Date Available"/>
+                <Button style="-fx-font-size: 12px;" text="Check Conflicts"/>
+            </children>
+        </HBox>
+
+        <!-- IPO Details -->
+        <HBox spacing="10.0">
+            <children>
+                <Label style="-fx-font-size: 14px;" text="Special Notes:"/>
+                <TextArea fx:id="specialNotesArea" prefHeight="60.0" prefWidth="400.0"
+                          promptText="Enter any special scheduling notes..."/>
+            </children>
+        </HBox>
+
+        <!-- Action Buttons -->
+        <HBox spacing="20.0" style="-fx-alignment: center;">
+            <children>
+                <Button style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white;"
+                        text="Schedule IPO"/>
+                <Button style="-fx-font-size: 14px;" text="Request Revision"/>
+                <Button style="-fx-font-size: 14px;" text="Check Market Calendar"/>
+            </children>
+        </HBox>
+
+        <!-- Notification Section -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Notifications:"/>
+
+        <VBox spacing="8.0">
+            <children>
+                <CheckBox fx:id="companyNotificationCheck" selected="true" text="Notify Company"/>
+                <CheckBox fx:id="investorsNotificationCheck" selected="true" text="Notify Potential Investors"/>
+                <CheckBox fx:id="brokersNotificationCheck" selected="true" text="Notify Brokers"/>
+                <CheckBox fx:id="mediaNotificationCheck" text="Issue Press Release"/>
+                <CheckBox fx:id="websiteUpdateCheck" selected="true" text="Update Exchange Website"/>
+            </children>
+        </VBox>
+
+        <!-- Send Notifications -->
+        <HBox spacing="15.0" style="-fx-alignment: center;">
+            <children>
+                <Button style="-fx-font-size: 14px;" text="Send Notifications"/>
+                <Button style="-fx-font-size: 14px;" text="Monitor IPO Day"/>
+            </children>
+        </HBox>
+
+        <!-- Status Area -->
+        <TextArea fx:id="ipoStatusArea" prefHeight="60.0" editable="false"
+                  promptText="IPO scheduling status and notifications..."/>
+
+        <!-- Back Button -->
+        <HBox style="-fx-alignment: center;">
+            <children>
+                <Button onAction="#goBackToDashboard" style="-fx-font-size: 14px;" text="Back to Dashboard"/>
+            </children>
+        </HBox>
+    </children>
+</VBox>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="650.0" prefWidth="800.0" spacing="15.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.Fayshal.StockExchange.InvestorEducationPrograms">
+    <children>
+        <!-- Header -->
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Investor Education Programs"/>
+
+        <!-- Program Planning -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Program Planning:"/>
+
+        <HBox spacing="20.0">
+            <children>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Program Type:"/>
+                        <ComboBox fx:id="programTypeCombo" prefWidth="150.0"/>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Target Audience:"/>
+                        <ComboBox fx:id="targetAudienceCombo" prefWidth="150.0"/>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Duration (Hours):"/>
+                        <TextField fx:id="durationField" prefWidth="100.0" promptText="4"/>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+
+        <!-- Content Preparation -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Content &amp; Materials:"/>
+
+        <VBox spacing="8.0">
+            <children>
+                <CheckBox fx:id="presentationSlidesCheck" text="Presentation Slides"/>
+                <CheckBox fx:id="handbookCheck" text="Investor Handbook"/>
+                <CheckBox fx:id="videoMaterialsCheck" text="Educational Videos"/>
+                <CheckBox fx:id="worksheetsCheck" text="Practice Worksheets"/>
+                <CheckBox fx:id="quizMaterialsCheck" text="Assessment Quiz"/>
+                <CheckBox fx:id="certificateTemplateCheck" text="Certificate Template"/>
+            </children>
+        </VBox>
+
+        <!-- Program Scheduling -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Schedule Session:"/>
+
+        <HBox spacing="20.0">
+            <children>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Program Date:"/>
+                        <DatePicker fx:id="programDatePicker" prefWidth="150.0"/>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Start Time:"/>
+                        <TextField fx:id="startTimeField" prefWidth="100.0" promptText="10:00 AM"/>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Venue:"/>
+                        <TextField fx:id="venueField" prefWidth="200.0" promptText="Enter venue"/>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+
+        <!-- Program Topics -->
+        <HBox spacing="10.0">
+            <children>
+                <Label style="-fx-font-size: 14px;" text="Program Topics:"/>
+                <TextArea fx:id="programTopicsArea" prefHeight="80.0" prefWidth="400.0"
+                          promptText="Enter program topics and agenda..."/>
+            </children>
+        </HBox>
+
+        <!-- Scheduled Programs Table -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Scheduled Programs:"/>
+
+        <TableView fx:id="scheduledProgramsTable" prefHeight="150.0">
+            <columns>
+                <TableColumn fx:id="dateColumn" prefWidth="100.0" text="Date"/>
+                <TableColumn fx:id="programColumn" prefWidth="150.0" text="Program"/>
+                <TableColumn fx:id="audienceColumn" prefWidth="120.0" text="Audience"/>
+                <TableColumn fx:id="venueColumn" prefWidth="150.0" text="Venue"/>
+                <TableColumn fx:id="registeredColumn" prefWidth="100.0" text="Registered"/>
+                <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status"/>
+            </columns>
+        </TableView>
+
+        <!-- Program Actions -->
+        <HBox spacing="20.0" style="-fx-alignment: center;">
+            <children>
+                <Button style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white;"
+                        text="Schedule Program"/>
+                <Button style="-fx-font-size: 14px;" text="Send Invitations"/>
+                <Button style="-fx-font-size: 14px;" text="Prepare Materials"/>
+            </children>
+        </HBox>
+
+        <!-- Training Conduct -->
+        <Separator/>
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Conduct Training:"/>
+
+        <HBox spacing="15.0">
+            <children>
+                <Button style="-fx-font-size: 14px;" text="Start Session"/>
+                <Button style="-fx-font-size: 14px;" text="Take Attendance"/>
+                <Button style="-fx-font-size: 14px;" text="Conduct Quiz"/>
+                <Button style="-fx-font-size: 14px;" text="Issue Certificates"/>
+            </children>
+        </HBox>
+
+        <!-- Feedback Collection -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Feedback Collection:"/>
+
+        <HBox spacing="20.0">
+            <children>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Participants:"/>
+                        <Label fx:id="participantsCountLabel" style="-fx-font-size: 14px; -fx-text-fill: blue;"
+                               text="0"/>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Feedback Score:"/>
+                        <Label fx:id="feedbackScoreLabel" style="-fx-font-size: 14px; -fx-text-fill: green;"
+                               text="4.5/5"/>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Completion Rate:"/>
+                        <Label fx:id="completionRateLabel" style="-fx-font-size: 14px;" text="85%"/>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+
+        <!-- Reporting -->
+        <HBox spacing="15.0" style="-fx-alignment: center;">
+            <children>
+                <Button style="-fx-font-size: 14px;" text="Collect Feedback"/>
+                <Button style="-fx-font-size: 14px;" text="Generate Report"/>
+                <Button style="-fx-font-size: 14px;" text="Archive Session"/>
+            </children>
+        </HBox>
+
+        <!-- Status Area -->
+        <TextArea fx:id="programStatusArea" prefHeight="60.0" editable="false"
+                  promptText="Program status and feedback summary..."/>
+
+        <!-- Back Button -->
+        <HBox style="-fx-alignment: center;">
+            <children>
+                <Button onAction="#goBackToDashboard" style="-fx-font-size: 14px;" text="Back to Dashboard"/>
+            </children>
+        </HBox>
+    </children>
+</VBox>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="650.0" prefWidth="900.0" spacing="15.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.Fayshal.StockExchange.MonitorTradingActivity">
+    <children>
+        <!-- Header -->
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Monitor Real-time Trading Activity"/>
+
+        <!-- Trading Summary -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Live Trading Summary:"/>
+
+        <HBox spacing="30.0" style="-fx-alignment: center;">
+            <children>
+                <VBox spacing="5.0" style="-fx-alignment: center;">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Total Volume"/>
+                        <Label fx:id="totalVolumeLabel"
+                               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: blue;"
+                               text="2,456,789"/>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0" style="-fx-alignment: center;">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Total Value"/>
+                        <Label fx:id="totalValueLabel"
+                               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: green;" text="৳45.2M"/>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0" style="-fx-alignment: center;">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Trades Count"/>
+                        <Label fx:id="tradesCountLabel" style="-fx-font-size: 16px; -fx-font-weight: bold;"
+                               text="18,547"/>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0" style="-fx-alignment: center;">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Suspicious Alerts"/>
+                        <Label fx:id="suspiciousAlertsLabel"
+                               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: red;" text="7"/>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+
+        <!-- Live Trading Data -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Live Trading Data:"/>
+
+        <TableView fx:id="liveTradesTable" prefHeight="200.0">
+            <columns>
+                <TableColumn fx:id="timeColumn" prefWidth="100.0" text="Time"/>
+                <TableColumn fx:id="stockColumn" prefWidth="100.0" text="Stock"/>
+                <TableColumn fx:id="priceColumn" prefWidth="100.0" text="Price"/>
+                <TableColumn fx:id="volumeColumn" prefWidth="100.0" text="Volume"/>
+                <TableColumn fx:id="valueColumn" prefWidth="120.0" text="Value"/>
+                <TableColumn fx:id="changeColumn" prefWidth="100.0" text="Change %"/>
+                <TableColumn fx:id="flagColumn" prefWidth="100.0" text="Flag"/>
+            </columns>
+        </TableView>
+
+        <!-- Suspicious Activity Analysis -->
+        <Separator/>
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Suspicious Activity Detection:"/>
+
+        <HBox spacing="20.0">
+            <children>
+                <VBox spacing="10.0">
+                    <children>
+                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Detection Criteria:"/>
+                        <CheckBox fx:id="volumeSpikeCheck" selected="true" text="Volume Spike (>500% avg)"/>
+                        <CheckBox fx:id="priceSpikeCheck" selected="true" text="Price Spike (>10% in 5min)"/>
+                        <CheckBox fx:id="unusualPatternCheck" selected="true" text="Unusual Trading Pattern"/>
+                        <CheckBox fx:id="timeBasedCheck" selected="true" text="Off-hours Trading"/>
+                    </children>
+                </VBox>
+                <VBox spacing="10.0">
+                    <children>
+                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Current Alerts:"/>
+                        <ListView fx:id="alertsList" prefHeight="120.0" prefWidth="300.0"/>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+
+        <!-- Action Buttons -->
+        <HBox spacing="20.0" style="-fx-alignment: center;">
+            <children>
+                <Button style="-fx-font-size: 14px; -fx-background-color: #2196F3; -fx-text-fill: white;"
+                        text="Refresh Data"/>
+                <Button style="-fx-font-size: 14px; -fx-background-color: #ff9800; -fx-text-fill: white;"
+                        text="Alert Compliance"/>
+                <Button style="-fx-font-size: 14px;" text="Generate Report"/>
+                <Button style="-fx-font-size: 14px;" text="Export Logs"/>
+            </children>
+        </HBox>
+
+        <!-- Compliance Alert Section -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Compliance Alerts:"/>
+
+        <TextArea fx:id="complianceArea" prefHeight="80.0" editable="false"
+                  promptText="Compliance alerts and audit logs will appear here..."/>
+
+        <!-- Back Button -->
+        <HBox style="-fx-alignment: center;">
+            <children>
+                <Button onAction="#goBackToDashboard" style="-fx-font-size: 14px;" text="Back to Dashboard"/>
+            </children>
+        </HBox>
+    </children>
+</VBox>

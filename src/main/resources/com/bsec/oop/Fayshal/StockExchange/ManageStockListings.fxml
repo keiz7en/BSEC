@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="600.0" prefWidth="800.0" spacing="15.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.Fayshal.StockExchange.ManageStockListings">
+    <children>
+        <!-- Header -->
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Manage Stock Listings"/>
+
+        <!-- Listing Application Section -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="New Listing Applications:"/>
+
+        <TableView fx:id="applicationsTable" prefHeight="200.0">
+            <columns>
+                <TableColumn fx:id="companyColumn" prefWidth="150.0" text="Company Name"/>
+                <TableColumn fx:id="sectorColumn" prefWidth="100.0" text="Sector"/>
+                <TableColumn fx:id="dateColumn" prefWidth="120.0" text="Application Date"/>
+                <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status"/>
+                <TableColumn fx:id="documentsColumn" prefWidth="120.0" text="Documents"/>
+                <TableColumn fx:id="actionColumn" prefWidth="100.0" text="Action"/>
+            </columns>
+        </TableView>
+
+        <!-- Document Validation Section -->
+        <Separator/>
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Document Validation:"/>
+
+        <HBox spacing="10.0">
+            <children>
+                <Label style="-fx-font-size: 14px;" text="Selected Company:"/>
+                <Label fx:id="selectedCompanyLabel" style="-fx-font-size: 14px; -fx-text-fill: blue;"
+                       text="Select from table above"/>
+            </children>
+        </HBox>
+
+        <VBox spacing="10.0">
+            <children>
+                <CheckBox fx:id="financialStatementsCheck" text="Financial Statements (3 years)"/>
+                <CheckBox fx:id="auditReportCheck" text="Independent Audit Report"/>
+                <CheckBox fx:id="boardResolutionCheck" text="Board Resolution"/>
+                <CheckBox fx:id="prospectusCheck" text="Company Prospectus"/>
+                <CheckBox fx:id="regulatoryApprovalsCheck" text="Regulatory Approvals"/>
+            </children>
+        </VBox>
+
+        <!-- Eligibility Check -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Company Eligibility:"/>
+
+        <HBox spacing="30.0">
+            <children>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Market Cap:"/>
+                        <TextField fx:id="marketCapField" prefWidth="150.0" promptText="Enter market cap"/>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Years in Business:"/>
+                        <TextField fx:id="yearsInBusinessField" prefWidth="150.0" promptText="Enter years"/>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Revenue (Last Year):"/>
+                        <TextField fx:id="revenueField" prefWidth="150.0" promptText="Enter revenue"/>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+
+        <!-- Decision Section -->
+        <HBox spacing="20.0" style="-fx-alignment: center;">
+            <children>
+                <Button style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white;"
+                        text="Approve Listing"/>
+                <Button style="-fx-font-size: 14px; -fx-background-color: #f44336; -fx-text-fill: white;"
+                        text="Reject Application"/>
+                <Button style="-fx-font-size: 14px;" text="Request More Documents"/>
+            </children>
+        </HBox>
+
+        <!-- Status Area -->
+        <TextArea fx:id="statusArea" prefHeight="80.0" editable="false"
+                  promptText="Application status and notes will appear here..."/>
+
+        <!-- Back Button -->
+        <HBox style="-fx-alignment: center;">
+            <children>
+                <Button onAction="#goBackToDashboard" style="-fx-font-size: 14px;" text="Back to Dashboard"/>
+            </children>
+        </HBox>
+    </children>
+</VBox>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="600.0" prefWidth="800.0" spacing="15.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.Fayshal.StockExchange.ManageStockDelisting">
+    <children>
+        <!-- Header -->
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Manage Stock Delisting"/>
+
+        <!-- Delisting Requests -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Delisting Requests:"/>
+
+        <TableView fx:id="delistingRequestsTable" prefHeight="180.0">
+            <columns>
+                <TableColumn fx:id="companyColumn" prefWidth="150.0" text="Company"/>
+                <TableColumn fx:id="stockCodeColumn" prefWidth="100.0" text="Stock Code"/>
+                <TableColumn fx:id="requestDateColumn" prefWidth="120.0" text="Request Date"/>
+                <TableColumn fx:id="reasonColumn" prefWidth="200.0" text="Reason"/>
+                <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status"/>
+                <TableColumn fx:id="actionColumn" prefWidth="120.0" text="Action"/>
+            </columns>
+        </TableView>
+
+        <!-- Request Details -->
+        <Separator/>
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Request Details:"/>
+
+        <HBox spacing="10.0">
+            <children>
+                <Label style="-fx-font-size: 14px;" text="Selected Company:"/>
+                <Label fx:id="selectedCompanyLabel" style="-fx-font-size: 14px; -fx-text-fill: blue;"
+                       text="Select from table above"/>
+            </children>
+        </HBox>
+
+        <!-- Compliance Verification -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Compliance Verification:"/>
+
+        <VBox spacing="10.0">
+            <children>
+                <CheckBox fx:id="financialObligationsCheck" text="All financial obligations settled"/>
+                <CheckBox fx:id="shareholderNotificationCheck" text="Shareholders properly notified"/>
+                <CheckBox fx:id="regulatoryComplianceCheck" text="Regulatory compliance maintained"/>
+                <CheckBox fx:id="debtClearanceCheck" text="All debts cleared"/>
+                <CheckBox fx:id="auditCompletedCheck" text="Final audit completed"/>
+            </children>
+        </VBox>
+
+        <!-- Delisting Details -->
+        <HBox spacing="20.0">
+            <children>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Delisting Type:"/>
+                        <ComboBox fx:id="delistingTypeCombo" prefWidth="150.0"/>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Effective Date:"/>
+                        <DatePicker fx:id="effectiveDatePicker" prefWidth="150.0"/>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Notice Period (Days):"/>
+                        <TextField fx:id="noticePeriodField" prefWidth="100.0" promptText="30"/>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+
+        <!-- Reason for Decision -->
+        <HBox spacing="10.0">
+            <children>
+                <Label style="-fx-font-size: 14px;" text="Decision Reason:"/>
+                <TextArea fx:id="decisionReasonArea" prefHeight="60.0" prefWidth="400.0"
+                          promptText="Enter reason for approval/rejection..."/>
+            </children>
+        </HBox>
+
+        <!-- Decision Actions -->
+        <HBox spacing="20.0" style="-fx-alignment: center;">
+            <children>
+                <Button style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white;"
+                        text="Approve Delisting"/>
+                <Button style="-fx-font-size: 14px; -fx-background-color: #f44336; -fx-text-fill: white;"
+                        text="Reject Request"/>
+                <Button style="-fx-font-size: 14px;" text="Request Additional Info"/>
+            </children>
+        </HBox>
+
+        <!-- Market Notification -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Market Notification:"/>
+
+        <VBox spacing="10.0">
+            <children>
+                <CheckBox fx:id="investorsNotificationCheck" text="Notify all investors"/>
+                <CheckBox fx:id="brokersNotificationCheck" text="Notify brokers and dealers"/>
+                <CheckBox fx:id="mediaNotificationCheck" text="Issue press release"/>
+                <CheckBox fx:id="websiteUpdateCheck" text="Update exchange website"/>
+            </children>
+        </HBox>
+
+        <!-- Status Updates -->
+        <HBox spacing="20.0" style="-fx-alignment: center;">
+            <children>
+                <Button style="-fx-font-size: 14px;" text="Send Notifications"/>
+                <Button style="-fx-font-size: 14px;" text="Update Stock Status"/>
+                <Button style="-fx-font-size: 14px;" text="Generate Report"/>
+            </children>
+        </HBox>
+
+        <!-- Status Area -->
+        <TextArea fx:id="delistingStatusArea" prefHeight="60.0" editable="false"
+                  promptText="Delisting process status and notifications..."/>
+
+        <!-- Back Button -->
+        <HBox style="-fx-alignment: center;">
+            <children>
+                <Button onAction="#goBackToDashboard" style="-fx-font-size: 14px;" text="Back to Dashboard"/>
+            </children>
+        </HBox>
+    </children>
+</VBox>

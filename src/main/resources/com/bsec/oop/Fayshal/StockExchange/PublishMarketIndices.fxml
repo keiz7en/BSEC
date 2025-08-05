@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="600.0" prefWidth="800.0" spacing="15.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.Fayshal.StockExchange.PublishMarketIndices">
+    <children>
+        <!-- Header -->
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Publish Market Indices"/>
+
+        <!-- Data Collection Status -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Daily Market Data Collection:"/>
+
+        <HBox spacing="20.0">
+            <children>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Last Update:"/>
+                        <Label fx:id="lastUpdateLabel" style="-fx-font-size: 14px; -fx-text-fill: blue;"
+                               text="2025-01-06 15:30:00"/>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Data Status:"/>
+                        <Label fx:id="dataStatusLabel" style="-fx-font-size: 14px; -fx-text-fill: green;"
+                               text="Complete"/>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Records Processed:"/>
+                        <Label fx:id="recordsLabel" style="-fx-font-size: 14px;" text="1,245"/>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+
+        <!-- Market Indices Table -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Market Indices:"/>
+
+        <TableView fx:id="indicesTable" prefHeight="200.0">
+            <columns>
+                <TableColumn fx:id="indexNameColumn" prefWidth="150.0" text="Index Name"/>
+                <TableColumn fx:id="currentValueColumn" prefWidth="120.0" text="Current Value"/>
+                <TableColumn fx:id="changeColumn" prefWidth="100.0" text="Change"/>
+                <TableColumn fx:id="percentChangeColumn" prefWidth="100.0" text="% Change"/>
+                <TableColumn fx:id="lastUpdatedColumn" prefWidth="150.0" text="Last Updated"/>
+                <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status"/>
+            </columns>
+        </TableView>
+
+        <!-- Index Calculation -->
+        <Separator/>
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Index Calculation:"/>
+
+        <HBox spacing="20.0">
+            <children>
+                <Button style="-fx-font-size: 14px; -fx-background-color: #2196F3; -fx-text-fill: white;"
+                        text="Collect Fresh Data"/>
+                <Button style="-fx-font-size: 14px;" text="Calculate All Indices"/>
+                <Button style="-fx-font-size: 14px;" text="Validate Results"/>
+            </children>
+        </HBox>
+
+        <!-- Publication Section -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Publication:"/>
+
+        <HBox spacing="15.0">
+            <children>
+                <CheckBox fx:id="dseGeneralIndexCheck" selected="true" text="DSE General Index"/>
+                <CheckBox fx:id="dse30IndexCheck" selected="true" text="DSE 30 Index"/>
+                <CheckBox fx:id="dsexIndexCheck" selected="true" text="DSEX Index"/>
+                <CheckBox fx:id="sectorIndicesCheck" selected="true" text="All Sector Indices"/>
+            </children>
+        </HBox>
+
+        <!-- Action Buttons -->
+        <HBox spacing="20.0" style="-fx-alignment: center;">
+            <children>
+                <Button style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white;"
+                        text="Publish to Market"/>
+                <Button style="-fx-font-size: 14px;" text="Schedule Publication"/>
+                <Button style="-fx-font-size: 14px;" text="Archive Historical Data"/>
+            </children>
+        </HBox>
+
+        <!-- Status Area -->
+        <TextArea fx:id="publicationStatusArea" prefHeight="80.0" editable="false"
+                  promptText="Publication status and logs will appear here..."/>
+
+        <!-- Back Button -->
+        <HBox style="-fx-alignment: center;">
+            <children>
+                <Button onAction="#goBackToDashboard" style="-fx-font-size: 14px;" text="Back to Dashboard"/>
+            </children>
+        </HBox>
+    </children>
+</VBox>

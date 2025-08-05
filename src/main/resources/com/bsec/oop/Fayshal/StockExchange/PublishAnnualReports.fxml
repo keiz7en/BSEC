@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="600.0" prefWidth="800.0" spacing="15.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.Fayshal.StockExchange.PublishAnnualReports">
+    <children>
+        <!-- Header -->
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Publish Annual Market Reports"/>
+
+        <!-- Report Year Selection -->
+        <HBox spacing="15.0">
+            <children>
+                <Label style="-fx-font-size: 14px;" text="Report Year:"/>
+                <ComboBox fx:id="reportYearCombo" prefWidth="150.0"/>
+                <Button style="-fx-font-size: 14px;" text="Load Data"/>
+            </children>
+        </HBox>
+
+        <!-- Data Collection Status -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Data Collection Status:"/>
+
+        <HBox spacing="30.0">
+            <children>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Trading Data:"/>
+                        <Label fx:id="tradingDataStatus" style="-fx-font-size: 14px; -fx-text-fill: green;"
+                               text="Complete"/>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Market Statistics:"/>
+                        <Label fx:id="marketStatsStatus" style="-fx-font-size: 14px; -fx-text-fill: green;"
+                               text="Complete"/>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Company Reports:"/>
+                        <Label fx:id="companyReportsStatus" style="-fx-font-size: 14px; -fx-text-fill: orange;"
+                               text="In Progress"/>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Regulatory Data:"/>
+                        <Label fx:id="regulatoryDataStatus" style="-fx-font-size: 14px; -fx-text-fill: green;"
+                               text="Complete"/>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+
+        <!-- Report Sections -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Report Sections:"/>
+
+        <VBox spacing="10.0">
+            <children>
+                <CheckBox fx:id="executiveSummaryCheck" selected="true" text="Executive Summary"/>
+                <CheckBox fx:id="marketOverviewCheck" selected="true" text="Market Overview &amp; Performance"/>
+                <CheckBox fx:id="tradingStatisticsCheck" selected="true" text="Trading Statistics"/>
+                <CheckBox fx:id="listedCompaniesCheck" selected="true" text="Listed Companies Analysis"/>
+                <CheckBox fx:id="regulatoryUpdatesCheck" selected="true" text="Regulatory Updates"/>
+                <CheckBox fx:id="futureOutlookCheck" selected="true" text="Future Outlook"/>
+            </children>
+        </VBox>
+
+        <!-- Report Generation -->
+        <Separator/>
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Report Generation:"/>
+
+        <HBox spacing="15.0">
+            <children>
+                <Button style="-fx-font-size: 14px;" text="Generate Draft"/>
+                <Button style="-fx-font-size: 14px;" text="Verify Data Accuracy"/>
+                <Button style="-fx-font-size: 14px;" text="Preview Report"/>
+            </children>
+        </HBox>
+
+        <!-- Report Status -->
+        <HBox spacing="10.0">
+            <children>
+                <Label style="-fx-font-size: 14px;" text="Report Status:"/>
+                <Label fx:id="reportStatusLabel" style="-fx-font-size: 14px; -fx-text-fill: blue;" text="Draft Ready"/>
+            </children>
+        </HBox>
+
+        <!-- Publication Actions -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Publication:"/>
+
+        <HBox spacing="20.0" style="-fx-alignment: center;">
+            <children>
+                <Button style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white;"
+                        text="Publish Report"/>
+                <Button style="-fx-font-size: 14px;" text="Schedule Publication"/>
+                <Button style="-fx-font-size: 14px;" text="Notify Stakeholders"/>
+            </children>
+        </HBox>
+
+        <!-- Stakeholder Notification -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Stakeholder Groups:"/>
+
+        <HBox spacing="15.0">
+            <children>
+                <CheckBox fx:id="investorsCheck" selected="true" text="Investors"/>
+                <CheckBox fx:id="brokersCheck" selected="true" text="Brokers"/>
+                <CheckBox fx:id="regulatorsCheck" selected="true" text="Regulators"/>
+                <CheckBox fx:id="mediaCheck" selected="true" text="Media"/>
+                <CheckBox fx:id="publicCheck" selected="true" text="General Public"/>
+            </children>
+        </HBox>
+
+        <!-- Status Area -->
+        <TextArea fx:id="publicationStatusArea" prefHeight="80.0" editable="false"
+                  promptText="Publication status and stakeholder notifications..."/>
+
+        <!-- Back Button -->
+        <HBox style="-fx-alignment: center;">
+            <children>
+                <Button onAction="#goBackToDashboard" style="-fx-font-size: 14px;" text="Back to Dashboard"/>
+            </children>
+        </HBox>
+    </children>
+</VBox>
