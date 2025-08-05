@@ -37,15 +37,20 @@
 
         <!-- Holdings Table -->
         <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Current Holdings:"/>
-        <TableView fx:id="holdingsTable" prefHeight="300.0">
+        <TableView fx:id="holdingsTable" prefHeight="350.0">
             <columns>
-                <TableColumn fx:id="symbolColumn" prefWidth="120.0" text="Stock"/>
+                <TableColumn fx:id="symbolColumn" prefWidth="80.0" text="Symbol"/>
+                <TableColumn fx:id="companyNameColumn" prefWidth="180.0" text="Company Name"/>
                 <TableColumn fx:id="quantityColumn" prefWidth="100.0" text="Quantity"/>
-                <TableColumn fx:id="avgCostColumn" prefWidth="100.0" text="Buy Price"/>
+                <TableColumn fx:id="avgCostColumn" prefWidth="100.0" text="Avg Cost (৳)"/>
                 <TableColumn fx:id="currentPriceColumn" prefWidth="100.0" text="Current Price"/>
                 <TableColumn fx:id="marketValueColumn" prefWidth="120.0" text="Market Value"/>
-                <TableColumn fx:id="gainLossColumn" prefWidth="120.0" text="Gain/Loss"/>
-                <TableColumn fx:id="gainLossPercentColumn" prefWidth="100.0" text="%"/>
+                <TableColumn fx:id="gainLossColumn" prefWidth="100.0" text="Gain/Loss (৳)"/>
+                <TableColumn fx:id="gainLossPercentColumn" prefWidth="90.0" text="Gain/Loss %"/>
+                <TableColumn fx:id="dayChangeColumn" prefWidth="100.0" text="Day Change"/>
+                <TableColumn fx:id="weightColumn" prefWidth="80.0" text="Weight %"/>
+                <TableColumn fx:id="dividendYieldColumn" prefWidth="90.0" text="Div Yield"/>
+                <TableColumn fx:id="actionsColumn" prefWidth="100.0" text="Actions"/>
             </columns>
         </TableView>
 

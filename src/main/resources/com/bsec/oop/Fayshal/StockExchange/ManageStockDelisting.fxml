@@ -9,17 +9,20 @@
         <!-- Header -->
         <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Manage Stock Delisting"/>
 
-        <!-- Delisting Requests -->
-        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Delisting Requests:"/>
-
-        <TableView fx:id="delistingRequestsTable" prefHeight="180.0">
+        <!-- Delisting Requests Table -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Stock Delisting Requests:"/>
+        <TableView fx:id="delistingTable" prefHeight="300.0">
             <columns>
-                <TableColumn fx:id="companyColumn" prefWidth="150.0" text="Company"/>
-                <TableColumn fx:id="stockCodeColumn" prefWidth="100.0" text="Stock Code"/>
+                <TableColumn fx:id="requestIdColumn" prefWidth="100.0" text="Request ID"/>
+                <TableColumn fx:id="companyNameColumn" prefWidth="150.0" text="Company Name"/>
+                <TableColumn fx:id="stockSymbolColumn" prefWidth="80.0" text="Symbol"/>
                 <TableColumn fx:id="requestDateColumn" prefWidth="120.0" text="Request Date"/>
-                <TableColumn fx:id="reasonColumn" prefWidth="200.0" text="Reason"/>
+                <TableColumn fx:id="reasonColumn" prefWidth="180.0" text="Reason"/>
+                <TableColumn fx:id="currentPriceColumn" prefWidth="100.0" text="Current Price"/>
+                <TableColumn fx:id="marketCapColumn" prefWidth="120.0" text="Market Cap"/>
                 <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status"/>
-                <TableColumn fx:id="actionColumn" prefWidth="120.0" text="Action"/>
+                <TableColumn fx:id="reviewerColumn" prefWidth="120.0" text="Reviewer"/>
+                <TableColumn fx:id="deadlineColumn" prefWidth="120.0" text="Deadline"/>
             </columns>
         </TableView>
 

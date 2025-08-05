@@ -39,15 +39,18 @@
 
         <!-- Market Indices Table -->
         <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Market Indices:"/>
-
-        <TableView fx:id="indicesTable" prefHeight="200.0">
+        <TableView fx:id="indicesTable" prefHeight="300.0">
             <columns>
-                <TableColumn fx:id="indexNameColumn" prefWidth="150.0" text="Index Name"/>
-                <TableColumn fx:id="currentValueColumn" prefWidth="120.0" text="Current Value"/>
-                <TableColumn fx:id="changeColumn" prefWidth="100.0" text="Change"/>
-                <TableColumn fx:id="percentChangeColumn" prefWidth="100.0" text="% Change"/>
-                <TableColumn fx:id="lastUpdatedColumn" prefWidth="150.0" text="Last Updated"/>
-                <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status"/>
+                <TableColumn fx:id="indexNameColumn" prefWidth="120.0" text="Index Name"/>
+                <TableColumn fx:id="currentValueColumn" prefWidth="100.0" text="Current Value"/>
+                <TableColumn fx:id="previousCloseColumn" prefWidth="100.0" text="Previous Close"/>
+                <TableColumn fx:id="changeColumn" prefWidth="80.0" text="Change"/>
+                <TableColumn fx:id="changePercentColumn" prefWidth="100.0" text="Change %"/>
+                <TableColumn fx:id="volumeColumn" prefWidth="120.0" text="Total Volume"/>
+                <TableColumn fx:id="marketCapColumn" prefWidth="140.0" text="Market Cap (৳)"/>
+                <TableColumn fx:id="highColumn" prefWidth="80.0" text="High"/>
+                <TableColumn fx:id="lowColumn" prefWidth="80.0" text="Low"/>
+                <TableColumn fx:id="lastUpdatedColumn" prefWidth="140.0" text="Last Updated"/>
             </columns>
         </TableView>
 

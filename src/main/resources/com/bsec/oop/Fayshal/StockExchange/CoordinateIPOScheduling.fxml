@@ -9,17 +9,20 @@
         <!-- Header -->
         <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Co-ordinate IPO Scheduling"/>
 
-        <!-- IPO Applications -->
+        <!-- IPO Applications Table -->
         <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="IPO Applications:"/>
-
-        <TableView fx:id="ipoApplicationsTable" prefHeight="180.0">
+        <TableView fx:id="ipoApplicationsTable" prefHeight="300.0">
             <columns>
-                <TableColumn fx:id="companyColumn" prefWidth="150.0" text="Company Name"/>
-                <TableColumn fx:id="sectorColumn" prefWidth="100.0" text="Sector"/>
-                <TableColumn fx:id="sizeColumn" prefWidth="120.0" text="Issue Size"/>
-                <TableColumn fx:id="priceRangeColumn" prefWidth="120.0" text="Price Range"/>
+                <TableColumn fx:id="applicationIdColumn" prefWidth="100.0" text="Application ID"/>
+                <TableColumn fx:id="companyNameColumn" prefWidth="150.0" text="Company Name"/>
+                <TableColumn fx:id="sectorColumn" prefWidth="120.0" text="Sector"/>
+                <TableColumn fx:id="sharesPriceColumn" prefWidth="100.0" text="Share Price (৳)"/>
+                <TableColumn fx:id="totalSharesColumn" prefWidth="100.0" text="Total Shares"/>
+                <TableColumn fx:id="raisedAmountColumn" prefWidth="120.0" text="Amount to Raise"/>
                 <TableColumn fx:id="submissionDateColumn" prefWidth="120.0" text="Submission Date"/>
                 <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status"/>
+                <TableColumn fx:id="scheduledDateColumn" prefWidth="120.0" text="Scheduled Date"/>
+                <TableColumn fx:id="underwriterColumn" prefWidth="120.0" text="Underwriter"/>
             </columns>
         </TableView>
 

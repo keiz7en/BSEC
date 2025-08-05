@@ -34,13 +34,18 @@
                                         <Font name="System Bold" size="16.0"/>
                                     </font>
                                 </Label>
-                                <TableView fx:id="portfolioTable" prefHeight="150.0">
+                                <TableView fx:id="portfolioTable" prefHeight="200.0">
                                     <columns>
-                                        <TableColumn fx:id="stockSymbolColumn" prefWidth="120.0" text="Stock Symbol"/>
-                                        <TableColumn fx:id="sharesOwnedColumn" prefWidth="120.0" text="Shares Owned"/>
-                                        <TableColumn fx:id="avgPriceColumn" prefWidth="120.0" text="Avg Price"/>
-                                        <TableColumn fx:id="currentValueColumn" prefWidth="120.0" text="Current Value"/>
-                                        <TableColumn fx:id="gainLossColumn" prefWidth="120.0" text="Gain/Loss"/>
+                                        <TableColumn fx:id="stockSymbolColumn" prefWidth="80.0" text="Symbol"/>
+                                        <TableColumn fx:id="companyColumn" prefWidth="160.0" text="Company Name"/>
+                                        <TableColumn fx:id="sharesOwnedColumn" prefWidth="100.0" text="Shares Owned"/>
+                                        <TableColumn fx:id="avgPriceColumn" prefWidth="100.0" text="Avg Price (৳)"/>
+                                        <TableColumn fx:id="currentPriceColumn" prefWidth="100.0" text="Current Price"/>
+                                        <TableColumn fx:id="currentValueColumn" prefWidth="120.0" text="Market Value"/>
+                                        <TableColumn fx:id="gainLossColumn" prefWidth="100.0" text="Gain/Loss (৳)"/>
+                                        <TableColumn fx:id="gainLossPercentColumn" prefWidth="90.0" text="Gain/Loss %"/>
+                                        <TableColumn fx:id="dayChangeColumn" prefWidth="100.0" text="Day Change"/>
+                                        <TableColumn fx:id="weightColumn" prefWidth="80.0" text="Weight %"/>
                                     </columns>
                                 </TableView>
                             </children>

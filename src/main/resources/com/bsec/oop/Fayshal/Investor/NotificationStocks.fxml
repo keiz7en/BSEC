@@ -69,21 +69,36 @@
         <!-- Active Alerts Section -->
         <Separator/>
         <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Active Alerts:"/>
-
-        <TableView fx:id="activeAlertsTable" prefHeight="200.0">
+        <TableView fx:id="activeAlertsTable" prefHeight="250.0">
             <columns>
-                <TableColumn fx:id="stockSymbolColumn" prefWidth="100.0" text="Stock"/>
-                <TableColumn fx:id="alertTypeColumn" prefWidth="120.0" text="Alert Type"/>
-                <TableColumn fx:id="conditionColumn" prefWidth="150.0" text="Condition"/>
-                <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status"/>
-                <TableColumn fx:id="actionsColumn" prefWidth="130.0" text="Actions"/>
+                <TableColumn fx:id="alertSymbolColumn" prefWidth="80.0" text="Symbol"/>
+                <TableColumn fx:id="alertCompanyColumn" prefWidth="150.0" text="Company Name"/>
+                <TableColumn fx:id="alertTypeColumn" prefWidth="100.0" text="Alert Type"/>
+                <TableColumn fx:id="alertConditionColumn" prefWidth="120.0" text="Condition"/>
+                <TableColumn fx:id="alertTargetColumn" prefWidth="100.0" text="Target Value"/>
+                <TableColumn fx:id="alertCurrentColumn" prefWidth="100.0" text="Current Value"/>
+                <TableColumn fx:id="alertCreatedColumn" prefWidth="120.0" text="Created Date"/>
+                <TableColumn fx:id="alertStatusColumn" prefWidth="80.0" text="Status"/>
+                <TableColumn fx:id="alertTriggeredColumn" prefWidth="100.0" text="Times Triggered"/>
+                <TableColumn fx:id="alertActionsColumn" prefWidth="100.0" text="Actions"/>
             </columns>
         </TableView>
 
         <!-- Recent Notifications -->
         <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Recent Notifications:"/>
-
-        <ListView fx:id="notificationsList" prefHeight="100.0"/>
+        <TableView fx:id="recentNotificationsTable" prefHeight="200.0">
+            <columns>
+                <TableColumn fx:id="notificationDateColumn" prefWidth="120.0" text="Date &amp; Time"/>
+                <TableColumn fx:id="notificationSymbolColumn" prefWidth="80.0" text="Symbol"/>
+                <TableColumn fx:id="notificationTypeColumn" prefWidth="100.0" text="Type"/>
+                <TableColumn fx:id="notificationMessageColumn" prefWidth="250.0" text="Message"/>
+                <TableColumn fx:id="notificationPriceColumn" prefWidth="100.0" text="Triggered Price"/>
+                <TableColumn fx:id="notificationChangeColumn" prefWidth="100.0" text="Price Change"/>
+                <TableColumn fx:id="notificationMethodColumn" prefWidth="80.0" text="Method"/>
+                <TableColumn fx:id="notificationReadColumn" prefWidth="80.0" text="Read Status"/>
+                <TableColumn fx:id="notificationActionsColumn" prefWidth="100.0" text="Actions"/>
+            </columns>
+        </TableView>
 
         <!-- Action Buttons -->
         <HBox spacing="15.0" style="-fx-alignment: center;">

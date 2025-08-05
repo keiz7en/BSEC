@@ -6,7 +6,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.bsec.oop.Fayshal.Investor.BuyOrder"
-            prefHeight="700.0" prefWidth="900.0">
+            prefHeight="900.0" prefWidth="900.0">
 
     <children>
         <!-- Header -->
@@ -23,7 +23,7 @@
         </HBox>
 
         <!-- Main Content -->
-        <ScrollPane layoutX="0.0" layoutY="60.0" prefHeight="640.0" prefWidth="900.0" fitToWidth="true">
+        <ScrollPane layoutX="0.0" layoutY="60.0" prefHeight="840.0" prefWidth="900.0" fitToWidth="true">
             <content>
                 <VBox spacing="20.0" style="-fx-padding: 20;">
                     <children>
@@ -114,6 +114,23 @@
                                 <!-- Status -->
                                 <Label fx:id="validationMessageLabel" style="-fx-font-size: 12px; -fx-text-fill: red;"
                                        text=""/>
+
+                                <!-- Stock Watchlist -->
+                                <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Stock Watchlist:"/>
+                                <TableView fx:id="watchlistTable" prefHeight="200.0">
+                                    <columns>
+                                        <TableColumn fx:id="watchSymbolColumn" prefWidth="80.0" text="Symbol"/>
+                                        <TableColumn fx:id="watchNameColumn" prefWidth="150.0" text="Company Name"/>
+                                        <TableColumn fx:id="watchPriceColumn" prefWidth="100.0" text="Current Price"/>
+                                        <TableColumn fx:id="watchChangeColumn" prefWidth="80.0" text="Change"/>
+                                        <TableColumn fx:id="watchPercentColumn" prefWidth="90.0" text="Change %"/>
+                                        <TableColumn fx:id="watchVolumeColumn" prefWidth="100.0" text="Volume"/>
+                                        <TableColumn fx:id="watchHighColumn" prefWidth="80.0" text="Day High"/>
+                                        <TableColumn fx:id="watchLowColumn" prefWidth="80.0" text="Day Low"/>
+                                        <TableColumn fx:id="watchAlertColumn" prefWidth="80.0" text="Alert"/>
+                                        <TableColumn fx:id="watchActionsColumn" prefWidth="100.0" text="Actions"/>
+                                    </columns>
+                                </TableView>
 
                                 <!-- Back Button -->
                                 <HBox style="-fx-alignment: center;">

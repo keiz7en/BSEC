@@ -62,16 +62,21 @@
          </children>
       </HBox>
 
-      <!-- Transaction History -->
+       <!-- Transaction History Table -->
       <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Transaction History:"/>
-      <TableView fx:id="transactionTable" prefHeight="250.0">
+       <TableView fx:id="transactionTable" prefHeight="350.0">
          <columns>
             <TableColumn fx:id="dateColumn" prefWidth="120.0" text="Date"/>
-            <TableColumn fx:id="typeColumn" prefWidth="100.0" text="Type"/>
-            <TableColumn fx:id="descriptionColumn" prefWidth="200.0" text="Description"/>
-            <TableColumn fx:id="amountColumn" prefWidth="100.0" text="Amount"/>
+             <TableColumn fx:id="timeColumn" prefWidth="100.0" text="Time"/>
+             <TableColumn fx:id="typeColumn" prefWidth="100.0" text="Transaction Type"/>
+             <TableColumn fx:id="symbolColumn" prefWidth="80.0" text="Symbol"/>
+             <TableColumn fx:id="quantityColumn" prefWidth="80.0" text="Quantity"/>
+             <TableColumn fx:id="priceColumn" prefWidth="100.0" text="Price (৳)"/>
+             <TableColumn fx:id="amountColumn" prefWidth="120.0" text="Amount (৳)"/>
+             <TableColumn fx:id="feesColumn" prefWidth="80.0" text="Fees"/>
             <TableColumn fx:id="balanceColumn" prefWidth="120.0" text="Balance"/>
             <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status"/>
+             <TableColumn fx:id="referenceColumn" prefWidth="120.0" text="Reference ID"/>
          </columns>
       </TableView>
 

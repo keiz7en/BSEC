@@ -2,7 +2,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="500.0" prefWidth="600.0" spacing="20.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/21"
+<VBox prefHeight="700.0" prefWidth="600.0" spacing="20.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.Fayshal.Investor.StockPurchaseOrder">
     <children>
         <!-- Header -->
@@ -89,6 +89,23 @@
         <!-- Status -->
         <TextArea fx:id="statusArea" prefHeight="80.0" editable="false"
                   style="-fx-font-size: 12px; -fx-text-fill: red;"/>
+
+        <!-- Order History -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Recent Order History:"/>
+        <TableView fx:id="orderHistoryTable" prefHeight="200.0">
+            <columns>
+                <TableColumn fx:id="orderDateColumn" prefWidth="120.0" text="Order Date"/>
+                <TableColumn fx:id="orderTimeColumn" prefWidth="100.0" text="Time"/>
+                <TableColumn fx:id="orderSymbolColumn" prefWidth="80.0" text="Symbol"/>
+                <TableColumn fx:id="orderTypeColumn" prefWidth="80.0" text="Type"/>
+                <TableColumn fx:id="orderQuantityColumn" prefWidth="80.0" text="Quantity"/>
+                <TableColumn fx:id="orderPriceColumn" prefWidth="100.0" text="Price (৳)"/>
+                <TableColumn fx:id="orderAmountColumn" prefWidth="120.0" text="Total Amount"/>
+                <TableColumn fx:id="orderStatusColumn" prefWidth="100.0" text="Status"/>
+                <TableColumn fx:id="orderFeesColumn" prefWidth="80.0" text="Fees"/>
+                <TableColumn fx:id="orderReferenceColumn" prefWidth="120.0" text="Reference ID"/>
+            </columns>
+        </TableView>
 
         <!-- Back Button -->
         <HBox style="-fx-alignment: center;">

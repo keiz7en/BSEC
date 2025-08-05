@@ -3,13 +3,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="600.0" prefWidth="700.0" spacing="20.0"
-      style="-fx-padding: 20; -fx-background-color: linear-gradient(to bottom, #e3f2fd, #bbdefb);"
-      xmlns="http://javafx.com/javafx/21"
+<VBox prefHeight="600.0" prefWidth="700.0" spacing="20.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.Fayshal.StockExchange.Main">
     <children>
         <!-- Header -->
-        <Label style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-alignment: center; -fx-text-fill: #1565c0;"
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-alignment: center;"
                text="Stock Exchange Dashboard"/>
 
         <!-- Menu Buttons Grid -->
@@ -26,53 +24,49 @@
             </rowConstraints>
             <children>
                 <!-- Goal 1: Manage Stock Listings -->
-                <Button onAction="#manageStockListings" prefHeight="50.0" prefWidth="280.0"
-                        style="-fx-font-size: 14px; -fx-background-color: linear-gradient(to bottom, #4caf50, #388e3c); -fx-text-fill: white; -fx-background-radius: 8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 2);"
+                <Button onAction="#manageStockListings" prefHeight="40.0" prefWidth="280.0" style="-fx-font-size: 14px;"
                         text="Manage Stock Listings" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
 
                 <!-- Goal 2: Publish Market Indices -->
-                <Button onAction="#publishMarketIndices" prefHeight="50.0" prefWidth="280.0"
-                        style="-fx-font-size: 14px; -fx-background-color: linear-gradient(to bottom, #2196f3, #1976d2); -fx-text-fill: white; -fx-background-radius: 8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 2);"
-                        text="Publish Market Indices" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Button onAction="#publishMarketIndices" prefHeight="40.0" prefWidth="280.0"
+                        style="-fx-font-size: 14px;" text="Publish Market Indices" GridPane.columnIndex="1"
+                        GridPane.rowIndex="0"/>
 
                 <!-- Goal 3: Handle Trading Halts -->
-                <Button onAction="#handleTradingHalts" prefHeight="50.0" prefWidth="280.0"
-                        style="-fx-font-size: 14px; -fx-background-color: linear-gradient(to bottom, #ff9800, #f57c00); -fx-text-fill: white; -fx-background-radius: 8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 2);"
+                <Button onAction="#handleTradingHalts" prefHeight="40.0" prefWidth="280.0" style="-fx-font-size: 14px;"
                         text="Handle Trading Halts" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
 
                 <!-- Goal 4: Monitor Trading Activity -->
-                <Button onAction="#monitorTradingActivity" prefHeight="50.0" prefWidth="280.0"
-                        style="-fx-font-size: 14px; -fx-background-color: linear-gradient(to bottom, #9c27b0, #7b1fa2); -fx-text-fill: white; -fx-background-radius: 8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 2);"
-                        text="Monitor Real-time Trading" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Button onAction="#monitorTradingActivity" prefHeight="40.0" prefWidth="280.0"
+                        style="-fx-font-size: 14px;" text="Monitor Real-time Trading" GridPane.columnIndex="1"
+                        GridPane.rowIndex="1"/>
 
                 <!-- Goal 5: Annual Market Reports -->
-                <Button onAction="#publishAnnualReports" prefHeight="50.0" prefWidth="280.0"
-                        style="-fx-font-size: 14px; -fx-background-color: linear-gradient(to bottom, #f44336, #d32f2f); -fx-text-fill: white; -fx-background-radius: 8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 2);"
-                        text="Publish Annual Reports" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <Button onAction="#publishAnnualReports" prefHeight="40.0" prefWidth="280.0"
+                        style="-fx-font-size: 14px;" text="Publish Annual Reports" GridPane.columnIndex="0"
+                        GridPane.rowIndex="2"/>
 
                 <!-- Goal 6: Manage Stock Delisting -->
-                <Button onAction="#manageStockDelisting" prefHeight="50.0" prefWidth="280.0"
-                        style="-fx-font-size: 14px; -fx-background-color: linear-gradient(to bottom, #795548, #5d4037); -fx-text-fill: white; -fx-background-radius: 8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 2);"
-                        text="Manage Stock Delisting" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                <Button onAction="#manageStockDelisting" prefHeight="40.0" prefWidth="280.0"
+                        style="-fx-font-size: 14px;" text="Manage Stock Delisting" GridPane.columnIndex="1"
+                        GridPane.rowIndex="2"/>
 
                 <!-- Goal 7: IPO Scheduling -->
-                <Button onAction="#coordinateIPOScheduling" prefHeight="50.0" prefWidth="280.0"
-                        style="-fx-font-size: 14px; -fx-background-color: linear-gradient(to bottom, #607d8b, #455a64); -fx-text-fill: white; -fx-background-radius: 8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 2);"
-                        text="Co-ordinate IPO Scheduling" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <Button onAction="#coordinateIPOScheduling" prefHeight="40.0" prefWidth="280.0"
+                        style="-fx-font-size: 14px;" text="Co-ordinate IPO Scheduling" GridPane.columnIndex="0"
+                        GridPane.rowIndex="3"/>
 
                 <!-- Goal 8: Investor Education -->
-                <Button onAction="#investorEducationPrograms" prefHeight="50.0" prefWidth="280.0"
-                        style="-fx-font-size: 14px; -fx-background-color: linear-gradient(to bottom, #00bcd4, #0097a7); -fx-text-fill: white; -fx-background-radius: 8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 2);"
-                        text="Investor Education Programs" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                <Button onAction="#investorEducationPrograms" prefHeight="40.0" prefWidth="280.0"
+                        style="-fx-font-size: 14px;" text="Investor Education Programs" GridPane.columnIndex="1"
+                        GridPane.rowIndex="3"/>
             </children>
         </GridPane>
 
         <!-- Back to Login Button -->
         <HBox style="-fx-alignment: center;">
             <children>
-                <Button onAction="#goToLogin"
-                        style="-fx-font-size: 14px; -fx-background-color: linear-gradient(to bottom, #757575, #424242); -fx-text-fill: white; -fx-background-radius: 6; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 3, 0, 0, 1);"
-                        text="Back to Login"/>
+                <Button onAction="#goToLogin" style="-fx-font-size: 14px;" text="Back to Login"/>
             </children>
         </HBox>
     </children>

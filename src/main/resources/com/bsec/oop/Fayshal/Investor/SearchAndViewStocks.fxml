@@ -35,14 +35,18 @@
 
         <!-- Stock List -->
         <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Stock Results:"/>
-        <TableView fx:id="stockTable" prefHeight="300.0">
+        <TableView fx:id="stockTable" prefHeight="350.0">
             <columns>
-                <TableColumn fx:id="symbolColumn" prefWidth="100.0" text="Symbol"/>
-                <TableColumn fx:id="nameColumn" prefWidth="200.0" text="Company Name"/>
-                <TableColumn fx:id="priceColumn" prefWidth="100.0" text="Price"/>
-                <TableColumn fx:id="changeColumn" prefWidth="100.0" text="Change %"/>
+                <TableColumn fx:id="symbolColumn" prefWidth="80.0" text="Symbol"/>
+                <TableColumn fx:id="nameColumn" prefWidth="180.0" text="Company Name"/>
+                <TableColumn fx:id="priceColumn" prefWidth="80.0" text="Price (৳)"/>
+                <TableColumn fx:id="changeColumn" prefWidth="70.0" text="Change"/>
+                <TableColumn fx:id="changePercentColumn" prefWidth="80.0" text="Change %"/>
                 <TableColumn fx:id="volumeColumn" prefWidth="100.0" text="Volume"/>
-                <TableColumn fx:id="sectorColumn" prefWidth="100.0" text="Sector"/>
+                <TableColumn fx:id="sectorColumn" prefWidth="120.0" text="Sector"/>
+                <TableColumn fx:id="marketCapColumn" prefWidth="100.0" text="Market Cap"/>
+                <TableColumn fx:id="peRatioColumn" prefWidth="80.0" text="P/E Ratio"/>
+                <TableColumn fx:id="dividendYieldColumn" prefWidth="90.0" text="Div Yield"/>
             </columns>
         </TableView>
 

@@ -37,17 +37,20 @@
             </children>
         </HBox>
 
-        <!-- Alerts Table -->
-        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Trading Alerts:"/>
-
-        <TableView fx:id="alertsTable" prefHeight="180.0">
+        <!-- Trading Alerts Section -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Trading Alerts &amp; Monitoring:"/>
+        <TableView fx:id="alertsTable" prefHeight="300.0">
             <columns>
-                <TableColumn fx:id="timeColumn" prefWidth="120.0" text="Time"/>
-                <TableColumn fx:id="stockColumn" prefWidth="100.0" text="Stock"/>
-                <TableColumn fx:id="alertTypeColumn" prefWidth="150.0" text="Alert Type"/>
-                <TableColumn fx:id="severityColumn" prefWidth="100.0" text="Severity"/>
-                <TableColumn fx:id="detailsColumn" prefWidth="200.0" text="Details"/>
-                <TableColumn fx:id="actionColumn" prefWidth="120.0" text="Action"/>
+                <TableColumn fx:id="timestampColumn" prefWidth="140.0" text="Timestamp"/>
+                <TableColumn fx:id="stockSymbolColumn" prefWidth="80.0" text="Symbol"/>
+                <TableColumn fx:id="stockNameColumn" prefWidth="150.0" text="Stock Name"/>
+                <TableColumn fx:id="alertTypeColumn" prefWidth="120.0" text="Alert Type"/>
+                <TableColumn fx:id="currentPriceColumn" prefWidth="100.0" text="Current Price"/>
+                <TableColumn fx:id="priceChangeColumn" prefWidth="100.0" text="Price Change"/>
+                <TableColumn fx:id="volumeColumn" prefWidth="120.0" text="Volume"/>
+                <TableColumn fx:id="severityColumn" prefWidth="80.0" text="Severity"/>
+                <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status"/>
+                <TableColumn fx:id="reasonColumn" prefWidth="200.0" text="Reason"/>
             </columns>
         </TableView>
 

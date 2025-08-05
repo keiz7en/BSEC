@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="650.0" prefWidth="800.0" spacing="15.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/21"
+<VBox prefHeight="800.0" prefWidth="900.0" spacing="15.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.Fayshal.StockExchange.InvestorEducationPrograms">
     <children>
         <!-- Header -->
@@ -84,17 +84,38 @@
             </children>
         </HBox>
 
+        <!-- Planned Programs Table -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Planned Education Programs:"/>
+        <TableView fx:id="programsTable" prefHeight="250.0">
+            <columns>
+                <TableColumn fx:id="programIdColumn" prefWidth="80.0" text="Program ID"/>
+                <TableColumn fx:id="programNameColumn" prefWidth="150.0" text="Program Name"/>
+                <TableColumn fx:id="topicColumn" prefWidth="140.0" text="Topic"/>
+                <TableColumn fx:id="targetAudienceColumn" prefWidth="120.0" text="Target Audience"/>
+                <TableColumn fx:id="scheduledDateColumn" prefWidth="120.0" text="Scheduled Date"/>
+                <TableColumn fx:id="durationColumn" prefWidth="80.0" text="Duration"/>
+                <TableColumn fx:id="instructorColumn" prefWidth="120.0" text="Instructor"/>
+                <TableColumn fx:id="capacityColumn" prefWidth="80.0" text="Capacity"/>
+                <TableColumn fx:id="registeredColumn" prefWidth="80.0" text="Registered"/>
+                <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status"/>
+            </columns>
+        </TableView>
+
         <!-- Scheduled Programs Table -->
         <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Scheduled Programs:"/>
 
-        <TableView fx:id="scheduledProgramsTable" prefHeight="150.0">
+        <TableView fx:id="scheduledProgramsTable" prefHeight="250.0">
             <columns>
-                <TableColumn fx:id="dateColumn" prefWidth="100.0" text="Date"/>
-                <TableColumn fx:id="programColumn" prefWidth="150.0" text="Program"/>
-                <TableColumn fx:id="audienceColumn" prefWidth="120.0" text="Audience"/>
-                <TableColumn fx:id="venueColumn" prefWidth="150.0" text="Venue"/>
-                <TableColumn fx:id="registeredColumn" prefWidth="100.0" text="Registered"/>
-                <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status"/>
+                <TableColumn fx:id="sessionDateColumn" prefWidth="100.0" text="Date"/>
+                <TableColumn fx:id="sessionTimeColumn" prefWidth="100.0" text="Time"/>
+                <TableColumn fx:id="sessionTopicColumn" prefWidth="180.0" text="Topic"/>
+                <TableColumn fx:id="sessionInstructorColumn" prefWidth="120.0" text="Instructor"/>
+                <TableColumn fx:id="sessionVenueColumn" prefWidth="120.0" text="Venue"/>
+                <TableColumn fx:id="sessionCapacityColumn" prefWidth="80.0" text="Capacity"/>
+                <TableColumn fx:id="sessionRegisteredColumn" prefWidth="80.0" text="Registered"/>
+                <TableColumn fx:id="sessionTypeColumn" prefWidth="100.0" text="Type"/>
+                <TableColumn fx:id="sessionStatusColumn" prefWidth="100.0" text="Status"/>
+                <TableColumn fx:id="feedbackScoreColumn" prefWidth="100.0" text="Feedback Score"/>
             </columns>
         </TableView>
 
