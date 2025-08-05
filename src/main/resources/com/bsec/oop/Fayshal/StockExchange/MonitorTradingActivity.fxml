@@ -3,53 +3,65 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="650.0" prefWidth="900.0" spacing="15.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/21"
+<VBox prefHeight="650.0" prefWidth="900.0" spacing="15.0"
+      style="-fx-padding: 20; -fx-background-color: linear-gradient(to bottom, #f3e5f5, #e1bee7);"
+      xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.Fayshal.StockExchange.MonitorTradingActivity">
     <children>
         <!-- Header -->
-        <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Monitor Real-time Trading Activity"/>
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #6a1b9a;"
+               text="Monitor Real-time Trading Activity"/>
 
         <!-- Trading Summary -->
-        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Live Trading Summary:"/>
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #4a148c;"
+               text="Live Trading Summary:"/>
 
-        <HBox spacing="30.0" style="-fx-alignment: center;">
+        <HBox spacing="30.0"
+              style="-fx-alignment: center; -fx-background-color: rgba(255,255,255,0.9); -fx-background-radius: 15; -fx-padding: 20;">
             <children>
                 <VBox spacing="5.0" style="-fx-alignment: center;">
                     <children>
-                        <Label style="-fx-font-size: 12px;" text="Total Volume"/>
+                        <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #6a1b9a;"
+                               text="Total Volume"/>
                         <Label fx:id="totalVolumeLabel"
-                               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: blue;"
+                               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2196f3;"
                                text="2,456,789"/>
                     </children>
                 </VBox>
                 <VBox spacing="5.0" style="-fx-alignment: center;">
                     <children>
-                        <Label style="-fx-font-size: 12px;" text="Total Value"/>
+                        <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #6a1b9a;"
+                               text="Total Value"/>
                         <Label fx:id="totalValueLabel"
-                               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: green;" text="৳45.2M"/>
+                               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #4caf50;"
+                               text="৳45.2M"/>
                     </children>
                 </VBox>
                 <VBox spacing="5.0" style="-fx-alignment: center;">
                     <children>
-                        <Label style="-fx-font-size: 12px;" text="Trades Count"/>
-                        <Label fx:id="tradesCountLabel" style="-fx-font-size: 16px; -fx-font-weight: bold;"
+                        <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #6a1b9a;"
+                               text="Trades Count"/>
+                        <Label fx:id="tradesCountLabel"
+                               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #ff9800;"
                                text="18,547"/>
                     </children>
                 </VBox>
                 <VBox spacing="5.0" style="-fx-alignment: center;">
                     <children>
-                        <Label style="-fx-font-size: 12px;" text="Suspicious Alerts"/>
+                        <Label style="-fx-font-size: 12px; -fx-font-weight: bold; -fx-text-fill: #6a1b9a;"
+                               text="Suspicious Alerts"/>
                         <Label fx:id="suspiciousAlertsLabel"
-                               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: red;" text="7"/>
+                               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #f44336;" text="7"/>
                     </children>
                 </VBox>
             </children>
         </HBox>
 
         <!-- Live Trading Data -->
-        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Live Trading Data:"/>
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #4a148c;" text="Live Trading Data:"/>
 
-        <TableView fx:id="liveTradesTable" prefHeight="200.0">
+        <TableView fx:id="liveTradesTable" prefHeight="200.0"
+                   style="-fx-background-color: rgba(255,255,255,0.9); -fx-background-radius: 10;">
             <columns>
                 <TableColumn fx:id="timeColumn" prefWidth="100.0" text="Time"/>
                 <TableColumn fx:id="stockColumn" prefWidth="100.0" text="Stock"/>
@@ -62,24 +74,34 @@
         </TableView>
 
         <!-- Suspicious Activity Analysis -->
-        <Separator/>
-        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Suspicious Activity Detection:"/>
+        <Separator style="-fx-background-color: #9c27b0;"/>
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #4a148c;"
+               text="Suspicious Activity Detection:"/>
 
-        <HBox spacing="20.0">
+        <HBox spacing="20.0"
+              style="-fx-background-color: rgba(255,255,255,0.8); -fx-background-radius: 10; -fx-padding: 15;">
             <children>
                 <VBox spacing="10.0">
                     <children>
-                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Detection Criteria:"/>
-                        <CheckBox fx:id="volumeSpikeCheck" selected="true" text="Volume Spike (>500% avg)"/>
-                        <CheckBox fx:id="priceSpikeCheck" selected="true" text="Price Spike (>10% in 5min)"/>
-                        <CheckBox fx:id="unusualPatternCheck" selected="true" text="Unusual Trading Pattern"/>
-                        <CheckBox fx:id="timeBasedCheck" selected="true" text="Off-hours Trading"/>
+                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #7b1fa2;"
+                               text="Detection Criteria:"/>
+                        <CheckBox fx:id="volumeSpikeCheck" selected="true"
+                                  style="-fx-font-size: 13px; -fx-text-fill: #e91e63;" text="Volume Spike (>500% avg)"/>
+                        <CheckBox fx:id="priceSpikeCheck" selected="true"
+                                  style="-fx-font-size: 13px; -fx-text-fill: #e91e63;"
+                                  text="Price Spike (>10% in 5min)"/>
+                        <CheckBox fx:id="unusualPatternCheck" selected="true"
+                                  style="-fx-font-size: 13px; -fx-text-fill: #e91e63;" text="Unusual Trading Pattern"/>
+                        <CheckBox fx:id="timeBasedCheck" selected="true"
+                                  style="-fx-font-size: 13px; -fx-text-fill: #e91e63;" text="Off-hours Trading"/>
                     </children>
                 </VBox>
                 <VBox spacing="10.0">
                     <children>
-                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Current Alerts:"/>
-                        <ListView fx:id="alertsList" prefHeight="120.0" prefWidth="300.0"/>
+                        <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #7b1fa2;"
+                               text="Current Alerts:"/>
+                        <ListView fx:id="alertsList" prefHeight="120.0" prefWidth="300.0"
+                                  style="-fx-background-color: #fff; -fx-border-color: #e1bee7; -fx-border-radius: 5;"/>
                     </children>
                 </VBox>
             </children>
@@ -88,25 +110,30 @@
         <!-- Action Buttons -->
         <HBox spacing="20.0" style="-fx-alignment: center;">
             <children>
-                <Button style="-fx-font-size: 14px; -fx-background-color: #2196F3; -fx-text-fill: white;"
+                <Button style="-fx-font-size: 14px; -fx-background-color: linear-gradient(to bottom, #2196f3, #1976d2); -fx-text-fill: white; -fx-background-radius: 8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 2);"
                         text="Refresh Data"/>
-                <Button style="-fx-font-size: 14px; -fx-background-color: #ff9800; -fx-text-fill: white;"
+                <Button style="-fx-font-size: 14px; -fx-background-color: linear-gradient(to bottom, #ff9800, #f57c00); -fx-text-fill: white; -fx-background-radius: 8; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 2);"
                         text="Alert Compliance"/>
-                <Button style="-fx-font-size: 14px;" text="Generate Report"/>
-                <Button style="-fx-font-size: 14px;" text="Export Logs"/>
+                <Button style="-fx-font-size: 14px; -fx-background-color: #9c27b0; -fx-text-fill: white; -fx-background-radius: 5;"
+                        text="Generate Report"/>
+                <Button style="-fx-font-size: 14px; -fx-background-color: #607d8b; -fx-text-fill: white; -fx-background-radius: 5;"
+                        text="Export Logs"/>
             </children>
         </HBox>
 
         <!-- Compliance Alert Section -->
-        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Compliance Alerts:"/>
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #4a148c;" text="Compliance Alerts:"/>
 
         <TextArea fx:id="complianceArea" prefHeight="80.0" editable="false"
+                  style="-fx-background-color: #fff; -fx-border-color: #9c27b0; -fx-border-radius: 5; -fx-background-radius: 5;"
                   promptText="Compliance alerts and audit logs will appear here..."/>
 
         <!-- Back Button -->
         <HBox style="-fx-alignment: center;">
             <children>
-                <Button onAction="#goBackToDashboard" style="-fx-font-size: 14px;" text="Back to Dashboard"/>
+                <Button onAction="#goBackToDashboard"
+                        style="-fx-font-size: 14px; -fx-background-color: linear-gradient(to bottom, #757575, #424242); -fx-text-fill: white; -fx-background-radius: 6; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 3, 0, 0, 1);"
+                        text="Back to Dashboard"/>
             </children>
         </HBox>
     </children>
