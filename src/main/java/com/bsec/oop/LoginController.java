@@ -110,7 +110,7 @@ public class LoginController implements Initializable {
                 if (role.equals("BSEC_Officer")) {
                     return "/com/bsec/oop/SiamShikder/BSEC_Officer/Main.fxml";
                 } else { // Regulator
-                    return "/com/bsec/oop/SiamShikder/Regulator/Main.fxml";
+                    return "/com/bsec/oop/SiamShikder/Regulator/Menu_Regulator.fxml";
                 }
             default:
                 return "";

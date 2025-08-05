@@ -1,458 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.bsec.oop.Fayshal.Investor.ViewPortfolioAndPerformance"
-            prefHeight="800.0" prefWidth="1200.0">
-
+<VBox prefHeight="800.0" prefWidth="1200.0" spacing="15.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.Fayshal.Investor.ViewPortfolioAndPerformance">
     <children>
         <!-- Header -->
-        <HBox layoutX="0.0" layoutY="0.0" prefHeight="60.0" prefWidth="1200.0" alignment="CENTER_LEFT" spacing="20.0">
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Portfolio and Performance"/>
+
+        <!-- Portfolio Summary -->
+        <HBox spacing="30.0" style="-fx-alignment: center;">
             <children>
-                <Label text="My Portfolio &amp; Performance">
-                    <font>
-                        <Font name="System Bold" size="24.0"/>
-                    </font>
-                </Label>
-                <Region HBox.hgrow="ALWAYS"/>
-                <Button fx:id="refreshDataButton" text="Refresh Data"/>
-                <Button mnemonicParsing="false" onAction="#goBackToMenu" text="Return Home"/>
+                <VBox spacing="5.0" style="-fx-alignment: center;">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Total Value"/>
+                        <Label fx:id="totalPortfolioValueLabel"
+                               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: blue;" text="0.00"/>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0" style="-fx-alignment: center;">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Today's Gain/Loss"/>
+                        <Label fx:id="todayGainLossLabel"
+                               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: green;" text="0.00"/>
+                    </children>
+                </VBox>
+                <VBox spacing="5.0" style="-fx-alignment: center;">
+                    <children>
+                        <Label style="-fx-font-size: 12px;" text="Total Gain/Loss"/>
+                        <Label fx:id="totalGainLossLabel"
+                               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: green;" text="0.00"/>
+                    </children>
+                </VBox>
             </children>
         </HBox>
 
-        <!-- Main Content with Tabs -->
-        <TabPane layoutX="0.0" layoutY="60.0" prefHeight="740.0" prefWidth="1200.0" tabClosingPolicy="UNAVAILABLE">
-            <tabs>
-                <!-- Portfolio Summary Tab -->
-                <Tab fx:id="portfolioSummaryTab" text="Portfolio Summary">
-                    <content>
-                        <ScrollPane fitToWidth="true" fitToHeight="true">
-                            <content>
-                                <VBox spacing="20.0" style="-fx-padding: 20;">
-                                    <children>
-                                        <!-- Portfolio Overview -->
-                                        <VBox spacing="15.0">
-                                            <children>
-                                                <Label text="Portfolio Overview">
-                                                    <font>
-                                                        <Font name="System Bold" size="18.0"/>
-                                                    </font>
-                                                </Label>
+        <!-- Holdings Table -->
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Current Holdings:"/>
+        <TableView fx:id="holdingsTable" prefHeight="300.0">
+            <columns>
+                <TableColumn fx:id="symbolColumn" prefWidth="120.0" text="Stock"/>
+                <TableColumn fx:id="quantityColumn" prefWidth="100.0" text="Quantity"/>
+                <TableColumn fx:id="avgCostColumn" prefWidth="100.0" text="Buy Price"/>
+                <TableColumn fx:id="currentPriceColumn" prefWidth="100.0" text="Current Price"/>
+                <TableColumn fx:id="marketValueColumn" prefWidth="120.0" text="Market Value"/>
+                <TableColumn fx:id="gainLossColumn" prefWidth="120.0" text="Gain/Loss"/>
+                <TableColumn fx:id="gainLossPercentColumn" prefWidth="100.0" text="%"/>
+            </columns>
+        </TableView>
 
-                                                <GridPane hgap="20.0" vgap="10.0">
-                                                    <columnConstraints>
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
-                                                                           prefWidth="200.0"/>
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
-                                                                           prefWidth="150.0"/>
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
-                                                                           prefWidth="200.0"/>
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
-                                                                           prefWidth="150.0"/>
-                                                    </columnConstraints>
-                                                    <rowConstraints>
-                                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-                                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-                                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-                                                    </rowConstraints>
-                                                    <children>
-                                                        <Label text="Total Portfolio Value:" GridPane.columnIndex="0"
-                                                               GridPane.rowIndex="0"/>
-                                                        <Label fx:id="totalPortfolioValueLabel" text="৳0.00"
-                                                               GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        <!-- Performance Graph Section -->
+        <HBox spacing="20.0">
+            <children>
+                <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Performance Period:"/>
+                <RadioButton fx:id="dailyRadio" style="-fx-font-size: 14px;" text="Daily">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="timePeriodToggleGroup"/>
+                    </toggleGroup>
+                </RadioButton>
+                <RadioButton fx:id="weeklyRadio" style="-fx-font-size: 14px;" text="Weekly">
+                    <toggleGroup>
+                        <fx:reference source="timePeriodToggleGroup"/>
+                    </toggleGroup>
+                </RadioButton>
+                <RadioButton fx:id="monthlyRadio" style="-fx-font-size: 14px;" text="Monthly">
+                    <toggleGroup>
+                        <fx:reference source="timePeriodToggleGroup"/>
+                    </toggleGroup>
+                </RadioButton>
+                <RadioButton fx:id="yearlyRadio" style="-fx-font-size: 14px;" text="Yearly">
+                    <toggleGroup>
+                        <fx:reference source="timePeriodToggleGroup"/>
+                    </toggleGroup>
+                </RadioButton>
+            </children>
+        </HBox>
 
-                                                        <Label text="Total Investment:" GridPane.columnIndex="2"
-                                                               GridPane.rowIndex="0"/>
-                                                        <Label fx:id="totalInvestmentLabel" text="৳0.00"
-                                                               GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+        <!-- Chart Area (placeholder) -->
+        <VBox style="-fx-border-color: #cccccc; -fx-border-width: 1; -fx-padding: 20;" prefHeight="200.0">
+            <children>
+                <Label style="-fx-font-size: 16px; -fx-alignment: center;" text="Performance Chart"/>
+                <Label fx:id="chartTitleLabel" style="-fx-font-size: 12px; -fx-alignment: center; -fx-text-fill: gray;"
+                       text="Select a period to view performance graph"/>
+            </children>
+        </VBox>
 
-                                                        <Label text="Total Gain/Loss:" GridPane.columnIndex="0"
-                                                               GridPane.rowIndex="1"/>
-                                                        <Label fx:id="totalGainLossLabel" text="৳0.00"
-                                                               GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <!-- Action Buttons -->
+        <HBox spacing="15.0" style="-fx-alignment: center;">
+            <children>
+                <Button fx:id="refreshDataButton" style="-fx-font-size: 14px;" text="Refresh Portfolio"/>
+                <Button fx:id="loadStockDetailsButton" style="-fx-font-size: 14px;" text="View Stock Details"/>
+                <Button fx:id="exportPortfolioButton"
+                        style="-fx-font-size: 14px; -fx-background-color: #FF9800; -fx-text-fill: white;"
+                        text="Export Report"/>
+            </children>
+        </HBox>
 
-                                                        <Label text="Total Return %:" GridPane.columnIndex="2"
-                                                               GridPane.rowIndex="1"/>
-                                                        <Label fx:id="totalReturnPercentLabel" text="0.00%"
-                                                               GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+        <!-- Status -->
+        <Label fx:id="statusLabel" style="-fx-font-size: 12px; -fx-text-fill: blue;"
+               text="Portfolio loaded successfully"/>
 
-                                                        <Label text="Available Cash:" GridPane.columnIndex="0"
-                                                               GridPane.rowIndex="2"/>
-                                                        <Label fx:id="availableCashLabel" text="৳0.00"
-                                                               GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-
-                                                        <Label text="Number of Holdings:" GridPane.columnIndex="2"
-                                                               GridPane.rowIndex="2"/>
-                                                        <Label fx:id="numberOfHoldingsLabel" text="0"
-                                                               GridPane.columnIndex="3" GridPane.rowIndex="2"/>
-                                                    </children>
-                                                </GridPane>
-                                            </children>
-                                        </VBox>
-
-                                        <!-- Holdings Table -->
-                                        <VBox spacing="15.0">
-                                            <children>
-                                                <HBox alignment="CENTER_LEFT" spacing="15.0">
-                                                    <children>
-                                                        <Label text="My Holdings">
-                                                            <font>
-                                                                <Font name="System Bold" size="18.0"/>
-                                                            </font>
-                                                        </Label>
-                                                        <Region HBox.hgrow="ALWAYS"/>
-                                                        <Button fx:id="exportPortfolioButton" text="Export Portfolio"/>
-                                                        <Button fx:id="printPortfolioButton" text="Print Portfolio"/>
-                                                    </children>
-                                                </HBox>
-
-                                                <TableView fx:id="holdingsTable" prefHeight="300.0">
-                                                    <columns>
-                                                        <TableColumn fx:id="symbolColumn" prefWidth="80.0"
-                                                                     text="Symbol"/>
-                                                        <TableColumn fx:id="companyNameColumn" prefWidth="200.0"
-                                                                     text="Company Name"/>
-                                                        <TableColumn fx:id="quantityColumn" prefWidth="100.0"
-                                                                     text="Quantity"/>
-                                                        <TableColumn fx:id="avgCostColumn" prefWidth="100.0"
-                                                                     text="Avg Cost"/>
-                                                        <TableColumn fx:id="currentPriceColumn" prefWidth="100.0"
-                                                                     text="Current Price"/>
-                                                        <TableColumn fx:id="marketValueColumn" prefWidth="120.0"
-                                                                     text="Market Value"/>
-                                                        <TableColumn fx:id="gainLossColumn" prefWidth="100.0"
-                                                                     text="Gain/Loss"/>
-                                                        <TableColumn fx:id="gainLossPercentColumn" prefWidth="100.0"
-                                                                     text="Gain/Loss %"/>
-                                                        <TableColumn fx:id="dayChangeColumn" prefWidth="100.0"
-                                                                     text="Day Change"/>
-                                                        <TableColumn fx:id="weightColumn" prefWidth="80.0"
-                                                                     text="Weight %"/>
-                                                        <TableColumn fx:id="actionsColumn" prefWidth="100.0"
-                                                                     text="Actions"/>
-                                                    </columns>
-                                                </TableView>
-                                            </children>
-                                        </VBox>
-
-                                        <!-- Quick Actions -->
-                                        <HBox spacing="15.0" alignment="CENTER">
-                                            <children>
-                                                <Button fx:id="buyMoreStocksButton" text="Buy More Stocks"/>
-                                                <Button fx:id="sellStocksButton" text="Sell Stocks"/>
-                                                <Button fx:id="rebalancePortfolioButton" text="Rebalance Portfolio"/>
-                                                <Button fx:id="setAlertsButton" text="Set Price Alerts"/>
-                                            </children>
-                                        </HBox>
-                                    </children>
-                                </VBox>
-                            </content>
-                        </ScrollPane>
-                    </content>
-                </Tab>
-
-                <!-- Performance Charts Tab -->
-                <Tab fx:id="performanceChartsTab" text="Performance Charts">
-                    <content>
-                        <VBox spacing="20.0" style="-fx-padding: 20;">
-                            <children>
-                                <!-- Chart Controls -->
-                                <HBox alignment="CENTER_LEFT" spacing="20.0">
-                                    <children>
-                                        <Label text="Time Period:">
-                                            <font>
-                                                <Font name="System Bold" size="14.0"/>
-                                            </font>
-                                        </Label>
-                                        <RadioButton fx:id="dailyRadio" text="Daily">
-                                            <toggleGroup>
-                                                <ToggleGroup fx:id="timePeriodToggleGroup"/>
-                                            </toggleGroup>
-                                        </RadioButton>
-                                        <RadioButton fx:id="weeklyRadio" text="Weekly"
-                                                     toggleGroup="$timePeriodToggleGroup"/>
-                                        <RadioButton fx:id="monthlyRadio" text="Monthly"
-                                                     toggleGroup="$timePeriodToggleGroup"/>
-                                        <RadioButton fx:id="yearlyRadio" text="Yearly"
-                                                     toggleGroup="$timePeriodToggleGroup" selected="true"/>
-
-                                        <Region HBox.hgrow="ALWAYS"/>
-
-                                        <Label text="Chart Type:"/>
-                                        <ComboBox fx:id="chartTypeComboBox" prefWidth="150.0"/>
-                                        <Button fx:id="loadChartButton" text="Load Chart"/>
-                                    </children>
-                                </HBox>
-
-                                <!-- Chart Area -->
-                                <VBox spacing="10.0">
-                                    <children>
-                                        <Label fx:id="chartTitleLabel" text="Portfolio Performance Chart">
-                                            <font>
-                                                <Font name="System Bold" size="16.0"/>
-                                            </font>
-                                        </Label>
-
-                                        <!-- Placeholder for chart - would be replaced with actual chart component -->
-                                        <AnchorPane fx:id="chartContainer" prefHeight="400.0"
-                                                    style="-fx-border-color: gray; -fx-border-width: 1;">
-                                            <children>
-                                                <Label layoutX="400.0" layoutY="190.0"
-                                                       text="Performance Chart Will Load Here"/>
-                                            </children>
-                                        </AnchorPane>
-                                    </children>
-                                </VBox>
-
-                                <!-- Performance Metrics -->
-                                <GridPane hgap="20.0" vgap="10.0">
-                                    <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0"/>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0"/>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0"/>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0"/>
-                                    </columnConstraints>
-                                    <rowConstraints>
-                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-                                    </rowConstraints>
-                                    <children>
-                                        <VBox spacing="5.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
-                                            <children>
-                                                <Label text="Best Performer:"/>
-                                                <Label fx:id="bestPerformerLabel" text="N/A"/>
-                                            </children>
-                                        </VBox>
-
-                                        <VBox spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
-                                            <children>
-                                                <Label text="Worst Performer:"/>
-                                                <Label fx:id="worstPerformerLabel" text="N/A"/>
-                                            </children>
-                                        </VBox>
-
-                                        <VBox spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="0">
-                                            <children>
-                                                <Label text="Volatility:"/>
-                                                <Label fx:id="volatilityLabel" text="0.00%"/>
-                                            </children>
-                                        </VBox>
-
-                                        <VBox spacing="5.0" GridPane.columnIndex="3" GridPane.rowIndex="0">
-                                            <children>
-                                                <Label text="Sharpe Ratio:"/>
-                                                <Label fx:id="sharpeRatioLabel" text="0.00"/>
-                                            </children>
-                                        </VBox>
-
-                                        <VBox spacing="5.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
-                                            <children>
-                                                <Label text="Beta:"/>
-                                                <Label fx:id="betaLabel" text="0.00"/>
-                                            </children>
-                                        </VBox>
-
-                                        <VBox spacing="5.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                            <children>
-                                                <Label text="Alpha:"/>
-                                                <Label fx:id="alphaLabel" text="0.00%"/>
-                                            </children>
-                                        </VBox>
-
-                                        <VBox spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                                            <children>
-                                                <Label text="Max Drawdown:"/>
-                                                <Label fx:id="maxDrawdownLabel" text="0.00%"/>
-                                            </children>
-                                        </VBox>
-
-                                        <VBox spacing="5.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
-                                            <children>
-                                                <Label text="Annualized Return:"/>
-                                                <Label fx:id="annualizedReturnLabel" text="0.00%"/>
-                                            </children>
-                                        </VBox>
-                                    </children>
-                                </GridPane>
-                            </children>
-                        </VBox>
-                    </content>
-                </Tab>
-
-                <!-- Stock Details Tab -->
-                <Tab fx:id="stockDetailsTab" text="Stock Details">
-                    <content>
-                        <VBox spacing="20.0" style="-fx-padding: 20;">
-                            <children>
-                                <!-- Stock Selection -->
-                                <HBox alignment="CENTER_LEFT" spacing="15.0">
-                                    <children>
-                                        <Label text="Select Stock:">
-                                            <font>
-                                                <Font name="System Bold" size="14.0"/>
-                                            </font>
-                                        </Label>
-                                        <ComboBox fx:id="stockSelectionComboBox" prefWidth="200.0"/>
-                                        <Button fx:id="loadStockDetailsButton" text="Load Details"/>
-                                        <Region HBox.hgrow="ALWAYS"/>
-                                        <Button fx:id="compareStocksButton" text="Compare Stocks"/>
-                                    </children>
-                                </HBox>
-
-                                <!-- Stock Information -->
-                                <HBox spacing="20.0">
-                                    <children>
-                                        <!-- Basic Info -->
-                                        <VBox spacing="15.0" prefWidth="400.0">
-                                            <children>
-                                                <Label text="Stock Information">
-                                                    <font>
-                                                        <Font name="System Bold" size="16.0"/>
-                                                    </font>
-                                                </Label>
-
-                                                <GridPane hgap="10.0" vgap="8.0">
-                                                    <columnConstraints>
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
-                                                                           prefWidth="120.0"/>
-                                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"
-                                                                           prefWidth="150.0"/>
-                                                    </columnConstraints>
-                                                    <rowConstraints>
-                                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-                                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-                                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-                                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-                                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-                                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-                                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-                                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-                                                    </rowConstraints>
-                                                    <children>
-                                                        <Label text="Symbol:" GridPane.columnIndex="0"
-                                                               GridPane.rowIndex="0"/>
-                                                        <Label fx:id="selectedStockSymbolLabel" text="N/A"
-                                                               GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-
-                                                        <Label text="Company:" GridPane.columnIndex="0"
-                                                               GridPane.rowIndex="1"/>
-                                                        <Label fx:id="selectedCompanyLabel" text="N/A"
-                                                               GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-
-                                                        <Label text="Sector:" GridPane.columnIndex="0"
-                                                               GridPane.rowIndex="2"/>
-                                                        <Label fx:id="sectorLabel" text="N/A" GridPane.columnIndex="1"
-                                                               GridPane.rowIndex="2"/>
-
-                                                        <Label text="Current Price:" GridPane.columnIndex="0"
-                                                               GridPane.rowIndex="3"/>
-                                                        <Label fx:id="stockCurrentPriceLabel" text="৳0.00"
-                                                               GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-
-                                                        <Label text="Your Quantity:" GridPane.columnIndex="0"
-                                                               GridPane.rowIndex="4"/>
-                                                        <Label fx:id="yourQuantityLabel" text="0"
-                                                               GridPane.columnIndex="1" GridPane.rowIndex="4"/>
-
-                                                        <Label text="Your Avg Cost:" GridPane.columnIndex="0"
-                                                               GridPane.rowIndex="5"/>
-                                                        <Label fx:id="yourAvgCostLabel" text="৳0.00"
-                                                               GridPane.columnIndex="1" GridPane.rowIndex="5"/>
-
-                                                        <Label text="Market Value:" GridPane.columnIndex="0"
-                                                               GridPane.rowIndex="6"/>
-                                                        <Label fx:id="stockMarketValueLabel" text="৳0.00"
-                                                               GridPane.columnIndex="1" GridPane.rowIndex="6"/>
-
-                                                        <Label text="Your Gain/Loss:" GridPane.columnIndex="0"
-                                                               GridPane.rowIndex="7"/>
-                                                        <Label fx:id="stockGainLossLabel" text="৳0.00"
-                                                               GridPane.columnIndex="1" GridPane.rowIndex="7"/>
-                                                    </children>
-                                                </GridPane>
-                                            </children>
-                                        </VBox>
-
-                                        <!-- Performance History -->
-                                        <VBox spacing="15.0" prefWidth="400.0">
-                                            <children>
-                                                <Label text="Performance History">
-                                                    <font>
-                                                        <Font name="System Bold" size="16.0"/>
-                                                    </font>
-                                                </Label>
-
-                                                <TableView fx:id="performanceHistoryTable" prefHeight="200.0">
-                                                    <columns>
-                                                        <TableColumn fx:id="dateColumn" prefWidth="100.0" text="Date"/>
-                                                        <TableColumn fx:id="actionColumn" prefWidth="80.0"
-                                                                     text="Action"/>
-                                                        <TableColumn fx:id="quantityHistoryColumn" prefWidth="80.0"
-                                                                     text="Shares"/>
-                                                        <TableColumn fx:id="priceColumn" prefWidth="80.0" text="Price"/>
-                                                        <TableColumn fx:id="valueColumn" prefWidth="100.0"
-                                                                     text="Value"/>
-                                                    </columns>
-                                                </TableView>
-                                            </children>
-                                        </VBox>
-                                    </children>
-                                </HBox>
-
-                                <!-- Dividends Section -->
-                                <VBox spacing="15.0">
-                                    <children>
-                                        <Label text="Dividend History">
-                                            <font>
-                                                <Font name="System Bold" size="16.0"/>
-                                            </font>
-                                        </Label>
-
-                                        <TableView fx:id="dividendHistoryTable" prefHeight="150.0">
-                                            <columns>
-                                                <TableColumn fx:id="dividendDateColumn" prefWidth="120.0"
-                                                             text="Ex-Date"/>
-                                                <TableColumn fx:id="dividendAmountColumn" prefWidth="100.0"
-                                                             text="Amount/Share"/>
-                                                <TableColumn fx:id="sharesHeldColumn" prefWidth="100.0"
-                                                             text="Shares Held"/>
-                                                <TableColumn fx:id="totalDividendColumn" prefWidth="120.0"
-                                                             text="Total Dividend"/>
-                                                <TableColumn fx:id="dividendTypeColumn" prefWidth="100.0" text="Type"/>
-                                                <TableColumn fx:id="paymentDateColumn" prefWidth="120.0"
-                                                             text="Payment Date"/>
-                                            </columns>
-                                        </TableView>
-
-                                        <HBox spacing="15.0" alignment="CENTER_LEFT">
-                                            <children>
-                                                <Label text="Total Dividends Received:"/>
-                                                <Label fx:id="totalDividendsLabel" text="৳0.00"/>
-                                                <Label text="Dividend Yield:"/>
-                                                <Label fx:id="dividendYieldLabel" text="0.00%"/>
-                                            </children>
-                                        </HBox>
-                                    </children>
-                                </VBox>
-
-                                <!-- Stock Actions -->
-                                <HBox spacing="15.0" alignment="CENTER">
-                                    <children>
-                                        <Button fx:id="buyMoreOfThisStockButton" text="Buy More"/>
-                                        <Button fx:id="sellThisStockButton" text="Sell"/>
-                                        <Button fx:id="setStockAlertButton" text="Set Alert"/>
-                                        <Button fx:id="viewStockNewsButton" text="View News"/>
-                                        <Button fx:id="downloadStockReportButton" text="Download Report"/>
-                                    </children>
-                                </HBox>
-                            </children>
-                        </VBox>
-                    </content>
-                </Tab>
-            </tabs>
-        </TabPane>
+        <!-- Back Button -->
+        <HBox style="-fx-alignment: center;">
+            <children>
+                <Button fx:id="backToMenuButton" onAction="#goBackToMenu" style="-fx-font-size: 14px;"
+                        text="Back to Menu"/>
+            </children>
+        </HBox>
     </children>
-</AnchorPane>
+</VBox>
