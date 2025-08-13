@@ -18,7 +18,7 @@ public class MonitorTradingActivity {
     @javafx.fxml.FXML
     public void goBackToDashboard(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/Fayshal/StockExchange/Main.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/summer25section2/Fayshal/StockExchange/Main.fxml"));
             Parent root = loader.load();
             Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);

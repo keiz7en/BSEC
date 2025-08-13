@@ -18,7 +18,7 @@ public class Main
     @javafx.fxml.FXML
     public void goToLogin(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/Login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/summer25section2/Login.fxml"));
             Parent loginRoot = loader.load();
             Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene loginScene = new Scene(loginRoot);
@@ -32,7 +32,7 @@ public class Main
     @javafx.fxml.FXML
     public void approveRegulatoryPoliciesButton(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/SiamShikder/BSEC_Officer/ApproveRegulatoryPolicies.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/summer25section2/SiamShikder/BSEC_Officer/ApproveRegulatoryPolicies.fxml"));
             Parent root = loader.load();
             Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
@@ -46,7 +46,7 @@ public class Main
     @javafx.fxml.FXML
     public void monitorMarketComplianceButton(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/SiamShikder/BSEC_Officer/MonitorMarketCompliance.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/summer25section2/SiamShikder/BSEC_Officer/MonitorMarketCompliance.fxml"));
             Parent root = loader.load();
             Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
@@ -60,7 +60,7 @@ public class Main
     @javafx.fxml.FXML
     public void conductRegulatoryInvestigationsButton(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/SiamShikder/BSEC_Officer/ConductRegulatoryInvestigations.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/summer25section2/SiamShikder/BSEC_Officer/ConductRegulatoryInvestigations.fxml"));
             Parent root = loader.load();
             Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
@@ -74,7 +74,7 @@ public class Main
     @javafx.fxml.FXML
     public void enforcePenaltiesAndSanctionsButton(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/SiamShikder/BSEC_Officer/EnforcePenaltiesAndSanctions.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/summer25section2/SiamShikder/BSEC_Officer/EnforcePenaltiesAndSanctions.fxml"));
             Parent root = loader.load();
             Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
@@ -88,7 +88,7 @@ public class Main
     @javafx.fxml.FXML
     public void reviewAndApproveMarketFeesButton(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/SiamShikder/BSEC_Officer/ReviewAndApproveMarketFees.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/summer25section2/SiamShikder/BSEC_Officer/ReviewAndApproveMarketFees.fxml"));
             Parent root = loader.load();
             Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
@@ -102,7 +102,7 @@ public class Main
     @javafx.fxml.FXML
     public void coordinateWithInternationalRegulatorsButton(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/SiamShikder/BSEC_Officer/CoordinateWithInternationalRegulators.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/summer25section2/SiamShikder/BSEC_Officer/CoordinateWithInternationalRegulators.fxml"));
             Parent root = loader.load();
             Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
@@ -116,7 +116,7 @@ public class Main
     @javafx.fxml.FXML
     public void manageRegulatoryTrainingProgramsButton(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/SiamShikder/BSEC_Officer/ManageRegulatoryTrainingPrograms.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/summer25section2/SiamShikder/BSEC_Officer/ManageRegulatoryTrainingPrograms.fxml"));
             Parent root = loader.load();
             Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
@@ -130,7 +130,7 @@ public class Main
     @javafx.fxml.FXML
     public void overseeWhistleblowerProgramButton(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/oop/SiamShikder/BSEC_Officer/OverseeWhistleblowerProgram.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/summer25section2/SiamShikder/BSEC_Officer/OverseeWhistleblowerProgram.fxml"));
             Parent root = loader.load();
             Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
