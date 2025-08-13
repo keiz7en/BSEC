@@ -90,27 +90,27 @@ public class LoginController implements Initializable {
         switch (user) {
             case "Fayshal":
                 if (role.equals("Investor")) {
-                    return "/com/bsec/oop/Fayshal/Investor/Menu_Investor.fxml";
+                    return "/com/bsec/summer25section2/Fayshal/Investor/Menu_Investor.fxml";
                 } else { // StockExchange
-                    return "/com/bsec/oop/Fayshal/StockExchange/Main.fxml";
+                    return "/com/bsec/summer25section2/Fayshal/StockExchange/Main.fxml";
                 }
             case "Abid":
                 if (role.equals("Analyst")) {
-                    return "/com/bsec/oop/Abid/Analyst/Main.fxml";
+                    return "/com/bsec/summer25section2/Abid/Analyst/analyst1.fxml";
                 } else { // Broker
-                    return "/com/bsec/oop/Abid/Broker/Main.fxml";
+                    return "/com/bsec/summer25section2/Abid/Broker/Main.fxml";
                 }
             case "Sadman":
                 if (role.equals("Auditor")) {
-                    return "/com/bsec/oop/sadman/Auditor/Main.fxml";
+                    return "/com/bsec/summer25section2/sadman/Auditor/Main.fxml";
                 } else { // Company
-                    return "/com/bsec/oop/sadman/Company/Main.fxml";
+                    return "/com/bsec/summer25section2/sadman/company/Main.fxml";
                 }
             case "SiamShikder":
                 if (role.equals("BSEC_Officer")) {
-                    return "/com/bsec/oop/SiamShikder/BSEC_Officer/Main.fxml";
+                    return "/com/bsec/summer25section2/SiamShikder/BSEC_Officer/Main.fxml";
                 } else { // Regulator
-                    return "/com/bsec/oop/SiamShikder/Regulator/Menu_Regulator.fxml";
+                    return "/com/bsec/summer25section2/SiamShikder/Regulator/Menu_Regulator.fxml";
                 }
             default:
                 return "";
@@ -122,6 +122,9 @@ public class LoginController implements Initializable {
             System.out.println("Attempting to load: " + fxmlPath);
             URL resourceUrl = getClass().getResource(fxmlPath);
             System.out.println("Resource URL: " + resourceUrl);
+            if (resourceUrl == null) {
+                throw new IOException("FXML not found on classpath: " + fxmlPath);
+            }
             FXMLLoader loader = new FXMLLoader(resourceUrl);
             Parent userRoot = loader.load();
             Stage currentStage = (Stage) userComboBox.getScene().getWindow();
