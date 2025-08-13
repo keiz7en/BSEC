@@ -91,7 +91,7 @@ public class LoginController implements Initializable {
             case "Fayshal":
                 if (role.equals("Investor")) {
                     return "/com/bsec/summer25section2/Fayshal/Investor/Menu_Investor.fxml";
-                } else { // StockExchange
+                } else {
                     return "/com/bsec/summer25section2/Fayshal/StockExchange/Main.fxml";
                 }
             case "Abid":
@@ -103,7 +103,7 @@ public class LoginController implements Initializable {
             case "Sadman":
                 if (role.equals("Auditor")) {
                     return "/com/bsec/summer25section2/sadman/Auditor/Main.fxml";
-                } else { // Company
+                } else {
                     return "/com/bsec/summer25section2/sadman/company/Main.fxml";
                 }
             case "SiamShikder":
