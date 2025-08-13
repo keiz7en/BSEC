@@ -4,100 +4,78 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.bsec.oop.SiamShikder.BSEC_Officer.ReviewAndApproveMarketFees"
-            prefHeight="900.0" prefWidth="1200.0">
+            fx:controller="com.bsec.oop.SiamShikder.BSEC_Officer.ReviewAndApproveMarketFeesController"
+            prefWidth="1000.0" prefHeight="700.0">
+    <children>
+        <VBox spacing="14.0" AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"
+              AnchorPane.bottomAnchor="10.0">
+            <children>
+                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="Market Fee Approval" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Back to Menu" onAction="#goBack"/>
+                    </children>
+                </HBox>
 
-    <Label layoutX="20.0" layoutY="20.0" style="-fx-font-size: 24px; -fx-font-weight: bold;"
-           text="Review and Approve Market Fees"/>
-    <Button layoutX="1100.0" layoutY="20.0" text="Back" onAction="#goBack"/>
+                <GridPane hgap="12.0" vgap="12.0">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="200.0"/>
+                        <ColumnConstraints minWidth="300.0" hgrow="ALWAYS"/>
+                    </columnConstraints>
+                    <children>
+                        <Label text="Proposal ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="proposalIdField" promptText="Proposal ID" GridPane.rowIndex="0"
+                                   GridPane.columnIndex="1"/>
 
-    <!-- Receive Fee Proposals -->
-    <Label layoutX="20.0" layoutY="80.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
-           text="1. Receive Fee Proposals"/>
-    <TableView layoutX="20.0" layoutY="110.0" prefHeight="140.0" prefWidth="800.0">
-        <columns>
-            <TableColumn prefWidth="100.0" text="Proposal ID"/>
-            <TableColumn prefWidth="180.0" text="Fee Type"/>
-            <TableColumn prefWidth="120.0" text="Current Fee"/>
-            <TableColumn prefWidth="120.0" text="Proposed Fee"/>
-            <TableColumn prefWidth="150.0" text="Requestor"/>
-            <TableColumn prefWidth="130.0" text="Status"/>
-        </columns>
-    </TableView>
-    <Button layoutX="850.0" layoutY="130.0" text="View Proposal"/>
-    <Button layoutX="850.0" layoutY="170.0" text="Download"/>
-    <Button layoutX="850.0" layoutY="210.0" text="Add Comment"/>
+                        <Label text="Fee Type:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <ComboBox fx:id="feeTypeCombo" promptText="Select Fee Type" GridPane.rowIndex="1"
+                                  GridPane.columnIndex="1"/>
 
-    <!-- Analyze Market Impact -->
-    <Label layoutX="20.0" layoutY="290.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
-           text="2. Analyze Market Impact"/>
-    <Label layoutX="30.0" layoutY="330.0" text="Selected Proposal:"/>
-    <TextField layoutX="160.0" layoutY="325.0" prefWidth="200.0"/>
-    <Button layoutX="380.0" layoutY="325.0" text="Load Analysis"/>
+                        <Label text="Proposal Received Date:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <DatePicker fx:id="receivedDatePicker" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
 
-    <Label layoutX="30.0" layoutY="370.0" text="Impact Areas:"/>
-    <CheckBox layoutX="120.0" layoutY="370.0" text="Trading Volume"/>
-    <CheckBox layoutX="240.0" layoutY="370.0" text="Market Liquidity"/>
-    <CheckBox layoutX="360.0" layoutY="370.0" text="Participation"/>
-    <CheckBox layoutX="120.0" layoutY="400.0" text="Cost to Investors"/>
-    <CheckBox layoutX="240.0" layoutY="400.0" text="Revenue Impact"/>
-    <CheckBox layoutX="360.0" layoutY="400.0" text="Competition"/>
+                        <Label text="Status:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <HBox spacing="10.0" GridPane.rowIndex="3" GridPane.columnIndex="1">
+                            <children>
+                                <RadioButton fx:id="pendingRadio" text="Pending"/>
+                                <RadioButton fx:id="approvedRadio" text="Approved"/>
+                            </children>
+                        </HBox>
 
-    <Label layoutX="30.0" layoutY="440.0" text="Analysis Results:"/>
-    <TextArea layoutX="30.0" layoutY="470.0" prefHeight="80.0" prefWidth="500.0"
-              promptText="Market impact analysis results..."/>
-    <Button layoutX="550.0" layoutY="500.0" text="Run Analysis"/>
+                        <Label text="Fee Proposal Summary:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                        <TextArea fx:id="summaryArea" promptText="Fee Proposal Summary" wrapText="true" prefRowCount="4"
+                                  GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                    </children>
+                </GridPane>
 
-    <!-- Hold Consultation Meetings -->
-    <Label layoutX="600.0" layoutY="290.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
-           text="3. Hold Consultation Meetings"/>
-    <Label layoutX="610.0" layoutY="330.0" text="Meeting Type:"/>
-    <ChoiceBox layoutX="700.0" layoutY="325.0" prefWidth="150.0"/>
+                <HBox spacing="10.0">
+                    <children>
+                        <Button fx:id="analyzeImpactButton" text="Analyze Impact" onAction="#onAnalyzeImpact"/>
+                    </children>
+                </HBox>
 
-    <Label layoutX="610.0" layoutY="370.0" text="Date:"/>
-    <DatePicker layoutX="650.0" layoutY="365.0" prefWidth="130.0"/>
-    <Label layoutX="800.0" layoutY="370.0" text="Time:"/>
-    <TextField layoutX="840.0" layoutY="365.0" prefWidth="80.0"/>
+                <VBox spacing="8.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label text="Fee Proposals" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                        <TableView fx:id="proposalTable" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colProposalId" text="Proposal ID" prefWidth="180.0"/>
+                                <TableColumn fx:id="colFeeType" text="Fee Type" prefWidth="200.0"/>
+                                <TableColumn fx:id="colStatus" text="Status" prefWidth="160.0"/>
+                                <TableColumn fx:id="colApprovalDate" text="Approval Date" prefWidth="160.0"/>
+                            </columns>
+                        </TableView>
+                    </children>
+                </VBox>
 
-    <Label layoutX="610.0" layoutY="410.0" text="Participants:"/>
-    <ListView layoutX="610.0" layoutY="435.0" prefHeight="80.0" prefWidth="300.0"/>
-    <Button layoutX="920.0" layoutY="455.0" text="Add"/>
-    <Button layoutX="920.0" layoutY="485.0" text="Remove"/>
-
-    <Button layoutX="610.0" layoutY="530.0" text="Schedule Meeting"/>
-    <Button layoutX="730.0" layoutY="530.0" text="Send Invites"/>
-
-    <!-- Approve Fees -->
-    <Label layoutX="20.0" layoutY="590.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
-           text="4. Approve Fees"/>
-    <Label layoutX="30.0" layoutY="630.0" text="Fee Decision:"/>
-    <RadioButton layoutX="120.0" layoutY="630.0" text="Approve as Proposed"/>
-    <RadioButton layoutX="260.0" layoutY="630.0" text="Approve with Changes"/>
-    <RadioButton layoutX="420.0" layoutY="630.0" text="Reject"/>
-
-    <Label layoutX="30.0" layoutY="670.0" text="Approved Amount:"/>
-    <TextField layoutX="150.0" layoutY="665.0" prefWidth="120.0"/>
-    <Label layoutX="280.0" layoutY="670.0" text="Effective Date:"/>
-    <DatePicker layoutX="370.0" layoutY="665.0" prefWidth="150.0"/>
-
-    <Label layoutX="30.0" layoutY="710.0" text="Comments:"/>
-    <TextArea layoutX="100.0" layoutY="700.0" prefHeight="60.0" prefWidth="400.0"
-              promptText="Approval comments..."/>
-    <Button layoutX="520.0" layoutY="720.0" text="Submit Decision"/>
-
-    <!-- Publish Fee Schedule -->
-    <Label layoutX="650.0" layoutY="590.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
-           text="5. Publish Fee Schedule"/>
-    <Label layoutX="660.0" layoutY="630.0" text="Publication Date:"/>
-    <DatePicker layoutX="760.0" layoutY="625.0" prefWidth="150.0"/>
-
-    <CheckBox layoutX="660.0" layoutY="665.0" text="Website"/>
-    <CheckBox layoutX="660.0" layoutY="695.0" text="Official Notice"/>
-    <CheckBox layoutX="660.0" layoutY="725.0" text="Email Notification"/>
-    <CheckBox layoutX="780.0" layoutY="665.0" text="Industry Bulletin"/>
-    <CheckBox layoutX="780.0" layoutY="695.0" text="Media Release"/>
-
-    <Button layoutX="660.0" layoutY="760.0" text="Publish Schedule"/>
-    <Button layoutX="780.0" layoutY="760.0" text="Generate Notice"/>
-
+                <HBox spacing="10.0">
+                    <children>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Back to Menu" onAction="#goBack"/>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>

@@ -4,85 +4,87 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.bsec.oop.SiamShikder.Regulator.ApproveStockDividendDeclaration" prefHeight="900.0"
-            prefWidth="1200.0">
+            fx:controller="com.bsec.oop.SiamShikder.Regulator.ApproveStockDividendDeclarationController"
+            prefWidth="1000.0" prefHeight="700.0">
+    <children>
+        <VBox spacing="14.0" AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"
+              AnchorPane.bottomAnchor="10.0">
+            <children>
+                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="Stock Dividend Declaration Approval"
+                               style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Back to Menu" onAction="#goBack"/>
+                    </children>
+                </HBox>
 
-    <Label layoutX="20.0" layoutY="20.0" style="-fx-font-size: 24px; -fx-font-weight: bold;"
-           text="Approve Stock Dividend Declaration"/>
-    <Button layoutX="1100.0" layoutY="20.0" text="Back" onAction="#goBack"/>
+                <GridPane hgap="12.0" vgap="12.0">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="200.0"/>
+                        <ColumnConstraints minWidth="280.0" hgrow="ALWAYS"/>
+                    </columnConstraints>
+                    <children>
+                        <Label text="Company Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="companyNameField" promptText="Company Name" GridPane.rowIndex="0"
+                                   GridPane.columnIndex="1"/>
 
-    <Label layoutX="20.0" layoutY="80.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
-           text="1. Receive Dividend Declaration"/>
-    <TableView layoutX="20.0" layoutY="110.0" prefHeight="150.0" prefWidth="800.0">
-        <columns>
-            <TableColumn prefWidth="120.0" text="Declaration ID"/>
-            <TableColumn prefWidth="200.0" text="Company Name"/>
-            <TableColumn prefWidth="120.0" text="Dividend Type"/>
-            <TableColumn prefWidth="120.0" text="Amount Rate"/>
-            <TableColumn prefWidth="120.0" text="Submit Date"/>
-            <TableColumn prefWidth="120.0" text="Status"/>
-        </columns>
-    </TableView>
-    <Button layoutX="850.0" layoutY="130.0" text="View Declaration"/>
-    <Button layoutX="850.0" layoutY="170.0" text="Download Documents"/>
-    <Button layoutX="850.0" layoutY="210.0" text="Check History"/>
-    <Button layoutX="850.0" layoutY="250.0" text="Refresh List"/>
+                        <Label text="Financial Year:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <ComboBox fx:id="financialYearCombo" promptText="Financial Year" GridPane.rowIndex="1"
+                                  GridPane.columnIndex="1"/>
 
-    <Label layoutX="20.0" layoutY="300.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
-           text="2. Validate Declaration Details"/>
-    <Label layoutX="30.0" layoutY="340.0" text="Company:"/>
-    <TextField layoutX="120.0" layoutY="335.0" prefWidth="200.0"/>
-    <Label layoutX="350.0" layoutY="340.0" text="Stock Symbol:"/>
-    <TextField layoutX="450.0" layoutY="335.0" prefWidth="100.0"/>
+                        <Label text="Declaration Submission Date:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <DatePicker fx:id="submissionDatePicker" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
 
-    <Label layoutX="30.0" layoutY="380.0" text="Dividend Rate:"/>
-    <TextField layoutX="140.0" layoutY="375.0" prefWidth="80.0"/>
-    <Label layoutX="230.0" layoutY="380.0" text="Percent"/>
-    <Label layoutX="270.0" layoutY="380.0" text="Ex-Dividend Date:"/>
-    <DatePicker layoutX="400.0" layoutY="375.0" prefWidth="150.0"/>
+                        <Label text="Proposed Dividend (%):" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <TextField fx:id="dividendPercentField" promptText="Proposed Dividend (%)" GridPane.rowIndex="3"
+                                   GridPane.columnIndex="1"/>
 
-    <Label layoutX="30.0" layoutY="420.0" text="Record Date:"/>
-    <DatePicker layoutX="120.0" layoutY="415.0" prefWidth="150.0"/>
-    <Label layoutX="300.0" layoutY="420.0" text="Payment Date:"/>
-    <DatePicker layoutX="400.0" layoutY="415.0" prefWidth="150.0"/>
+                        <Label text="Total Shares Issued:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                        <TextField fx:id="totalSharesField" promptText="Total Shares Issued" GridPane.rowIndex="4"
+                                   GridPane.columnIndex="1"/>
 
-    <Label layoutX="30.0" layoutY="460.0" text="Total Amount:"/>
-    <TextField layoutX="140.0" layoutY="455.0" prefWidth="120.0"/>
-    <Label layoutX="280.0" layoutY="460.0" text="Shares Outstanding:"/>
-    <TextField layoutX="420.0" layoutY="455.0" prefWidth="120.0"/>
+                        <Label text="Declaration Notes / Remarks:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                        <TextArea fx:id="notesArea" promptText="Declaration Notes / Remarks" wrapText="true"
+                                  prefRowCount="4" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+                    </children>
+                </GridPane>
 
-    <CheckBox layoutX="600.0" layoutY="340.0" text="Board Resolution Attached"/>
-    <CheckBox layoutX="600.0" layoutY="370.0" text="Financial Statements Verified"/>
-    <CheckBox layoutX="600.0" layoutY="400.0" text="Cash Flow Adequate"/>
-    <CheckBox layoutX="600.0" layoutY="430.0" text="Regulatory Compliance Met"/>
-    <CheckBox layoutX="600.0" layoutY="460.0" text="Shareholder Approval Obtained"/>
+                <HBox spacing="10.0">
+                    <children>
+                        <Button fx:id="validateButton" text="Validate Declaration" onAction="#onValidate"/>
+                    </children>
+                </HBox>
 
-    <Button layoutX="800.0" layoutY="380.0" text="Validate All"/>
-    <Button layoutX="800.0" layoutY="420.0" text="Request Documents"/>
+                <HBox spacing="10.0">
+                    <children>
+                        <Button fx:id="approveButton" text="Approve Declaration" onAction="#onApprove"/>
+                        <Button fx:id="requestChangesButton" text="Request Changes" onAction="#onRequestChanges"/>
+                    </children>
+                </HBox>
 
-    <Label layoutX="20.0" layoutY="520.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
-           text="3. Approve or Request Change"/>
-    <Label layoutX="30.0" layoutY="560.0" text="Declaration ID:"/>
-    <TextField layoutX="150.0" layoutY="555.0" prefWidth="150.0"/>
-    <Label layoutX="320.0" layoutY="560.0" text="Decision:"/>
-    <RadioButton layoutX="390.0" layoutY="560.0" text="Approve"/>
-    <RadioButton layoutX="470.0" layoutY="560.0" text="Request Changes"/>
-    <RadioButton layoutX="600.0" layoutY="560.0" text="Reject"/>
+                <VBox spacing="8.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label text="Dividend Summary" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                        <TableView fx:id="dividendTable" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colCompanyName" text="Company Name" prefWidth="220.0"/>
+                                <TableColumn fx:id="colFinancialYear" text="Financial Year" prefWidth="140.0"/>
+                                <TableColumn fx:id="colDividendPercent" text="Dividend (%)" prefWidth="140.0"/>
+                                <TableColumn fx:id="colStatus" text="Status" prefWidth="180.0"/>
+                            </columns>
+                        </TableView>
+                    </children>
+                </VBox>
 
-    <Label layoutX="30.0" layoutY="600.0" text="Comments Conditions:"/>
-    <TextArea layoutX="30.0" layoutY="630.0" prefHeight="80.0" prefWidth="600.0"
-              promptText="Enter approval conditions or change requests"/>
-    <Button layoutX="650.0" layoutY="650.0" text="Submit Decision"/>
-    <Button layoutX="780.0" layoutY="650.0" text="Schedule Review"/>
-
-    <Label layoutX="20.0" layoutY="750.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
-           text="4. Notify Company and Broker"/>
-    <Label layoutX="30.0" layoutY="790.0" text="Notification Recipients:"/>
-    <CheckBox layoutX="200.0" layoutY="790.0" text="Company Management"/>
-    <CheckBox layoutX="350.0" layoutY="790.0" text="Stock Exchange"/>
-    <CheckBox layoutX="480.0" layoutY="790.0" text="Brokers"/>
-    <CheckBox layoutX="560.0" layoutY="790.0" text="Public Disclosure"/>
-    <Button layoutX="30.0" layoutY="820.0" text="Send Notifications"/>
-    <Button layoutX="170.0" layoutY="820.0" text="Generate Press Release"/>
-
+                <HBox spacing="10.0">
+                    <children>
+                        <Button fx:id="notifyButton" text="Notify Company &amp; Broker" onAction="#onNotify"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Back to Menu" onAction="#goBack"/>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>

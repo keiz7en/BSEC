@@ -4,111 +4,86 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.bsec.oop.SiamShikder.Regulator.ConductComplianceAudit" prefHeight="900.0"
-            prefWidth="1200.0">
+            fx:controller="com.bsec.oop.SiamShikder.Regulator.ConductComplianceAuditController" prefWidth="1000.0"
+            prefHeight="700.0">
+    <children>
+        <VBox spacing="14.0" AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"
+              AnchorPane.bottomAnchor="10.0">
+            <children>
+                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="Compliance Audit &amp; Training Management"
+                               style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Back to Menu" onAction="#goBack"/>
+                    </children>
+                </HBox>
 
-    <Label layoutX="20.0" layoutY="20.0" style="-fx-font-size: 24px; -fx-font-weight: bold;"
-           text="Conduct Compliance Audit"/>
-    <Button layoutX="1100.0" layoutY="20.0" text="Back" onAction="#goBack"/>
+                <GridPane hgap="12.0" vgap="12.0">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="220.0"/>
+                        <ColumnConstraints minWidth="320.0" hgrow="ALWAYS"/>
+                    </columnConstraints>
+                    <children>
+                        <Label text="Training Curriculum Title:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="curriculumTitleField" promptText="Training Curriculum Title"
+                                   GridPane.rowIndex="0" GridPane.columnIndex="1"/>
 
-    <Label layoutX="20.0" layoutY="70.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
-           text="1. Develop Training Curriculum"/>
-    <Label layoutX="30.0" layoutY="100.0" text="Training Program:"/>
-    <TextField layoutX="140.0" layoutY="95.0" prefWidth="200.0"/>
-    <Label layoutX="350.0" layoutY="100.0" text="Duration:"/>
-    <TextField layoutX="410.0" layoutY="95.0" prefWidth="80.0"/>
-    <Label layoutX="500.0" layoutY="100.0" text="hours"/>
+                        <Label text="Audit Type:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <ComboBox fx:id="auditTypeCombo" promptText="Select Audit Type" GridPane.rowIndex="1"
+                                  GridPane.columnIndex="1"/>
 
-    <Label layoutX="30.0" layoutY="130.0" text="Target Audience:"/>
-    <ChoiceBox layoutX="140.0" layoutY="125.0" prefWidth="150.0"/>
-    <Label layoutX="300.0" layoutY="130.0" text="Compliance Area:"/>
-    <ChoiceBox layoutX="400.0" layoutY="125.0" prefWidth="150.0"/>
+                        <Label text="Session Date:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <DatePicker fx:id="sessionDatePicker" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
 
-    <Label layoutX="30.0" layoutY="160.0" text="Training Modules:"/>
-    <ListView layoutX="30.0" layoutY="185.0" prefHeight="80.0" prefWidth="400.0"/>
-    <Button layoutX="440.0" layoutY="195.0" text="Add Module"/>
-    <Button layoutX="440.0" layoutY="225.0" text="Edit Module"/>
-    <Button layoutX="440.0" layoutY="255.0" text="Remove Module"/>
+                        <Label text="Session Mode:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <HBox spacing="10.0" GridPane.rowIndex="3" GridPane.columnIndex="1">
+                            <children>
+                                <RadioButton fx:id="onlineRadio" text="Online"/>
+                                <RadioButton fx:id="onSiteRadio" text="On-Site"/>
+                            </children>
+                        </HBox>
 
-    <Label layoutX="550.0" layoutY="100.0" text="Learning Objectives:"/>
-    <TextArea layoutX="550.0" layoutY="125.0" prefHeight="100.0" prefWidth="300.0"
-              promptText="Define learning objectives"/>
-    <Button layoutX="550.0" layoutY="235.0" text="Save Curriculum"/>
-    <Button layoutX="660.0" layoutY="235.0" text="Preview"/>
-    <Button layoutX="730.0" layoutY="235.0" text="Approve"/>
+                        <Label text="Number of Participants:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                        <TextField fx:id="participantsField" promptText="Number of Participants" GridPane.rowIndex="4"
+                                   GridPane.columnIndex="1"/>
 
-    <Label layoutX="20.0" layoutY="285.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
-           text="2. Schedule Sessions"/>
-    <Label layoutX="30.0" layoutY="315.0" text="Session Type:"/>
-    <ChoiceBox layoutX="120.0" layoutY="310.0" prefWidth="120.0"/>
-    <Label layoutX="250.0" layoutY="315.0" text="Date:"/>
-    <DatePicker layoutX="290.0" layoutY="310.0" prefWidth="130.0"/>
-    <Label layoutX="430.0" layoutY="315.0" text="Time:"/>
-    <TextField layoutX="470.0" layoutY="310.0" prefWidth="80.0"/>
+                        <Label text="Curriculum Overview:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                        <TextArea fx:id="overviewArea" promptText="Curriculum Overview" wrapText="true" prefRowCount="4"
+                                  GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+                    </children>
+                </GridPane>
 
-    <Label layoutX="30.0" layoutY="345.0" text="Venue:"/>
-    <TextField layoutX="80.0" layoutY="340.0" prefWidth="200.0"/>
-    <Label layoutX="290.0" layoutY="345.0" text="Capacity:"/>
-    <TextField layoutX="350.0" layoutY="340.0" prefWidth="60.0"/>
-    <Label layoutX="420.0" layoutY="345.0" text="Instructor:"/>
-    <ChoiceBox layoutX="480.0" layoutY="340.0" prefWidth="120.0"/>
+                <HBox spacing="10.0">
+                    <children>
+                        <Button fx:id="scheduleButton" text="Schedule Session" onAction="#onScheduleSession"/>
+                    </children>
+                </HBox>
 
-    <TableView layoutX="30.0" layoutY="375.0" prefHeight="80.0" prefWidth="500.0">
-        <columns>
-            <TableColumn prefWidth="80.0" text="Session ID"/>
-            <TableColumn prefWidth="120.0" text="Topic"/>
-            <TableColumn prefWidth="100.0" text="Date"/>
-            <TableColumn prefWidth="80.0" text="Time"/>
-            <TableColumn prefWidth="120.0" text="Status"/>
-        </columns>
-    </TableView>
-    <Button layoutX="540.0" layoutY="390.0" text="Schedule Session"/>
-    <Button layoutX="540.0" layoutY="420.0" text="Send Invitations"/>
+                <VBox spacing="8.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label text="Audit &amp; Training Records" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                        <TableView fx:id="recordsTable" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colTitle" text="Curriculum Title" prefWidth="220.0"/>
+                                <TableColumn fx:id="colAuditType" text="Audit Type" prefWidth="160.0"/>
+                                <TableColumn fx:id="colDate" text="Date" prefWidth="140.0"/>
+                                <TableColumn fx:id="colMode" text="Mode" prefWidth="120.0"/>
+                                <TableColumn fx:id="colStatus" text="Status" prefWidth="160.0"/>
+                            </columns>
+                        </TableView>
+                    </children>
+                </VBox>
 
-    <Label layoutX="20.0" layoutY="475.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
-           text="3. Conduct Training"/>
-    <Label layoutX="30.0" layoutY="505.0" text="Active Session:"/>
-    <TextField layoutX="130.0" layoutY="500.0" prefWidth="150.0"/>
-    <Label layoutX="290.0" layoutY="505.0" text="Participants:"/>
-    <TextField layoutX="360.0" layoutY="500.0" prefWidth="60.0"/>
-    <Button layoutX="430.0" layoutY="500.0" text="Take Attendance"/>
-
-    <Label layoutX="30.0" layoutY="535.0" text="Training Materials:"/>
-    <ListView layoutX="30.0" layoutY="555.0" prefHeight="60.0" prefWidth="300.0"/>
-    <Button layoutX="340.0" layoutY="565.0" text="Upload Material"/>
-    <Button layoutX="340.0" layoutY="595.0" text="Share Screen"/>
-
-    <Label layoutX="450.0" layoutY="535.0" text="Session Notes:"/>
-    <TextArea layoutX="450.0" layoutY="555.0" prefHeight="60.0" prefWidth="250.0"
-              promptText="Record session activities"/>
-    <Button layoutX="710.0" layoutY="575.0" text="Save Notes"/>
-
-    <Label layoutX="750.0" layoutY="285.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
-           text="4. Assess Participants"/>
-    <Label layoutX="760.0" layoutY="315.0" text="Assessment Type:"/>
-    <ChoiceBox layoutX="860.0" layoutY="310.0" prefWidth="120.0"/>
-    <Label layoutX="760.0" layoutY="345.0" text="Passing Score:"/>
-    <TextField layoutX="850.0" layoutY="340.0" prefWidth="60.0"/>
-    <Label layoutX="920.0" layoutY="345.0" text="Percent"/>
-
-    <TableView layoutX="750.0" layoutY="375.0" prefHeight="80.0" prefWidth="230.0">
-        <columns>
-            <TableColumn prefWidth="80.0" text="Participant"/>
-            <TableColumn prefWidth="60.0" text="Score"/>
-            <TableColumn prefWidth="90.0" text="Status"/>
-        </columns>
-    </TableView>
-    <Button layoutX="750.0" layoutY="465.0" text="Grade Assessment"/>
-    <Button layoutX="870.0" layoutY="465.0" text="View Results"/>
-
-    <Label layoutX="750.0" layoutY="505.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
-           text="5. Issue Certificates"/>
-    <Label layoutX="760.0" layoutY="535.0" text="Certificate Template:"/>
-    <ChoiceBox layoutX="880.0" layoutY="530.0" prefWidth="100.0"/>
-    <Label layoutX="760.0" layoutY="565.0" text="Valid Until:"/>
-    <DatePicker layoutX="840.0" layoutY="560.0" prefWidth="130.0"/>
-    <CheckBox layoutX="760.0" layoutY="590.0" text="Digital Signature"/>
-    <Button layoutX="760.0" layoutY="615.0" text="Generate Certificates"/>
-    <Button layoutX="760.0" layoutY="645.0" text="Send Certificates"/>
-
+                <HBox spacing="10.0">
+                    <children>
+                        <Button fx:id="issueCertificatesButton" text="Issue Certificates"
+                                onAction="#onIssueCertificates"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Back to Menu" onAction="#goBack"/>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>
