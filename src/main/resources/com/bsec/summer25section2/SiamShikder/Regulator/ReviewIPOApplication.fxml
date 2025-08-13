@@ -1,419 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.effect.DropShadow?>
 
 <AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.bsec.oop.SiamShikder.Regulator.ReviewIPOApplication"
-            prefHeight="900.0" prefWidth="1400.0"
-            style="-fx-background-color: #f8f9fa;">
+            fx:controller="com.bsec.oop.SiamShikder.Regulator.ReviewIPOApplicationController"
+            prefWidth="1000.0" prefHeight="700.0">
+    <children>
+        <VBox spacing="16.0" AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"
+              AnchorPane.bottomAnchor="10.0">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <children>
+                <!-- Header -->
+                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="IPO Application Review" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Back to Menu" onAction="#goBack"/>
+                    </children>
+                </HBox>
 
-    <!-- Header -->
-    <HBox layoutX="0.0" layoutY="0.0" prefHeight="80.0" prefWidth="1400.0" alignment="CENTER_LEFT"
-          style="-fx-background-color: linear-gradient(to right, #2c3e50, #34495e); -fx-padding: 20;">
-        <children>
-            <Label text="IPO Application Review Dashboard"
-                   style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: white;"/>
-            <Region HBox.hgrow="ALWAYS"/>
-            <Button text="← Back" onAction="#goBack"
-                    style="-fx-font-size: 16px; -fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 12 24; -fx-cursor: hand;">
-                <effect>
-                    <DropShadow/>
-                </effect>
-            </Button>
-        </children>
-    </HBox>
+                <!-- Form -->
+                <GridPane hgap="12.0" vgap="12.0">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="160.0"/>
+                        <ColumnConstraints minWidth="260.0" hgrow="ALWAYS"/>
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="35.0"/>
+                        <RowConstraints minHeight="35.0"/>
+                        <RowConstraints minHeight="35.0"/>
+                        <RowConstraints minHeight="35.0"/>
+                        <RowConstraints minHeight="35.0"/>
+                        <RowConstraints minHeight="120.0" vgrow="ALWAYS"/>
+                    </rowConstraints>
+                    <children>
+                        <Label text="Application ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="applicationIdField" promptText="Application ID" GridPane.rowIndex="0"
+                                   GridPane.columnIndex="1"/>
 
-    <!-- Main Content with ScrollPane -->
-    <ScrollPane layoutX="0.0" layoutY="80.0" prefHeight="820.0" prefWidth="1400.0" fitToWidth="true"
-                style="-fx-background: transparent; -fx-background-color: transparent;">
-        <content>
-            <VBox spacing="25.0" style="-fx-padding: 30;">
-                <children>
-                    <!-- Section 1: Access Submitted IPO Forms -->
-                    <VBox spacing="20.0"
-                          style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 2);">
-                        <children>
-                            <HBox alignment="CENTER_LEFT" spacing="15.0">
-                                <children>
-                                    <Label text="📋" style="-fx-font-size: 24px;"/>
-                                    <Label text="Access Submitted IPO Forms"
-                                           style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
-                                </children>
-                            </HBox>
+                        <Label text="Company Name:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <ComboBox fx:id="companyNameCombo" promptText="Select Company Name" GridPane.rowIndex="1"
+                                  GridPane.columnIndex="1"/>
 
-                            <HBox spacing="20.0" alignment="CENTER_LEFT" style="-fx-padding: 10 0;">
-                                <children>
-                                    <Button text="📂 Open Application" prefWidth="160.0" prefHeight="40.0"
-                                            style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-background-radius: 6; -fx-font-size: 14px; -fx-cursor: hand;"/>
-                                    <Button text="📥 Download Forms" prefWidth="160.0" prefHeight="40.0"
-                                            style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 6; -fx-font-size: 14px; -fx-cursor: hand;"/>
-                                    <Button text="❓ Request Clarification" prefWidth="180.0" prefHeight="40.0"
-                                            style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-background-radius: 6; -fx-font-size: 14px; -fx-cursor: hand;"/>
-                                    <Region HBox.hgrow="ALWAYS"/>
-                                    <Label text="Status Filter:" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
-                                    <ComboBox prefWidth="160.0" prefHeight="40.0"
-                                              style="-fx-background-radius: 6; -fx-font-size: 14px;"/>
-                                </children>
-                            </HBox>
+                        <Label text="Submission Date:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <DatePicker fx:id="submissionDatePicker" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
 
-                            <TableView prefHeight="250.0"
-                                       style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #ecf0f1;">
-                                <columns>
-                                    <TableColumn prefWidth="140.0" text="Application ID"
-                                                 style="-fx-alignment: CENTER;"/>
-                                    <TableColumn prefWidth="250.0" text="Company Name"/>
-                                    <TableColumn prefWidth="140.0" text="Submit Date"
-                                                 style="-fx-alignment: CENTER;"/>
-                                    <TableColumn prefWidth="130.0" text="Status"
-                                                 style="-fx-alignment: CENTER;"/>
-                                    <TableColumn prefWidth="120.0" text="Priority"
-                                                 style="-fx-alignment: CENTER;"/>
-                                    <TableColumn prefWidth="180.0" text="Assigned To"/>
-                                    <TableColumn prefWidth="120.0" text="Actions"
-                                                 style="-fx-alignment: CENTER;"/>
-                                </columns>
-                            </TableView>
-                        </children>
-                    </VBox>
+                        <Label text="Compliance Status:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <HBox spacing="12.0" GridPane.rowIndex="3" GridPane.columnIndex="1">
+                            <children>
+                                <RadioButton fx:id="compliantRadio" text="Compliant"/>
+                                <RadioButton fx:id="nonCompliantRadio" text="Non-Compliant"/>
+                            </children>
+                        </HBox>
 
-                    <!-- Section 2: Verify Compliance Documents -->
-                    <VBox spacing="20.0"
-                          style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 2);">
-                        <children>
-                            <HBox alignment="CENTER_LEFT" spacing="15.0">
-                                <children>
-                                    <Label text="✅" style="-fx-font-size: 24px;"/>
-                                    <Label text="Verify Compliance Documents"
-                                           style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
-                                </children>
-                            </HBox>
+                        <Label text="Financial Reviewer Name:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                        <TextField fx:id="reviewerNameField" promptText="Financial Reviewer Name" GridPane.rowIndex="4"
+                                   GridPane.columnIndex="1"/>
 
-                            <HBox spacing="40.0" alignment="TOP_LEFT" style="-fx-padding: 10 0;">
-                                <children>
-                                    <VBox spacing="15.0"
-                                          style="-fx-background-color: #f8f9fa; -fx-padding: 20; -fx-background-radius: 8; -fx-min-width: 220;">
-                                        <children>
-                                            <Label text="Required Documents:"
-                                                   style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #2c3e50;"/>
-                                            <VBox spacing="8.0">
-                                                <children>
-                                                    <CheckBox text="Articles of Association"
-                                                              style="-fx-font-size: 14px;"/>
-                                                    <CheckBox text="Board Resolutions"
-                                                              style="-fx-font-size: 14px;"/>
-                                                    <CheckBox text="Audited Financials"
-                                                              style="-fx-font-size: 14px;"/>
-                                                </children>
-                                            </VBox>
-                                        </children>
-                                    </VBox>
+                        <Label text="Comments / Review Notes:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                        <TextArea fx:id="commentsArea" promptText="Comments / Review Notes" wrapText="true"
+                                  prefRowCount="4" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+                    </children>
+                </GridPane>
 
-                                    <VBox spacing="15.0"
-                                          style="-fx-background-color: #f8f9fa; -fx-padding: 20; -fx-background-radius: 8; -fx-min-width: 220;">
-                                        <children>
-                                            <Label text="Additional Documents:"
-                                                   style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #2c3e50;"/>
-                                            <VBox spacing="8.0">
-                                                <children>
-                                                    <CheckBox text="Regulatory Approvals"
-                                                              style="-fx-font-size: 14px;"/>
-                                                    <CheckBox text="Legal Opinions"
-                                                              style="-fx-font-size: 14px;"/>
-                                                    <CheckBox text="Prospectus Draft"
-                                                              style="-fx-font-size: 14px;"/>
-                                                </children>
-                                            </VBox>
-                                        </children>
-                                    </VBox>
+                <!-- Actions -->
+                <HBox spacing="10.0">
+                    <children>
+                        <Button fx:id="approveButton" text="Approve IPO" onAction="#onApprove"/>
+                        <Button fx:id="rejectButton" text="Reject IPO" onAction="#onReject"/>
+                    </children>
+                </HBox>
 
-                                    <VBox spacing="15.0" style="-fx-min-width: 350;">
-                                        <children>
-                                            <Label text="Verification Notes:"
-                                                   style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #2c3e50;"/>
-                                            <TextArea prefHeight="120.0" prefWidth="350.0"
-                                                      promptText="Enter compliance verification notes..."
-                                                      wrapText="true"
-                                                      style="-fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #bdc3c7;"/>
-                                        </children>
-                                    </VBox>
-                                </children>
-                            </HBox>
-
-                            <HBox spacing="20.0" alignment="CENTER_LEFT" style="-fx-padding: 15 0 0 0;">
-                                <children>
-                                    <Button text="✓ Mark Verified" prefWidth="150.0" prefHeight="40.0"
-                                            style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-background-radius: 6; -fx-font-size: 14px; -fx-cursor: hand;"/>
-                                    <Button text="📄 Request Documents" prefWidth="180.0" prefHeight="40.0"
-                                            style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-background-radius: 6; -fx-font-size: 14px; -fx-cursor: hand;"/>
-                                    <Button text="📤 Upload Document" prefWidth="170.0" prefHeight="40.0"
-                                            style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-background-radius: 6; -fx-font-size: 14px; -fx-cursor: hand;"/>
-                                </children>
-                            </HBox>
-                        </children>
-                    </VBox>
-
-                    <!-- Section 3: Cross-check Financials -->
-                    <VBox spacing="20.0"
-                          style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 2);">
-                        <children>
-                            <HBox alignment="CENTER_LEFT" spacing="15.0">
-                                <children>
-                                    <Label text="💰" style="-fx-font-size: 24px;"/>
-                                    <Label text="Cross-check Financial Information"
-                                           style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
-                                </children>
-                            </HBox>
-
-                            <HBox spacing="40.0" alignment="TOP_LEFT" style="-fx-padding: 10 0;">
-                                <children>
-                                    <VBox spacing="15.0"
-                                          style="-fx-background-color: #f8f9fa; -fx-padding: 20; -fx-background-radius: 8; -fx-min-width: 300;">
-                                        <children>
-                                            <Label text="Financial Metrics:"
-                                                   style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #2c3e50;"/>
-                                            <GridPane hgap="15.0" vgap="12.0">
-                                                <columnConstraints>
-                                                    <ColumnConstraints minWidth="150.0"/>
-                                                    <ColumnConstraints minWidth="130.0"/>
-                                                </columnConstraints>
-                                                <children>
-                                                    <Label text="Revenue (3 Years):" GridPane.columnIndex="0"
-                                                           GridPane.rowIndex="0"
-                                                           style="-fx-font-size: 14px;"/>
-                                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="0"
-                                                               prefWidth="130.0" promptText="Amount"
-                                                               style="-fx-background-radius: 4; -fx-font-size: 14px;"/>
-
-                                                    <Label text="Net Income:" GridPane.columnIndex="0"
-                                                           GridPane.rowIndex="1"
-                                                           style="-fx-font-size: 14px;"/>
-                                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="1"
-                                                               prefWidth="130.0" promptText="Amount"
-                                                               style="-fx-background-radius: 4; -fx-font-size: 14px;"/>
-
-                                                    <Label text="Total Assets:" GridPane.columnIndex="0"
-                                                           GridPane.rowIndex="2"
-                                                           style="-fx-font-size: 14px;"/>
-                                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="2"
-                                                               prefWidth="130.0" promptText="Amount"
-                                                               style="-fx-background-radius: 4; -fx-font-size: 14px;"/>
-
-                                                    <Label text="Debt Ratio:" GridPane.columnIndex="0"
-                                                           GridPane.rowIndex="3"
-                                                           style="-fx-font-size: 14px;"/>
-                                                    <TextField GridPane.columnIndex="1" GridPane.rowIndex="3"
-                                                               prefWidth="130.0" promptText="Percentage"
-                                                               style="-fx-background-radius: 4; -fx-font-size: 14px;"/>
-                                                </children>
-                                            </GridPane>
-                                        </children>
-                                    </VBox>
-
-                                    <VBox spacing="15.0" style="-fx-min-width: 500;">
-                                        <children>
-                                            <Label text="Verification Status:"
-                                                   style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #2c3e50;"/>
-                                            <TableView prefHeight="200.0" prefWidth="500.0"
-                                                       style="-fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #ecf0f1;">
-                                                <columns>
-                                                    <TableColumn prefWidth="180.0" text="Financial Item"/>
-                                                    <TableColumn prefWidth="120.0" text="Verified"
-                                                                 style="-fx-alignment: CENTER;"/>
-                                                    <TableColumn prefWidth="200.0" text="Comments"/>
-                                                </columns>
-                                            </TableView>
-                                        </children>
-                                    </VBox>
-                                </children>
-                            </HBox>
-
-                            <HBox spacing="20.0" alignment="CENTER_LEFT" style="-fx-padding: 15 0 0 0;">
-                                <children>
-                                    <Button text="🔍 Verify Figures" prefWidth="150.0" prefHeight="40.0"
-                                            style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 6; -fx-font-size: 14px; -fx-cursor: hand;"/>
-                                    <Button text="📊 Calculate Ratios" prefWidth="160.0" prefHeight="40.0"
-                                            style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-background-radius: 6; -fx-font-size: 14px; -fx-cursor: hand;"/>
-                                    <Button text="📈 Generate Report" prefWidth="160.0" prefHeight="40.0"
-                                            style="-fx-background-color: #9b59b6; -fx-text-fill: white; -fx-background-radius: 6; -fx-font-size: 14px; -fx-cursor: hand;"/>
-                                </children>
-                            </HBox>
-                        </children>
-                    </VBox>
-
-                    <!-- Section 4: Approve/Reject IPO Request -->
-                    <VBox spacing="20.0"
-                          style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 2);">
-                        <children>
-                            <HBox alignment="CENTER_LEFT" spacing="15.0">
-                                <children>
-                                    <Label text="⚡" style="-fx-font-size: 24px;"/>
-                                    <Label text="Decision Making Center"
-                                           style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
-                                </children>
-                            </HBox>
-
-                            <HBox spacing="40.0" alignment="TOP_LEFT" style="-fx-padding: 10 0;">
-                                <children>
-                                    <VBox spacing="15.0"
-                                          style="-fx-background-color: #f8f9fa; -fx-padding: 20; -fx-background-radius: 8; -fx-min-width: 220;">
-                                        <children>
-                                            <Label text="Application Details:"
-                                                   style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #2c3e50;"/>
-                                            <VBox spacing="10.0">
-                                                <children>
-                                                    <Label text="Application ID:" style="-fx-font-size: 14px;"/>
-                                                    <TextField prefWidth="180.0" promptText="Enter application ID"
-                                                               style="-fx-background-radius: 4; -fx-font-size: 14px;"/>
-                                                </children>
-                                            </VBox>
-                                        </children>
-                                    </VBox>
-
-                                    <VBox spacing="15.0"
-                                          style="-fx-background-color: #f8f9fa; -fx-padding: 20; -fx-background-radius: 8; -fx-min-width: 200;">
-                                        <children>
-                                            <Label text="Decision Type:"
-                                                   style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #2c3e50;"/>
-                                            <VBox spacing="8.0">
-                                                <children>
-                                                    <RadioButton text="✅ Approve"
-                                                                 style="-fx-font-size: 14px; -fx-text-fill: #27ae60;"/>
-                                                    <RadioButton text="❌ Reject"
-                                                                 style="-fx-font-size: 14px; -fx-text-fill: #e74c3c;"/>
-                                                    <RadioButton text="📝 Request Revision"
-                                                                 style="-fx-font-size: 14px; -fx-text-fill: #f39c12;"/>
-                                                </children>
-                                            </VBox>
-                                        </children>
-                                    </VBox>
-
-                                    <VBox spacing="15.0" style="-fx-min-width: 200;">
-                                        <children>
-                                            <Label text="Review Date:"
-                                                   style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #2c3e50;"/>
-                                            <DatePicker prefWidth="180.0" prefHeight="35.0"
-                                                        style="-fx-background-radius: 6; -fx-font-size: 14px;"/>
-                                        </children>
-                                    </VBox>
-                                </children>
-                            </HBox>
-
-                            <VBox spacing="15.0" style="-fx-padding: 10 0;">
-                                <children>
-                                    <Label text="Decision Comments &amp; Rationale:"
-                                           style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #2c3e50;"/>
-                                    <TextArea prefHeight="120.0"
-                                              promptText="Provide detailed decision rationale and comments..."
-                                              wrapText="true"
-                                              style="-fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #bdc3c7; -fx-font-size: 14px;"/>
-                                </children>
-                            </VBox>
-
-                            <HBox spacing="20.0" alignment="CENTER_LEFT" style="-fx-padding: 15 0 0 0;">
-                                <children>
-                                    <Button text="✓ Submit Decision" prefWidth="160.0" prefHeight="45.0"
-                                            style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-background-radius: 6; -fx-font-size: 16px; -fx-font-weight: bold; -fx-cursor: hand;"/>
-                                    <Button text="💾 Save Draft" prefWidth="140.0" prefHeight="45.0"
-                                            style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-background-radius: 6; -fx-font-size: 14px; -fx-cursor: hand;"/>
-                                    <Button text="👥 Request Review" prefWidth="160.0" prefHeight="45.0"
-                                            style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-background-radius: 6; -fx-font-size: 14px; -fx-cursor: hand;"/>
-                                </children>
-                            </HBox>
-                        </children>
-                    </VBox>
-
-                    <!-- Section 5: Notify Company -->
-                    <VBox spacing="20.0"
-                          style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 25; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 2);">
-                        <children>
-                            <HBox alignment="CENTER_LEFT" spacing="15.0">
-                                <children>
-                                    <Label text="📧" style="-fx-font-size: 24px;"/>
-                                    <Label text="Company Notification Center"
-                                           style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
-                                </children>
-                            </HBox>
-
-                            <HBox spacing="30.0" alignment="TOP_LEFT" style="-fx-padding: 10 0;">
-                                <children>
-                                    <VBox spacing="15.0"
-                                          style="-fx-background-color: #f8f9fa; -fx-padding: 20; -fx-background-radius: 8; -fx-min-width: 220;">
-                                        <children>
-                                            <Label text="Notification Details:"
-                                                   style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #2c3e50;"/>
-                                            <VBox spacing="12.0">
-                                                <children>
-                                                    <VBox spacing="5.0">
-                                                        <children>
-                                                            <Label text="Type:" style="-fx-font-size: 14px;"/>
-                                                            <ChoiceBox prefWidth="180.0" prefHeight="35.0"
-                                                                       style="-fx-background-radius: 4; -fx-font-size: 14px;"/>
-                                                        </children>
-                                                    </VBox>
-                                                    <VBox spacing="5.0">
-                                                        <children>
-                                                            <Label text="Contact Person:" style="-fx-font-size: 14px;"/>
-                                                            <TextField prefWidth="180.0" promptText="Contact name"
-                                                                       style="-fx-background-radius: 4; -fx-font-size: 14px;"/>
-                                                        </children>
-                                                    </VBox>
-                                                </children>
-                                            </VBox>
-                                        </children>
-                                    </VBox>
-
-                                    <VBox spacing="15.0"
-                                          style="-fx-background-color: #f8f9fa; -fx-padding: 20; -fx-background-radius: 8; -fx-min-width: 200;">
-                                        <children>
-                                            <Label text="Delivery Methods:"
-                                                   style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #2c3e50;"/>
-                                            <VBox spacing="8.0">
-                                                <children>
-                                                    <CheckBox text="📧 Email Notification"
-                                                              style="-fx-font-size: 14px;"/>
-                                                    <CheckBox text="📄 Official Letter"
-                                                              style="-fx-font-size: 14px;"/>
-                                                    <CheckBox text="📞 Phone Call"
-                                                              style="-fx-font-size: 14px;"/>
-                                                    <CheckBox text="📱 SMS Alert"
-                                                              style="-fx-font-size: 14px;"/>
-                                                </children>
-                                            </VBox>
-                                        </children>
-                                    </VBox>
-
-                                    <VBox spacing="15.0" style="-fx-min-width: 400;">
-                                        <children>
-                                            <Label text="Notification Message:"
-                                                   style="-fx-font-weight: bold; -fx-font-size: 16px; -fx-text-fill: #2c3e50;"/>
-                                            <TextArea prefHeight="140.0" prefWidth="400.0"
-                                                      promptText="Compose your notification message..."
-                                                      wrapText="true"
-                                                      style="-fx-background-radius: 6; -fx-border-radius: 6; -fx-border-color: #bdc3c7; -fx-font-size: 14px;"/>
-                                        </children>
-                                    </VBox>
-                                </children>
-                            </HBox>
-
-                            <HBox spacing="20.0" alignment="CENTER_LEFT" style="-fx-padding: 15 0 0 0;">
-                                <children>
-                                    <Button text="📤 Send Notification" prefWidth="170.0" prefHeight="40.0"
-                                            style="-fx-background-color: #e67e22; -fx-text-fill: white; -fx-background-radius: 6; -fx-font-size: 14px; -fx-cursor: hand;"/>
-                                    <Button text="⏰ Schedule Follow-up" prefWidth="180.0" prefHeight="40.0"
-                                            style="-fx-background-color: #8e44ad; -fx-text-fill: white; -fx-background-radius: 6; -fx-font-size: 14px; -fx-cursor: hand;"/>
-                                    <Button text="📄 Generate Letter" prefWidth="160.0" prefHeight="40.0"
-                                            style="-fx-background-color: #16a085; -fx-text-fill: white; -fx-background-radius: 6; -fx-font-size: 14px; -fx-cursor: hand;"/>
-                                    <Button text="💾 Save Template" prefWidth="150.0" prefHeight="40.0"
-                                            style="-fx-background-color: #2980b9; -fx-text-fill: white; -fx-background-radius: 6; -fx-font-size: 14px; -fx-cursor: hand;"/>
-                                </children>
-                            </HBox>
-                        </children>
-                    </VBox>
-                </children>
-            </VBox>
-        </content>
-    </ScrollPane>
+                <!-- Table -->
+                <VBox spacing="8.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label text="IPO Applications List" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                        <TableView fx:id="applicationsTable" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colAppId" text="Application ID" prefWidth="150.0"/>
+                                <TableColumn fx:id="colCompanyName" text="Company Name" prefWidth="200.0"/>
+                                <TableColumn fx:id="colSubmissionDate" text="Submission Date" prefWidth="160.0"/>
+                                <TableColumn fx:id="colComplianceStatus" text="Compliance Status" prefWidth="160.0"/>
+                                <TableColumn fx:id="colReviewDecision" text="Review Decision" prefWidth="160.0"/>
+                            </columns>
+                        </TableView>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>

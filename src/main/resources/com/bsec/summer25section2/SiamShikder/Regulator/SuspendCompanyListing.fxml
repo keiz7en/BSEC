@@ -5,79 +5,76 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.bsec.oop.SiamShikder.Regulator.SuspendCompanyListing"
-            prefHeight="900.0" prefWidth="1200.0">
+            fx:controller="com.bsec.oop.SiamShikder.Regulator.SuspendCompanyListingController"
+            prefWidth="1000.0" prefHeight="700.0">
+    <children>
+        <VBox spacing="14.0" AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"
+              AnchorPane.bottomAnchor="10.0">
+            <children>
+                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="Company Listing Suspension" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Back to Menu" onAction="#goBack"/>
+                    </children>
+                </HBox>
 
-    <Label layoutX="20.0" layoutY="20.0" style="-fx-font-size: 24px; -fx-font-weight: bold;"
-           text="Suspend Company Listing"/>
-    <Button layoutX="1100.0" layoutY="20.0" text="Back" onAction="#goBack"/>
+                <GridPane hgap="12.0" vgap="12.0">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="180.0"/>
+                        <ColumnConstraints minWidth="280.0" hgrow="ALWAYS"/>
+                    </columnConstraints>
+                    <children>
+                        <Label text="Company ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="companyIdField" promptText="Company ID" GridPane.rowIndex="0"
+                                   GridPane.columnIndex="1"/>
 
-    <!-- Identify Violating Company Section -->
-    <Label layoutX="20.0" layoutY="80.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
-           text="1. Identify Violating Company"/>
-    <TableView layoutX="20.0" layoutY="110.0" prefHeight="120.0" prefWidth="700.0">
-        <columns>
-            <TableColumn prefWidth="120.0" text="Company ID"/>
-            <TableColumn prefWidth="200.0" text="Company Name"/>
-            <TableColumn prefWidth="150.0" text="Violation Type"/>
-            <TableColumn prefWidth="120.0" text="Severity"/>
-            <TableColumn prefWidth="110.0" text="Actions"/>
-        </columns>
-    </TableView>
-    <Button layoutX="750.0" layoutY="130.0" text="Search Company"/>
-    <Button layoutX="750.0" layoutY="170.0" text="Flag Violation"/>
-    <Button layoutX="750.0" layoutY="210.0" text="View History"/>
+                        <Label text="Company Name:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <ComboBox fx:id="companyNameCombo" promptText="Select Company Name" GridPane.rowIndex="1"
+                                  GridPane.columnIndex="1"/>
 
-    <!-- Review Violation Evidence Section -->
-    <Label layoutX="20.0" layoutY="270.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
-           text="2. Review Violation Evidence"/>
-    <Label layoutX="30.0" layoutY="310.0" text="Selected Company:"/>
-    <TextField layoutX="170.0" layoutY="305.0" prefWidth="200.0"/>
-    <Label layoutX="30.0" layoutY="350.0" text="Violation Details:"/>
-    <TextArea layoutX="30.0" layoutY="380.0" prefHeight="80.0" prefWidth="500.0"
-              promptText="Document violation evidence..."/>
-    <Label layoutX="560.0" layoutY="310.0" text="Evidence Files:"/>
-    <ListView layoutX="560.0" layoutY="340.0" prefHeight="80.0" prefWidth="250.0"/>
-    <Button layoutX="830.0" layoutY="360.0" text="Upload File"/>
-    <Button layoutX="30.0" layoutY="480.0" text="Approve Evidence"/>
-    <Button layoutX="170.0" layoutY="480.0" text="Request More"/>
+                        <Label text="Violation Detection Date:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <DatePicker fx:id="violationDatePicker" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
 
-    <!-- Trigger Suspension Order Section -->
-    <Label layoutX="20.0" layoutY="540.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
-           text="3. Trigger Suspension Order"/>
-    <Label layoutX="30.0" layoutY="580.0" text="Suspension Type:"/>
-    <ChoiceBox layoutX="150.0" layoutY="575.0" prefWidth="150.0"/>
-    <Label layoutX="320.0" layoutY="580.0" text="Duration:"/>
-    <TextField layoutX="380.0" layoutY="575.0" prefWidth="100.0"/>
-    <Label layoutX="500.0" layoutY="580.0" text="days"/>
+                        <Label text="Violation Type:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <HBox spacing="10.0" GridPane.rowIndex="3" GridPane.columnIndex="1">
+                            <children>
+                                <RadioButton fx:id="rbFinancialMisconduct" text="Financial Misconduct"/>
+                                <RadioButton fx:id="rbRegulatoryBreach" text="Regulatory Breach"/>
+                                <RadioButton fx:id="rbMarketManipulation" text="Market Manipulation"/>
+                                <RadioButton fx:id="rbOther" text="Other"/>
+                            </children>
+                        </HBox>
 
-    <Label layoutX="30.0" layoutY="620.0" text="Effective Date:"/>
-    <DatePicker layoutX="130.0" layoutY="615.0" prefWidth="150.0"/>
-    <Label layoutX="300.0" layoutY="620.0" text="Review Date:"/>
-    <DatePicker layoutX="380.0" layoutY="615.0" prefWidth="150.0"/>
+                        <Label text="Violation Evidence Summary:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                        <TextArea fx:id="evidenceSummaryArea" promptText="Violation Evidence Summary" wrapText="true"
+                                  prefRowCount="4" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                    </children>
+                </GridPane>
 
-    <Button layoutX="30.0" layoutY="660.0" text="Issue Suspension"/>
-    <Button layoutX="170.0" layoutY="660.0" text="Generate Order"/>
+                <HBox spacing="10.0">
+                    <children>
+                        <Button fx:id="reviewEvidenceButton" text="Review Evidence" onAction="#onReviewEvidence"/>
+                        <Button fx:id="triggerSuspensionButton" text="Trigger Suspension"
+                                onAction="#onTriggerSuspension"/>
+                    </children>
+                </HBox>
 
-    <!-- Notify Broker and Investors Section -->
-    <Label layoutX="600.0" layoutY="540.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
-           text="4. Notify Broker and Investors"/>
-    <CheckBox layoutX="610.0" layoutY="580.0" text="Notify Stock Exchange"/>
-    <CheckBox layoutX="610.0" layoutY="610.0" text="Notify Brokers"/>
-    <CheckBox layoutX="610.0" layoutY="640.0" text="Public Announcement"/>
-    <CheckBox layoutX="780.0" layoutY="580.0" text="Media Release"/>
-    <CheckBox layoutX="780.0" layoutY="610.0" text="Investor Alert"/>
-    <Button layoutX="610.0" layoutY="680.0" text="Send Notifications"/>
-
-    <!-- Follow up on Corrections Section -->
-    <Label layoutX="20.0" layoutY="720.0" style="-fx-font-size: 16px; -fx-font-weight: bold;"
-           text="5. Follow up on Corrections"/>
-    <Label layoutX="30.0" layoutY="760.0" text="Required Actions:"/>
-    <TextArea layoutX="160.0" layoutY="750.0" prefHeight="60.0" prefWidth="400.0"
-              promptText="List required corrections..."/>
-    <Label layoutX="580.0" layoutY="760.0" text="Follow-up Date:"/>
-    <DatePicker layoutX="680.0" layoutY="755.0" prefWidth="150.0"/>
-    <Button layoutX="30.0" layoutY="830.0" text="Schedule Review"/>
-    <Button layoutX="150.0" layoutY="830.0" text="Close Case"/>
-
+                <VBox spacing="8.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label text="Suspension Tracker" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                        <TableView fx:id="suspensionTable" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colCompanyId" text="Company ID" prefWidth="140.0"/>
+                                <TableColumn fx:id="colCompanyName" text="Company Name" prefWidth="220.0"/>
+                                <TableColumn fx:id="colViolationType" text="Violation Type" prefWidth="180.0"/>
+                                <TableColumn fx:id="colSuspensionDate" text="Suspension Date" prefWidth="160.0"/>
+                                <TableColumn fx:id="colCurrentStatus" text="Current Status" prefWidth="140.0"/>
+                            </columns>
+                        </TableView>
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>
