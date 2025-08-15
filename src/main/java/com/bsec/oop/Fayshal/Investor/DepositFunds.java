@@ -1,5 +1,6 @@
 package com.bsec.oop.Fayshal.Investor;
 
+import com.bsec.oop.Fayshal.Investor.model.TransactionLog;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -144,8 +145,6 @@ public class DepositFunds
         if (!validateDeposit()) {
             return;
         }
-
-        // Show confirmation dialog
         Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
         confirmAlert.setTitle("Confirm Deposit");
         confirmAlert.setHeaderText("Deposit Confirmation");
@@ -209,15 +208,14 @@ public class DepositFunds
 
     private void executeDeposit() {
         try {
-            // Simulate processing time
             updateStatus("Processing deposit... Please wait.");
             Thread.sleep(2000);
-
-            // Update balance
             BigDecimal depositAmount = new BigDecimal(depositAmountField.getText().trim());
             balanceManager.addFunds(depositAmount);
-
-            // Show success message
+            TransactionLog.getInstance().logDeposit(java.time.LocalDate.now(),
+                    depositAmount,
+                    balanceManager.getCurrentBalance(),
+                    paymentMethodCombo.getValue());
             Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
             successAlert.setTitle("Deposit Successful");
             successAlert.setHeaderText("Funds Deposited Successfully!");
@@ -236,8 +234,6 @@ public class DepositFunds
                     )
             );
             successAlert.showAndWait();
-
-            // Clear form and refresh
             clearForm();
             refreshBalance();
             updateStatus("Deposit successful! You can now make stock purchases.");

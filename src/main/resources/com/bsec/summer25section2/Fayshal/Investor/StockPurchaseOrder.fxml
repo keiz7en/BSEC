@@ -8,6 +8,14 @@
         <!-- Header -->
         <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Stock Purchase Order"/>
 
+        <!-- Market Selection -->
+        <HBox spacing="10.0">
+            <children>
+                <Label style="-fx-font-size: 14px;" text="Market:"/>
+                <ComboBox fx:id="marketComboBox" prefWidth="300.0" promptText="Select a market"/>
+            </children>
+        </HBox>
+
         <!-- Stock Selection -->
         <HBox spacing="10.0">
             <children>

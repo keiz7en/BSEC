@@ -15,10 +15,11 @@ public class AuditorExportIpoController
     public void initialize() {
     }
 
-    private ActionEvent event;
+    private static final String AUDITOR_BASE_PATH = "/com/bsec/summer25section2/sadman/Auditor/";
 
     public void switchScene(ActionEvent event, String fxmlFile) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
+        String path = fxmlFile.startsWith("/") ? fxmlFile : AUDITOR_BASE_PATH + fxmlFile;
+        Parent root = FXMLLoader.load(getClass().getResource(path));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
@@ -27,6 +28,6 @@ public class AuditorExportIpoController
 
     @javafx.fxml.FXML
     public void goBackButt(ActionEvent actionEvent) throws IOException {
-        switchScene(event, "auditor_dashboard.fxml");
+        switchScene(actionEvent, "auditor_dashboard.fxml");
     }
 }

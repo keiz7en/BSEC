@@ -1,107 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="600.0" prefWidth="800.0" spacing="15.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/21"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.Fayshal.Investor.AccountStatement">
-   <children>
-      <!-- Header -->
-      <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Account Statement"/>
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.bsec.oop.Fayshal.Investor.AccountStatement"
+            prefWidth="1000.0" prefHeight="700.0">
+    <children>
+        <VBox spacing="12.0" AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"
+              AnchorPane.bottomAnchor="10.0">
+            <children>
+                <!-- Screen Title -->
+                <Label text="Account Statement Request"/>
 
-      <!-- Date Range Selection -->
-      <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Select Statement Period:"/>
+                <!-- Select Statement Period (UID) -->
+                <HBox spacing="10.0">
+                    <children>
+                        <Label text="Select Statement Period"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label text="Start Date:"/>
+                        <DatePicker fx:id="startDatePicker" prefWidth="150.0"/>
+                        <Label text="End Date:"/>
+                        <DatePicker fx:id="endDatePicker" prefWidth="150.0"/>
+                        <Button fx:id="fetchStatementButton" text="Fetch Statement" onAction="#onFetchStatement"/>
+                    </children>
+                </HBox>
 
-      <HBox spacing="15.0">
-         <children>
-            <Label style="-fx-font-size: 14px;" text="Start Date:"/>
-            <DatePicker fx:id="startDatePicker" prefWidth="150.0"/>
-            <Label style="-fx-font-size: 14px;" text="End Date:"/>
-            <DatePicker fx:id="endDatePicker" prefWidth="150.0"/>
-            <Button fx:id="generateStatementButton"
-                    style="-fx-font-size: 14px; -fx-background-color: #2196F3; -fx-text-fill: white;"
-                    text="Generate Statement"/>
-         </children>
-      </HBox>
+                <!-- Transaction Records Table (DP) -->
+                <TableView fx:id="transactionTable" prefHeight="350.0">
+                    <columns>
+                        <TableColumn fx:id="dateColumn" text="Date" prefWidth="130.0"/>
+                        <TableColumn fx:id="typeColumn" text="Transaction Type" prefWidth="160.0"/>
+                        <TableColumn fx:id="descriptionColumn" text="Description" prefWidth="300.0"/>
+                        <TableColumn fx:id="debitColumn" text="Debit Amount" prefWidth="120.0"/>
+                        <TableColumn fx:id="creditColumn" text="Credit Amount" prefWidth="120.0"/>
+                        <TableColumn fx:id="balanceColumn" text="Balance" prefWidth="140.0"/>
+                    </columns>
+                </TableView>
 
-      <!-- Quick Period Buttons -->
-      <HBox spacing="10.0">
-         <children>
-            <Label style="-fx-font-size: 14px;" text="Quick Select:"/>
-            <Button style="-fx-font-size: 12px;" text="Last Month"/>
-            <Button style="-fx-font-size: 12px;" text="Last 3 Months"/>
-            <Button style="-fx-font-size: 12px;" text="Last 6 Months"/>
-            <Button style="-fx-font-size: 12px;" text="Last Year"/>
-         </children>
-      </HBox>
+                <!-- Generate Statement Report (DP) -->
+                <Button fx:id="generateReportButton" text="Generate Statement Report" onAction="#onGenerateReport"/>
 
-      <!-- Account Summary -->
-      <Separator/>
-      <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Account Summary:"/>
+                <!-- Preview (simple text) -->
+                <VBox spacing="6.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Label text="Statement Preview"/>
+                        <TextArea fx:id="previewArea" editable="false" wrapText="true" VBox.vgrow="ALWAYS"/>
+                    </children>
+                </VBox>
 
-      <HBox spacing="30.0">
-         <children>
-            <VBox spacing="5.0">
-               <children>
-                  <Label style="-fx-font-size: 12px;" text="Opening Balance"/>
-                  <Label fx:id="openingBalanceLabel" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="0.00"/>
-               </children>
-            </VBox>
-            <VBox spacing="5.0">
-               <children>
-                  <Label style="-fx-font-size: 12px;" text="Closing Balance"/>
-                  <Label fx:id="closingBalanceLabel" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="0.00"/>
-               </children>
-            </VBox>
-            <VBox spacing="5.0">
-               <children>
-                  <Label style="-fx-font-size: 12px;" text="Total Transactions"/>
-                  <Label fx:id="totalTransactionsLabel" style="-fx-font-size: 14px; -fx-font-weight: bold;" text="0"/>
-               </children>
-            </VBox>
-         </children>
-      </HBox>
+                <!-- System confirmation -->
+                <Label fx:id="statusLabel" text=""/>
 
-       <!-- Transaction History Table -->
-      <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Transaction History:"/>
-       <TableView fx:id="transactionTable" prefHeight="350.0">
-         <columns>
-            <TableColumn fx:id="dateColumn" prefWidth="120.0" text="Date"/>
-             <TableColumn fx:id="timeColumn" prefWidth="100.0" text="Time"/>
-             <TableColumn fx:id="typeColumn" prefWidth="100.0" text="Transaction Type"/>
-             <TableColumn fx:id="symbolColumn" prefWidth="80.0" text="Symbol"/>
-             <TableColumn fx:id="quantityColumn" prefWidth="80.0" text="Quantity"/>
-             <TableColumn fx:id="priceColumn" prefWidth="100.0" text="Price (৳)"/>
-             <TableColumn fx:id="amountColumn" prefWidth="120.0" text="Amount (৳)"/>
-             <TableColumn fx:id="feesColumn" prefWidth="80.0" text="Fees"/>
-            <TableColumn fx:id="balanceColumn" prefWidth="120.0" text="Balance"/>
-            <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status"/>
-             <TableColumn fx:id="referenceColumn" prefWidth="120.0" text="Reference ID"/>
-         </columns>
-      </TableView>
-
-      <!-- Action Buttons -->
-      <HBox spacing="15.0" style="-fx-alignment: center;">
-         <children>
-            <Button fx:id="downloadPDFButton"
-                    style="-fx-font-size: 14px; -fx-background-color: #FF5722; -fx-text-fill: white;"
-                    text="Export as PDF"/>
-            <Button fx:id="exportTransactionsButton"
-                    style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white;"
-                    text="Export as Excel"/>
-            <Button fx:id="printStatementButton" style="-fx-font-size: 14px;" text="Print Statement"/>
-         </children>
-      </HBox>
-
-      <!-- Status -->
-      <Label fx:id="statusLabel" style="-fx-font-size: 12px; -fx-text-fill: blue;"
-             text="Select date range to generate statement"/>
-
-      <!-- Back Button -->
-      <HBox style="-fx-alignment: center;">
-         <children>
-            <Button onAction="#goBackToMenu" style="-fx-font-size: 14px;" text="Back to Menu"/>
-         </children>
-      </HBox>
-   </children>
-</VBox>
+                <!-- Back Button -->
+                <HBox alignment="CENTER">
+                    <children>
+                        <Button text="Back to Menu" onAction="#goBackToMenu"/>
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+                <Insets top="8.0" right="8.0" bottom="8.0" left="8.0"/>
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>

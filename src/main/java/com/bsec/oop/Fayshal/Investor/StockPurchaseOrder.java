@@ -1,5 +1,7 @@
 package com.bsec.oop.Fayshal.Investor;
 
+import com.bsec.oop.Fayshal.Investor.model.OrderHistoryRecord;
+import com.bsec.oop.Fayshal.Investor.model.TransactionLog;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,10 +16,16 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Optional;
 
+import com.bsec.oop.Fayshal.Investor.model.TransactionLog;
+
+import java.time.LocalDate;
+
 public class StockPurchaseOrder
 {
     @FXML
     private Label balanceLabel;
+    @FXML
+    private ComboBox<String> marketComboBox;
     @FXML
     private ComboBox<String> stockComboBox;
     @FXML
@@ -37,14 +45,41 @@ public class StockPurchaseOrder
     @FXML
     private TextArea statusArea;
 
+    // Order history (table below in FXML)
+    @FXML
+    private TableView<OrderHistoryRecord> orderHistoryTable;
+    @FXML
+    private TableColumn<OrderHistoryRecord, String> orderDateColumn;
+    @FXML
+    private TableColumn<OrderHistoryRecord, String> orderTimeColumn;
+    @FXML
+    private TableColumn<OrderHistoryRecord, String> orderSymbolColumn;
+    @FXML
+    private TableColumn<OrderHistoryRecord, String> orderTypeColumn;
+    @FXML
+    private TableColumn<OrderHistoryRecord, String> orderQuantityColumn;
+    @FXML
+    private TableColumn<OrderHistoryRecord, String> orderPriceColumn;
+    @FXML
+    private TableColumn<OrderHistoryRecord, String> orderAmountColumn;
+    @FXML
+    private TableColumn<OrderHistoryRecord, String> orderStatusColumn;
+    @FXML
+    private TableColumn<OrderHistoryRecord, String> orderFeesColumn;
+    @FXML
+    private TableColumn<OrderHistoryRecord, String> orderReferenceColumn;
+
     private BalanceManager balanceManager = BalanceManager.getInstance();
     private BigDecimal selectedStockPrice = BigDecimal.ZERO;
+    private final java.util.ArrayList<OrderHistoryRecord> historyRecords = new java.util.ArrayList<>();
 
     @FXML
     public void initialize() {
+        setupMarketComboBox();
         setupStockComboBox();
         setupOrderTypeComboBox();
         setupEventHandlers();
+        setupOrderHistoryTable();
         balanceLabel.setText(balanceManager.getFormattedBalance());
         currentPriceLabel.setText("৳0.00");
         totalCostLabel.setText("৳0.00");
@@ -52,6 +87,15 @@ public class StockPurchaseOrder
 
         refreshBalance();
         updateStatusArea("Welcome! Please deposit funds and select a stock to start placing an order.");
+    }
+
+    private void setupMarketComboBox() {
+        if (marketComboBox == null) return;
+        marketComboBox.getItems().setAll(
+                "DSE - Dhaka Stock Exchange (DSE)",
+                "CSE - Chittagong Stock Exchange (CSE)"
+        );
+        marketComboBox.setValue("DSE - Dhaka Stock Exchange (DSE)");
     }
 
     private void setupStockComboBox() {
@@ -96,6 +140,21 @@ public class StockPurchaseOrder
         });
     }
 
+    private void setupOrderHistoryTable() {
+        if (orderHistoryTable == null) return; 
+        orderDateColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("date"));
+        orderTimeColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("time"));
+        orderSymbolColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("symbol"));
+        orderTypeColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("type"));
+        orderQuantityColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("quantity"));
+        orderPriceColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("price"));
+        orderAmountColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("totalAmount"));
+        orderStatusColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("status"));
+        orderFeesColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("fees"));
+        orderReferenceColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("referenceId"));
+        orderHistoryTable.getItems().clear();
+    }
+
     @FXML
     public void refreshBalance() {
         // In real implementation, this would fetch from database
@@ -107,7 +166,7 @@ public class StockPurchaseOrder
     public void onStockSelected() {
         String selectedStock = stockComboBox.getValue();
         if (selectedStock != null) {
-            // Extract price from selection (mock implementation)
+
             String priceStr = selectedStock.substring(selectedStock.indexOf('৳') + 1, selectedStock.indexOf(')'));
             selectedStockPrice = new BigDecimal(priceStr.replace(",", ""));
             currentPriceLabel.setText(String.format("৳%.2f", selectedStockPrice));
@@ -170,7 +229,7 @@ public class StockPurchaseOrder
             return;
         }
 
-        // Show confirmation dialog
+
         Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
         confirmationAlert.setTitle("Confirm Order");
         confirmationAlert.setHeaderText("Order Confirmation");
@@ -215,12 +274,48 @@ public class StockPurchaseOrder
 
     private void processOrder() {
         try {
-            // Simulate order processing
-            Thread.sleep(1000); // Simulate network delay
-
-            // Update balance
+            Thread.sleep(1000);
             BigDecimal orderCost = new BigDecimal(totalCostLabel.getText().substring(1));
             balanceManager.deductFunds(orderCost);
+            String stock = stockComboBox.getValue();
+            String stockSymbol = stock == null ? "" : stock.substring(0, stock.indexOf(' '));
+            int quantity = Integer.parseInt(quantityField.getText().trim());
+
+            // Log to shared statement as a Buy transaction (debit)
+            TransactionLog.getInstance().logBuy(LocalDate.now(),
+                    stockSymbol,
+                    quantity,
+                    orderCost,
+                    balanceManager.getCurrentBalance());
+
+            // Append to order history table (ArrayList + setAll; no ObservableArrayList usage)
+            BigDecimal unitPrice = selectedStockPrice;
+            if ("Limit Order".equals(orderTypeComboBox.getValue()) && !priceLimitField.getText().trim().isEmpty()) {
+                try {
+                    unitPrice = new BigDecimal(priceLimitField.getText().trim());
+                } catch (Exception ignored) {
+                }
+            }
+
+            String nowDate = java.time.LocalDate.now().toString();
+            String nowTime = java.time.LocalTime.now().toString().substring(0, 8);
+            String ref = "ORD" + System.currentTimeMillis();
+            OrderHistoryRecord row = new OrderHistoryRecord(
+                    nowDate,
+                    nowTime,
+                    stockSymbol,
+                    "Buy",
+                    String.valueOf(quantity),
+                    String.format("৳%.2f", unitPrice),
+                    totalCostLabel.getText(),
+                    "Executed",
+                    String.format("৳%.2f", BigDecimal.ZERO),
+                    ref
+            );
+            historyRecords.add(row);
+            if (orderHistoryTable != null) {
+                orderHistoryTable.getItems().setAll(historyRecords);
+            }
 
             // Show success message
             Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
@@ -233,8 +328,6 @@ public class StockPurchaseOrder
                             "Updated Balance: ৳" + String.format("%.2f", balanceManager.getCurrentBalance())
             );
             successAlert.showAndWait();
-
-            // Clear form and refresh
             clearForm();
             refreshBalance();
             updateStatusArea("Order placed successfully! You can place another order.");

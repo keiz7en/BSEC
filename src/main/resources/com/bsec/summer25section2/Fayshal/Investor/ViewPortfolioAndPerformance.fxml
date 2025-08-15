@@ -1,115 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="800.0" prefWidth="1200.0" spacing="15.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/21"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.Fayshal.Investor.ViewPortfolioAndPerformance">
+<VBox prefHeight="720.0" prefWidth="980.0" spacing="14.0" style="-fx-padding: 16;"
+      xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.bsec.oop.Fayshal.Investor.ViewPortfolioAndPerformance">
     <children>
-        <!-- Header -->
-        <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Portfolio and Performance"/>
-
-        <!-- Portfolio Summary -->
-        <HBox spacing="30.0" style="-fx-alignment: center;">
+        <VBox spacing="6.0">
             <children>
-                <VBox spacing="5.0" style="-fx-alignment: center;">
-                    <children>
-                        <Label style="-fx-font-size: 12px;" text="Total Value"/>
-                        <Label fx:id="totalPortfolioValueLabel"
-                               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: blue;" text="0.00"/>
-                    </children>
-                </VBox>
-                <VBox spacing="5.0" style="-fx-alignment: center;">
-                    <children>
-                        <Label style="-fx-font-size: 12px;" text="Today's Gain/Loss"/>
-                        <Label fx:id="todayGainLossLabel"
-                               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: green;" text="0.00"/>
-                    </children>
-                </VBox>
-                <VBox spacing="5.0" style="-fx-alignment: center;">
-                    <children>
-                        <Label style="-fx-font-size: 12px;" text="Total Gain/Loss"/>
-                        <Label fx:id="totalGainLossLabel"
-                               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: green;" text="0.00"/>
-                    </children>
-                </VBox>
-            </children>
-        </HBox>
-
-        <!-- Holdings Table -->
-        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Current Holdings:"/>
-        <TableView fx:id="holdingsTable" prefHeight="350.0">
-            <columns>
-                <TableColumn fx:id="symbolColumn" prefWidth="80.0" text="Symbol"/>
-                <TableColumn fx:id="companyNameColumn" prefWidth="180.0" text="Company Name"/>
-                <TableColumn fx:id="quantityColumn" prefWidth="100.0" text="Quantity"/>
-                <TableColumn fx:id="avgCostColumn" prefWidth="100.0" text="Avg Cost (৳)"/>
-                <TableColumn fx:id="currentPriceColumn" prefWidth="100.0" text="Current Price"/>
-                <TableColumn fx:id="marketValueColumn" prefWidth="120.0" text="Market Value"/>
-                <TableColumn fx:id="gainLossColumn" prefWidth="100.0" text="Gain/Loss (৳)"/>
-                <TableColumn fx:id="gainLossPercentColumn" prefWidth="90.0" text="Gain/Loss %"/>
-                <TableColumn fx:id="dayChangeColumn" prefWidth="100.0" text="Day Change"/>
-                <TableColumn fx:id="weightColumn" prefWidth="80.0" text="Weight %"/>
-                <TableColumn fx:id="dividendYieldColumn" prefWidth="90.0" text="Div Yield"/>
-                <TableColumn fx:id="actionsColumn" prefWidth="100.0" text="Actions"/>
-            </columns>
-        </TableView>
-
-        <!-- Performance Graph Section -->
-        <HBox spacing="20.0">
-            <children>
-                <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Performance Period:"/>
-                <RadioButton fx:id="dailyRadio" style="-fx-font-size: 14px;" text="Daily">
-                    <toggleGroup>
-                        <ToggleGroup fx:id="timePeriodToggleGroup"/>
-                    </toggleGroup>
-                </RadioButton>
-                <RadioButton fx:id="weeklyRadio" style="-fx-font-size: 14px;" text="Weekly">
-                    <toggleGroup>
-                        <fx:reference source="timePeriodToggleGroup"/>
-                    </toggleGroup>
-                </RadioButton>
-                <RadioButton fx:id="monthlyRadio" style="-fx-font-size: 14px;" text="Monthly">
-                    <toggleGroup>
-                        <fx:reference source="timePeriodToggleGroup"/>
-                    </toggleGroup>
-                </RadioButton>
-                <RadioButton fx:id="yearlyRadio" style="-fx-font-size: 14px;" text="Yearly">
-                    <toggleGroup>
-                        <fx:reference source="timePeriodToggleGroup"/>
-                    </toggleGroup>
-                </RadioButton>
-            </children>
-        </HBox>
-
-        <!-- Chart Area (placeholder) -->
-        <VBox style="-fx-border-color: #cccccc; -fx-border-width: 1; -fx-padding: 20;" prefHeight="200.0">
-            <children>
-                <Label style="-fx-font-size: 16px; -fx-alignment: center;" text="Performance Chart"/>
-                <Label fx:id="chartTitleLabel" style="-fx-font-size: 12px; -fx-alignment: center; -fx-text-fill: gray;"
-                       text="Select a period to view performance graph"/>
+                <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="My Portfolio"/>
+                <Label fx:id="marketNameLabel" text="Market: DSE"/>
             </children>
         </VBox>
 
-        <!-- Action Buttons -->
-        <HBox spacing="15.0" style="-fx-alignment: center;">
+        <VBox spacing="6.0">
             <children>
-                <Button fx:id="refreshDataButton" style="-fx-font-size: 14px;" text="Refresh Portfolio"/>
-                <Button fx:id="loadStockDetailsButton" style="-fx-font-size: 14px;" text="View Stock Details"/>
-                <Button fx:id="exportPortfolioButton"
-                        style="-fx-font-size: 14px; -fx-background-color: #FF9800; -fx-text-fill: white;"
-                        text="Export Report"/>
+                <Label fx:id="totalValueLabel" text="Total Portfolio Value: 0.00"/>
+                <Label fx:id="totalGainLossLabel" text="Total Gain/Loss: 0.00 (0.00%)"/>
             </children>
-        </HBox>
+        </VBox>
 
-        <!-- Status -->
-        <Label fx:id="statusLabel" style="-fx-font-size: 12px; -fx-text-fill: blue;"
-               text="Portfolio loaded successfully"/>
+        <TableView fx:id="holdingsTable" prefHeight="320.0">
+            <columns>
+                <TableColumn fx:id="symbolColumn" prefWidth="120.0" text="Stock Symbol"/>
+                <TableColumn fx:id="quantityColumn" prefWidth="100.0" text="Quantity"/>
+                <TableColumn fx:id="buyPriceColumn" prefWidth="120.0" text="Buy Price"/>
+                <TableColumn fx:id="currentPriceColumn" prefWidth="120.0" text="Current Price"/>
+                <TableColumn fx:id="gainLossPercentColumn" prefWidth="140.0" text="Gain/Loss (%)"/>
+                <TableColumn fx:id="marketNameColumn" prefWidth="140.0" text="Market Name"/>
+            </columns>
+        </TableView>
 
-        <!-- Back Button -->
-        <HBox style="-fx-alignment: center;">
+        <LineChart fx:id="portfolioLineChart" prefHeight="220.0">
+            <xAxis>
+                <CategoryAxis fx:id="dateAxis" label="Date"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis fx:id="valueAxis" label="Portfolio Value"/>
+            </yAxis>
+        </LineChart>
+
+        <HBox spacing="12.0" style="-fx-alignment: center-left;">
             <children>
-                <Button fx:id="backToMenuButton" onAction="#goBackToMenu" style="-fx-font-size: 14px;"
-                        text="Back to Menu"/>
+                <Button fx:id="exportReportButton" text="Export Report (PDF/Excel)"/>
+                <Button fx:id="backToDashboardButton" onAction="#goBackToDashboard" text="Back to Dashboard"/>
             </children>
         </HBox>
     </children>

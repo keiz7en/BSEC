@@ -1,127 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.bsec.oop.Fayshal.Investor.SellOrder"
-            prefHeight="700.0" prefWidth="900.0">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-    <children>
-        <!-- Header -->
-        <HBox layoutX="0.0" layoutY="0.0" prefHeight="60.0" prefWidth="900.0" alignment="CENTER_LEFT" spacing="20.0">
+<BorderPane prefHeight="720.0" prefWidth="1041.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.Fayshal.Investor.SellOrderController">
+    <top>
+        <VBox spacing="6.0" style="-fx-padding: 16;" BorderPane.alignment="CENTER_LEFT">
             <children>
                 <Label text="Place Sell Order">
                     <font>
-                        <Font name="System Bold" size="24.0"/>
+                        <Font name="System Bold" size="24.0" />
                     </font>
                 </Label>
-                <Region HBox.hgrow="ALWAYS"/>
-                <Button mnemonicParsing="false" onAction="#goBackToMenu" text="Back to Menu"/>
+                <Label fx:id="marketNameLabel" text="Market: DSE" />
+                <Label fx:id="stockHeaderLabel" text="Stock: Sample Corp (SAMP)" />
             </children>
-        </HBox>
-
-        <!-- Main Content -->
-        <ScrollPane layoutX="0.0" layoutY="60.0" prefHeight="640.0" prefWidth="900.0" fitToWidth="true">
-            <content>
-                <VBox spacing="20.0" style="-fx-padding: 20;">
+        </VBox>
+    </top>
+    <center>
+        <VBox prefHeight="539.0" prefWidth="1037.0" spacing="14.0" style="-fx-padding: 16;">
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
                     <children>
-                        <!-- Portfolio Section -->
-                        <VBox spacing="15.0">
-                            <children>
-                                <Label text="1. My Portfolio Holdings:">
-                                    <font>
-                                        <Font name="System Bold" size="16.0"/>
-                                    </font>
-                                </Label>
-                                <TableView fx:id="portfolioTable" prefHeight="200.0">
-                                    <columns>
-                                        <TableColumn fx:id="stockSymbolColumn" prefWidth="80.0" text="Symbol"/>
-                                        <TableColumn fx:id="companyColumn" prefWidth="160.0" text="Company Name"/>
-                                        <TableColumn fx:id="sharesOwnedColumn" prefWidth="100.0" text="Shares Owned"/>
-                                        <TableColumn fx:id="avgPriceColumn" prefWidth="100.0" text="Avg Price (৳)"/>
-                                        <TableColumn fx:id="currentPriceColumn" prefWidth="100.0" text="Current Price"/>
-                                        <TableColumn fx:id="currentValueColumn" prefWidth="120.0" text="Market Value"/>
-                                        <TableColumn fx:id="gainLossColumn" prefWidth="100.0" text="Gain/Loss (৳)"/>
-                                        <TableColumn fx:id="gainLossPercentColumn" prefWidth="90.0" text="Gain/Loss %"/>
-                                        <TableColumn fx:id="dayChangeColumn" prefWidth="100.0" text="Day Change"/>
-                                        <TableColumn fx:id="weightColumn" prefWidth="80.0" text="Weight %"/>
-                                    </columns>
-                                </TableView>
-                            </children>
-                        </VBox>
+                        <Label text="Market:"/>
+                        <ComboBox fx:id="marketComboBox" prefWidth="200.0"/>
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <children>
+                        <Label text="Quantity:" />
+                        <TextField fx:id="quantityField" prefWidth="120.0" promptText="0" />
+                        <Label text="Order Type:" />
+                        <ComboBox fx:id="orderTypeComboBox" prefWidth="170.0" />
+                        <Label text="Price:" />
+                        <TextField fx:id="priceField" prefWidth="120.0" promptText="0.00" />
+                        <Button fx:id="validateButton" onAction="#onValidateOrder" text="Check Holdings &amp; Validate Order" />
+                    </children>
+                </HBox>
 
-                        <!-- Sell Order Details -->
-                        <Separator/>
-                        <Label text="2. Sell Order Details:">
-                            <font>
-                                <Font name="System Bold" size="16.0"/>
-                            </font>
-                        </Label>
-                        <HBox spacing="10.0">
+                <VBox spacing="8.0">
+                    <children>
+                        <Label text="Execution Preference:" />
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
                             <children>
-                                <Label text="Select Stock:"/>
-                                <ComboBox fx:id="stockToSellCombo" prefWidth="200.0"
-                                          promptText="Choose from portfolio"/>
-                            </children>
-                        </HBox>
-                        <HBox spacing="10.0">
-                            <children>
-                                <Label text="Shares Available:"/>
-                                <Label fx:id="availableSharesLabel" text="0"/>
-                            </children>
-                        </HBox>
-                        <HBox spacing="10.0">
-                            <children>
-                                <Label text="Quantity to Sell:"/>
-                                <TextField fx:id="quantityToSellField" prefWidth="150.0" promptText="Number of shares"/>
-                            </children>
-                        </HBox>
-                        <HBox spacing="10.0">
-                            <children>
-                                <Label text="Order Type:"/>
-                                <RadioButton fx:id="marketSellRadio" text="Market Order"/>
-                                <RadioButton fx:id="limitSellRadio" text="Limit Order"/>
-                            </children>
-                        </HBox>
-                        <HBox spacing="10.0">
-                            <children>
-                                <Label text="Limit Price:"/>
-                                <TextField fx:id="limitSellPriceField" prefWidth="150.0"
-                                           promptText="Enter limit price"/>
-                            </children>
-                        </HBox>
-
-                        <!-- Order Summary -->
-                        <Separator/>
-                        <HBox spacing="10.0">
-                            <children>
-                                <Label text="Estimated Proceeds:"/>
-                                <Label fx:id="estimatedProceedsLabel" text="0.00"/>
-                            </children>
-                        </HBox>
-
-                        <!-- Action Buttons -->
-                        <HBox spacing="15.0" alignment="CENTER">
-                            <children>
-                                <Button text="Calculate Proceeds"/>
-                                <Button style="-fx-background-color: #f44336; -fx-text-fill: white;"
-                                        text="Confirm Sell Order"/>
-                            </children>
-                        </HBox>
-
-                        <!-- Status -->
-                        <Label fx:id="statusLabel" text=""/>
-
-                        <!-- Back Button -->
-                        <HBox alignment="CENTER">
-                            <children>
-                                <Button onAction="#goBackToMenu" text="Back to Menu"/>
+                                <RadioButton fx:id="immediateOrCancelRadio" text="Immediate or Cancel" />
+                                <RadioButton fx:id="goodTillDateRadio" text="Good Till Date" />
+                                <DatePicker fx:id="executionDatePicker" promptText="Execution Date" />
                             </children>
                         </HBox>
                     </children>
                 </VBox>
-            </content>
-        </ScrollPane>
-    </children>
-</AnchorPane>
+
+                <TableView fx:id="orderSummaryTable" prefHeight="320.0">
+                    <columns>
+                        <TableColumn fx:id="marketNameColumn" prefWidth="160.0" text="Market Name" />
+                        <TableColumn fx:id="stockSymbolColumn" prefWidth="140.0" text="Stock Symbol" />
+                        <TableColumn fx:id="quantityColumn" prefWidth="120.0" text="Quantity" />
+                        <TableColumn fx:id="priceColumn" prefWidth="120.0" text="Price" />
+                        <TableColumn fx:id="orderTypeColumn" prefWidth="140.0" text="Order Type" />
+                        <TableColumn fx:id="executionDateColumn" prefWidth="160.0" text="Execution Date" />
+                        <TableColumn fx:id="estimatedTotalColumn" prefWidth="180.0" text="Estimated Total Value" />
+                    </columns>
+                </TableView>
+
+                <HBox alignment="CENTER_LEFT" spacing="12.0">
+                    <children>
+                        <Button fx:id="confirmSellButton" onAction="#onConfirmOrder" text="Confirm Sell Order" />
+                        <Button fx:id="backToPortfolioButton" onAction="#goBackToPortfolio" text="Back to Portfolio" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </center>
+    <bottom>
+        <VBox spacing="6.0" style="-fx-padding: 12;" BorderPane.alignment="CENTER_LEFT">
+            <children>
+                <HBox spacing="12.0">
+                    <children>
+                        <Label text="Order Status:" />
+                        <Label fx:id="orderStatusValueLabel" text="Pending" />
+                    </children>
+                </HBox>
+                <HBox spacing="12.0">
+                    <children>
+                        <Label text="Order ID:" />
+                        <Label fx:id="orderIdValueLabel" text="-" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </bottom>
+</BorderPane>

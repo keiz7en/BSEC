@@ -30,7 +30,7 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Populate user names
+
         userComboBox.getItems().addAll(
                 "Fayshal",
                 "Abid",
@@ -38,7 +38,6 @@ public class LoginController implements Initializable {
                 "SiamShikder"
         );
 
-        // Add listener to populate roles based on selected user
         userComboBox.setOnAction(event -> updateRoleComboBox());
     }
 
@@ -79,7 +78,7 @@ public class LoginController implements Initializable {
             return;
         }
 
-        // Navigate based on selected user and role
+
         String fxmlPath = getFXMLPath(selectedUser, selectedRole);
         String windowTitle = "BSEC - " + selectedUser + " (" + selectedRole + ")";
 
