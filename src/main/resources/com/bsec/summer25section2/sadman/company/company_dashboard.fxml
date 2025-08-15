@@ -1,14 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.bsec.oop.sadman.company.CompanyDashboardFxmlController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="406.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.sadman.company.CompanyDashboardFxmlController">
+   <children>
+      <VBox alignment="CENTER" prefHeight="406.0" prefWidth="269.0" spacing="15.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Company Dashboard">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+            <Button mnemonicParsing="false" onAction="#SubmitfinancialreportButt" text="Submit financial report" />
+            <Button layoutX="10.0" layoutY="26.0" mnemonicParsing="false" onAction="#RequestauditButt" text="Request audit" />
+            <Button layoutX="10.0" layoutY="51.0" mnemonicParsing="false" onAction="#UpdateCompanyProfileButt" text="Update company profile" />
+            <Button layoutX="10.0" layoutY="76.0" mnemonicParsing="false" onAction="#UploadComplianceDocumentsButt" text="Upload Compliance Documents" />
+            <Button layoutX="10.0" layoutY="101.0" mnemonicParsing="false" onAction="#ViewAuditStatusButt" text="View Audit Status" />
+            <Button layoutX="10.0" layoutY="126.0" mnemonicParsing="false" onAction="#DownloadComplianceGuidelinesButt" text="Download Compliance Guidelines" />
+            <Button layoutX="10.0" layoutY="151.0" mnemonicParsing="false" onAction="#SendQuerytoAuditorButt" text="Send Query to Auditor" />
+            <Button layoutX="10.0" layoutY="177.0" mnemonicParsing="false" onAction="#ViewSubmittedReportsButt" text="View Submitted Reports" />
+            <Button layoutX="10.0" layoutY="202.0" mnemonicParsing="false" onAction="#LogoutButt" text="L:og Out" />
+         </children>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="269.0" prefHeight="417.0" prefWidth="334.0" spacing="15.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Company Dashboard">
+               <font>
+                  <Font name="System Bold Italic" size="20.0" />
+               </font>
+               <rotationAxis>
+                  <Point3D y="150.0" />
+               </rotationAxis>
+            </Text>
+            <Text layoutX="25.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select your neccessary field to work on">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+            </Text>
+         </children>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
+      </VBox>
+   </children>
 </AnchorPane>
