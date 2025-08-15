@@ -1,125 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="600.0" prefWidth="700.0" spacing="15.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/21"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.Fayshal.Investor.NotificationStocks">
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.bsec.oop.Fayshal.Investor.NotificationStocks">
     <children>
-        <!-- Header -->
-        <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Stock Notifications &amp; Alerts"/>
-
-        <!-- Alert Setup Section -->
-        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Set New Alert:"/>
-
-        <HBox spacing="10.0">
+        <VBox spacing="14.0" AnchorPane.topAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0"
+              AnchorPane.leftAnchor="10.0">
             <children>
-                <Label style="-fx-font-size: 14px;" text="Stock Symbol:"/>
-                <TextField fx:id="stockSymbolField" prefWidth="150.0" promptText="Enter stock symbol"/>
-            </children>
-        </HBox>
-
-        <HBox spacing="10.0">
-            <children>
-                <Label style="-fx-font-size: 14px;" text="Alert Type:"/>
-                <ComboBox fx:id="alertTypeCombo" prefWidth="200.0" promptText="Select alert type"/>
-            </children>
-        </HBox>
-
-        <!-- Price Alert Settings -->
-        <VBox fx:id="priceAlertSection" spacing="10.0">
-            <children>
-                <HBox spacing="10.0">
+                <Label text="Stock Alert Notification Settings" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+                <Label text="Set Alert Preferences" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <HBox spacing="8.0" alignment="CENTER_LEFT">
                     <children>
-                        <Label style="-fx-font-size: 14px;" text="Target Price:"/>
-                        <TextField fx:id="targetPriceField" prefWidth="150.0" promptText="Enter target price"/>
+                        <TextField fx:id="stockSymbolField" promptText="Stock Symbol" prefWidth="140.0"/>
+                        <ComboBox fx:id="alertTypeCombo" promptText="Alert Type" prefWidth="200.0"/>
+                        <TextField fx:id="thresholdField" promptText="Threshold Value" prefWidth="140.0"/>
+                        <DatePicker fx:id="alertDatePicker" promptText="Select Date"/>
+                        <ComboBox fx:id="notificationMethodCombo" promptText="Notification Method" prefWidth="200.0"/>
+                        <Button fx:id="saveAlertButton" text="Save Alert Preferences"
+                                onAction="#handleSavePreferences"/>
                     </children>
                 </HBox>
-
-                <HBox spacing="10.0">
+                <Label text="System Monitoring" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <TextArea fx:id="monitoringTextArea" prefRowCount="4" wrapText="true"/>
+                <Label text="Trigger Detection Log" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <TableView fx:id="historyTable" prefHeight="280.0">
+                    <columns>
+                        <TableColumn fx:id="dateTimeColumn" text="Date &amp; Time" prefWidth="150.0"/>
+                        <TableColumn fx:id="symbolColumn" text="Stock Symbol" prefWidth="120.0"/>
+                        <TableColumn fx:id="conditionColumn" text="Trigger Condition" prefWidth="220.0"/>
+                        <TableColumn fx:id="currentPriceColumn" text="Current Price" prefWidth="120.0"/>
+                        <TableColumn fx:id="statusColumn" text="Notification Status" prefWidth="160.0"/>
+                    </columns>
+                </TableView>
+                <HBox spacing="10.0" alignment="CENTER">
                     <children>
-                        <Label style="-fx-font-size: 14px;" text="Alert Condition:"/>
-                        <RadioButton fx:id="aboveRadio" style="-fx-font-size: 14px;" text="Above Target"/>
-                        <RadioButton fx:id="belowRadio" style="-fx-font-size: 14px;" text="Below Target"/>
+                        <Button fx:id="sendTestButton" text="Send Test Notification"
+                                onAction="#handleSendTestNotification"/>
+                        <Button fx:id="backButton" text="Back to Menu" onAction="#goBackToMenu"/>
                     </children>
                 </HBox>
             </children>
         </VBox>
-
-        <!-- Notification Preferences -->
-        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Notification Preferences:"/>
-
-        <HBox spacing="15.0">
-            <children>
-                <CheckBox fx:id="emailNotificationCheck" style="-fx-font-size: 14px;" text="Email Notification"/>
-                <CheckBox fx:id="smsNotificationCheck" style="-fx-font-size: 14px;" text="SMS Notification"/>
-                <CheckBox fx:id="appNotificationCheck" style="-fx-font-size: 14px;" text="In-App Notification"/>
-            </children>
-        </HBox>
-
-        <!-- Add Alert Button -->
-        <HBox style="-fx-alignment: center;">
-            <children>
-                <Button fx:id="savePreferencesButton"
-                        style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white;"
-                        text="Add Alert"/>
-            </children>
-        </HBox>
-
-        <!-- Active Alerts Section -->
-        <Separator/>
-        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Active Alerts:"/>
-        <TableView fx:id="activeAlertsTable" prefHeight="250.0">
-            <columns>
-                <TableColumn fx:id="alertSymbolColumn" prefWidth="80.0" text="Symbol"/>
-                <TableColumn fx:id="alertCompanyColumn" prefWidth="150.0" text="Company Name"/>
-                <TableColumn fx:id="alertTypeColumn" prefWidth="100.0" text="Alert Type"/>
-                <TableColumn fx:id="alertConditionColumn" prefWidth="120.0" text="Condition"/>
-                <TableColumn fx:id="alertTargetColumn" prefWidth="100.0" text="Target Value"/>
-                <TableColumn fx:id="alertCurrentColumn" prefWidth="100.0" text="Current Value"/>
-                <TableColumn fx:id="alertCreatedColumn" prefWidth="120.0" text="Created Date"/>
-                <TableColumn fx:id="alertStatusColumn" prefWidth="80.0" text="Status"/>
-                <TableColumn fx:id="alertTriggeredColumn" prefWidth="100.0" text="Times Triggered"/>
-                <TableColumn fx:id="alertActionsColumn" prefWidth="100.0" text="Actions"/>
-            </columns>
-        </TableView>
-
-        <!-- Recent Notifications -->
-        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Recent Notifications:"/>
-        <TableView fx:id="recentNotificationsTable" prefHeight="200.0">
-            <columns>
-                <TableColumn fx:id="notificationDateColumn" prefWidth="120.0" text="Date &amp; Time"/>
-                <TableColumn fx:id="notificationSymbolColumn" prefWidth="80.0" text="Symbol"/>
-                <TableColumn fx:id="notificationTypeColumn" prefWidth="100.0" text="Type"/>
-                <TableColumn fx:id="notificationMessageColumn" prefWidth="250.0" text="Message"/>
-                <TableColumn fx:id="notificationPriceColumn" prefWidth="100.0" text="Triggered Price"/>
-                <TableColumn fx:id="notificationChangeColumn" prefWidth="100.0" text="Price Change"/>
-                <TableColumn fx:id="notificationMethodColumn" prefWidth="80.0" text="Method"/>
-                <TableColumn fx:id="notificationReadColumn" prefWidth="80.0" text="Read Status"/>
-                <TableColumn fx:id="notificationActionsColumn" prefWidth="100.0" text="Actions"/>
-            </columns>
-        </TableView>
-
-        <!-- Action Buttons -->
-        <HBox spacing="15.0" style="-fx-alignment: center;">
-            <children>
-                <Button fx:id="refreshButton" style="-fx-font-size: 14px;" text="Refresh Alerts"/>
-                <Button fx:id="clearFormButton"
-                        style="-fx-font-size: 14px; -fx-background-color: #FF5722; -fx-text-fill: white;"
-                        text="Clear All Alerts"/>
-                <Button fx:id="testAlertButton" style="-fx-font-size: 14px;" text="Test Notification"/>
-            </children>
-        </HBox>
-
-        <!-- Status -->
-        <TextArea fx:id="statusArea" prefHeight="60.0" editable="false" style="-fx-font-size: 12px;"
-                  text="Ready to set alerts"/>
-
-        <!-- Back Button -->
-        <HBox style="-fx-alignment: center;">
-            <children>
-                <Button fx:id="backButton" onAction="#goBackToMenu" style="-fx-font-size: 14px;" text="Back to Menu"/>
-            </children>
-        </HBox>
     </children>
-</VBox>
+</AnchorPane>

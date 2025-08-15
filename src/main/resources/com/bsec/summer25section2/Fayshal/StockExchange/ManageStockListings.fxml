@@ -1,99 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="600.0" prefWidth="800.0" spacing="15.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/21"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.Fayshal.StockExchange.ManageStockListings">
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.Fayshal.StockExchange.ManageStockListings">
     <children>
-        <!-- Header -->
-        <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Manage Stock Listings"/>
-
-        <!-- Listing Application Section -->
-        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="New Listing Applications:"/>
-        <TableView fx:id="applicationsTable" prefHeight="300.0">
-            <columns>
-                <TableColumn fx:id="applicationIdColumn" prefWidth="100.0" text="Application ID"/>
-                <TableColumn fx:id="companyNameColumn" prefWidth="180.0" text="Company Name"/>
-                <TableColumn fx:id="sectorColumn" prefWidth="120.0" text="Sector"/>
-                <TableColumn fx:id="submissionDateColumn" prefWidth="120.0" text="Submission Date"/>
-                <TableColumn fx:id="marketCapColumn" prefWidth="120.0" text="Market Cap (৳)"/>
-                <TableColumn fx:id="sharesColumn" prefWidth="100.0" text="Total Shares"/>
-                <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status"/>
-                <TableColumn fx:id="priorityColumn" prefWidth="80.0" text="Priority"/>
-                <TableColumn fx:id="reviewerColumn" prefWidth="120.0" text="Reviewer"/>
-                <TableColumn fx:id="deadlineColumn" prefWidth="120.0" text="Deadline"/>
-            </columns>
-        </TableView>
-
-        <!-- Document Validation Section -->
-        <Separator/>
-        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Document Validation:"/>
-
-        <HBox spacing="10.0">
+        <VBox spacing="12.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
             <children>
-                <Label style="-fx-font-size: 14px;" text="Selected Company:"/>
-                <Label fx:id="selectedCompanyLabel" style="-fx-font-size: 14px; -fx-text-fill: blue;"
-                       text="Select from table above"/>
-            </children>
-        </HBox>
-
-        <VBox spacing="10.0">
-            <children>
-                <CheckBox fx:id="financialStatementsCheck" text="Financial Statements (3 years)"/>
-                <CheckBox fx:id="auditReportCheck" text="Independent Audit Report"/>
-                <CheckBox fx:id="boardResolutionCheck" text="Board Resolution"/>
-                <CheckBox fx:id="prospectusCheck" text="Company Prospectus"/>
-                <CheckBox fx:id="regulatoryApprovalsCheck" text="Regulatory Approvals"/>
+                <Label style="-fx-font-size: 22px; -fx-font-weight: bold;" text="Stock Listing Management" />
+                <HBox alignment="CENTER_LEFT" spacing="8.0">
+                    <children>
+                        <TextField fx:id="usernameField" prefWidth="160.0" promptText="Application ID" />
+                        <TextField fx:id="passwordField" prefWidth="160.0" promptText="Company Name" />
+                    </children>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" spacing="8.0">
+                    <children>
+                        <ComboBox fx:id="applicationStatusCombo" prefWidth="180.0" promptText="Application Status" />
+                        <DatePicker fx:id="submissionDatePicker" promptText="Submission Date" />
+                        <Button fx:id="submitDecisionButton" onAction="#handleSubmitDecision" text="Submit Decision" />
+                    </children>
+                </HBox>
+                <TableView fx:id="applicationsTable" prefHeight="320.0">
+                    <columns>
+                        <TableColumn fx:id="colAppId" prefWidth="130.0" text="Application ID" />
+                        <TableColumn fx:id="colCompany" prefWidth="220.0" text="Company Name" />
+                        <TableColumn fx:id="colSubmission" prefWidth="160.0" text="Submission Date" />
+                        <TableColumn fx:id="colStatus" prefWidth="140.0" text="Status" />
+                        <TableColumn fx:id="colDecisionDate" prefWidth="160.0" text="Decision Date" />
+                    </columns>
+                </TableView>
+                <HBox alignment="CENTER_LEFT" spacing="10.0" />
+                <HBox alignment="CENTER_LEFT" spacing="8.0" />
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <children>
+                        <Button fx:id="backButton" onAction="#goBackToMenu" text="Back to Menu" />
+                    </children>
+                </HBox>
             </children>
         </VBox>
-
-        <!-- Eligibility Check -->
-        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Company Eligibility:"/>
-
-        <HBox spacing="30.0">
-            <children>
-                <VBox spacing="5.0">
-                    <children>
-                        <Label style="-fx-font-size: 12px;" text="Market Cap:"/>
-                        <TextField fx:id="marketCapField" prefWidth="150.0" promptText="Enter market cap"/>
-                    </children>
-                </VBox>
-                <VBox spacing="5.0">
-                    <children>
-                        <Label style="-fx-font-size: 12px;" text="Years in Business:"/>
-                        <TextField fx:id="yearsInBusinessField" prefWidth="150.0" promptText="Enter years"/>
-                    </children>
-                </VBox>
-                <VBox spacing="5.0">
-                    <children>
-                        <Label style="-fx-font-size: 12px;" text="Revenue (Last Year):"/>
-                        <TextField fx:id="revenueField" prefWidth="150.0" promptText="Enter revenue"/>
-                    </children>
-                </VBox>
-            </children>
-        </HBox>
-
-        <!-- Decision Section -->
-        <HBox spacing="20.0" style="-fx-alignment: center;">
-            <children>
-                <Button style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white;"
-                        text="Approve Listing"/>
-                <Button style="-fx-font-size: 14px; -fx-background-color: #f44336; -fx-text-fill: white;"
-                        text="Reject Application"/>
-                <Button style="-fx-font-size: 14px;" text="Request More Documents"/>
-            </children>
-        </HBox>
-
-        <!-- Status Area -->
-        <TextArea fx:id="statusArea" prefHeight="80.0" editable="false"
-                  promptText="Application status and notes will appear here..."/>
-
-        <!-- Back Button -->
-        <HBox style="-fx-alignment: center;">
-            <children>
-                <Button onAction="#goBackToDashboard" style="-fx-font-size: 14px;" text="Back to Dashboard"/>
-            </children>
-        </HBox>
     </children>
-</VBox>
+</AnchorPane>
