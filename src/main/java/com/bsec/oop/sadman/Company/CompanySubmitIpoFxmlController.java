@@ -14,9 +14,11 @@ public class CompanySubmitIpoFxmlController
     @javafx.fxml.FXML
     public void initialize() {
     }
-    private ActionEvent event;
+
+    private static final String COMPANY_BASE_PATH = "/com/bsec/summer25section2/sadman/company/";
     public void switchScene(ActionEvent event, String fxmlFile) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
+        String path = fxmlFile.startsWith("/") ? fxmlFile : COMPANY_BASE_PATH + fxmlFile;
+        Parent root = FXMLLoader.load(getClass().getResource(path));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(root));
         stage.show();
@@ -25,7 +27,7 @@ public class CompanySubmitIpoFxmlController
 
     @javafx.fxml.FXML
     public void goBackButt(ActionEvent actionEvent) throws IOException {
-        switchScene(event, "Login.fxml");
+        switchScene(actionEvent, "Main.fxml");
 
     }
 }

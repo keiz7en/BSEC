@@ -5,7 +5,9 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.sadman.company.CompanyMessageAuditorFxmlController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.bsec.oop.sadman.Company.CompanyMessageAuditorFxmlController">
    <children>
       <VBox alignment="CENTER" layoutX="3.0" layoutY="369.0" prefHeight="34.0" prefWidth="600.0">
          <children>
