@@ -71,8 +71,4 @@ public class Main
         switchScene(actionEvent, "company_download_certificate.fxml");
     }
 
-    @javafx.fxml.FXML
-    public void ComplianceNoticesButt(ActionEvent actionEvent) throws IOException {
-        switchScene(actionEvent, "company_compliance_notices.fxml");
-    }
 }

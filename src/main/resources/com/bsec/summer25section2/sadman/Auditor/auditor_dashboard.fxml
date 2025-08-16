@@ -23,7 +23,6 @@
             <Button layoutX="10.0" layoutY="85.0" mnemonicParsing="false" onAction="#AuditorPendingButt" text="Schedule Pending Audits" />
             <Button layoutX="10.0" layoutY="110.0" mnemonicParsing="false" onAction="#UpdateCompanyInfoButt" text="Update Company Info" />
             <Button layoutX="10.0" layoutY="135.0" mnemonicParsing="false" onAction="#ExportIPOReportsButt" text="Download Reports" />
-            <Button layoutX="10.0" layoutY="160.0" mnemonicParsing="false" onAction="#SearchCompanyButt" text="Search Company" />
             <Button layoutX="84.0" layoutY="379.0" mnemonicParsing="false" onAction="#LogOutButt" text="Log Out" />
          </children>
          <padding>

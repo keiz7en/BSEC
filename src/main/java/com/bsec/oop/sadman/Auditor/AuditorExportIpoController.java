@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,20 +20,24 @@ import java.io.IOException;
 public class AuditorExportIpoController
 {
     @javafx.fxml.FXML
-    private TableColumn companyNameTC;
+    private TableColumn<IPODetails, String> companyNameTC;
     @javafx.fxml.FXML
-    private TableView ipoStatusTV;
+    private TableView <IPODetails>ipoStatusTV;
     @javafx.fxml.FXML
-    private TableColumn ipoAmountTC;
+    private TableColumn<IPODetails, Integer> ipoAmountTC;
     @javafx.fxml.FXML
-    private TableColumn ipoDetailsTC;
+    private TableColumn<IPODetails, String> ipoDetailsTC;
     @javafx.fxml.FXML
-    private TableColumn dateTC;
+    private TableColumn<IPODetails, String> dateTC;
     ObservableList<IPODetails> ipoList = FXCollections.observableArrayList();
 
 
     @javafx.fxml.FXML
     public void initialize() {
+        companyNameTC.setCellValueFactory(new PropertyValueFactory<>("companyName"));
+        ipoAmountTC.setCellValueFactory(new PropertyValueFactory<>("ipoAmount"));
+        ipoDetailsTC.setCellValueFactory(new PropertyValueFactory<>("ipoDetails"));
+        dateTC.setCellValueFactory(new PropertyValueFactory<>("date"));
     }
 
     private static final String AUDITOR_BASE_PATH = "/com/bsec/summer25section2/sadman/Auditor/";

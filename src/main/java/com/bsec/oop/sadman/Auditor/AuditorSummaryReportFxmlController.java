@@ -25,9 +25,9 @@ public class AuditorSummaryReportFxmlController
         stage.show();
     }
 
-
     @javafx.fxml.FXML
     public void goBackButt(ActionEvent actionEvent) throws IOException {
+
         switchScene(actionEvent, "auditor_dashboard.fxml");
     }
 }

@@ -36,11 +36,6 @@ public class AuditorDashboardFxmlController
     }
 
 
-    @javafx.fxml.FXML
-    public void SearchCompanyButt(ActionEvent actionEvent) throws IOException {
-        switchScene(actionEvent, "auditor_search_compliance.fxml");
-    }
-
 
     @javafx.fxml.FXML
     public void SendFeedbackButt(ActionEvent actionEvent) throws IOException {
