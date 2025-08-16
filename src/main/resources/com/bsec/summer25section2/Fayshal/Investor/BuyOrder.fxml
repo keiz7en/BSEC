@@ -29,6 +29,11 @@
                         <TableColumn fx:id="dateColumn" text="Order Date" prefWidth="160.0"/>
                     </columns>
                 </TableView>
+                <HBox spacing="10.0" alignment="CENTER">
+                    <children>
+                        <Button fx:id="backButton" text="Back to Menu" onAction="#goBackToMenu"/>
+                    </children>
+                </HBox>
             </children>
         </VBox>
     </children>
