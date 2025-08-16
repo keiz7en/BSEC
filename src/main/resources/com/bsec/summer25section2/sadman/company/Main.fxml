@@ -18,7 +18,6 @@
                </font>
             </Text>
             <Button mnemonicParsing="false" onAction="#SubmitfinancialreportButt" text="Submit financial report" />
-            <Button layoutX="10.0" layoutY="26.0" mnemonicParsing="false" onAction="#ComplianceNoticesButt" text="Compliance Notices" />
             <Button layoutX="10.0" layoutY="51.0" mnemonicParsing="false" onAction="#UpdateCompanyProfileButt" text="Update company profile" />
             <Button layoutX="10.0" layoutY="76.0" mnemonicParsing="false" onAction="#UploadComplianceDocumentsButt" text="Upload Compliance Documents" />
             <Button layoutX="10.0" layoutY="101.0" mnemonicParsing="false" onAction="#ViewAuditStatusButt" text="View Audit Status" />
