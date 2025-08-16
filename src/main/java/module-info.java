@@ -15,6 +15,8 @@ module com.bsec.bsec {
     opens com.bsec.oop.SiamShikder.Regulator to javafx.fxml;
     opens com.bsec.oop.sadman.Auditor to javafx.fxml;
     opens com.bsec.oop.sadman.Company to javafx.fxml;
+    opens com.bsec.oop.Abid.Analyst to javafx.fxml;
+    opens com.bsec.oop.Abid.Broker to javafx.fxml;
     opens com.bsec.oop.Fayshal.StockExchange.model to javafx.base, javafx.fxml;
     exports com.bsec.oop;
     exports com.bsec.oop.Fayshal.Investor;
