@@ -1,119 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="600.0" prefWidth="800.0" spacing="15.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/21"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.Fayshal.StockExchange.HandleTradingHalts">
+<VBox prefHeight="600.0" prefWidth="800.0" spacing="15.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.Fayshal.StockExchange.HandleTradingHalts">
     <children>
-        <!-- Header -->
-        <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Handle Trading Halts"/>
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Handle Trading Halts" />
 
-        <!-- Market Activity Monitoring -->
-        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Real-time Market Activity:"/>
+        <VBox spacing="10.0">
+            <children>
+                <Label style="-fx-font-size: 14px;" text="Market Activity Note / Reason for Halt:" />
+                <TextField fx:id="reasonField" prefWidth="600.0" promptText="Enter reason for trading halt..." />
+            </children>
+        </VBox>
 
         <HBox spacing="20.0">
             <children>
-                <VBox spacing="5.0">
+                <VBox spacing="10.0">
                     <children>
-                        <Label style="-fx-font-size: 12px;" text="Market Status:"/>
-                        <Label fx:id="marketStatusLabel"
-                               style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: green;" text="OPEN"/>
+                        <Label style="-fx-font-size: 14px;" text="Regulatory Guideline:" />
+                        <ComboBox fx:id="guidelineCombo" prefWidth="250.0" promptText="Select regulatory guideline" />
                     </children>
                 </VBox>
-                <VBox spacing="5.0">
+                <VBox spacing="10.0">
                     <children>
-                        <Label style="-fx-font-size: 12px;" text="Active Alerts:"/>
-                        <Label fx:id="alertCountLabel" style="-fx-font-size: 14px; -fx-text-fill: red;" text="3"/>
-                    </children>
-                </VBox>
-                <VBox spacing="5.0">
-                    <children>
-                        <Label style="-fx-font-size: 12px;" text="Unusual Activity:"/>
-                        <Label fx:id="unusualActivityLabel" style="-fx-font-size: 14px; -fx-text-fill: orange;"
-                               text="Detected"/>
+                        <Label style="-fx-font-size: 14px;" text="Halt Date:" />
+                        <DatePicker fx:id="haltDatePicker" prefWidth="150.0" />
                     </children>
                 </VBox>
             </children>
         </HBox>
 
-        <!-- Trading Alerts Section -->
-        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Trading Alerts &amp; Monitoring:"/>
-        <TableView fx:id="alertsTable" prefHeight="300.0">
+        <VBox spacing="10.0">
+            <children>
+                <Label style="-fx-font-size: 14px;" text="Halt Type:" />
+                <HBox spacing="20.0">
+                    <children>
+                        <RadioButton fx:id="fullHaltRadio" text="Full Halt" />
+                        <RadioButton fx:id="partialHaltRadio" text="Partial Halt" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+
+        <HBox style="-fx-alignment: center;">
+            <children>
+                <Button fx:id="issueHaltButton" onAction="#issueHaltOrder" style="-fx-font-size: 14px; -fx-background-color: ; -fx-text-fill: black;" text="Issue Halt Order" />
+            </children>
+        </HBox>
+
+        <Separator />
+
+        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Trading Halts Records:" />
+
+        <TableView fx:id="haltRecordsTable" prefHeight="250.0">
             <columns>
-                <TableColumn fx:id="timestampColumn" prefWidth="140.0" text="Timestamp"/>
-                <TableColumn fx:id="stockSymbolColumn" prefWidth="80.0" text="Symbol"/>
-                <TableColumn fx:id="stockNameColumn" prefWidth="150.0" text="Stock Name"/>
-                <TableColumn fx:id="alertTypeColumn" prefWidth="120.0" text="Alert Type"/>
-                <TableColumn fx:id="currentPriceColumn" prefWidth="100.0" text="Current Price"/>
-                <TableColumn fx:id="priceChangeColumn" prefWidth="100.0" text="Price Change"/>
-                <TableColumn fx:id="volumeColumn" prefWidth="120.0" text="Volume"/>
-                <TableColumn fx:id="severityColumn" prefWidth="80.0" text="Severity"/>
-                <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status"/>
-                <TableColumn fx:id="reasonColumn" prefWidth="200.0" text="Reason"/>
+                <TableColumn fx:id="haltIdColumn" prefWidth="100.0" text="Halt ID" />
+                <TableColumn fx:id="reasonColumn" prefWidth="200.0" text="Reason" />
+                <TableColumn fx:id="guidelineColumn" prefWidth="150.0" text="Guideline" />
+                <TableColumn fx:id="haltTypeColumn" prefWidth="100.0" text="Halt Type" />
+                <TableColumn fx:id="haltDateColumn" prefWidth="120.0" text="Halt Date" />
+                <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status" />
             </columns>
         </TableView>
 
-        <!-- Halt Decision Section -->
-        <Separator/>
-        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Trading Halt Decision:"/>
-
-        <HBox spacing="15.0">
-            <children>
-                <VBox spacing="5.0">
-                    <children>
-                        <Label style="-fx-font-size: 12px;" text="Stock/Market:"/>
-                        <ComboBox fx:id="haltTargetCombo" prefWidth="150.0" promptText="Select target"/>
-                    </children>
-                </VBox>
-                <VBox spacing="5.0">
-                    <children>
-                        <Label style="-fx-font-size: 12px;" text="Halt Type:"/>
-                        <ComboBox fx:id="haltTypeCombo" prefWidth="150.0" promptText="Select halt type"/>
-                    </children>
-                </VBox>
-                <VBox spacing="5.0">
-                    <children>
-                        <Label style="-fx-font-size: 12px;" text="Duration:"/>
-                        <TextField fx:id="durationField" prefWidth="100.0" promptText="Minutes"/>
-                    </children>
-                </VBox>
-            </children>
-        </HBox>
-
-        <!-- Reason for Halt -->
-        <HBox spacing="10.0">
-            <children>
-                <Label style="-fx-font-size: 14px;" text="Halt Reason:"/>
-                <TextArea fx:id="haltReasonArea" prefHeight="60.0" prefWidth="400.0"
-                          promptText="Enter reason for trading halt..."/>
-            </children>
-        </HBox>
-
-        <!-- Action Buttons -->
-        <HBox spacing="20.0" style="-fx-alignment: center;">
-            <children>
-                <Button style="-fx-font-size: 14px; -fx-background-color: #ff9800; -fx-text-fill: white;"
-                        text="Issue Trading Halt"/>
-                <Button style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white;"
-                        text="Resume Trading"/>
-                <Button style="-fx-font-size: 14px;" text="Send Public Notification"/>
-            </children>
-        </HBox>
-
-        <!-- Active Halts -->
-        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Active Trading Halts:"/>
-
-        <ListView fx:id="activeHaltsList" prefHeight="100.0"/>
-
-        <!-- Status Area -->
-        <TextArea fx:id="haltStatusArea" prefHeight="60.0" editable="false"
-                  promptText="Trading halt status and notifications..."/>
-
-        <!-- Back Button -->
         <HBox style="-fx-alignment: center;">
             <children>
-                <Button onAction="#goBackToDashboard" style="-fx-font-size: 14px;" text="Back to Dashboard"/>
+                <Button onAction="#goBackToDashboard" style="-fx-font-size: 14px;" text="Back to Dashboard" />
             </children>
         </HBox>
     </children>

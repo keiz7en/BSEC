@@ -1,7 +1,8 @@
 package com.bsec.oop.Fayshal.Investor;
 
-import com.bsec.oop.Fayshal.Investor.model.BuyOrderModel;
+import com.bsec.oop.Fayshal.Investor.model.BuyOrderEntry;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,197 +12,124 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
-import javafx.stage.Stage;
-import javafx.util.StringConverter;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.DecimalFormat;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class BuyOrder {
     @FXML
-    private Label marketNameLabel;
-    @FXML
-    private Label stockHeaderLabel;
+    private TextField stockSymbolField;
     @FXML
     private TextField quantityField;
     @FXML
-    private ComboBox<String> orderTypeComboBox;
+    private ComboBox<String> orderTypeCombo;
     @FXML
     private TextField priceField;
     @FXML
-    private RadioButton immediateOrCancelRadio;
+    private DatePicker orderDatePicker;
     @FXML
-    private RadioButton goodTillDateRadio;
+    private Button submitOrderButton;
     @FXML
-    private DatePicker executionDatePicker;
+    private TableView<BuyOrderEntry> orderTable;
     @FXML
-    private TableView<BuyOrderModel> orderSummaryTable;
+    private TableColumn<BuyOrderEntry, String> symbolColumn;
     @FXML
-    private TableColumn<BuyOrderModel, String> marketNameColumn;
+    private TableColumn<BuyOrderEntry, String> qtyColumn;
     @FXML
-    private TableColumn<BuyOrderModel, String> stockSymbolColumn;
+    private TableColumn<BuyOrderEntry, String> typeColumn;
     @FXML
-    private TableColumn<BuyOrderModel, Integer> quantityColumn;
+    private TableColumn<BuyOrderEntry, String> priceColumn;
     @FXML
-    private TableColumn<BuyOrderModel, Double> priceColumn;
-    @FXML
-    private TableColumn<BuyOrderModel, String> orderTypeColumn;
-    @FXML
-    private TableColumn<BuyOrderModel, String> executionDateColumn;
-    @FXML
-    private TableColumn<BuyOrderModel, Double> estimatedTotalColumn;
-    @FXML
-    private Button checkValidateButton;
-    @FXML
-    private Button confirmOrderButton;
-    @FXML
-    private Button backToProfileButton;
-    @FXML
-    private Label orderStatusValueLabel;
-    @FXML
-    private Label orderIdValueLabel;
-    @FXML
-    private TextField marketNameField;
+    private TableColumn<BuyOrderEntry, String> dateColumn;
 
-    private final DecimalFormat moneyFormat = new DecimalFormat("#,##0.00");
-    private final ArrayList<BuyOrderModel> summaryRows = new ArrayList<>();
-    private final ToggleGroup executionToggle = new ToggleGroup();
-    private double availableBalance = 500000.0;
-    private double marketPrice = 100.0;
-    private String marketName = "DSE";
-    private String stockName = "Sample Corp";
-    private String stockSymbol = "SAMP";
+    private final ArrayList<BuyOrderEntry> orders = new ArrayList<>();
+    private final File storageFile = new File("buy_orders.bin");
 
     @FXML
     public void initialize() {
-        marketNameLabel.setText("Market: " + marketName);
-        stockHeaderLabel.setText("Stock: " + stockName + " (" + stockSymbol + ")");
-        marketNameField.setText(marketName);
-        orderTypeComboBox.getItems().setAll("Market Order", "Limit Order");
-        orderTypeComboBox.getSelectionModel().select("Market Order");
-        priceField.setDisable(true);
-        immediateOrCancelRadio.setToggleGroup(executionToggle);
-        goodTillDateRadio.setToggleGroup(executionToggle);
-        immediateOrCancelRadio.setSelected(true);
-        executionDatePicker.setDisable(true);
-        orderTypeComboBox.valueProperty().addListener((o, a, b) -> priceField.setDisable("Market Order".equals(b)));
-        goodTillDateRadio.selectedProperty().addListener((o, a, b) -> executionDatePicker.setDisable(!b));
-        marketNameColumn.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getMarketName()));
-        stockSymbolColumn.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getStockSymbol()));
-        quantityColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("quantity"));
-        priceColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("price"));
-        orderTypeColumn.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getOrderType()));
-        executionDateColumn.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getExecutionDate()));
-        estimatedTotalColumn.setCellValueFactory(new javafx.scene.control.cell.PropertyValueFactory<>("estimatedTotalCost"));
-        priceColumn.setCellFactory(col -> new javafx.scene.control.TableCell<>() {
-            @Override
-            protected void updateItem(Double item, boolean empty) {
-                super.updateItem(item, empty);
-                setText(empty || item == null ? null : moneyFormat.format(item));
-            }
-        });
-        estimatedTotalColumn.setCellFactory(col -> new javafx.scene.control.TableCell<>() {
-            @Override
-            protected void updateItem(Double item, boolean empty) {
-                super.updateItem(item, empty);
-                setText(empty || item == null ? null : moneyFormat.format(item));
-            }
-        });
-        executionDatePicker.setConverter(new StringConverter<>() {
-            @Override
-            public String toString(java.time.LocalDate object) {
-                return object == null ? "" : object.toString();
-            }
-
-            @Override
-            public java.time.LocalDate fromString(String string) {
-                return string == null || string.isBlank() ? null : java.time.LocalDate.parse(string);
-            }
-        });
-        orderSummaryTable.getItems().clear();
-        orderStatusValueLabel.setText("Pending");
-        orderIdValueLabel.setText("-");
+        orderTypeCombo.getItems().setAll("Market", "Limit");
+        symbolColumn.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getStockSymbol()));
+        qtyColumn.setCellValueFactory(c -> new SimpleStringProperty(String.valueOf(c.getValue().getQuantity())));
+        typeColumn.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getOrderType()));
+        priceColumn.setCellValueFactory(c -> new SimpleStringProperty(String.format("%.2f", c.getValue().getPrice())));
+        dateColumn.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getOrderDate()));
+        loadFromFile();
+        refreshTable(orders);
     }
 
     @FXML
-    public void onValidateOrder(ActionEvent e) {
-        String selectedType = orderTypeComboBox.getValue();
-        int quantity = parseInt(quantityField.getText());
-        if (quantity <= 0) {
-            orderStatusValueLabel.setText("Invalid Quantity");
+    public void handleSubmitOrder(ActionEvent e) {
+        String symbol = stockSymbolField.getText() == null ? "" : stockSymbolField.getText().trim().toUpperCase();
+        String type = orderTypeCombo.getValue();
+        String qtyText = quantityField.getText() == null ? "" : quantityField.getText().trim();
+        String priceText = priceField.getText() == null ? "" : priceField.getText().trim();
+        if (symbol.isEmpty()) return;
+        if (type == null || type.isEmpty()) return;
+        int qty;
+        double price;
+        try {
+            qty = Integer.parseInt(qtyText);
+            price = Double.parseDouble(priceText);
+        } catch (Exception ex) {
             return;
         }
-        double price = "Market Order".equals(selectedType) ? marketPrice : parseDouble(priceField.getText());
-        if (price <= 0) {
-            orderStatusValueLabel.setText("Invalid Price");
-            return;
+        if (qty <= 0 || price <= 0) return;
+        String dateStr = orderDatePicker.getValue() == null ? "" : orderDatePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        BuyOrderEntry entry = new BuyOrderEntry(symbol, qty, type, price, dateStr);
+        orders.add(entry);
+        saveToFile();
+        refreshTable(orders);
+        stockSymbolField.clear();
+        quantityField.clear();
+        orderTypeCombo.getSelectionModel().clearSelection();
+        priceField.clear();
+        orderDatePicker.setValue(null);
+    }
+
+    private void refreshTable(List<BuyOrderEntry> rows) {
+        orderTable.setItems(FXCollections.observableList(rows));
+        orderTable.refresh();
+    }
+
+    private void saveToFile() {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(storageFile))) {
+            oos.writeObject(orders);
+        } catch (IOException ignored) {
         }
-        String executionDate = immediateOrCancelRadio.isSelected() ? "-" : (executionDatePicker.getValue() == null ? "" : executionDatePicker.getValue().toString());
-        if (goodTillDateRadio.isSelected() && executionDate.isBlank()) {
-            orderStatusValueLabel.setText("Select Execution Date");
-            return;
+    }
+
+    @SuppressWarnings("unchecked")
+    private void loadFromFile() {
+        if (!storageFile.exists()) return;
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(storageFile))) {
+            Object obj = ois.readObject();
+            if (obj instanceof ArrayList) {
+                orders.clear();
+                orders.addAll((ArrayList<BuyOrderEntry>) obj);
+            }
+        } catch (Exception ignored) {
         }
-        double estimated = quantity * price;
-        if (estimated > availableBalance) {
-            orderStatusValueLabel.setText("Insufficient Balance");
-        } else {
-            orderStatusValueLabel.setText("Pending");
-        }
-        String marketUsed = marketNameField.getText() == null ? "" : marketNameField.getText().trim();
-        if (marketUsed.isEmpty()) marketUsed = marketName;
-        summaryRows.clear();
-        summaryRows.add(new BuyOrderModel(marketUsed, stockSymbol, quantity, price, selectedType, executionDate, estimated));
-        orderSummaryTable.getItems().setAll(summaryRows);
-        orderIdValueLabel.setText("-");
     }
 
     @FXML
-    public void onConfirmOrder(ActionEvent e) {
-        if (orderSummaryTable.getItems().isEmpty()) {
-            orderStatusValueLabel.setText("Pending");
-            orderIdValueLabel.setText("-");
-            return;
-        }
-        if ("Insufficient Balance".equalsIgnoreCase(orderStatusValueLabel.getText())) {
-            return;
-        }
-        orderStatusValueLabel.setText("Confirmed");
-        orderIdValueLabel.setText("ORD-" + System.currentTimeMillis());
-    }
-
-    @FXML
-    public void goBackToStockProfile(ActionEvent actionEvent) {
+    public void goBackToMenu(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bsec/summer25section2/Fayshal/Investor/Menu_Investor.fxml"));
             Parent root = loader.load();
-            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            javafx.stage.Stage stage = (javafx.stage.Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    private int parseInt(String text) {
-        try {
-            return Integer.parseInt(text == null ? "" : text.trim());
-        } catch (Exception ex) {
-            return -1;
-        }
-    }
-
-    private double parseDouble(String text) {
-        try {
-            return Double.parseDouble(text == null ? "" : text.trim());
-        } catch (Exception ex) {
-            return -1;
+        } catch (IOException ignored) {
         }
     }
 }

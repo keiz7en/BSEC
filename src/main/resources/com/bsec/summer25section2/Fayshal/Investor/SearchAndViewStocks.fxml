@@ -1,74 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="600.0" prefWidth="700.0" spacing="15.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/21"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.Fayshal.Investor.SearchAndViewStocks">
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.bsec.oop.Fayshal.Investor.SearchAndViewStocks">
     <children>
-        <!-- Header -->
-        <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Search and View Stocks"/>
-
-        <!-- Search Section -->
-        <HBox spacing="10.0" style="-fx-alignment: center-left;">
+        <VBox spacing="14.0" AnchorPane.topAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0"
+              AnchorPane.leftAnchor="10.0">
             <children>
-                <Label style="-fx-font-size: 14px;" text="Search Stock:"/>
-                <TextField fx:id="searchField" prefWidth="250.0" promptText="Enter stock name or symbol"/>
-                <Button fx:id="searchButton"
-                        style="-fx-font-size: 14px; -fx-background-color: #2196F3; -fx-text-fill: white;"
-                        text="Search"/>
+                <Label text="Search and View Stocks" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+                <HBox spacing="8.0" alignment="CENTER_LEFT">
+                    <children>
+                        <TextField fx:id="stockNameField" promptText="Enter Stock Name" prefWidth="180.0"/>
+                        <ComboBox fx:id="sectorCombo" promptText="Select Sector" prefWidth="160.0"/>
+                        <DatePicker fx:id="datePicker" promptText="Select Date"/>
+                        <TextField fx:id="priceRangeField" promptText="Price Range" prefWidth="140.0"/>
+                        <Button fx:id="submitSearchButton" text="Submit Search" onAction="#handleSubmitSearch"/>
+                    </children>
+                </HBox>
+                <Label text="Search Results" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <TableView fx:id="stockTable" prefHeight="350.0">
+                    <columns>
+                        <TableColumn fx:id="symbolColumn" prefWidth="120.0" text="Stock Symbol"/>
+                        <TableColumn fx:id="nameColumn" prefWidth="200.0" text="Stock Name"/>
+                        <TableColumn fx:id="priceColumn" prefWidth="120.0" text="Current Price"/>
+                        <TableColumn fx:id="changePercentColumn" prefWidth="120.0" text="Percent Change"/>
+                        <TableColumn fx:id="volumeColumn" prefWidth="120.0" text="Volume"/>
+                    </columns>
+                </TableView>
+                <HBox spacing="10.0" alignment="CENTER">
+                    <children>
+                        <Button fx:id="backButton" text="Back to Menu" onAction="#goBackToMenu"/>
+                    </children>
+                </HBox>
             </children>
-        </HBox>
-
-        <!-- Filter Section -->
-        <HBox spacing="15.0" style="-fx-alignment: center-left;">
-            <children>
-                <Label style="-fx-font-size: 14px;" text="Sector:"/>
-                <ComboBox fx:id="sectorCombo" prefWidth="150.0" promptText="All Sectors"/>
-                <Label style="-fx-font-size: 14px;" text="Price Range:"/>
-                <TextField fx:id="minPriceField" prefWidth="80.0" promptText="Min"/>
-                <Label text="-"/>
-                <TextField fx:id="maxPriceField" prefWidth="80.0" promptText="Max"/>
-                <Button text="Apply Filters"/>
-            </children>
-        </HBox>
-
-        <!-- Stock List -->
-        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Stock Results:"/>
-        <TableView fx:id="stockTable" prefHeight="350.0">
-            <columns>
-                <TableColumn fx:id="symbolColumn" prefWidth="80.0" text="Symbol"/>
-                <TableColumn fx:id="nameColumn" prefWidth="180.0" text="Company Name"/>
-                <TableColumn fx:id="priceColumn" prefWidth="80.0" text="Price (৳)"/>
-                <TableColumn fx:id="changeColumn" prefWidth="70.0" text="Change"/>
-                <TableColumn fx:id="changePercentColumn" prefWidth="80.0" text="Change %"/>
-                <TableColumn fx:id="volumeColumn" prefWidth="100.0" text="Volume"/>
-                <TableColumn fx:id="sectorColumn" prefWidth="120.0" text="Sector"/>
-                <TableColumn fx:id="marketCapColumn" prefWidth="100.0" text="Market Cap"/>
-                <TableColumn fx:id="peRatioColumn" prefWidth="80.0" text="P/E Ratio"/>
-                <TableColumn fx:id="dividendYieldColumn" prefWidth="90.0" text="Div Yield"/>
-            </columns>
-        </TableView>
-
-        <!-- Action Buttons -->
-        <HBox spacing="15.0" style="-fx-alignment: center;">
-            <children>
-                <Button fx:id="viewChartButton" style="-fx-font-size: 14px;" text="View Details"/>
-                <Button style="-fx-font-size: 14px;" text="Refresh Data"/>
-                <Button fx:id="addToWatchlistButton"
-                        style="-fx-font-size: 14px; -fx-background-color: #FF9800; -fx-text-fill: white;"
-                        text="Add to Watchlist"/>
-            </children>
-        </HBox>
-
-        <!-- Status -->
-        <Label fx:id="statusLabel" style="-fx-font-size: 12px; -fx-text-fill: blue;" text="Ready to search stocks..."/>
-
-        <!-- Back Button -->
-        <HBox style="-fx-alignment: center;">
-            <children>
-                <Button onAction="#goBackToMenu" style="-fx-font-size: 14px;" text="Back to Menu"/>
-            </children>
-        </HBox>
+        </VBox>
     </children>
-</VBox>
+</AnchorPane>
