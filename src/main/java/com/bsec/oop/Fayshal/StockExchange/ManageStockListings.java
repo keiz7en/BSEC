@@ -71,14 +71,7 @@ public class ManageStockListings {
         refreshTable(applications);
     }
 
-    @FXML
-    public void handleVerifyEligibility(ActionEvent actionEvent) {
-        ListingApplication row = applicationsTable.getSelectionModel().getSelectedItem();
-        if (row == null) return;
-        if (row.getStatus().equals("Pending")) row.setStatus("Pending");
-        saveToFile();
-        refreshTable(applications);
-    }
+
 
     @FXML
     public void handleSubmitDecision(ActionEvent actionEvent) {
@@ -99,23 +92,6 @@ public class ManageStockListings {
         submissionDatePicker.setValue(null);
     }
 
-    @FXML
-    public void handleAddApplication(ActionEvent actionEvent) {
-        String appId = usernameField.getText() == null ? "" : usernameField.getText().trim();
-        String company = passwordField.getText() == null ? "" : passwordField.getText().trim();
-        String status = applicationStatusCombo.getValue();
-        LocalDate subDate = submissionDatePicker.getValue();
-        if (appId.isEmpty() || company.isEmpty()) return;
-        if (status == null || subDate == null) return;
-        ListingApplication row = new ListingApplication(appId, company, dateStr(subDate), status, "");
-        applications.add(row);
-        saveToFile();
-        refreshTable(applications);
-        usernameField.clear();
-        passwordField.clear();
-        applicationStatusCombo.getSelectionModel().clearSelection();
-        submissionDatePicker.setValue(null);
-    }
 
     @FXML
     public void goBackToMenu(ActionEvent actionEvent) {

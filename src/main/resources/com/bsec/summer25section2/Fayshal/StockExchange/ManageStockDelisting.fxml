@@ -3,44 +3,35 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="600.0" prefWidth="800.0" spacing="15.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/21"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.Fayshal.StockExchange.ManageStockDelisting">
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0"
+      spacing="15.0" style="-fx-padding: 20;" fx:controller="com.bsec.oop.Fayshal.StockExchange.ManageStockDelisting">
     <children>
-        <!-- Header -->
-        <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Manage Stock Delisting"/>
-
-        <!-- Delisting Requests Table -->
-        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Stock Delisting Requests:"/>
+        <Label text="Manage Stock Delisting" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+        <Label text="Stock Delisting Requests:" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
         <TableView fx:id="delistingTable" prefHeight="300.0">
             <columns>
-                <TableColumn fx:id="requestIdColumn" prefWidth="100.0" text="Request ID"/>
-                <TableColumn fx:id="companyNameColumn" prefWidth="150.0" text="Company Name"/>
-                <TableColumn fx:id="stockSymbolColumn" prefWidth="80.0" text="Symbol"/>
-                <TableColumn fx:id="requestDateColumn" prefWidth="120.0" text="Request Date"/>
-                <TableColumn fx:id="reasonColumn" prefWidth="180.0" text="Reason"/>
-                <TableColumn fx:id="currentPriceColumn" prefWidth="100.0" text="Current Price"/>
-                <TableColumn fx:id="marketCapColumn" prefWidth="120.0" text="Market Cap"/>
-                <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status"/>
-                <TableColumn fx:id="reviewerColumn" prefWidth="120.0" text="Reviewer"/>
-                <TableColumn fx:id="deadlineColumn" prefWidth="120.0" text="Deadline"/>
+                <TableColumn fx:id="requestIdColumn" text="Request ID" prefWidth="100.0"/>
+                <TableColumn fx:id="companyNameColumn" text="Company Name" prefWidth="150.0"/>
+                <TableColumn fx:id="stockSymbolColumn" text="Symbol" prefWidth="80.0"/>
+                <TableColumn fx:id="requestDateColumn" text="Request Date" prefWidth="120.0"/>
+                <TableColumn fx:id="reasonColumn" text="Reason" prefWidth="180.0"/>
+                <TableColumn fx:id="currentPriceColumn" text="Current Price" prefWidth="100.0"/>
+                <TableColumn fx:id="marketCapColumn" text="Market Cap" prefWidth="120.0"/>
+                <TableColumn fx:id="statusColumn" text="Status" prefWidth="100.0"/>
+                <TableColumn fx:id="reviewerColumn" text="Reviewer" prefWidth="120.0"/>
+                <TableColumn fx:id="deadlineColumn" text="Deadline" prefWidth="120.0"/>
             </columns>
         </TableView>
-
-        <!-- Request Details -->
         <Separator/>
-        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Request Details:"/>
-
+        <Label text="Request Details:" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
         <HBox spacing="10.0">
             <children>
-                <Label style="-fx-font-size: 14px;" text="Selected Company:"/>
-                <Label fx:id="selectedCompanyLabel" style="-fx-font-size: 14px; -fx-text-fill: blue;"
-                       text="Select from table above"/>
+                <Label text="Selected Company:" style="-fx-font-size: 14px;"/>
+                <Label fx:id="selectedCompanyLabel" text="Select from table above"
+                       style="-fx-font-size: 14px; -fx-text-fill: blue;"/>
             </children>
         </HBox>
-
-        <!-- Compliance Verification -->
-        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Compliance Verification:"/>
-
+        <Label text="Compliance Verification:" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
         <VBox spacing="10.0">
             <children>
                 <CheckBox fx:id="financialObligationsCheck" text="All financial obligations settled"/>
@@ -50,54 +41,45 @@
                 <CheckBox fx:id="auditCompletedCheck" text="Final audit completed"/>
             </children>
         </VBox>
-
-        <!-- Delisting Details -->
         <HBox spacing="20.0">
             <children>
                 <VBox spacing="5.0">
                     <children>
-                        <Label style="-fx-font-size: 12px;" text="Delisting Type:"/>
+                        <Label text="Delisting Type:" style="-fx-font-size: 12px;"/>
                         <ComboBox fx:id="delistingTypeCombo" prefWidth="150.0"/>
                     </children>
                 </VBox>
                 <VBox spacing="5.0">
                     <children>
-                        <Label style="-fx-font-size: 12px;" text="Effective Date:"/>
+                        <Label text="Effective Date:" style="-fx-font-size: 12px;"/>
                         <DatePicker fx:id="effectiveDatePicker" prefWidth="150.0"/>
                     </children>
                 </VBox>
                 <VBox spacing="5.0">
                     <children>
-                        <Label style="-fx-font-size: 12px;" text="Notice Period (Days):"/>
+                        <Label text="Notice Period (Days):" style="-fx-font-size: 12px;"/>
                         <TextField fx:id="noticePeriodField" prefWidth="100.0" promptText="30"/>
                     </children>
                 </VBox>
             </children>
         </HBox>
-
-        <!-- Reason for Decision -->
         <HBox spacing="10.0">
             <children>
-                <Label style="-fx-font-size: 14px;" text="Decision Reason:"/>
+                <Label text="Decision Reason:" style="-fx-font-size: 14px;"/>
                 <TextArea fx:id="decisionReasonArea" prefHeight="60.0" prefWidth="400.0"
                           promptText="Enter reason for approval/rejection..."/>
             </children>
         </HBox>
-
-        <!-- Decision Actions -->
         <HBox spacing="20.0" style="-fx-alignment: center;">
             <children>
-                <Button style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white;"
-                        text="Approve Delisting"/>
-                <Button style="-fx-font-size: 14px; -fx-background-color: #f44336; -fx-text-fill: white;"
-                        text="Reject Request"/>
-                <Button style="-fx-font-size: 14px;" text="Request Additional Info"/>
+                <Button text="Approve Delisting"
+                        style="-fx-font-size: 14px; -fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                <Button text="Reject Request"
+                        style="-fx-font-size: 14px; -fx-background-color: #f44336; -fx-text-fill: white;"/>
+                <Button text="Request Additional Info" style="-fx-font-size: 14px;"/>
             </children>
         </HBox>
-
-        <!-- Market Notification -->
-        <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Market Notification:"/>
-
+        <Label text="Market Notification:" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
         <VBox spacing="10.0">
             <children>
                 <CheckBox fx:id="investorsNotificationCheck" text="Notify all investors"/>
@@ -105,25 +87,19 @@
                 <CheckBox fx:id="mediaNotificationCheck" text="Issue press release"/>
                 <CheckBox fx:id="websiteUpdateCheck" text="Update exchange website"/>
             </children>
-        </HBox>
-
-        <!-- Status Updates -->
+        </VBox>
         <HBox spacing="20.0" style="-fx-alignment: center;">
             <children>
-                <Button style="-fx-font-size: 14px;" text="Send Notifications"/>
-                <Button style="-fx-font-size: 14px;" text="Update Stock Status"/>
-                <Button style="-fx-font-size: 14px;" text="Generate Report"/>
+                <Button text="Send Notifications" style="-fx-font-size: 14px;"/>
+                <Button text="Update Stock Status" style="-fx-font-size: 14px;"/>
+                <Button text="Generate Report" style="-fx-font-size: 14px;"/>
             </children>
         </HBox>
-
-        <!-- Status Area -->
         <TextArea fx:id="delistingStatusArea" prefHeight="60.0" editable="false"
                   promptText="Delisting process status and notifications..."/>
-
-        <!-- Back Button -->
         <HBox style="-fx-alignment: center;">
             <children>
-                <Button onAction="#goBackToDashboard" style="-fx-font-size: 14px;" text="Back to Dashboard"/>
+                <Button onAction="#goBackToDashboard" text="Back to Dashboard" style="-fx-font-size: 14px;"/>
             </children>
         </HBox>
     </children>
