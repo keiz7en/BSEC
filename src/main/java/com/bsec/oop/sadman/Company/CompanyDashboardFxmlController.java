@@ -52,7 +52,7 @@ public class CompanyDashboardFxmlController
         UserSadman foundCompany = null;
         boolean found = false;
         try {
-            FileInputStream fis = new FileInputStream("User.bin");
+            FileInputStream fis = new FileInputStream("UserSadman.bin");
             ObjectInputStream ois = new ObjectInputStream(fis);
 
             while (true){

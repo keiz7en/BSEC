@@ -18,7 +18,7 @@ public class DummyObjectCreator {
 
 
 
-        FileOutputStream fos = new FileOutputStream("User.bin");
+        FileOutputStream fos = new FileOutputStream("UserSadman.bin");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
 
         oos.writeObject(company1);
