@@ -30,6 +30,8 @@ public class DummyObjectCreator {
         ObjectOutputStream oos1 = new ObjectOutputStream(fos1);
 
         oos1.writeObject(companyipo1);
+        oos1.writeObject(companyipo2);
+        oos1.writeObject(companyipo3);
         oos1.writeObject(companyipo4);
         oos1.close();
 
