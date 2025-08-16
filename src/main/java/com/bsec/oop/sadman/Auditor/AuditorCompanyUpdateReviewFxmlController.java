@@ -5,12 +5,28 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class AuditorCompanyUpdateReviewFxmlController
 {
+    @javafx.fxml.FXML
+    private TableColumn companyIdTC;
+    @javafx.fxml.FXML
+    private TableColumn availabeShareTC;
+    @javafx.fxml.FXML
+    private TableColumn totalShareTC;
+    @javafx.fxml.FXML
+    private TableColumn companyNameTC;
+    @javafx.fxml.FXML
+    private TableView updateProfileTV;
+    @javafx.fxml.FXML
+    private TableColumn passwordTC;
+
     @javafx.fxml.FXML
     public void initialize() {
     }
@@ -29,5 +45,17 @@ public class AuditorCompanyUpdateReviewFxmlController
     public void goBackButt(ActionEvent actionEvent) throws IOException {
         switchScene(actionEvent, "auditor_dashboard.fxml");
 
+    }
+
+    @javafx.fxml.FXML
+    public void rejectButt(ActionEvent actionEvent) {
+        Alert a = new Alert(Alert.AlertType.INFORMATION, "The Request has been Rejected");
+        a.showAndWait();
+    }
+
+    @javafx.fxml.FXML
+    public void approveButt(ActionEvent actionEvent) {
+        Alert a = new Alert(Alert.AlertType.INFORMATION, "The Request has been Accepted");
+        a.showAndWait();
     }
 }

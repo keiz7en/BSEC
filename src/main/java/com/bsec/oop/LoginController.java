@@ -103,7 +103,7 @@ public class LoginController implements Initializable {
                 if (role.equals("Auditor")) {
                     return "/com/bsec/summer25section2/sadman/Auditor/auditor_dashboard.fxml";
                 } else {
-                    return "/com/bsec/summer25section2/sadman/company/Main.fxml";
+                    return "/com/bsec/summer25section2/sadman/company/company_dashboard.fxml";
                 }
             case "SiamShikder":
                 if (role.equals("BSEC_Officer")) {

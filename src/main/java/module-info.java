@@ -3,6 +3,10 @@ module com.bsec.bsec {
     requires javafx.fxml;
     requires java.sql;
     requires javafx.graphics;
+    requires jdk.xml.dom;
+    requires javafx.base;
+
+
 
     opens com.bsec.oop to javafx.fxml;
     opens com.bsec.oop.Fayshal.Investor to javafx.fxml;
@@ -19,5 +23,7 @@ module com.bsec.bsec {
     exports com.bsec.oop.SiamShikder.Regulator;
     exports com.bsec.oop.Fayshal.Investor.model;
     exports com.bsec.oop.Fayshal.StockExchange.model;
+    exports com.bsec.oop.sadman.Company;
     opens com.bsec.oop.Fayshal.Investor.model to javafx.base, javafx.fxml;
+
 }

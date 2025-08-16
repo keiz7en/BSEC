@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="438.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.sadman.Auditor.AuditorDashboardFxmlController">
    <children>
-      <VBox alignment="CENTER" prefHeight="438.0" prefWidth="253.0" spacing="15.0">
+      <VBox alignment="CENTER_LEFT" prefHeight="438.0" prefWidth="253.0" spacing="15.0">
          <children>
             <Text fill="#6b6565" strokeType="OUTSIDE" strokeWidth="0.0" text="Auditor Dashboard" textAlignment="CENTER" underline="true">
                <font>

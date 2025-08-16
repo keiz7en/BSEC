@@ -5,12 +5,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class CompanyDownloadCertificateFxmlController
 {
+    @javafx.fxml.FXML
+    private TextArea companyDetailsTA;
+
     @javafx.fxml.FXML
     public void initialize() {
     }
@@ -27,5 +32,11 @@ public class CompanyDownloadCertificateFxmlController
     @javafx.fxml.FXML
     public void goBackButt(ActionEvent actionEvent) throws IOException {
         switchScene(actionEvent, "Main.fxml");
+    }
+
+    @javafx.fxml.FXML
+    public void downloadDetailsButt(ActionEvent actionEvent) {
+        Alert a = new Alert(Alert.AlertType.INFORMATION, "Download Success");
+        a.showAndWait();
     }
 }

@@ -5,12 +5,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class CompanyMessageAuditorFxmlController
 {
+    @javafx.fxml.FXML
+    private TextArea sendMessageTA;
+
     @javafx.fxml.FXML
     public void initialize() {
     }
@@ -28,5 +33,11 @@ public class CompanyMessageAuditorFxmlController
     public void goBackButt(ActionEvent actionEvent) throws IOException {
         switchScene(actionEvent, "Main.fxml");
 
+    }
+
+    @javafx.fxml.FXML
+    public void sendMesssageButt(ActionEvent actionEvent) {
+        Alert a = new Alert(Alert.AlertType.INFORMATION, "sent");
+        a.showAndWait();
     }
 }
