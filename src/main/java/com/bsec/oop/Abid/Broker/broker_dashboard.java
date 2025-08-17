@@ -11,12 +11,13 @@ import java.io.IOException;
 
 public class broker_dashboard
 {
-    private static final String BROKER_BASE_PATH = "/com/bsec/summer25section2/Abid/Broker/";
+
 
 
     @javafx.fxml.FXML
     public void initialize() {
     }
+    private static final String BROKER_BASE_PATH = "/com/bsec/summer25section2/Abid/Broker/";
 
     public void switchScene(ActionEvent event, String fxmlFile) throws IOException {
         String path = fxmlFile.startsWith("/") ? fxmlFile : BROKER_BASE_PATH + fxmlFile;

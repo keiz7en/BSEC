@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.Abid.Analyst.CompareCompanies">
+   <children>
+      <Text layoutX="160.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Compare Companies">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Text layoutX="56.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Company1" />
+      <Text layoutX="449.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Company2" />
+      <Text layoutX="326.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock Price" />
+      <Text layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Revenue" />
+      <Text layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Growth" />
+      <TextField fx:id="stockpriceTF" layoutX="86.0" layoutY="121.0" />
+      <TextField fx:id="revenueTF" layoutX="86.0" layoutY="171.0" />
+      <TextField fx:id="growthTF" layoutX="85.0" layoutY="213.0" />
+      <TextField fx:id="growth2TF" layoutX="413.0" layoutY="205.0" />
+      <TextField fx:id="revenue2TF" layoutX="413.0" layoutY="164.0" />
+      <TextField fx:id="stockTF" layoutX="413.0" layoutY="124.0" />
+      <Text layoutX="336.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Growth" />
+      <Text layoutX="332.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Revenue" />
+      <Text layoutX="10.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock Price" />
+   </children>
 </AnchorPane>

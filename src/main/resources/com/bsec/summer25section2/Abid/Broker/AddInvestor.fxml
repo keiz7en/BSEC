@@ -7,7 +7,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bsec.oop.Abid.Broker.AddInvestor">
    <children>
       <Text layoutX="198.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add New  Investor">
@@ -23,5 +22,6 @@
       <TextField fx:id="contactInfoTF" layoutX="122.0" layoutY="151.0" />
       <Label fx:id="Label" layoutX="181.0" layoutY="258.0" text="Label" />
       <Button layoutX="146.0" layoutY="211.0" mnemonicParsing="false" onAction="#createNewProfileBut" text="Create New Profile" />
+      <Button layoutX="172.0" layoutY="296.0" mnemonicParsing="false" onAction="#previousBut" text="Previous" />
    </children>
 </AnchorPane>

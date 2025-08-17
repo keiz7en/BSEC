@@ -97,7 +97,7 @@ public class LoginController implements Initializable {
                 if (role.equals("Analyst")) {
                     return "/com/bsec/summer25section2/Abid/Analyst/analyst1.fxml";
                 } else { // Broker
-                    return "/com/bsec/summer25section2/Abid/Broker/Main.fxml";
+                    return "/com/bsec/summer25section2/Abid/Broker/broker_dashboard.fxml";
                 }
             case "Sadman":
                 if (role.equals("Auditor")) {
